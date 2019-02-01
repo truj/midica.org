@@ -1,0 +1,96 @@
+{
+	"comments": {
+		"m": "comments.midicapl",
+		"m2": "comments-2.midicapl"
+	},
+	"instruments": {
+		"m": "instruments.midicapl",
+		"m-only": true
+	},
+	"instruments-2": {
+		"m": "instruments-2.midicapl",
+		"i": "instruments-2.png",
+		"alt": "Channels in the Player (Screenshot)"
+	},
+	"happy-birthday": {
+		"m": "happy-birthday.midicapl",
+		"s": "happy-birthday.svg"
+	},
+	"jingle-bells": {
+		"m": "jingle-bells.midicapl",
+		"m2": "jingle-bells-2.midicapl",
+		"m3": "jingle-bells-3.midicapl",
+		"s": "jingle-bells.svg"
+	},
+	"happy-birthday-2": {
+		"m": "happy-birthday-2.midicapl",
+		"s": "happy-birthday-2.svg"
+	},
+	"through-the-never": {
+		"m": "through-the-never.midicapl",
+		"s": "through-the-never.svg"
+	},
+	"chords": {
+		"m": "chords.midicapl",
+		"s": "chords.svg"
+	},
+	"chords-2": {
+		"m": "chords-2.midicapl",
+		"s": "chords.svg"
+	},
+	"the-black-perl": {
+		"m": "the-black-perl.midicapl",
+		"s": "the-black-perl.svg"
+	},
+	"velocity": {
+		"m": "velocity.midicapl",
+		"s": "velocity.svg"
+	},
+	"duration-ratio": {
+		"m": "duration-ratio.midicapl",
+		"s": "duration-ratio.svg"
+	},
+	"quantity": {
+		"m": "quantity.midicapl",
+		"s": "quantity.svg"
+	},
+	"multiple": {
+		"m": "multiple.midicapl",
+		"s": "multiple.svg"
+	},
+	"atomic": {
+		"m": "atomic.midicapl",
+		"s": "atomic.svg"
+	},
+	"dot": {
+		"m": "dot.midicapl",
+		"s": "dot.svg"
+	},
+	"triplet": {
+		"m": "triplet.midicapl",
+		"s": "triplet.svg"
+	},
+	"tuplet": {
+		"m": "tuplet.midicapl",
+		"s": "tuplet.svg"
+	},
+	"set-tempo": {
+		"m": "set-tempo.midicapl"
+	},
+	"set-time": {
+		"m": "set-time.midicapl"
+	},
+	"set-key": {
+		"m": "set-key.midicapl"
+	},
+	"set-key-2": {
+		"m": "set-key-2.midicapl",
+		"m2": "set-key-3.midicapl",
+		"m3": "set-key-4.midicapl"
+	},
+
+	"test": {
+		"m": "blubb.midicapl",
+		"s": "jingle-bells.svg"
+	}
+}

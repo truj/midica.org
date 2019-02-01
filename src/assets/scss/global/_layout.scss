@@ -1,0 +1,28 @@
+$link-hover-bgcolor: scale-color($anchor-color, $lightness: +65%);
+
+em {
+	font-variant: small-caps;
+	// font-weight: bold;
+	font-style: normal;
+}
+
+// all links
+a {
+	font-weight: bold;
+	&:hover {
+		background-color: $link-hover-bgcolor;
+		text-decoration: underline;
+		text-decoration-color: $black;
+	}
+}
+
+// keep as much distance as the top bar is high
+section, .anchor {
+	padding-top: 62px;
+}
+
+.inner-link-arrow {
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 1.3rem;
+}

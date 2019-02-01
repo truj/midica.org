@@ -1,0 +1,14 @@
+{{#each menu-items}}
+	<li>
+		{{#if url}}
+			<a href="{{url}}">{{title}}</a>
+		{{else}}
+			<a>{{title}}</a>
+		{{/if}}
+		{{#if menu-items}}
+			<ul class="menu">
+				{{> menu-items}}
+			</ul>
+		{{/if}}
+	</li>
+{{/each}}

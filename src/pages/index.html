@@ -1,0 +1,549 @@
+---
+layout: index
+meta-title: Midica - Produce, analyze and play MIDI Sequences
+---
+
+<div class="grid-container">
+	<div class="grid-x">
+		<div class="cell">
+			<h1>Midica</h1>
+		</div>
+		<div class="cell">
+			<p>
+				Midica is a MIDI processing tool written in Java.
+				The sourcode can be found on GitHub: <a href="https://github.com/truj/midica">https://github.com/truj/midica</a>
+			</p>
+		</div>
+		<div class="cell large-6">
+			It can be used for the following tasks:
+			<ul>
+				<li>
+					<span class="inner-link-arrow">&nbsp;</span>
+					Produce MIDI files using a programming language (MidicaPL)
+				</li>
+				<li>
+					<a href="#import-midica" class="inner-link-arrow">&darr;</a>
+					Import MIDI sequences from MidicaPL files
+				</li>
+				<li>
+					<a href="#import-midi" class="inner-link-arrow">&darr;</a>
+					Import MIDI sequences from MIDI files
+				</li>
+				<li>
+					<a href="#export-midi" class="inner-link-arrow">&darr;</a>
+					Export MIDI files from a sequence
+				</li>
+				<li>
+					<a href="#player" class="inner-link-arrow">&darr;</a>
+					Play MIDI sequences using a feature-rich player
+				</li>
+				<li>
+					<a href="#player-karaoke" class="inner-link-arrow">&darr;</a>
+					Use it as a Karaoke player
+				</li>
+				<li>
+					<a href="#import-soundfont" class="inner-link-arrow">&darr;</a>
+					Load soundfonts and use it for MIDI playback
+				</li>
+				<li>
+					<a href="#soundcheck" class="inner-link-arrow">&darr;</a>
+					Test soundfonts using a soundcheck module.
+				</li>
+				<li>
+					<a href="#info-soundfont" class="inner-link-arrow">&darr;</a>
+					Analyze soundfont contents
+				</li>
+				<li>
+					<a href="#info-sequence" class="inner-link-arrow">&darr;</a>
+					Analyze MIDI sequences
+				</li>
+			</ul>
+		</div>
+		<div class="cell large-6">
+			The following Tasks are planned for the future:
+			<ul>
+				<li>
+					<a href="#export-midica" class="inner-link-arrow">&darr;</a>
+					Export MidicaPL files from a MIDI sequence
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="grid-x anchor align-middle" id="main-window">
+		<div class="cell">
+			<h2>Main Window</h2>
+		</div>
+		<div class="cell">
+			The main window consists of different sections.
+		</div>
+		<div class="cell">
+			<img src="assets/img/main.png" />
+		</div>
+		<div id="config-section" class="cell anchor">
+			<h3>Configuration Section</h3>
+		</div>
+		<div class="cell">
+			In the configuration section you can configure the follwing things:
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_1_language.png" />
+		</div>
+		<div class="cell auto">
+			<b>Language</b>: GUI language
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_2_notes.png" />
+		</div>
+		<div class="cell auto">
+			<b>Note System</b>: Which set of note names to use
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_3_halftone.png" />
+		</div>
+		<div class="cell auto">
+			<b>Half Tone Symbol</b>: Which symbol to use for half tones
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_4_octave.png" />
+		</div>
+		<div class="cell auto">
+			<b>Octave Naming</b>: How to name notes in different octaves
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_6_percussion.png" />
+		</div>
+		<div class="cell auto">
+			<b>Percussion Shortcuts</b>: Which language to use for percussion instruments
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_5_syntax.png" />
+		</div>
+		<div class="cell auto">
+			<b>Syntax</b>: Which keywords and case (lower/upper) to use for the MidicaPL syntax
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/config_7_instrument.png" />
+		</div>
+		<div class="cell auto">
+			<b>Instrument Shortcuts</b>: Which language to use for chromatic instruments
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div id="import-section" class="cell anchor">
+			<h3>Import Section</h3>
+		</div>
+		<div class="cell small-12 medium-shrink anchor" id="import-midica">
+			<img src="assets/img/import_1_midica.png" />
+		</div>
+		<div class="cell auto">
+			<b>Import MidicaPL file</b>: Choose the source code file
+			<br />
+			The encoding can also be chosen. This is only relevant for text messages like lyrics etc.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink anchor" id="import-midi">
+			<img src="assets/img/import_2_midi.png" />
+		</div>
+		<div class="cell auto">
+			<b>Import MIDI file</b>: Choose the MIDI file
+			<br />
+			The default encoding can also be chosen.
+			This is only used if the encoding cannot be found in the file itself.
+			It is only relevant for text messages like lyrics etc.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink anchor" id="import-soundfont">
+			<img src="assets/img/import_3_soundfont.png" />
+		</div>
+		<div class="cell auto">
+			<b>Load Soundfont</b>: Choose the SF2 file
+		</div>
+	</div>
+	<div class="grid-x align-middle">
+		<div id="export-section" class="cell anchor">
+			<h3>Export Section</h3>
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink anchor" id="export-midi">
+			<img src="assets/img/export_1_midi.png" />
+		</div>
+		<div class="cell auto">
+			<b>Export MIDI file</b>: Choose the file name
+			<br />
+			The encoding can also be chosen. This is only relevant for text messages like lyrics etc.
+			<br />
+			It doesn't need to be the same encoding as in the imported sequence.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink anchor" id="export-midica">
+			<img src="assets/img/export_2_midica.png" />
+		</div>
+		<div class="cell auto">
+			<b>Export MidicaPL source code</b>: Choose the file name
+			<br />
+			The chosen encoding is used for the complete file.
+			<br />
+			It doesn't need to be the same encoding as in the imported sequence.
+			<br />
+			<b>This feature is not yet implemented!</b>
+		</div>
+	</div>
+	<div class="grid-x anchor" id="player">
+		<div class="cell">
+			<h2>Player</h2>
+		</div>
+		<div class="cell">
+			The player can be opened from the main window by clicking <b>Start Player</b>. A sequence must have been loaded before.
+		</div>
+		<div class="cell">
+			<img src="assets/img/player_1.png" />
+		</div>
+		<div class="cell">
+			The parts of the player need a bit more explanation.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/player_2_jump.png" />
+		</div>
+		<div class="cell auto">
+			<b>Memorize</b> remembers the current MIDI tick and writes it into the text field.
+			<br />
+			<b>Go</b> jumps to the MIDI tick in the text field.
+			<br />
+			The text field can also be edited manually before jumping to a new position.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/player_3_time.png" />
+		</div>
+		<div class="cell auto">
+			<b>Ticks &amp; Times</b>
+			<br />
+			Top left: Current MIDI tick in the sequence
+			<br />
+			Bottom left: Current time in the sequence
+			<br />
+			Top right: Total ticks of the sequence
+			<br />
+			Bottom right: Total time of the sequence
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 large-shrink">
+			<img src="assets/img/player_4_progress.png" />
+		</div>
+		<div class="cell auto">
+			<b>Progress Bar</b>: Shows the current position of the sequence in MIDI ticks. Depending on the total number of ticks the unit will be adjusted automatically.
+			In the example image it's <b>k</b> for <b>kilo</b>. So <b>150 k</b> means <b>Tick 150000</b>
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 large-shrink">
+			<img src="assets/img/player_5_control.png" />
+		</div>
+		<div class="cell auto">
+			<b>Control Elements</b>
+			<br />
+			<b>Play</b> begins or resumes playing from the current position. Only visible when not playing.
+			<br />
+			<b>Pause</b> stops playing but keeps the current position. Only visible when playing.
+			<br />
+			<b>Stop</b> stops playing and resets the current position to 0.
+			<br />
+			<b>&lt;&lt;</b> respectively <b>&lt;</b> decrements the current position by <b>16</b> respectively <b>4</b> quarter notes.
+			<br />
+			<b>&gt;</b> respectively <b>&gt;&gt;</b> increments the current position by <b>4</b> respectively <b>16</b> quarter notes.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/player_6_sliders.png" />
+		</div>
+		<div class="cell auto">
+			<b>Sliders</b>
+			<br />
+			<b>Vol</b> changes the basic volume for all channels.
+			<br />
+			<b>Tempo</b> changes the tempo of the sequence. Normal tempo is <b>1.0</b>, more is faster, less is slower.
+			<br />
+			<b>Transpose</b> increments or decrements the key of the sequence.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/player_7_reparse.png" />
+		</div>
+		<div class="cell auto">
+			<b>Reparse</b>
+			<br />
+			Parses the loaded MidicaPL or MIDI file again and rebuilds the sequence. This is useful when editing the source file.
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x anchor" id="player-channel">
+		<div class="cell">
+			<h3>Channel Details</h3>
+		</div>
+		<div class="cell">
+			<h4>Overview</h4>
+		</div>
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/channel_1_overview.png" />
+		</div>
+		<div class="cell auto">
+			<div class="grid-x grid-padding-x">
+				<div class="cell">
+					This section is an overview over the activity of all channels.
+					It consists of the following columns:
+				</div>
+				<div class="cell shrink"><b>C</b></div>
+				<div class="cell auto">
+					<b>Channel Number</b> &ndash; Midica uses numbers from 0 to 15 whereas most other applications use numbers from 1 to 16.
+					So here the percussion channel is 9 instead of 10.
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>M</b></div>
+				<div class="cell auto">
+					<b>Mute</b> &ndash; A muted channel does not produce any sound.
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>S</b></div>
+				<div class="cell auto">
+					<b>Solo</b> &ndash; If at least one channel is configured as <b>Solo</b> than only those channels produce sound which are also configured as <b>Solo</b>.
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>A</b></div>
+				<div class="cell auto">
+					<b>Activity</b> &ndash; determines if one or more keys are currently playing in this channel; <b>black</b>: inactive (no key is currently played); <b>red</b>: active (at least one key is currently played)
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>P</b></div>
+				<div class="cell auto">
+					<b>Program Number</b> &ndash; The instrument's program number as defined by the <b>General MIDI</b> standard
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>B</b></div>
+				<div class="cell auto">
+					<b>Bank Number</b> &ndash; The bank number as defined by the <b>General Standard</b> extension of MIDI and also by <b>General MIDI Level 2</b>
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>Instrument</b></div>
+				<div class="cell auto">
+					Instrument name like it's named in the currently loaded soundfont
+				</div>
+			</div>
+			<div class="grid-x grid-padding-x">
+				<div class="cell shrink"><b>Comment</b></div>
+				<div class="cell auto">
+					Channel comment &ndash; The text given by the MIDI meta message <b>Instrument Name</b>, if available.
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x">
+		<div class="cell">
+			<h4>Details</h4>
+		</div>
+		<div class="cell small-12 medium-shrink">
+			<img src="assets/img/channel_2_details.png" />
+		</div>
+		<div class="cell auto">
+			The details of a channel are shown by clicking the channel number. The following data can be viewed or changed:
+			<br />
+			<b>Volume</b> &ndash; the channel volume difference to the base volume, configured in the slider area of the player view.
+			If the value is negative, the channel volume is decremented by this value. Otherwise it's incremented.
+			<br />
+			<b>Note History</b> &ndash; with a <b>white</b> background: the last played notes from the past; with a <b>yellow</b> background: the next notes in the future.
+			<br />
+			<b>Columns:</b>
+			<br />
+			<b>Number</b> &ndash; Note number as defined by <b>General MIDI</b>
+			<br />
+			<b>Name</b> &ndash; Note (or percussion instrument) name as configured in the main window
+			<br />
+			<b>Volume</b> &ndash; Velocity of the note
+			<br />
+			<b>Tick</b> &ndash; MIDI tick
+		</div>
+	</div>
+	<div class="grid-x align-middle grid-padding-x anchor" id="player-karaoke">
+		<div class="cell">
+			<h3>Karaoke Mode</h3>
+		</div>
+		<div class="cell">
+			<img src="assets/img/karaoke.png" />
+		</div>
+		<div class="cell">
+			By checking <b>Show Lyrics</b> the karaoke mode is shown instead of the channel details.
+			<br />
+			<ul>
+				<li>By default the lyrics are shown in <b>black</b></li>
+				<li>A quarter note before appearing, a syllable is turned to <b><i>italic and black</i></b></li>
+				<li>When a syllable appears, it is shown in <b>red</b></li>
+			</ul>
+		</div>
+		<div class="cell anchor" id="soundcheck">
+			<h2>Soundcheck</h2>
+			A click on the <b>Soundcheck</b> button in the player window opens the soundcheck window. This can be used to check the sound of the instruments in the currently loaded soundfont.
+		</div>
+		<div class="cell">
+			<img src="assets/img/soundcheck_1.png" />
+		</div>
+		<div class="cell">
+			Each channel can have different instruments or drum kits. This information is also read from the soundfont.
+			Depending on the chosen channel only the supported drum kits or instruments are displayed.
+		</div>
+		<div class="cell">
+			The percussion channel contains only drum kits. Depending on the soundfont it can contain single channel and multi channel drum kits.
+		</div>
+		<div class="cell">
+			<img src="assets/img/soundcheck_2_drum.png" />
+		</div>
+		<div class="cell">
+			Other channels normally only contain chromatic instruments. But in some soundfonts they can also contain multi channel drum kits.
+			<br />
+			The chromatic instruments are grouped in categories like defined in the <b>General MIDI</b> standard.
+		</div>
+		<div class="cell">
+			<img src="assets/img/soundcheck_3_chromatic.png" />
+		</div>
+		<div class="cell">
+			If a chromatic instrument is chosen, the <b>Note</b> list contains normal notes.
+			<br />
+			If a drum kit is chosen, it contains percussion instruments.
+		</div>
+	</div>
+	<div class="grid-x grid-padding-x anchor" id="info-window">
+		<div class="cell">
+			<h2>Info Window</h2>
+		</div>
+		<div class="cell">
+			The Info window can be reached by clicking <b>Info &amp; Configuration Details</b>, either from the main window or from the player.
+		</div>
+		<div class="cell anchor" id="info-config">
+			<h3>Configuration Tab</h3>
+		</div>
+		<div class="cell">
+			In the <b>Configuration</b> tab you can view the current configuration, mainly used for the interpretation of MidicaPL source files.
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_conf_note.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_conf_percussion.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_conf_syntax.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_conf_instr.png" />
+		</div>
+	</div>
+	<div class="grid-x grid-padding-x">
+		<div class="cell anchor" id="info-soundfont">
+			<h3>Soundfont Tab</h3>
+		</div>
+		<div class="cell">
+			The <b>Soundfont</b> tab can be used to analyze the currently loaded soundfont.
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_soundfont_general.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_soundfont_instr.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_soundfont_sample.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_soundfont_layer.png" />
+		</div>
+	</div>
+	
+	<div class="grid-x grid-padding-x">
+		<div class="cell anchor" id="info-sequence">
+			<h3>Sequence Tab</h3>
+		</div>
+		<div class="cell">
+			The <b>Sequence</b> tab can be used to analyze the currently loaded MIDI sequence, no matter if it has been loaded from a MIDI file or a MidicaPL file.
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_general.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_karaoke.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_banks_1.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_banks_2.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_messages_1.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_messages_2.png" />
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midi_messages_3.png" />
+		</div>
+	</div>
+	<div class="grid-x grid-padding-x">
+		<div class="cell anchor" id="info-version">
+			<h3>Midica Tab</h3>
+		</div>
+		<div class="cell">
+			The <b>Midica</b> tab shows information about the version, date, etc.
+		</div>
+		<div class="cell large-6">
+			<img src="assets/img/info_midica.png" />
+		</div>
+	</div>
+</div>
+
+
+<!--<div class="test">
+	<p class="primary-color">primary-color</p>
+	<p class="secondary-color">secondary-color</p>
+	<p class="light-gray">light-gray</p>
+	<p class="medium-gray">medium-gray</p>
+	<p class="dark-gray">dark-gray</p>
+	<p class="black">black</p>
+	<p class="white">white</p>
+	<p class="body-background">body-background</p>
+	<p class="body-font-color">body-font-color</p>
+	<p class="header-color">header-color</p>
+	<p class="anchor-color">anchor-color</p>
+	<p class="anchor-color-hover">anchor-color-hover</p>
+	<p class="input-error-color">input-error-color</p>
+	<p class="success-color">success-color</p>
+	<p class="warning-color">warning-color</p>
+	<p class="alert-color">alert-color</p>
+	<p class="offcanvas-inner-shadow-color">offcanvas-inner-shadow-color</p>
+</div>-->

@@ -1,0 +1,47 @@
+// $menu-bgcolor-1: scale-color($success-color, $lightness: +65%);
+// $menu-bgcolor-2: scale-color($warning-color, $lightness: +65%);
+// $menu-bgcolor-3: scale-color($success-color, $lightness: +65%);
+// $menu-bgcolor-4: scale-color($anchor-color, $lightness: +65%);
+// $menu-bgcolor-5: scale-color($anchor-color, $lightness: +65%);
+
+nav {
+	li {
+		// normal menu entries
+		background-color: $white;
+		// li {
+		// 	li {
+		// 		background-color: $menu-bgcolor-1;
+		// 		li {
+		// 			background-color: $menu-bgcolor-2;
+		// 			li {
+		// 				background-color: $menu-bgcolor-3;
+		// 				li {
+		// 					background-color: $menu-bgcolor-4;
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
+		&:hover {
+			background-color: $link-hover-bgcolor;
+		}
+		a:hover {
+			color: $anchor-color;
+			text-decoration: none;
+		}
+		
+		// link back to top
+		&.top-link {
+			background-color: $primary-color;
+			a {
+				color: $white;
+				&:hover {
+					color: $anchor-color;
+				}
+			}
+			&:hover {
+				background-color: #ffaaaa;
+			}
+		}
+	}
+}

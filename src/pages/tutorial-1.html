@@ -1,0 +1,337 @@
+---
+layout: index
+meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
+---
+
+<div class="grid-container midicapl">
+	<div class="grid-x grid-padding-x">
+		<h1 class="cell">MidicaPL Tutorial, Chapter 1: Basics</h1>
+	</div>
+	<section class="grid-x grid-padding-x" id="intro">
+		<div class="cell">
+			<h2>Introduction</h2>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				MidicaPL stands for "Midica Programming Language". It is the language used to program MIDI sequences.
+				The MidicaPL source code has to be written into plain text files with the file extension ".midica".
+			</p>
+			<p>
+				The actual MidicaPL syntax and note naming depends on the chosen configuration. In this tutorial the
+				configuration settings shown in the <span class="reference">Configuration</span> table are assumed.
+				This is the default configuration.
+			</p>
+			<p>
+				If you don't use the default configuration, you can consult the
+				<a href="/#info-config">Configuration Tab of the Info Window</a> in order to find out the actual
+				note naming and syntax elements.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Configuration
+				</caption>
+				<thead>
+					<tr>
+						<th>Configuration</th>
+						<th>Setting</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Note System</td>
+						<td>International, lowercase (c, d, e, f, g, a, b, c)</td>
+					</tr>
+					<tr>
+						<td>Half Tone Symbol</td>
+						<td># (c#, d#, f#, ...)</td>
+					</tr>
+					<tr>
+						<td>Octave Naming</td>
+						<td>+/- (c--, c-, c, c+, c++, ...)</td>
+					</tr>
+					<tr>
+						<td>Percussion Shortcuts</td>
+						<td>English</td>
+					</tr>
+					<tr>
+						<td>Syntax</td>
+						<td>Mixed Case Syntax</td>
+					</tr>
+					<tr>
+						<td>Instrument Shortcuts</td>
+						<td>English</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="comments">
+		<div class="cell">
+			<h2>Code Layout and Comments</h2>
+		</div>
+		<div class="cell">
+			<p>
+				Each line of the source code can either be empty or contains a command or a comment or both.
+				Comments are prefixed by the symbol <code>//</code> and end at the end of the line.
+				Empty lines and comments are ignored. Whitespaces at the beginning or end of a line are also ignored.
+				More than one whitespace has the same effect as one single whitespace.
+			</p>
+			<p>
+				So the next two source code examples are equivalent.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.comments }}</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="instruments">
+		<div class="cell">
+			<h2>Instrument Definition Block</h2>
+		</div>
+		<div class="cell">
+			<p>
+				The first thing to be defined inside of a source file must be the instruments that each channel uses.
+				Each channel that will be used later must be initialized inside of a block beginning with
+				<code>INSTRUMENTS</code> and ending with <code>END</code>.
+			</p>
+			<p>
+				The only exception is the percussion channel (channel <em>9</em>) which may (but does not need to) be defined explicitely.
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.instruments }}</div>
+		<div class="cell medium-auto">
+			<p>
+				Each line inside this block contains 3 columns, separated by one or more whitespaces.
+				The last column may also contain more whitespaces. These are not interpreted as separator but as a part of the content.
+			</p>
+		</div>
+		<div class="cell">{{!-- ensure a line break --}}</div>
+		<div class="cell large-4">
+			<h3>1st column</h3>
+			<p>
+				The first column contains the chanel number. Valid values are the numbers <code>0</code> - <code>15</code> and the symbol <code>p</code>.
+			</p>
+			<p>
+				<code>p</code> is just an alias for <code>9</code> which is the percussion channel number.
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>2nd column</h3>
+			<p>
+				The second column describes the instrument. It may contain a valid <em>instrument shortcut</em> or a <em>MIDI program number</em>.
+			</p>
+			<p>
+				Valid instrument shortcuts can be found in the <em>info window</em> under  <a href="/#info-config">Configuration / Instrument Shortcuts</a>
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>3rd column</h3>
+			<p>
+				The third column contains a description of the instrument. This will be displayed as a channel comment in the player.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				In the above example we use an <em>instrument shortcut</em> for the channels <em>0</em> and <em>1</em> and a <em>MIDI program number</em> for the
+				channels <em>2</em> and <em>9</em>. The line defining the percussion channel (<em>p</em>) is optional. If it is omitted, the standard drumkit
+				(MIDI program number <em>0</em>) is used.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="channel-commands">
+		<div class="cell">
+			<h2>Channel commands</h2>
+		</div>
+		<div class="cell">
+			<p>
+				After you have defined some channel instruments, you can use <em>channel commands</em> in order to play music.
+				The most important things to do with channel commands is playing notes, chords or rests.
+			</p>
+			<p>
+				Channel commands consist of at least 3 columns, separated by whitespaces:
+			</p>
+			<ol>
+				<li>Channel column</li>
+				<li>Note column</li>
+				<li>Length column</li>
+				<li>
+					(Optional) After the 3rd column one or more options may follow. Details will be described in chapter 2. Please be patient.
+				</li>
+			</ol>
+			<p>
+				The following example shows the first notes of "Happy birthday to you" on channel <em>0</em>.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.happy-birthday }}</div>
+		<div class="cell large-4">
+			<h3>Channel column</h3>
+			<p>
+				This column contains the chanel number. Valid values are the numbers <code>0</code> - <code>15</code> and the symbol <code>p</code>.
+				Again, <code>p</code> is an alias for <code>9</code> (percussion channel).
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>Note column</h3>
+			<p>
+				This column can contain a <em>note name</em>, a <em>percussion shortcut</em>, a <em>chord name</em> or the symbol <code>-</code> which
+				stands for a rest (pause). Additionally you can also use the <em>MIDI note number</em>.
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>Length column</h3>
+			<p>
+				This column contians a length definition. A <em>full</em>, a <em>half</em>, a <em>quarter</em>, an <em>eighth</em> note and so on is defined like
+				<code>/1</code>, <code>/2</code>, <code>/4</code>, <code>/8</code>
+				and so on. For dotted notes a <code>.</code> is added (but without any whitespace between).
+				More details about length definitions will follow in chapter 2.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				The following example shows another version of "Happy birthday to you" but with a rest instead of "day", so that it's actually only
+				"Happy birth... to you".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.happy-birthday-2 }}</div>
+		<div class="cell">
+			<p>
+				The first eighth note is now dotted, so that the length is 1.5 times longer. Therefore the second note is only a 16th.
+			</p>
+			<p>
+				The pitch of the first two notes is equivalent. Both are a middle C.
+				But in the first line the <em>note name</em> <code>c</code> is used, and in the second
+				line the <em>MIDI note number</em> <code>60</code>.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Note Names</h3>
+			<p>
+				Which note names are valid, depends on the configured <em>note system</em>, <em>half tone symbol</em> and <em>octave naming</em>.
+				In the standard configuration, lower-cased international note names are used, and the half tone symbol is a sharp: <code>#</code>.
+				Then follows an octave modifier.
+			</p>
+				The octave beginning with the middle C is not modified. Higher octaves are modified with one <code>+</code> per octave. For lower octaves,
+				<code>-</code> symbols are use.
+			<p>
+				The following example shows the first bar of "Through the Never" by "Metallica", played in channel 1.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.through-the-never }}</div>
+		<div class="cell">
+			<h3>Using multiple channels</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Different channels can play notes at the same time.
+				Each channel command appends a note (or something else) to the end of a channel.
+				So the order of channel commands for the same channel is important.
+				But the order of commands for different channels does not matter.
+			</p>
+			<p>
+				The following examples are equivalent. They play the first two bars of "Jingle Bells".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.jingle-bells }}</div>
+		<div class="cell">
+			<p>
+				The first example adds all notes to channel 0 before adding all notes to channel 1.
+			</p>
+			<p>
+				The second example executes the commands for channel 1 first, and then for channel 0.
+			</p>
+			<p>
+				The third example works more or less in the order of appearance of the notes in time.
+				Of cause this is not always possible because some notes are played simultaniously but
+				two channel commands cannot be written into the same line of source code.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="chords">
+		<div class="cell">
+			<h2>Chords</h2>
+		</div>
+		<div class="cell">
+			<p>
+				A chord in MidicaPL is an amount of notes to be played at the same time in the same channel, with the same length and velocity.
+				There are 2 types of chords: <em>inline</em> chords and <em>predefined</em> chords. Here we focus on Inline Chords.
+				The predefined chords will be described in chapter 2.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Inline Chords</h3>
+			<p>
+				An inline chord is a number of note names in the second column of a channel command, separated by a <code>,</code>.
+				There are no whitespaces allowed between the notes.
+			</p>
+			<p>
+				The following example shows the beginning of Bob Marley's song "No Woman No Cry".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.chords }}</div>
+		<div class="cell">
+			<p>
+				The piano is played in channel 1 using inline chords.
+				The singer's voice is played in Channel 0 without chords.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="global-commands">
+		<div class="cell">
+			<h2>Global Commands</h2>
+		</div>
+		<div class="cell">
+			<p>
+				While channel commands only affect one channel, there are also global commands that affect all channels.
+				A global command begins with the symbol <code>*</code> in it's first column.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Synchronize</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Every global command syncronizes all channels. That means the current channel lengths are made equal to
+				the furthest channel's length.
+				A global command adds an according amount of rests to all other channels.
+				So many that all channels have the same length as the furthest channel.
+			</p>
+			<p>
+				This behaviour can be very helpful. So even a global command without any further options can be useful.
+				This empty form of a global command is called <em>synchronize</em> command because it's only purpose is to synchronize the channels.
+			</p>
+			<p>
+				The following example shows the first 2 bars of "The Black Perl" by "Klaus Badelt" from the film
+				"Pirates of the Carribean: The Curse of the Black Perl".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.the-black-perl }}</div>
+		<div class="cell">
+			<p>
+				Channel 1 contains a lot of rests but none of them is written with a channel command.
+				The rests are added implicitely by adding a synchronize command at the end of each bar.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Set Tempo</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Another important global command is a tempo change. The tempo is defined in "beats per minute" (BPM).
+				The second column of the global command contains the symbol <code>bpm</code> and the third column the desired value.
+			</p>
+			<p>
+				The value is the number of quarter notes that is played in one minute.
+				The default value is 120. It could be changed to 150 using the following command:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-tempo }}</div>
+		<div class="cell">
+			<p>
+				Like every other global command, a tempo change synchronizes all channels.
+			</p>
+		</div>
+	</section>
+	<aside class="gri d-x gri d-padding-x">
+		Now you know the basics of the language. Please go on with <a href="tutorial-2.html">chapter 2</a>.
+	</aside>
+</div>

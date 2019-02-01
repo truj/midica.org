@@ -1,0 +1,225 @@
+[
+	{
+		"title": "Midica",
+		"menu-items": [
+			{
+				"title": "Screenshots",
+				"url": "/#",
+				"menu-items": [
+					{
+						"title": "Main Window",
+						"url": "/#main-window",
+						"menu-items": [
+							{
+								"title": "Configuration Section",
+								"url": "/#config-section"
+							},
+							{
+								"title": "Import Section",
+								"url": "/#import-section"
+							},
+							{
+								"title": "Export Section",
+								"url": "/#export-section"
+							}
+						]
+					},
+					{
+						"title": "Player",
+						"url": "/#player",
+						"menu-items": [
+							{
+								"title": "Channel Details",
+								"url": "/#player-channel"
+							},
+							{
+								"title": "Karaoke Mode",
+								"url": "/#player-karaoke"
+							}
+						]
+					},
+					{
+						"title": "Soundcheck",
+						"url": "/#soundcheck"
+					},
+					{
+						"title": "Info Window",
+						"url": "/#info-window",
+						"menu-items": [
+							{
+								"title": "Configuration Tab",
+								"url": "/#info-config"
+							},
+							{
+								"title": "Soundfont Tab",
+								"url": "/#info-soundfont"
+							},
+							{
+								"title": "Sequence Tab",
+								"url": "/#info-sequence"
+							},
+							{
+								"title": "Midica Tab",
+								"url": "/#info-version"
+							}
+						]
+					}
+				]
+			},
+			{
+				"title": "MidicaPL Tutorial",
+				"url": "/tutorial-1.html#",
+				"menu-items": [
+					{
+						"title": "1: Basics",
+						"url": "/tutorial-1.html#",
+						"menu-items": [
+							{
+								"title": "Intro",
+								"url": "/tutorial-1.html#intro"
+							},
+							{
+								"title": "Code Layout & Comments",
+								"url": "/tutorial-1.html#comments"
+							},
+							{
+								"title": "Instruments",
+								"url": "/tutorial-1.html#instruments"
+							},
+							{
+								"title": "Channel Commands",
+								"url": "/tutorial-1.html#channel-commands"
+							},
+							{
+								"title": "Chords",
+								"url": "/tutorial-1.html#chords"
+							},
+							{
+								"title": "Global Commands",
+								"url": "/tutorial-1.html#global-commands"
+							}
+						]
+					},
+					{
+						"title": "2: Improving",
+						"url": "/tutorial-2.html#",
+						"menu-items": [
+							{
+								"title": "Intro",
+								"url": "/tutorial-2.html#intro"
+							},
+							{
+								"title": "Channel Options",
+								"url": "/tutorial-2.html#channel-options"
+							},
+							{
+								"title": "Length Definitions",
+								"url": "/tutorial-2.html#length-definitions"
+							},
+							{
+								"title": "Macros",
+								"url": "/tutorial-2.html#macros"
+							},
+							{
+								"title": "Soundfonts",
+								"url": "/tutorial-2.html#soundfonts"
+							},
+							{
+								"title": "Chords",
+								"url": "/tutorial-2.html#chords"
+							},
+							{
+								"title": "Global Commands",
+								"url": "/tutorial-2.html#global-commands"
+							}
+						]
+					},
+					{
+						"title": "3: Fun",
+						"url": "/tutorial-3.html#",
+						"menu-items": [
+							{
+								"title": "Intro",
+								"url": "/tutorial-3.html#intro"
+							},
+							{
+								"title": "Code Layout & Comments",
+								"url": "/tutorial-3.html#comments"
+							},
+							{
+								"title": "Instruments",
+								"url": "/tutorial-3.html#instruments"
+							},
+							{
+								"title": "Channel Commands",
+								"url": "/tutorial-3.html#channel-commands"
+							},
+							{
+								"title": "Chords",
+								"url": "/tutorial-3.html#chords"
+							},
+							{
+								"title": "Global Commands",
+								"url": "/tutorial-3.html#global-commands"
+							},
+							{
+								"title": "Length Definitions",
+								"url": "/tutorial-3.html#length-definitions"
+							},
+							{
+								"title": "Channel Options",
+								"url": "/tutorial-3.html#channel-options"
+							}
+						]
+					},
+					{
+						"title": "3: More",
+						"url": "/tutorial-4.html#",
+						"menu-items": [
+							{
+								"title": "Intro",
+								"url": "/tutorial-4.html#intro"
+							},
+							{
+								"title": "Code Layout & Comments",
+								"url": "/tutorial-4.html#comments"
+							},
+							{
+								"title": "Instruments",
+								"url": "/tutorial-4.html#instruments"
+							},
+							{
+								"title": "Channel Commands",
+								"url": "/tutorial-4.html#channel-commands"
+							},
+							{
+								"title": "Chords",
+								"url": "/tutorial-4.html#chords"
+							},
+							{
+								"title": "Global Commands",
+								"url": "/tutorial-4.html#global-commands"
+							},
+							{
+								"title": "Length Definitions",
+								"url": "/tutorial-4.html#length-definitions"
+							},
+							{
+								"title": "Channel Options",
+								"url": "/tutorial-4.html#channel-options"
+							}
+						]
+					}
+				]
+			},
+			{
+				"title": "Github",
+				"url": "https://github.com/truj/midica"
+			},
+			{
+				"title": "Javadoc",
+				"url": "/javadoc/index.html"
+			}
+		]
+	}
+]
