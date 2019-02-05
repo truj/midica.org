@@ -1,0 +1,383 @@
+---
+layout: index
+meta-title: "MidicaPL Tutorial 3: Fun - MIDI Programming Language for Midica"
+---
+
+<div class="grid-container midicapl">
+	<div class="grid-x grid-padding-x">
+		<h1 class="cell">MidicaPL Tutorial, Chapter 3: Fun</h1>
+	</div>
+	<section class="grid-x grid-padding-x" id="intro">
+		<div class="cell">
+			<h2>Introduction</h2>
+		</div>
+		<div class="cell">
+			<p>
+				This is the second chapter of the MidicaPL tutorial. Please read <a href="tutorial-1.html">Chapter 1</a> first,
+				if you have not yet done that already.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="length-definitions">
+		<div class="cell">
+			<h2>Length Definitions</h2>
+		</div>
+		<div class="cell">
+			<p>
+				As you learned in chapter 1, the third column of a channel command defines the length of the note (or chord or rest).
+				The easyest form of such a length definition is an atomic length like <code>/4</code>. This can be modified by special symbols like
+				<code>.</code>. Most of the time you don't need anything more. But in some cases you may need more complicated definitions. In those
+				cases you can combine more than one length definition and build a sum of them.
+			</p>
+			<p>
+				<h3>Atomic Lengths</h3>
+			</p>
+			<p>
+				The following atomic lengths are defined:
+			</p>
+			<p>
+				<code>/1</code> (full),
+				<code>/2</code> (half),
+				<code>/4</code> (quarter),
+				<code>/8</code> (eighth),
+				<code>/16</code> (sixteenth),
+				<code>/32</code> (thirty-second)
+			</p>
+			<p>
+				<code>*1</code> (full),
+				<code>*2</code> (double),
+				<code>*4</code> (four wholes),
+				<code>*8</code> (eight wholes),
+				<code>*16</code> (sixteen wholes),
+				<code>*32</code> (thirty-two wholes)
+			</p>
+			<p>
+				You can also use just numbers without <code>/</code> or <code>*</code>. In this case, the number is interpreted as Xth note.
+				This way you can also have more notes than the ones described above. E.g. <code>64</code> is interpreted as a sixty-fourth note (1/64).
+				Or <code>5</code> will be a fifth note (1/5).
+			</p>
+			<p>
+				The reason, this tutorial uses <code>/4</code> instead of <code>4</code> most of the time is that it's just more readable.
+				But the result is the same.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.atomic }}</div>
+		<div class="cell">
+			<p>
+				<h3>Modified Lengths</h3>
+			</p>
+			<p>
+				<h4>Dots</h4>
+			</p>
+			<p>
+				An atomic length can be modified. You already know the modifier <code>.</code>. It makes the atomic length one half longer, so that it's 3/2
+				of the atomic length.
+				You can add as many dots as you want. Two dots (<code>..</code>) make it longer by three quarters, resulting in 7/4 of it's atomic length.
+				Three dots result in 15/8. And so on.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.dot }}</div>
+		<div class="cell">
+			<p>
+				Channel 1 is only added for comparison reasons.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				<h4>Triplets</h4>
+			</p>
+			<p>
+				A triplet shortens the atomic length by one third, resulting in 2/3 of the atomic length.
+				The triplet symbol is a <code>t</code>.
+				Just like a dot, a triplet can be applied as often as you want, resulting in nested triplets.
+				Two triplet symbols result in a length of 4/9 (2/3 * 2/3). Three such symbols result in 8/27 (2/3 * 2/3 * 2/3). And so on.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.triplet }}</div>
+		<div class="cell">
+			<p>
+				Channel 1 is added for comparison reasons again.
+				The first triplet consists of 3 shortened eighths taking the time of a quarter.
+				The second triplet is only slightly more complicated. It also contains a dotted eighth and a sixteenth.
+			</p>
+			<p>
+				The third triplet contains a dotted note again. But this time the dot is before the <code>t</code> symbol. This demonstrates that the order
+				of modifiers does not matter. The triplet also contains a rest that needs to have a modified length as well.
+			</p>
+			<p>
+				The fourth triplet contains a nested triplet, marked in blue. So the notes of the inner triplet need to be modified by two
+				<code>t</code> symbols.
+			</p>
+			<p>
+				The last triplet consists of three half notes having the length of one full note. It also contains a chord.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				<h4>Tuplets</h4>
+			</p>
+			<p>
+				A triplet is only one special type of tuplet. Generally a tuplet is used to change the length of a sequence of notes in a way that
+				has to be defined in the tuplet definition. A Tuplet is defined by the symbol <code>t</code>, followed by two numbers that are separated by
+				<code>:</code>. A triplet could also be defined as <code>t3:2</code> meaning something like "3 for 2" or "3 notes have the length of 2".
+			</p>
+			<p>
+				Mathematically you can say: tX:Y means that the length is multiplied with Y/X. So a note inside of a quadruplet would be modified with
+				<code>t4:3</code>. And something inside a quintuplet with <code>t5:4</code>.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.tuplet }}</div>
+		<div class="cell">
+			<p>
+				Again, channel 1 is only added for comparison reasons.
+				The first tuplet is a 5:2 tuplet that could contain 5 notes (or rests) with the length of 2. So the length of each note or rest
+				is modified by 2/5.
+			</p>
+			<p>
+				The second tuplet is a 3:4 tuplet modifying all lengths by 4/3. So you see that a tuplet can also be defined to make notes longer
+				instead of shorter. This tuplet contains a nested triplet (marked in blue) that has been explicitely defined as <code>t3:2</code>
+				instead of <code>t</code>. Because of the nesting, both tuplet modifiers have to be attached to each other.
+			</p>
+			<p>
+				The last tuplet contains different note lengths and a chord.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				<h3>Sums of Lengths</h3>
+			</p>
+			<p>
+				
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="macros">
+		<div class="cell">
+			<h2>Macros</h2>
+		</div>
+		<div class="cell">
+			<p>
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="blocks">
+		<div class="cell">
+			<h2>Blocks and Loops</h2>
+		</div>
+		<div class="cell">
+			<p>
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="soundfonts">
+		<div class="cell">
+			<h2>Using Soundfonts</h2>
+		</div>
+		<div class="cell">
+			The first thing to be defined inside of a source file must be the instruments that each channel uses.
+			Each channel that will be used later must be initialized inside of a block beginning with
+			<code>INSTRUMENTS</code> and ending with <code>END</code>.
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.instruments }}</div>
+		<div class="cell medium-auto">
+			Each line inside this block contains 3 columns, separated by one or more whitespaces.
+			The last column may also contain more whitespaces. These are not interpreted as separator but as a part of the content.
+		</div>
+		<div class="cell">{{!-- ensure a line break --}}</div>
+		<div class="cell large-4">
+			<h3>1st column</h3>
+			<p>
+				The first column contains the chanel number. Valid values are the numbers <code>0</code> - <code>15</code> and the symbol <code>p</code>.
+			</p>
+			<p>
+				<code>p</code> is just an alias for <code>9</code> which is the percussion channel number.
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>2nd column</h3>
+			<p>
+				The second column describes the instrument or drumkit. In the simplest form it can just be identical with an
+				<u>instrument shortcut</u>, a <u>percussion shortcut</u> or a program number. But it may also contain a bank description,
+				separated from the shortcut or number by a <code>,</code> symbol.
+			</p>
+			<p>
+				The bank description can either be the full bank number or the bank <abbr title="Most Significant Byte">MSB</abbr> and
+				<abbr title="Least Significant Byte">LSB</abbr>, separated by a <code>/</code> symbol. Or it can only be the
+				bank MSB, if the LSB is 0.
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>3rd column</h3>
+			The third column contains a description of the instrument. This will be displayed as a channel comment in the player.
+		</div>
+		<div class="cell">
+			The following example assumes that the currently loaded soundfont supports a multi-channel drumkit on bank 15360 (MSB 120, LSB 0).
+			Otherwise the drums could only be used in channel <em>9</em>.
+		</div>
+		<div class="cell">{{> src-example src-examples.instruments-2 }}</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="chords">
+		<div class="cell">
+			<h2>Predefined Chords</h2>
+		</div>
+		<div class="cell">
+			<h3>Predefined Chords</h3>
+			<p>
+				A predefined chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
+			</p>
+			<p>
+				The first column is the keyword <code>CHORD</code>.
+				The second column is a self-given chord name.
+				The other columns contain the notes belonging to that chord, one note by column.
+			</p>
+			<p>
+				Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
+			</p>
+			<p>
+				The following example shows the beginning of Bob Marley's song "No Woman No Cry".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.chords }}</div>
+		<div class="cell">
+			<p>
+				A chord in MidicaPL is an amount of notes to be played at the same time in the same channel, with the same length and velocity.
+				Each chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
+			</p>
+			<p>
+				The first column is the keyword <code>CHORD</code>. The second column is a self-given chord name.
+			</p>
+			<p>
+				The other columns contain the notes belonging to that chord, one note by column.
+			</p>
+			<p>
+				Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.chords }}</div>
+		<div class="cell">
+			<p>
+				In this example 4 chords are defined and later used in channel 1. In the same time, channel 0 plays the voice of the singer using normal
+				notes and pauses. (Remember, a <code>-</code> stands for a pause.)
+				Chords and pauses are channel commands, just like notes. So they also need a channel number and a length definition. And they can have the
+				same <a href="#channel-options">channel options <span class="inner-link-arrow">&darr;</span></a>.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="global-commands">
+		<div class="cell">
+			<h2>Global Commands II</h2>
+		</div>
+		<div class="cell">
+			<p>
+				You already know the most important global commands. Now you will learn two more of them:
+				<em>key signature</em> and <em>time signature</em>.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Set Time Signature</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The time signature can be set with the <code>time</code> command in the second column. The third column contains
+				the desired time definition.
+			</p>
+			<p>
+				The time definition contains a <i>nominator</i> (number) and a <i>denominator</i>, separated by a <code>/</code>.
+				<br />
+				The MIDI default is a <em>4/4</em> beat.
+				<br />
+				A <em>3/4</em> beat would be defined like this:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-time }}</div>
+		<div class="cell">
+			<p>
+				The denominator must be a number that can be described as 2<sup>n</sup>. That means valid denominators are <em>1</em>, <em>2</em>,
+				<em>4</em>, <em>8</em>, <em>16</em>, <em>32</em>, etc.
+			</p>
+			<p>
+				The time signature does not change the sound of the MIDI sequence at all. However it can make sence to define it anyway.
+				It can be a useful hint for third-party software processing the MIDI file exported by Midica.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Set Key Signature</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The key signature can be set with the <code>key</code> command in the second column. The third column contains the desired key definition.
+			</p>
+			<p>
+				The key definition contains a valid note name and a tonality, separated by a <code>/</code>.
+				<br />
+				The tonality can be <code>maj</code> for <em>major</em> or <code>min</code> for <em>minor</em>.
+				<br />
+				The MIDI default is <em>C major</em>, which could also be defined explicitely by the following command:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-key }}</div>
+		<div class="cell">
+			<p>
+				What a <i>valid note name</i> is, depends on the configured Note System, Half Tone Symbol and Octave Naming.
+				In the standard configuration a <em>C# minor</em> could be set with one of the following commands.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-key-2 }}</div>
+		<div class="cell">
+			<p>
+				Of cause these commands are equal because the octave is irrelevant for the key signature.
+			</p>
+			<p>
+				Like the time signature, the key signature does not change the sound at all. But it can also be useful for
+				another software processing the produced MIDI sequence.
+			</p>
+			<p>
+				Internally the key signature is translated into a number of <i>sharps</i> or <i>flats</i> and a flag for major or minor.
+				MIDI allows a maximum of 7 sharps or flats. So in some cases the key signature is converted automatically to something corresponding.
+			</p>
+			<p>
+				For example a <em>D# major</em> would have 9 sharps which is more than the allowed 7. So it's converted to the corresponding
+				<em>Eb major</em> with 3 flats instead.
+			</p>
+			<p>
+				Other key signatures can be expressed either with an allowed number of sharps or an(other) allowed number of flats.
+				For example <em>F# major</em> with 6 sharps corresponds to <em>Gb major</em> with 6 flats.
+				Or <em>G# minor</em> with 5 sharps corresponds to <em>Ab minor</em> with 7 flats.
+				In these cases the configured half tone symbol is used to determine which key signature is used. The one with sharps or the one
+				with flats.
+				This ensures that the key signature in the MIDI sequence is as close as possible to the source code, and it's only converted
+				if there is no other legal way.
+			</p>
+		</div>
+	</section>
+	
+
+
+	<div class="cell">
+		<hr>
+		<h1>TODO: delete</h1>
+		<pre>
+			height="47.950001"    -->    style="height: 5.5rem;"         chords             ~ 8.7181818
+			height="36.078098"    -->    style="height: 4.1rem;"         happy-birthday     ~ 8.7998
+		</pre>
+		Before the first channel command is executed, all channels have a <u>current time</u> of 0.
+		After adding a note in one channel, this channel's <u>current time</u> will be increased by the note length.
+		However the <u>current time</u> of the other channels don't change.
+		That means, if you play another note in a different channel, this note will be played at the same time like the first note.
+	</div>
+	<div class="cell">{{> src-example src-examples.test }}</div>
+	<div class="cell">
+			<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+	</div>
+</div>
+
+{{!--
+	callout   : box (hinweis, code-section etc.)
+	label     : farbig, passend zum callout
+	title bar : sections mit überschriften
+
+
+
+	magellan: synchronisiert seiten-interne links beim Scrollen
+--}}
+

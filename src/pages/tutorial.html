@@ -1,0 +1,163 @@
+---
+layout: index
+meta-title: "MidicaPL Tutorial: Preparation - MIDI Programming Language for Midica"
+---
+
+<div class="grid-container midicapl">
+	<div class="grid-x grid-padding-x">
+		<h1 class="cell">MidicaPL Tutorial: Preparation</h1>
+	</div>
+	<section class="grid-x grid-padding-x" id="start-midica">
+		<div class="cell">
+			<h2>Run Midica</h2>
+		</div>
+		<div class="cell">
+			<h3>Install Java</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Midica is written in Java, so you need to have the Java Runtime Environment (JRE) installed on your Computer to use Midica.
+			</p>
+			<p>
+				You can use any JRE of version 1.7 or later. Probably you already have Java installed. If not, you can download it from somewhere
+				in the internet, e.g. from <a href="https://www.java.com/download/">java.com</a>.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Download Midica</h3>
+		</div>
+		<div class="cell">
+			<p>
+				You can download Midica from the <a href="https://github.com/truj/midica">Github Repository</a>.
+				Just download the latest jar file that is named something like <code>midica-VERSION.jar</code>
+				(where <code>VERSION</code> is the latest version number).
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Start Midica</h3>
+		</div>
+		<div class="cell">
+			<p>
+				If Java is installed and Midica is downloaded you can start it on the command line with the following command:
+			</p>
+			<p>
+				<code>java -jar midica-VERSION.jar</code>
+			</p>
+			<p>
+				Depending on your operating system, there is a chance that you can start the .jar file with a doubleclick.
+				Then you don't need the command line.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="sound">
+		<div class="cell">
+			<h2>Sound</h2>
+		</div>
+		<div class="cell">
+			<p>
+				Before you start playing Music, you should load a soundfont. Otherwise Midica uses the Java default soundfont which is very bad.
+				It calls itself "Emergency GM sound set" and this name makes sense. It produces the worst sound in the world.
+			</p>
+			<p>
+				For the beginning I would suggest to use the FluidR3_GM Soundfont.
+				You can download it e.g. from the <a href="http://ftp.de.debian.org/debian/pool/main/f/fluid-soundfont/">Debian server</a>.
+				Download the <code>.tar.gz</code> file and unpack it. Then you find the file <code>FluidR3_GM.sf2</code>. This is the file you need.
+			</p>
+			<p>
+				If you have this or any other soundfont file on your computer, start Midica like described above.
+				The main window of Midica opens. In the import area under "Soundfont" click the button "select file".
+				Then choose the soundfont file with the extension <code>.sf2</code>.
+			</p>
+			<p>
+				Check the "Remember" checkbox next to the Button. Then Midica remembers the soundfont file path. If you close Midica
+				and then start it again, the soundfont will be loaded automatically.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="dev">
+		<div class="cell">
+			<h2>Development Process</h2>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				In order to develop a MIDI sequence in MidicaPL you must write the source code into a plain text file with the
+				file extension <code>.midica</code>. It doesn't matter which editor you use. Just use your favorite text editor.
+			</p>
+			<p>
+				MidicaPL stands for "Midica Programming Language". The actual MidicaPL syntax and note naming depends on
+				the chosen configuration. In this tutorial the configuration settings shown in the
+				<span class="reference">Configuration</span> table are assumed.
+				This is the default configuration.
+			</p>
+			<p>
+				During the process you will switch from your editor to the Midica player very often.
+				You will change the file and save it in the editor, then switch to the player and hit the "Reparse" button or press F5.
+				Then the file will be parsed again. When hitting the "Play" button or pressing "p", the resulting MIDI sequence will be played.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Configuration
+				</caption>
+				<thead>
+					<tr>
+						<th>Configuration</th>
+						<th>Setting</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Note System</td>
+						<td>International, lowercase (c, d, e, f, g, a, b, c)</td>
+					</tr>
+					<tr>
+						<td>Half Tone Symbol</td>
+						<td># (c#, d#, f#, ...)</td>
+					</tr>
+					<tr>
+						<td>Octave Naming</td>
+						<td>+/- (c--, c-, c, c+, c++, ...)</td>
+					</tr>
+					<tr>
+						<td>Percussion Shortcuts</td>
+						<td>English</td>
+					</tr>
+					<tr>
+						<td>Syntax</td>
+						<td>Mixed Case Syntax</td>
+					</tr>
+					<tr>
+						<td>Instrument Shortcuts</td>
+						<td>English</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cell">
+			<p>
+				First of all you have to create the file. Just create an empty file and call it <code>tutorial.midica</code>
+				or something else with the file extension <code>.midica</code>.
+				Then start Midica, if not yet done. In the main window, press the upper right button. It's the "select file"
+				button in the import area to choose a MidicaPL file. Choose the empty file that you just created.
+			</p>
+			<p>
+				Now you can open the player with the button "Start Player".
+				You cannot play anything yet because the file is still empty and so the MIDI sequence is empty as well.
+				But now you can start your development cycle.
+			</p>
+			<p>
+				Begin with <a href="tutorial-1.html">chapter 1</a> of the tutorial. Follow the instructions and change the source file
+				according to the examples. Then switch to the player and press "Reparse" or F5, then play the sequence.
+				Then change the file again. Try out your own variations of the examples and so on...
+			</p>
+			<p>
+				Developing with Midica is a bit like developing a website. But the HTML editor is any text editor. And the browser is the player.
+				But F5 works similarly.
+			</p>
+		</div>
+	</section>
+	<aside>
+		Now you are prepared for the MidicaPL tutorial. Please start with <a href="tutorial-1.html">chapter 1</a>.
+	</aside>
+</div>
