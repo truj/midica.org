@@ -11,60 +11,11 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell">
 			<h2>Introduction</h2>
 		</div>
-		<div class="cell medium-6">
+		<div class="cell">
 			<p>
-				MidicaPL stands for "Midica Programming Language". It is the language used to program MIDI sequences.
-				The MidicaPL source code has to be written into plain text files with the file extension ".midica".
+				This is the first chapter of the MidicaPL tutorial, teaching the basics of the language.
+				If you did not yet follow the <a href="">preparation instructions</a>, please do so before you continue reading.
 			</p>
-			<p>
-				The actual MidicaPL syntax and note naming depends on the chosen configuration. In this tutorial the
-				configuration settings shown in the <span class="reference">Configuration</span> table are assumed.
-				This is the default configuration.
-			</p>
-			<p>
-				If you don't use the default configuration, you can consult the
-				<a href="/#info-config">Configuration Tab of the Info Window</a> in order to find out the actual
-				note naming and syntax elements.
-			</p>
-		</div>
-		<div class="cell medium-6">
-			<table>
-				<caption>
-					Configuration
-				</caption>
-				<thead>
-					<tr>
-						<th>Configuration</th>
-						<th>Setting</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>Note System</td>
-						<td>International, lowercase (c, d, e, f, g, a, b, c)</td>
-					</tr>
-					<tr>
-						<td>Half Tone Symbol</td>
-						<td># (c#, d#, f#, ...)</td>
-					</tr>
-					<tr>
-						<td>Octave Naming</td>
-						<td>+/- (c--, c-, c, c+, c++, ...)</td>
-					</tr>
-					<tr>
-						<td>Percussion Shortcuts</td>
-						<td>English</td>
-					</tr>
-					<tr>
-						<td>Syntax</td>
-						<td>Mixed Case Syntax</td>
-					</tr>
-					<tr>
-						<td>Instrument Shortcuts</td>
-						<td>English</td>
-					</tr>
-				</tbody>
-			</table>
 		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="comments">
@@ -118,10 +69,10 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell large-4">
 			<h3>2nd column</h3>
 			<p>
-				The second column describes the instrument. It may contain a valid <em>instrument shortcut</em> or a <em>MIDI program number</em>.
+				The second column describes the instrument. It may contain a valid <em>instrument ID</em> or a <em>MIDI program number</em>.
 			</p>
 			<p>
-				Valid instrument shortcuts can be found in the <em>info window</em> under  <a href="/#info-config">Configuration / Instrument Shortcuts</a>
+				Valid instrument IDs can be found in the <em>info window</em> under <a href="/#info-config">Configuration / Instrument IDs</a>
 			</p>
 		</div>
 		<div class="cell large-4">
@@ -132,7 +83,7 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		</div>
 		<div class="cell">
 			<p>
-				In the above example we use an <em>instrument shortcut</em> for the channels <em>0</em> and <em>1</em> and a <em>MIDI program number</em> for the
+				In the above example we use an <em>instrument ID</em> for the channels <em>0</em> and <em>1</em> and a <em>MIDI program number</em> for the
 				channels <em>2</em> and <em>9</em>. The line defining the percussion channel (<em>p</em>) is optional. If it is omitted, the standard drumkit
 				(MIDI program number <em>0</em>) is used.
 			</p>
@@ -173,7 +124,7 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell large-4">
 			<h3>Note column</h3>
 			<p>
-				This column can contain a <em>note name</em>, a <em>percussion shortcut</em>, a <em>chord name</em> or the symbol <code>-</code> which
+				This column can contain a <em>note name</em>, a <em>percussion ID</em>, a <em>chord name</em> or the symbol <code>-</code> which
 				stands for a rest (pause). Additionally you can also use the <em>MIDI note number</em>.
 			</p>
 		</div>

@@ -74,6 +74,23 @@
 		"m": "tuplet.midicapl",
 		"s": "tuplet.svg"
 	},
+	"hey-jude": {
+		"m": "hey-jude.midicapl",
+		"s": "hey-jude.svg"
+	},
+	"length-plus": {
+		"m": "length-plus.midicapl",
+		"s": "length-plus.svg"
+	},
+	"we-will-rock-you": {
+		"m": "we-will-rock-you.midicapl",
+		"m2": "we-will-rock-you-2.midicapl",
+		"s": "we-will-rock-you.svg"
+	},
+	"billie-jean": {
+		"m": "billie-jean.midicapl",
+		"s": "billie-jean.svg"
+	},
 	"set-tempo": {
 		"m": "set-tempo.midicapl"
 	},

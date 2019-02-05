@@ -68,8 +68,26 @@
 			},
 			{
 				"title": "MidicaPL Tutorial",
-				"url": "/tutorial-1.html#",
+				"url": "/tutorial.html#",
 				"menu-items": [
+					{
+						"title": "Preparation",
+						"url": "/tutorial.html#",
+						"menu-items": [
+							{
+								"title": "Run Midica",
+								"url": "/tutorial.html#start-midica"
+							},
+							{
+								"title": "Prepare Sound",
+								"url": "/tutorial.html#sound"
+							},
+							{
+								"title": "Development",
+								"url": "/tutorial.html#dev"
+							}
+						]
+					},
 					{
 						"title": "1: Basics",
 						"url": "/tutorial-1.html#",
@@ -117,20 +135,12 @@
 								"url": "/tutorial-2.html#length-definitions"
 							},
 							{
-								"title": "Macros",
-								"url": "/tutorial-2.html#macros"
+								"title": "Percussion",
+								"url": "/tutorial-2.html#percussion"
 							},
 							{
 								"title": "Soundfonts",
 								"url": "/tutorial-2.html#soundfonts"
-							},
-							{
-								"title": "Chords",
-								"url": "/tutorial-2.html#chords"
-							},
-							{
-								"title": "Global Commands",
-								"url": "/tutorial-2.html#global-commands"
 							}
 						]
 					},
@@ -143,12 +153,16 @@
 								"url": "/tutorial-3.html#intro"
 							},
 							{
-								"title": "Code Layout & Comments",
-								"url": "/tutorial-3.html#comments"
+								"title": "Macros",
+								"url": "/tutorial-2.html#macros"
 							},
 							{
-								"title": "Instruments",
-								"url": "/tutorial-3.html#instruments"
+								"title": "Chords",
+								"url": "/tutorial-2.html#chords"
+							},
+							{
+								"title": "Global Commands",
+								"url": "/tutorial-2.html#global-commands"
 							},
 							{
 								"title": "Channel Commands",
@@ -218,7 +232,7 @@
 			},
 			{
 				"title": "Javadoc",
-				"url": "/javadoc/index.html"
+				"url": "/assets/javadoc/index.html"
 			}
 		]
 	}

@@ -18,7 +18,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="channel-commands">
+	<section class="grid-x grid-padding-x" id="channel-options">
 		<div class="cell">
 			<h2>Channel Options</h2>
 		</div>
@@ -294,8 +294,79 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 		<div class="cell">{{> src-example src-examples.tuplet }}</div>
 		<div class="cell">
 			<p>
+				Again, channel 1 is only added for comparison reasons.
+				The first tuplet is a 5:2 tuplet that could contain 5 notes (or rests) with the length of 2. So the length of each note or rest
+				is modified by 2/5.
+			</p>
+			<p>
+				The second tuplet is a 3:4 tuplet modifying all lengths by 4/3. So you see that a tuplet can also be defined to make notes longer
+				instead of shorter. This tuplet contains a nested triplet (marked in blue) that has been explicitely defined as <code>t3:2</code>
+				instead of <code>t</code>. Because of the nesting, both tuplet modifiers have to be attached to each other.
+			</p>
+			<p>
+				The last tuplet contains different note lengths and a chord.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
 				<h3>Sums of Lengths</h3>
 			</p>
+			<p>
+				Sometimes a note length cannot be described easily with an atomic or modified length. But it can easily be described as a sum of two lengths.
+				In sheet music such notes are typically printed as 2 notes with a <em>tie</em> between them.
+				In MidicaPL such a note length can be described as two atomic or modified lenghts, separated by a <code>+</code> symbol.
+			</p>
+			<p>
+				The following example shows the first few notes of "Hey Jude" by the "Beatles".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.hey-jude }}</div>
+		<div class="cell">
+			<p>
+				A half and an eighth note are tied together. This is described as <code>/2+/4</code>.
+			</p>
+			<p>
+				More complicated expressions are also possible like <code>/2.+/1+/2t</code>:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.length-plus }}</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="percussion">
+		<div class="cell">
+			<h2>Percussion Instruments</h2>
+		</div>
+		<div class="cell">
+			<p>
+				In order to produce sounds, we learned how to configure a certain instrument for a channel. Then we used notes to play
+				different pitches in that channel. With Percussion instruments this is different.
+				A percussion instrument has only one pitch. It's somthing like a drum, a hand clap, a cow bell or a triangle.
+				Using notes for such instruments is not very useful.
+			</p>
+			<p>
+				Percussion instruments are usually played in channel 9, the special percussion channel. In the <code>INSTRUMENTS</code> block
+				this channel cannot be associated with an instrument but with a drumkit.
+			</p>
+			<p>
+				When playing something later in this channel, this is not a note but a certain percussion instrument.
+				Instead of the note name you write a percussion ID. Each percussion instrument has a long ID and a short ID.
+				The valid IDs can be seen in the <em>info window</em> under <a href="/#info-config">Configuration / Percussion IDs</a>.
+			</p>
+			<p>
+				The next two examples are equivalent. They play the intro for "We Will Rock You" by "Queen".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.we-will-rock-you }}</div>
+		<div class="cell">
+			<p>
+				The only difference is that the first example uses long percussion IDs and the second one uses short IDs.
+			</p>
+			<p>
+				Like a chord of notes, you can also play two percussion sounds in the same time. Just separate the IDs with a <code>,</code>.
+				The following example shows the bedinning of "Billie Jean" by "Michael Jackson".
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.billie-jean }}</div>
+		<div class="cell">
 			<p>
 			</p>
 		</div>
@@ -328,8 +399,8 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			<h3>2nd column</h3>
 			<p>
 				The second column describes the instrument or drumkit. In the simplest form it can just be identical with an
-				<u>instrument shortcut</u>, a <u>percussion shortcut</u> or a program number. But it may also contain a bank description,
-				separated from the shortcut or number by a <code>,</code> symbol.
+				<u>instrument ID</u>, a <u>percussion ID</u> or a program number. But it may also contain a bank description,
+				separated from the ID or number by a <code>,</code> symbol.
 			</p>
 			<p>
 				The bank description can either be the full bank number or the bank <abbr title="Most Significant Byte">MSB</abbr> and
@@ -347,168 +418,8 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 		</div>
 		<div class="cell">{{> src-example src-examples.instruments-2 }}</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="chords">
-		<div class="cell">
-			<h2>Predefined Chords</h2>
-		</div>
-		<div class="cell">
-			<h3>Predefined Chords</h3>
-			<p>
-				A predefined chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
-			</p>
-			<p>
-				The first column is the keyword <code>CHORD</code>.
-				The second column is a self-given chord name.
-				The other columns contain the notes belonging to that chord, one note by column.
-			</p>
-			<p>
-				Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
-			</p>
-			<p>
-				The following example shows the beginning of Bob Marley's song "No Woman No Cry".
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.chords }}</div>
-		<div class="cell">
-			<p>
-				A chord in MidicaPL is an amount of notes to be played at the same time in the same channel, with the same length and velocity.
-				Each chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
-			</p>
-			<p>
-				The first column is the keyword <code>CHORD</code>. The second column is a self-given chord name.
-			</p>
-			<p>
-				The other columns contain the notes belonging to that chord, one note by column.
-			</p>
-			<p>
-				Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.chords }}</div>
-		<div class="cell">
-			<p>
-				In this example 4 chords are defined and later used in channel 1. In the same time, channel 0 plays the voice of the singer using normal
-				notes and pauses. (Remember, a <code>-</code> stands for a pause.)
-				Chords and pauses are channel commands, just like notes. So they also need a channel number and a length definition. And they can have the
-				same <a href="#channel-options">channel options <span class="inner-link-arrow">&darr;</span></a>.
-			</p>
-		</div>
-	</section>
-	<section class="grid-x grid-padding-x" id="global-commands">
-			<div class="cell">
-				<h2>Global Commands II</h2>
-			</div>
-			<div class="cell">
-				<p>
-					You already know the most important global commands. Now you will learn two more of them:
-					<em>key signature</em> and <em>time signature</em>.
-				</p>
-			</div>
-			<div class="cell">
-				<h3>Set Time Signature</h3>
-			</div>
-			<div class="cell">
-				<p>
-					The time signature can be set with the <code>time</code> command in the second column. The third column contains
-					the desired time definition.
-				</p>
-				<p>
-					The time definition contains a <i>nominator</i> (number) and a <i>denominator</i>, separated by a <code>/</code>.
-					<br />
-					The MIDI default is a <em>4/4</em> beat.
-					<br />
-					A <em>3/4</em> beat would be defined like this:
-				</p>
-			</div>
-			<div class="cell">{{> src-example src-examples.set-time }}</div>
-			<div class="cell">
-				<p>
-					The denominator must be a number that can be described as 2<sup>n</sup>. That means valid denominators are <em>1</em>, <em>2</em>,
-					<em>4</em>, <em>8</em>, <em>16</em>, <em>32</em>, etc.
-				</p>
-				<p>
-					The time signature does not change the sound of the MIDI sequence at all. However it can make sence to define it anyway.
-					It can be a useful hint for third-party software processing the MIDI file exported by Midica.
-				</p>
-			</div>
-			<div class="cell">
-				<h3>Set Key Signature</h3>
-			</div>
-			<div class="cell">
-				<p>
-					The key signature can be set with the <code>key</code> command in the second column. The third column contains the desired key definition.
-				</p>
-				<p>
-					The key definition contains a valid note name and a tonality, separated by a <code>/</code>.
-					<br />
-					The tonality can be <code>maj</code> for <em>major</em> or <code>min</code> for <em>minor</em>.
-					<br />
-					The MIDI default is <em>C major</em>, which could also be defined explicitely by the following command:
-				</p>
-			</div>
-			<div class="cell">{{> src-example src-examples.set-key }}</div>
-			<div class="cell">
-				<p>
-					What a <i>valid note name</i> is, depends on the configured Note System, Half Tone Symbol and Octave Naming.
-					In the standard configuration a <em>C# minor</em> could be set with one of the following commands.
-				</p>
-			</div>
-			<div class="cell">{{> src-example src-examples.set-key-2 }}</div>
-			<div class="cell">
-				<p>
-					Of cause these commands are equal because the octave is irrelevant for the key signature.
-				</p>
-				<p>
-					Like the time signature, the key signature does not change the sound at all. But it can also be useful for
-					another software processing the produced MIDI sequence.
-				</p>
-				<p>
-					Internally the key signature is translated into a number of <i>sharps</i> or <i>flats</i> and a flag for major or minor.
-					MIDI allows a maximum of 7 sharps or flats. So in some cases the key signature is converted automatically to something corresponding.
-				</p>
-				<p>
-					For example a <em>D# major</em> would have 9 sharps which is more than the allowed 7. So it's converted to the corresponding
-					<em>Eb major</em> with 3 flats instead.
-				</p>
-				<p>
-					Other key signatures can be expressed either with an allowed number of sharps or an(other) allowed number of flats.
-					For example <em>F# major</em> with 6 sharps corresponds to <em>Gb major</em> with 6 flats.
-					Or <em>G# minor</em> with 5 sharps corresponds to <em>Ab minor</em> with 7 flats.
-					In these cases the configured half tone symbol is used to determine which key signature is used. The one with sharps or the one
-					with flats.
-					This ensures that the key signature in the MIDI sequence is as close as possible to the source code, and it's only converted
-					if there is no other legal way.
-				</p>
-			</div>
-		</section>
-	
-
-
-	<div class="cell">
-		<hr>
-		<h1>TODO: delete</h1>
-		<pre>
-			height="47.950001"    -->    style="height: 5.5rem;"         chords             ~ 8.7181818
-			height="36.078098"    -->    style="height: 4.1rem;"         happy-birthday     ~ 8.7998
-		</pre>
-		Before the first channel command is executed, all channels have a <u>current time</u> of 0.
-		After adding a note in one channel, this channel's <u>current time</u> will be increased by the note length.
-		However the <u>current time</u> of the other channels don't change.
-		That means, if you play another note in a different channel, this note will be played at the same time like the first note.
-	</div>
-	<div class="cell">{{> src-example src-examples.test }}</div>
-	<div class="cell">
-			<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
-	</div>
+	<aside>
+		Now you know most of the lowlevel commands of MidicaPL. Please continue with <a href="tutorial-1.html">chapter 3</a> to learn about
+		highlevel syntax like blocks and macros.
+	</aside>
 </div>
-
-{{!--
-	callout   : box (hinweis, code-section etc.)
-	label     : farbig, passend zum callout
-	title bar : sections mit überschriften
-
-
-
-	magellan: synchronisiert seiten-interne links beim Scrollen
---}}
-
