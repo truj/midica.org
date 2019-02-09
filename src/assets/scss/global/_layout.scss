@@ -1,5 +1,18 @@
 $link-hover-bgcolor: scale-color($anchor-color, $lightness: +65%);
 
+// sticky footer
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+main {
+	flex: 1 0 auto;
+}
+footer {
+	flex-shrink: 0;
+}
+
 em {
 	font-variant: small-caps;
 	// font-weight: bold;

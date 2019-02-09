@@ -1,0 +1,20 @@
+footer {
+	background-color: $black;
+	min-height: 3rem;
+	padding: 0.3rem;
+	nav {
+		// border: 1px black solid;
+		ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+			// border: 1px red solid;
+			li {
+				background-color: $white;
+				color: $black;
+				display: inline-block;
+				border: 3px black solid;
+			}
+		}
+	}
+}

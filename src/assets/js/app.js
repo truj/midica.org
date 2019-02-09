@@ -88,9 +88,3 @@ $(function () {
 var TablesawConfig = {
   swipeHorizontalThreshold: 15
 };
-
-// app dashboard toggle
-$('[data-app-dashboard-toggle-shrink]').on('click', function(e) {
-  e.preventDefault();
-  $(this).parents('.app-dashboard').toggleClass('shrink-medium').toggleClass('shrink-large');
-});

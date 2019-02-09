@@ -1,0 +1,16 @@
+<footer>
+	<nav class="grid-container">
+		<ul class="grid-x grid-padding-x">
+			{{#each menu-items}}
+				<li class="cell large-shrink">
+					<a href="{{url}}">{{title}}</a>
+				</li>
+				{{#each menu-items}}
+					<li class="cell large-shrink">
+						<a href="{{url}}">{{title}}</a>
+					</li>
+				{{/each}}
+			{{/each}}
+		</ul>
+	</nav>
+</footer>

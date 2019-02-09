@@ -1,66 +1,67 @@
 [
 	{
 		"title": "Midica",
+		"url": "/#",
 		"menu-items": [
 			{
 				"title": "Screenshots",
-				"url": "/#",
+				"url": "/screenshots.html#",
 				"menu-items": [
 					{
 						"title": "Main Window",
-						"url": "/#main-window",
+						"url": "/screenshots.html#main-window",
 						"menu-items": [
 							{
 								"title": "Configuration Section",
-								"url": "/#config-section"
+								"url": "/screenshots.html#config-section"
 							},
 							{
 								"title": "Import Section",
-								"url": "/#import-section"
+								"url": "/screenshots.html#import-section"
 							},
 							{
 								"title": "Export Section",
-								"url": "/#export-section"
+								"url": "/screenshots.html#export-section"
 							}
 						]
 					},
 					{
 						"title": "Player",
-						"url": "/#player",
+						"url": "/screenshots.html#player",
 						"menu-items": [
 							{
 								"title": "Channel Details",
-								"url": "/#player-channel"
+								"url": "/screenshots.html#player-channel"
 							},
 							{
 								"title": "Karaoke Mode",
-								"url": "/#player-karaoke"
+								"url": "/screenshots.html#player-karaoke"
 							}
 						]
 					},
 					{
 						"title": "Soundcheck",
-						"url": "/#soundcheck"
+						"url": "/screenshots.html#soundcheck"
 					},
 					{
 						"title": "Info Window",
-						"url": "/#info-window",
+						"url": "/screenshots.html#info-window",
 						"menu-items": [
 							{
 								"title": "Configuration Tab",
-								"url": "/#info-config"
+								"url": "/screenshots.html#info-config"
 							},
 							{
 								"title": "Soundfont Tab",
-								"url": "/#info-soundfont"
+								"url": "/screenshots.html#info-soundfont"
 							},
 							{
 								"title": "Sequence Tab",
-								"url": "/#info-sequence"
+								"url": "/screenshots.html#info-sequence"
 							},
 							{
 								"title": "Midica Tab",
-								"url": "/#info-version"
+								"url": "/screenshots.html#info-version"
 							}
 						]
 					}
@@ -233,6 +234,14 @@
 			{
 				"title": "Javadoc",
 				"url": "/assets/javadoc/index.html"
+			},
+			{
+				"title": "Contact",
+				"url": "/contact.html"
+			},
+			{
+				"title": "Privacy Policy",
+				"url": "/privacy.html"
 			}
 		]
 	}
