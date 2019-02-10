@@ -1,0 +1,24 @@
+
+.screenshots {
+	$img-padding: 0.4rem;
+	.cell {
+		&.grid-x {
+			&.grid-padding-x {
+				img {
+					padding-top: $img-padding;
+				}
+			}
+		}
+		&.large-6 {
+			padding-top: $img-padding;
+		}
+		#last-element {
+			padding-bottom: $img-padding;
+		}
+	}
+
+	h3 {
+		// section is already handled by _layout.scss
+		padding-top: 62px;
+	}
+}

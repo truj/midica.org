@@ -30,6 +30,10 @@
 						"url": "/screenshots.html#player",
 						"menu-items": [
 							{
+								"title": "Widgets",
+								"url": "/screenshots.html#player-widgets"
+							},
+							{
 								"title": "Channel Details",
 								"url": "/screenshots.html#player-channel"
 							},
@@ -60,8 +64,8 @@
 								"url": "/screenshots.html#info-sequence"
 							},
 							{
-								"title": "Midica Tab",
-								"url": "/screenshots.html#info-version"
+								"title": "About Tab",
+								"url": "/screenshots.html#info-about"
 							}
 						]
 					}
