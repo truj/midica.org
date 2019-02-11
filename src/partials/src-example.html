@@ -69,4 +69,18 @@
 			</div>
 		</div>
 	{{/if}}
+	{{#if s2}}
+		<div class="cell shrink example-container svg">
+			<div class="grid-x">
+				<div class="cell headline">
+					Result <span class="rendered">(SVG)</span>
+				</div>
+			</div>
+			<div class="grid-x">
+				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
+					{{> (lookup . 's2') }}
+				</div>
+			</div>
+		</div>
+	{{/if}}
 </div>

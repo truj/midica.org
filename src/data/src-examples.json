@@ -89,7 +89,11 @@
 	},
 	"billie-jean": {
 		"m": "billie-jean.midicapl",
-		"s": "billie-jean.svg"
+		"s": "billie-jean.svg",
+		"s2": "billie-jean-2.svg"
+	},
+	"soundfont": {
+		"m": "soundfont.midicapl"
 	},
 	"set-tempo": {
 		"m": "set-tempo.midicapl"

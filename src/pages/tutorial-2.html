@@ -300,7 +300,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			</p>
 			<p>
 				The second tuplet is a 3:4 tuplet modifying all lengths by 4/3. So you see that a tuplet can also be defined to make notes longer
-				instead of shorter. This tuplet contains a nested triplet (marked in blue) that has been explicitely defined as <code>t3:2</code>
+				instead of shorter. This tuplet contains a nested triplet (marked in blue) that has been explicitly defined as <code>t3:2</code>
 				instead of <code>t</code>. Because of the nesting, both tuplet modifiers have to be attached to each other.
 			</p>
 			<p>
@@ -349,7 +349,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			<p>
 				When playing something later in this channel, this is not a note but a certain percussion instrument.
 				Instead of the note name you write a percussion ID. Each percussion instrument has a long ID and a short ID.
-				The valid IDs can be seen in the <em>info window</em> under <a href="/#info-config">Configuration / Percussion IDs</a>.
+				The valid IDs can be seen in the <em>info window</em> under <a href="/screenshots.html#info-config">Configuration / Percussion IDs</a>.
 			</p>
 			<p>
 				The next two examples are equivalent. They play the intro for "We Will Rock You" by "Queen".
@@ -368,6 +368,15 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 		<div class="cell">{{> src-example src-examples.billie-jean }}</div>
 		<div class="cell">
 			<p>
+				The short percussion IDs from this example are equivalent to the following long IDs:
+			</p>
+			<ul>
+				<li><code>hhc</code> equals <code>hi_hat_closed</code></li>
+				<li><code>sd1</code> equals <code>snare_drum_1</code></li>
+				<li><code>bd1</code> equals <code>bass_drum_1</code></li>
+			</ul>
+			<p>
+				The first result score is easier to read for non-drummers. The second one is more compact and more what a dummer is used to.
 			</p>
 		</div>
 	</section>
@@ -376,26 +385,59 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			<h2>Using Soundfonts</h2>
 		</div>
 		<div class="cell">
-			The first thing to be defined inside of a source file must be the instruments that each channel uses.
-			Each channel that will be used later must be initialized inside of a block beginning with
-			<code>INSTRUMENTS</code> and ending with <code>END</code>.
+			<h3>Include Soundfont File</h3>
 		</div>
-		<div class="cell medium-shrink">{{> src-example src-examples.instruments }}</div>
-		<div class="cell medium-auto">
-			Each line inside this block contains 3 columns, separated by one or more whitespaces.
-			The last column may also contain more whitespaces. These are not interpreted as separator but as a part of the content.
-		</div>
-		<div class="cell">{{!-- ensure a line break --}}</div>
-		<div class="cell large-4">
-			<h3>1st column</h3>
+		<div class="cell">
 			<p>
-				The first column contains the chanel number. Valid values are the numbers <code>0</code> - <code>15</code> and the symbol <code>p</code>.
+				In the preparation section you learned how to <a href="/tutorial.html#sound">load a Soundfont</a> manually in the main window of
+				the Midica application.
 			</p>
 			<p>
-				<code>p</code> is just an alias for <code>9</code> which is the percussion channel number.
+				But there are a lot of different soundfonts out there, specialized for different kinds of music. So maybe you want to use different
+				soundfonts for different songs. And maybe you don't want to choose the soundfont file manually each time you switch to another
+				MidicaPL file containing another song.
+			</p>
+			<p>
+				In this case you can use the <code>SOUNDFONT</code> command. Its only parameter is the path to a soundfont file in the
+				<code>.sf2</code> format. The path can be either absolute or relative to the source file containing the command.
 			</p>
 		</div>
-		<div class="cell large-4">
+		<div class="cell">{{> src-example src-examples.soundfont }}</div>
+		<div class="cell">
+			<p>
+				Of cause this does not work on someone else's computer because he will probably not have the same
+				soundfont in the same file path inside of his fils system.
+				And it will also not work in an exported MIDI file because soundfont information cannot be stored in a MIDI sequence.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Bank Descriptions</h3>
+		</div>
+		<div class="cell">
+			<p>
+				In chapter 1 you learned the simplest form of defining <a href="/tutorial-1.html#instruments">instruments</a> for each channel.
+				Remember: In the second column of each line we used an <em>instrument ID</em> or a <em>drumkit ID</em> or a
+				<em>MIDI program number</em>.
+			</p>
+			<p>
+				Each ID is mapped to a program number internally. And program numbers can only have values from 0 to 127.
+				But comprehensive soundfonts can contain much more than 128 different instruments. In this case the instruments
+				are selected by a combination of a <em>program number</em> and a <em>bank description</em>.
+			</p>
+			<p>
+				In the second column of an instrument line the bank description can be attached to the ID or program number separated by a
+				<code>,</code> symbol. E.g. <code>VIOLIN,5</code> or <code>40,5</code> would select a violin with the bank description 5.
+			</p>
+			<p>
+				A Bank description can consist of
+				Bank numbers can consist of an <abbr title="Most Significant Byte">MSB</abbr> and an
+				<abbr title="Least Significant Byte">LSB</abbr>. If they are not explicitly defined, they are set to 0 by default.
+			</p>
+			<p>
+				In most cases only the MSB is used. That means the LSB is 0.
+			</p>
+		</div>
+		<div class="cell">
 			<h3>2nd column</h3>
 			<p>
 				The second column describes the instrument or drumkit. In the simplest form it can just be identical with an
@@ -408,10 +450,6 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 				bank MSB, if the LSB is 0.
 			</p>
 		</div>
-		<div class="cell large-4">
-			<h3>3rd column</h3>
-			The third column contains a description of the instrument. This will be displayed as a channel comment in the player.
-		</div>
 		<div class="cell">
 			The following example assumes that the currently loaded soundfont supports a multi-channel drumkit on bank 15360 (MSB 120, LSB 0).
 			Otherwise the drums could only be used in channel <em>9</em>.
@@ -419,7 +457,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 		<div class="cell">{{> src-example src-examples.instruments-2 }}</div>
 	</section>
 	<aside>
-		Now you know most of the lowlevel commands of MidicaPL. Please continue with <a href="tutorial-1.html">chapter 3</a> to learn about
+		Now you know most of the lowlevel commands of MidicaPL. Please continue with <a href="tutorial-3.html">chapter 3</a> to learn about
 		highlevel syntax like blocks and macros.
 	</aside>
 </div>

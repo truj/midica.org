@@ -14,7 +14,7 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell">
 			<p>
 				This is the first chapter of the MidicaPL tutorial, teaching the basics of the language.
-				If you did not yet follow the <a href="">preparation instructions</a>, please do so before you continue reading.
+				If you did not yet follow the <a href="tutorial.html">preparation instructions</a>, please do so before you continue reading.
 			</p>
 		</div>
 	</section>
@@ -41,18 +41,18 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		</div>
 		<div class="cell">
 			<p>
-				The first thing to be defined inside of a source file must be the instruments that each channel uses.
-				Each channel that will be used later must be initialized inside of a block beginning with
+				Before you can play any sounds, you must define the instruments to be used by each channel.
+				Every channel that will be used later must be initialized inside of a block beginning with
 				<code>INSTRUMENTS</code> and ending with <code>END</code>.
 			</p>
 			<p>
-				The only exception is the percussion channel (channel <em>9</em>) which may (but does not need to) be defined explicitely.
+				The only exception is the percussion channel (channel <em>9</em>) which may (but does not need to) be defined explicitly.
 			</p>
 		</div>
 		<div class="cell medium-shrink">{{> src-example src-examples.instruments }}</div>
 		<div class="cell medium-auto">
 			<p>
-				Each line inside this block contains 3 columns, separated by one or more whitespaces.
+				Each line inside of this block contains 3 columns, separated by one or more whitespaces.
 				The last column may also contain more whitespaces. These are not interpreted as separator but as a part of the content.
 			</p>
 		</div>
@@ -69,10 +69,10 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell large-4">
 			<h3>2nd column</h3>
 			<p>
-				The second column describes the instrument. It may contain a valid <em>instrument ID</em> or a <em>MIDI program number</em>.
+				The second column describes the instrument. It may contain a valid <em>instrument ID</em> or <em>drumkit ID</em> or the accoring <em>MIDI program number</em>.
 			</p>
 			<p>
-				Valid instrument IDs can be found in the <em>info window</em> under <a href="/#info-config">Configuration / Instrument IDs</a>
+				Valid instrument or drumkit IDs can be found in the <em>info window</em> under <a href="/screenshots.html#info-config">Configuration</a>
 			</p>
 		</div>
 		<div class="cell large-4">
@@ -83,8 +83,11 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		</div>
 		<div class="cell">
 			<p>
-				In the above example we use an <em>instrument ID</em> for the channels <em>0</em> and <em>1</em> and a <em>MIDI program number</em> for the
-				channels <em>2</em> and <em>9</em>. The line defining the percussion channel (<em>p</em>) is optional. If it is omitted, the standard drumkit
+				In the above example we use an <em>instrument ID</em> for the channels <em>0</em> and <em>1</em>, a <em>MIDI program number</em> for
+				channel <em>2</em>, and a <em>drumkit ID</em> for channel <em>9</em>.
+			</p>
+			<p>
+				The line defining the percussion channel (<em>p</em>) is optional. If it is omitted, the standard drumkit
 				(MIDI program number <em>0</em>) is used.
 			</p>
 		</div>
