@@ -159,57 +159,29 @@
 							},
 							{
 								"title": "Macros",
-								"url": "/tutorial-2.html#macros"
+								"url": "/tutorial-3.html#macros"
 							},
 							{
-								"title": "Chords",
-								"url": "/tutorial-2.html#chords"
+								"title": "Nestable Blocks",
+								"url": "/tutorial-3.html#nestable-blocks"
 							},
 							{
-								"title": "Global Commands",
-								"url": "/tutorial-2.html#global-commands"
+								"title": "Loops",
+								"url": "/tutorial-3.html#loops"
 							},
 							{
-								"title": "Channel Commands",
-								"url": "/tutorial-3.html#channel-commands"
-							},
-							{
-								"title": "Chords",
-								"url": "/tutorial-3.html#chords"
-							},
-							{
-								"title": "Global Commands",
-								"url": "/tutorial-3.html#global-commands"
-							},
-							{
-								"title": "Length Definitions",
-								"url": "/tutorial-3.html#length-definitions"
-							},
-							{
-								"title": "Channel Options",
-								"url": "/tutorial-3.html#channel-options"
+								"title": "Triplets & Tuplets",
+								"url": "/tutorial-3.html#tuplets"
 							}
 						]
 					},
 					{
-						"title": "3: More",
+						"title": "4: More",
 						"url": "/tutorial-4.html#",
 						"menu-items": [
 							{
 								"title": "Intro",
 								"url": "/tutorial-4.html#intro"
-							},
-							{
-								"title": "Code Layout & Comments",
-								"url": "/tutorial-4.html#comments"
-							},
-							{
-								"title": "Instruments",
-								"url": "/tutorial-4.html#instruments"
-							},
-							{
-								"title": "Channel Commands",
-								"url": "/tutorial-4.html#channel-commands"
 							},
 							{
 								"title": "Chords",
@@ -220,12 +192,16 @@
 								"url": "/tutorial-4.html#global-commands"
 							},
 							{
-								"title": "Length Definitions",
-								"url": "/tutorial-4.html#length-definitions"
+								"title": "Meta Information",
+								"url": "/tutorial-4.html#global-commands"
 							},
 							{
-								"title": "Channel Options",
-								"url": "/tutorial-4.html#channel-options"
+								"title": "Redefinitions",
+								"url": "/tutorial-4.html#redefine"
+							},
+							{
+								"title": "File Includes",
+								"url": "/tutorial-4.html#include-file"
 							}
 						]
 					}

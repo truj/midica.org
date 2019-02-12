@@ -108,10 +108,5 @@
 		"m": "set-key-2.midicapl",
 		"m2": "set-key-3.midicapl",
 		"m3": "set-key-4.midicapl"
-	},
-
-	"test": {
-		"m": "blubb.midicapl",
-		"s": "jingle-bells.svg"
 	}
 }

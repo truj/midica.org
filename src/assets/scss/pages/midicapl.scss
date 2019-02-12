@@ -159,6 +159,16 @@
 		}
 	}
 
+	// hint
+	p.hint {
+		color: $primary-color;
+		font-style: italic;
+		&::before {
+			content: "Hint: ";
+			font-weight: bold;
+		}
+	}
+
 	// container for the "next page" link
 	aside {
 		background-color: $next-link-color;
