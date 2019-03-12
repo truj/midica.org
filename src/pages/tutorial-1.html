@@ -20,7 +20,7 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 	</section>
 	<section class="grid-x grid-padding-x" id="comments">
 		<div class="cell">
-			<h2>Code Layout and Comments</h2>
+			<h2>Whitespaces and Comments</h2>
 		</div>
 		<div class="cell">
 			<p>
@@ -207,12 +207,13 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell">
 			<p>
 				A chord in MidicaPL is an amount of notes to be played at the same time in the same channel, with the same length and velocity.
-				There are 2 types of chords: <em>inline</em> chords and <em>predefined</em> chords. Here we focus on Inline Chords.
-				The predefined chords will be described in chapter 4.
+				There are 2 types of chords: <em>inline</em> chords and <em>predefined</em> chords.
 			</p>
 		</div>
 		<div class="cell">
 			<h3>Inline Chords</h3>
+		</div>
+		<div class="cell">
 			<p>
 				An inline chord is a number of note names in the second column of a channel command, separated by a <code>,</code>.
 				There are no whitespaces allowed between the notes.
@@ -228,6 +229,33 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 				The singer's voice is played in Channel 0 without chords.
 			</p>
 		</div>
+		<div class="cell">
+			<h3>Predefined Chords</h3>
+		</div>
+		<div class="cell">
+			<p>
+				A predefined chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
+			</p>
+			<p>
+				The first column is the keyword <code>CHORD</code>.
+				The second column is a self-given chord name.
+				The other column(s) contain the notes belonging to that chord, one note by column.
+				The notes can be separated either by <code>,</code> symbols or whitespaces or both.
+			</p>
+			<p>
+				Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
+			</p>
+			<p>
+				The following example shows the same notes again but this time with predefined chords instead of inline chords.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.chords-2 }}</div>
+		<div class="cell">
+			<p>
+				Imagine you use the same chord (e.g. C-major) many times in a song. And then you want to modify the chord (e.g. transform it into C-maj-7).
+				With predefined chords you only need to change the chord definition while with inline chords you need to change every appearance.
+			</p>
+		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="global-commands">
 		<div class="cell">
@@ -235,8 +263,8 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		</div>
 		<div class="cell">
 			<p>
-				While channel commands only affect one channel, there are also global commands that affect all channels.
-				A global command begins with the symbol <code>*</code> in it's first column.
+				While channel commands only affect one channel, there are also global commands that affect more than one channel.
+				Most of them even affect all channels. A global command begins with the symbol <code>*</code> in it's first column.
 			</p>
 		</div>
 		<div class="cell">
@@ -244,14 +272,14 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		</div>
 		<div class="cell">
 			<p>
-				Every global command syncronizes all channels. That means the current channel lengths are made equal to
+				Every global command syncronizes all (or at least some) channels. That means the current channel lengths are made equal to
 				the furthest channel's length.
 				A global command adds an according amount of rests to all other channels.
-				So many that all channels have the same length as the furthest channel.
+				So many that all synchronized channels have the same length as the furthest channel.
 			</p>
 			<p>
 				This behaviour can be very helpful. So even a global command without any further options can be useful.
-				This empty form of a global command is called <em>synchronize</em> command because it's only purpose is to synchronize the channels.
+				This empty form of a global command is called <em>synchronize</em> command because it's only purpose is to synchronize all channels.
 			</p>
 			<p>
 				The following example shows the first 2 bars of "The Black Perl" by "Klaus Badelt" from the film
@@ -266,12 +294,39 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 			</p>
 		</div>
 		<div class="cell">
+			<h3>Partial Synchronize</h3>
+		</div>
+		<div class="cell">
+			<p>
+				If you want to synchronize only a part of the channels, you can use a partial synchronize command.
+				This is the only global command that does not synchronize all channels but only some of them.
+				In the second column of a partial synchronzie there is a description which channels should be synchronized.
+			</p>
+			<p>
+				This description can be a comma-separated list of channel numbers (e.g. <code>1,2,3</code>) or a range
+				like <code>1-3</code>) or a mix like <code>1-3,5,6-8,11</code>.
+			</p>
+			<p>
+				You can use the symbol <code>p</code> for channel 9 here as well.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.partial-sync }}</div>
+		<div class="cell">
+			<p>
+				This example synchronizes channels 1, 2, 3, 5, 9, 12, 13 and 14 with each other.
+			</p>
+			<p>
+				The partial synchronize is the only global command that synchronizes only a part of the channels.
+				All other types of global commands always synchronize all channels.
+			</p>
+		</div>
+		<div class="cell">
 			<h3>Set Tempo</h3>
 		</div>
 		<div class="cell">
 			<p>
 				Another important global command is a tempo change. The tempo is defined in "beats per minute" (BPM).
-				The second column of the global command contains the symbol <code>bpm</code> and the third column the desired value.
+				The second column of the global command contains the symbol <code>tempo</code> and the third column the desired value.
 			</p>
 			<p>
 				The value is the number of quarter notes that is played in one minute.
@@ -282,6 +337,88 @@ meta-title: "MidicaPL Tutorial 1: Basics - MIDI Programming Language for Midica"
 		<div class="cell">
 			<p>
 				Like every other global command, a tempo change synchronizes all channels.
+			</p>
+		</div>
+		<div class="cell">
+			<p class="hint">
+				The last two global commands ("time signature" and "key signature") are not audible. They only add meta information to the MIDI sequence.
+				If you are only interested in hearable commands, you can continue directly with <a href="tutorial-2.html">chapter 2</a>.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Set Time Signature</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The time signature can be set with the <code>time</code> command in the second column. The third column contains
+				the desired time definition.
+			</p>
+			<p>
+				The time definition contains a <i>nominator</i> (number) and a <i>denominator</i>, separated by a <code>/</code>.
+				<br />
+				The MIDI default is a <em>4/4</em> beat.
+				<br />
+				A <em>3/4</em> beat would be defined like this:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-time }}</div>
+		<div class="cell">
+			<p>
+				The denominator must be a number that can be described as 2<sup>n</sup>. That means valid denominators are <em>1</em>, <em>2</em>,
+				<em>4</em>, <em>8</em>, <em>16</em>, <em>32</em>, etc.
+			</p>
+			<p>
+				The time signature does not change the sound of the MIDI sequence at all. However it can make sence to define it anyway.
+				It can be a useful hint for third-party software processing the MIDI file exported by Midica.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Set Key Signature</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The key signature can be set with the <code>key</code> command in the second column. The third column contains the desired key definition.
+			</p>
+			<p>
+				The key definition contains a valid note name and a tonality, separated by a <code>/</code>.
+				<br />
+				The tonality can be <code>maj</code> for <em>major</em> or <code>min</code> for <em>minor</em>.
+				<br />
+				The MIDI default is <em>C major</em>, which could also be defined explicitely by the following command:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-key }}</div>
+		<div class="cell">
+			<p>
+				What a <i>valid note name</i> is, depends on the configured Note System, Half Tone Symbol and Octave Naming.
+				In the standard configuration a <em>C# minor</em> could be set with one of the following commands.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.set-key-2 }}</div>
+		<div class="cell">
+			<p>
+				Of cause these commands are equal because the octave is irrelevant for the key signature.
+			</p>
+			<p>
+				Like the time signature, the key signature does not change the sound at all. But it can also be useful for
+				another software processing the produced MIDI sequence.
+			</p>
+			<p>
+				Internally the key signature is translated into a number of <i>sharps</i> or <i>flats</i> and a flag for major or minor.
+				MIDI allows a maximum of 7 sharps or flats. So in some cases the key signature is converted automatically to something corresponding.
+			</p>
+			<p>
+				For example a <em>D# major</em> would have 9 sharps which is more than the allowed 7. So it's converted to the corresponding
+				<em>Eb major</em> with 3 flats instead.
+			</p>
+			<p>
+				Other key signatures can be expressed either with an allowed number of sharps or an(other) allowed number of flats.
+				For example <em>F# major</em> with 6 sharps corresponds to <em>Gb major</em> with 6 flats.
+				Or <em>G# minor</em> with 5 sharps corresponds to <em>Ab minor</em> with 7 flats.
+				In these cases the configured half tone symbol is used to determine which key signature is used. The one with sharps or the one
+				with flats.
+				This ensures that the key signature in the MIDI sequence is as close as possible to the source code, and it's only converted
+				if there is no other legal way.
 			</p>
 		</div>
 	</section>

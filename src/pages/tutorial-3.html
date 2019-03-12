@@ -16,12 +16,28 @@ meta-title: "MidicaPL Tutorial 3: Fun - MIDI Programming Language for Midica"
 				This is the third chapter of the MidicaPL tutorial. Please read the <a href="tutorial-1.html">chapter 1</a> and
 				<a href="tutorial-2.html">chapter 2</a> first, if you have not yet done that already.
 			</p>
+			<p>
+				So far you learned a lot of lowlevel commands. In this chapter we will focus on structures that help to reuse your code,
+				like macros, blocks and loops.
+			</p>
 		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="macros">
 		<div class="cell">
 			<h2>Macros</h2>
 		</div>
+		<div class="cell">
+			<p>
+				Most programming languages have functions, methods or another kind of subroutines that can be from different places
+				inside of your source code. In MidicaPL such functions are called <em>macro</em>.
+			</p>
+			<p>
+				A macro is a bock beginning with the keyword <code>MACRO</code>, followed by one or more whitespaces and a self-given macro name.
+				The block is closed with the keyword <code>END</code>.
+				Inside the block you can write as many channel commands or global commans as you want.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-one-drum }}</div>
 		<div class="cell">
 			<p>
 			</p>

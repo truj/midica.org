@@ -18,54 +18,7 @@ meta-title: "MidicaPL Tutorial 4: More - MIDI Programming Language for Midica"
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="chords">
-			<div class="cell">
-				<h2>Predefined Chords</h2>
-			</div>
-			<div class="cell">
-				<h3>Predefined Chords</h3>
-				<p>
-					A predefined chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
-				</p>
-				<p>
-					The first column is the keyword <code>CHORD</code>.
-					The second column is a self-given chord name.
-					The other columns contain the notes belonging to that chord, one note by column.
-				</p>
-				<p>
-					Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
-				</p>
-				<p>
-					The following example shows the beginning of Bob Marley's song "No Woman No Cry".
-				</p>
-			</div>
-			<div class="cell">{{> src-example src-examples.chords }}</div>
-			<div class="cell">
-				<p>
-					A chord in MidicaPL is an amount of notes to be played at the same time in the same channel, with the same length and velocity.
-					Each chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
-				</p>
-				<p>
-					The first column is the keyword <code>CHORD</code>. The second column is a self-given chord name.
-				</p>
-				<p>
-					The other columns contain the notes belonging to that chord, one note by column.
-				</p>
-				<p>
-					Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
-				</p>
-			</div>
-			<div class="cell">{{> src-example src-examples.chords }}</div>
-			<div class="cell">
-				<p>
-					In this example 4 chords are defined and later used in channel 1. In the same time, channel 0 plays the voice of the singer using normal
-					notes and pauses. (Remember, a <code>-</code> stands for a pause.)
-					Chords and pauses are channel commands, just like notes. So they also need a channel number and a length definition. And they can have the
-					same <a href="#channel-options">channel options</a>.
-				</p>
-			</div>
-		</section>
-		<section class="grid-x grid-padding-x" id="global-commands">
+	<section class="grid-x grid-padding-x" id="global-commands">
 		<div class="cell">
 			<h2>Global Commands II</h2>
 		</div>

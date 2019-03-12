@@ -42,6 +42,12 @@
 		"m": "the-black-perl.midicapl",
 		"s": "the-black-perl.svg"
 	},
+	"partial-sync": {
+		"m": "partial-sync.midicapl"
+	},
+	"set-tempo": {
+		"m": "set-tempo.midicapl"
+	},
 	"velocity": {
 		"m": "velocity.midicapl",
 		"s": "velocity.svg"
@@ -95,8 +101,8 @@
 	"soundfont": {
 		"m": "soundfont.midicapl"
 	},
-	"set-tempo": {
-		"m": "set-tempo.midicapl"
+	"another-one-drum": {
+		"m": "another-one-drum.midicapl"
 	},
 	"set-time": {
 		"m": "set-time.midicapl"
