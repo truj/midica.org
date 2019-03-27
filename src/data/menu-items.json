@@ -98,10 +98,6 @@
 						"url": "/tutorial-1.html#",
 						"menu-items": [
 							{
-								"title": "Intro",
-								"url": "/tutorial-1.html#intro"
-							},
-							{
 								"title": "Whitespaces & Comments",
 								"url": "/tutorial-1.html#comments"
 							},
@@ -128,10 +124,6 @@
 						"url": "/tutorial-2.html#",
 						"menu-items": [
 							{
-								"title": "Intro",
-								"url": "/tutorial-2.html#intro"
-							},
-							{
 								"title": "Channel Options",
 								"url": "/tutorial-2.html#channel-options"
 							},
@@ -150,13 +142,9 @@
 						]
 					},
 					{
-						"title": "3: Fun",
+						"title": "3: Structures",
 						"url": "/tutorial-3.html#",
 						"menu-items": [
-							{
-								"title": "Intro",
-								"url": "/tutorial-3.html#intro"
-							},
 							{
 								"title": "Macros",
 								"url": "/tutorial-3.html#macros"
@@ -180,18 +168,6 @@
 						"url": "/tutorial-4.html#",
 						"menu-items": [
 							{
-								"title": "Intro",
-								"url": "/tutorial-4.html#intro"
-							},
-							{
-								"title": "Chords",
-								"url": "/tutorial-4.html#chords"
-							},
-							{
-								"title": "Global Commands",
-								"url": "/tutorial-4.html#global-commands"
-							},
-							{
 								"title": "Meta Information",
 								"url": "/tutorial-4.html#meta"
 							},
@@ -202,6 +178,10 @@
 							{
 								"title": "File Includes",
 								"url": "/tutorial-4.html#include-file"
+							},
+							{
+								"title": "Sound Effects",
+								"url": "/tutorial-4.html#sound-effects"
 							}
 						]
 					}

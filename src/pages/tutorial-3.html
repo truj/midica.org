@@ -1,23 +1,20 @@
 ---
 layout: index
-meta-title: "MidicaPL Tutorial 3: Fun - MIDI Programming Language for Midica"
+meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Midica"
 ---
 
 <div class="grid-container midicapl">
 	<div class="grid-x grid-padding-x">
-		<h1 class="cell">MidicaPL Tutorial, Chapter 3: Fun</h1>
+		<h1 class="cell">MidicaPL Tutorial, Chapter 3: Structures</h1>
 	</div>
 	<section class="grid-x grid-padding-x" id="intro">
 		<div class="cell">
-			<h2>Introduction</h2>
-		</div>
-		<div class="cell">
 			<p>
-				This is the third chapter of the MidicaPL tutorial. Please read the <a href="tutorial-1.html">chapter 1</a> and
+				This is the third chapter of the MidicaPL tutorial. Please read <a href="tutorial-1.html">chapter 1</a> and
 				<a href="tutorial-2.html">chapter 2</a> first, if you have not yet done that already.
 			</p>
 			<p>
-				So far you learned a lot of lowlevel commands. In this chapter we will focus on structures that help to reuse your code,
+				So far you learned a lot about lowlevel commands. In this chapter we will focus on highlevel structures that help to reuse your code,
 				like macros, blocks and loops.
 			</p>
 		</div>
@@ -28,7 +25,7 @@ meta-title: "MidicaPL Tutorial 3: Fun - MIDI Programming Language for Midica"
 		</div>
 		<div class="cell">
 			<p>
-				Most programming languages have functions, methods or another kind of subroutines that can be from different places
+				Most programming languages have functions, methods or another kind of subroutines that can be called from different places
 				inside of your source code. In MidicaPL such functions are called <em>macro</em>.
 			</p>
 			<p>
@@ -36,12 +33,107 @@ meta-title: "MidicaPL Tutorial 3: Fun - MIDI Programming Language for Midica"
 				The block is closed with the keyword <code>END</code>.
 				Inside the block you can write as many channel commands or global commans as you want.
 			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.another-one-drum }}</div>
-		<div class="cell">
 			<p>
+				The following example defines two macros for "Another one bites the dust" by "Queen".
 			</p>
 		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.another-one-drum-bass }}</div>
+		<div class="cell medium-auto">
+			<p>
+				First we introduce the bass instrument in channel 5 so that we can use it later. Then we define the macros.
+			</p>
+			<p>
+				The first macro is called <code>bassline</code>. It defines the main bassline and has a length of 8 quarter notes.
+			</p>
+			<p>
+				The second macro is called <code>drums</code>. It defines the drum beat with a length of 2 quarter notes.
+			</p>
+			<p>
+				So far no sound is produced at all. The macros have been defined but they have not yet been called.
+			</p>
+			<p>
+				We want to play the bass and the drums together. The <code>bassline</code> macro is 4 times longer
+				than the <code>drums</code> macro.
+				That means we need to call <code>drums</code> 4 times more often than <code>bassline</code>.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				A macro can be called with the <code>INCLUDE</code> command, followed by one or more whitespaces and the macro name.
+			</p>
+			<p>
+				The following example plays the macros that we have defined before.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-one }}</div>
+		<div class="cell">
+			<p>
+				A macro can also be called from another macro.
+				So an alternative for the last example would be the usage of a further macro:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.another-one-2 }}</div>
+		<div class="cell medium-auto">
+			<p>
+				Now we need to handle the different lengths of tha bass and drum macros only at one place: inside the macro <code>drum-and-bass</code>.
+				Later we can call this macro as often as we want.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Include Options</h3>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				Do you remember the <a href="tutorial-2.html#channel-options">channel command options</a> from chapter 2?
+			</p>
+			<p>
+				An <code>INCLUDE</code> command can also have options.
+				As you can see in the <em>Include Options</em> table, <code>quantity</code> (short version: <code>q</code>) and
+				<code>multiple</code> (short version: <code>m</code>) are also allowed as include options.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Include Options
+				</caption>
+				<thead>
+					<tr>
+						<th>Long Name</th>
+						<th>Short Name</th>
+						<th>Type</th>
+						<th>Min Value</th>
+						<th>Max Value</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>quantity</td>
+						<td>q</td>
+						<td>integer</td>
+						<td>1</td>
+						<td>&infin;</td>
+					</tr>
+					<tr>
+						<td>multiple</td>
+						<td>m</td>
+						<td>none</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cell">
+			<p>
+				Include options are attached to the end of the <code>INCLUDE</code> command line, separated from the macro name by one or more whitespaces.
+			</p>
+			<p>
+				Probably you already have guessed what the <code>quantity</code> option does: It repeats the called macro as often as the option value.
+				So we can rewrite the last example with the quantity option. The following versions are all equivalent:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.another-one-q }}</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="nestable-blocks">
 		<div class="cell">

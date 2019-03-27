@@ -9,12 +9,14 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 	</div>
 	<section class="grid-x grid-padding-x" id="intro">
 		<div class="cell">
-			<h2>Introduction</h2>
-		</div>
-		<div class="cell">
 			<p>
 				This is the second chapter of the MidicaPL tutorial. Please read <a href="tutorial-1.html">chapter 1</a> first,
 				if you have not yet done that already.
+			</p>
+			<p>
+				In this chapter you will learn all the details about channel options and how to create karaoke songs.
+				Moreover you will learn everything about complex note lengths, how to use percussion instruments, and how to use
+				soundfonts.
 			</p>
 		</div>
 	</section>
@@ -72,6 +74,13 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 						<td>multiple</td>
 						<td>m</td>
 						<td>none</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>lyrics</td>
+						<td>l</td>
+						<td>text</td>
 						<td>-</td>
 						<td>-</td>
 					</tr>
@@ -181,6 +190,32 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			<p>
 				In the third bar we have three voices: blue, green and black. They all begin at different times but end in the same time.
 			</p>
+		</div>
+		<div class="cell">
+			<h3>Lyrics</h3>
+			<div class="cell">
+				<p>
+					Thy lyrics option can be used to add a syllable to the command. This way you can make your song ready for karaoke.
+					The option name is <code>lyrics</code>. The short form is <code>l</code>.
+				</p>
+				<p>
+					If you need whitespaces inside of the syllabe, you must use the following symbols:
+				</p>
+				<p>
+					<ul>
+						<li><code>_</code> for a space</li>
+						<li><code>\r</code> for a new line</li>
+						<li><code>\n</code> for a new paragraph</li>
+					</ul>
+				</p>
+				<p>
+					The following example shows how to create a karaoke version of "Happy Birthday".
+				</p>
+			</div>
+		</div>
+		<div class="cell">{{> src-example src-examples.lyrics }}</div>
+		<div class="cell">
+			<p>The last screenshot shows how the result looks inside of the player in karaoke mode.</p>
 		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="length-definitions">

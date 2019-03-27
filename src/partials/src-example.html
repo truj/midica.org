@@ -41,25 +41,11 @@
 			</div>
 		</div>
 	{{/if}}
-	{{#if i}}
-		<div class="cell shrink example-container image">
-			<div class="grid-x">
-				<div class="cell headline">
-					Result <span class="rendered">(Screenshot)</span>
-				</div>
-			</div>
-			<div class="grid-x">
-				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
-					<img src="assets/examples/{{i}}"{{#if alt}} alt="{{alt}}"{{/if}}>
-				</div>
-			</div>
-		</div>
-	{{/if}}
 	{{#if s}}
 		<div class="cell shrink example-container svg">
 			<div class="grid-x">
 				<div class="cell headline">
-					Result <span class="rendered">(SVG)</span>
+					Result <span class="rendered">(Score)</span>
 				</div>
 			</div>
 			<div class="grid-x">
@@ -73,12 +59,26 @@
 		<div class="cell shrink example-container svg">
 			<div class="grid-x">
 				<div class="cell headline">
-					Result <span class="rendered">(SVG)</span>
+					Result <span class="rendered">(Score)</span>
 				</div>
 			</div>
 			<div class="grid-x">
 				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
 					{{> (lookup . 's2') }}
+				</div>
+			</div>
+		</div>
+	{{/if}}
+	{{#if i}}
+		<div class="cell shrink example-container image">
+			<div class="grid-x">
+				<div class="cell headline">
+					Result <span class="rendered">(Screenshot)</span>
+				</div>
+			</div>
+			<div class="grid-x">
+				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
+					<img src="assets/examples/{{i}}"{{#if alt}} alt="{{alt}}"{{/if}}>
 				</div>
 			</div>
 		</div>

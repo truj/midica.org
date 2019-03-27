@@ -9,99 +9,9 @@ meta-title: "MidicaPL Tutorial 4: More - MIDI Programming Language for Midica"
 	</div>
 	<section class="grid-x grid-padding-x" id="intro">
 		<div class="cell">
-			<h2>Introduction</h2>
-		</div>
-		<div class="cell">
 			<p>
 				This is the fourth chapter of the MidicaPL tutorial. Please read chapters <a href="tutorial-1.html">1</a>,
 				<a href="tutorial-2.html">2</a> and <a href="tutorial-3.html">3</a> first, if you have not yet done that.
-			</p>
-		</div>
-	</section>
-	<section class="grid-x grid-padding-x" id="global-commands">
-		<div class="cell">
-			<h2>Global Commands II</h2>
-		</div>
-		<div class="cell">
-			<p>
-				You already know the most important global commands. Now you will learn two more of them:
-				<em>key signature</em> and <em>time signature</em>.
-			</p>
-		</div>
-		<div class="cell">
-			<h3>Set Time Signature</h3>
-		</div>
-		<div class="cell">
-			<p>
-				The time signature can be set with the <code>time</code> command in the second column. The third column contains
-				the desired time definition.
-			</p>
-			<p>
-				The time definition contains a <i>nominator</i> (number) and a <i>denominator</i>, separated by a <code>/</code>.
-				<br />
-				The MIDI default is a <em>4/4</em> beat.
-				<br />
-				A <em>3/4</em> beat would be defined like this:
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.set-time }}</div>
-		<div class="cell">
-			<p>
-				The denominator must be a number that can be described as 2<sup>n</sup>. That means valid denominators are <em>1</em>, <em>2</em>,
-				<em>4</em>, <em>8</em>, <em>16</em>, <em>32</em>, etc.
-			</p>
-			<p>
-				The time signature does not change the sound of the MIDI sequence at all. However it can make sence to define it anyway.
-				It can be a useful hint for third-party software processing the MIDI file exported by Midica.
-			</p>
-		</div>
-		<div class="cell">
-			<h3>Set Key Signature</h3>
-		</div>
-		<div class="cell">
-			<p>
-				The key signature can be set with the <code>key</code> command in the second column. The third column contains the desired key definition.
-			</p>
-			<p>
-				The key definition contains a valid note name and a tonality, separated by a <code>/</code>.
-				<br />
-				The tonality can be <code>maj</code> for <em>major</em> or <code>min</code> for <em>minor</em>.
-				<br />
-				The MIDI default is <em>C major</em>, which could also be defined explicitely by the following command:
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.set-key }}</div>
-		<div class="cell">
-			<p>
-				What a <i>valid note name</i> is, depends on the configured Note System, Half Tone Symbol and Octave Naming.
-				In the standard configuration a <em>C# minor</em> could be set with one of the following commands.
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.set-key-2 }}</div>
-		<div class="cell">
-			<p>
-				Of cause these commands are equal because the octave is irrelevant for the key signature.
-			</p>
-			<p>
-				Like the time signature, the key signature does not change the sound at all. But it can also be useful for
-				another software processing the produced MIDI sequence.
-			</p>
-			<p>
-				Internally the key signature is translated into a number of <i>sharps</i> or <i>flats</i> and a flag for major or minor.
-				MIDI allows a maximum of 7 sharps or flats. So in some cases the key signature is converted automatically to something corresponding.
-			</p>
-			<p>
-				For example a <em>D# major</em> would have 9 sharps which is more than the allowed 7. So it's converted to the corresponding
-				<em>Eb major</em> with 3 flats instead.
-			</p>
-			<p>
-				Other key signatures can be expressed either with an allowed number of sharps or an(other) allowed number of flats.
-				For example <em>F# major</em> with 6 sharps corresponds to <em>Gb major</em> with 6 flats.
-				Or <em>G# minor</em> with 5 sharps corresponds to <em>Ab minor</em> with 7 flats.
-				In these cases the configured half tone symbol is used to determine which key signature is used. The one with sharps or the one
-				with flats.
-				This ensures that the key signature in the MIDI sequence is as close as possible to the source code, and it's only converted
-				if there is no other legal way.
 			</p>
 		</div>
 	</section>
@@ -126,6 +36,15 @@ meta-title: "MidicaPL Tutorial 4: More - MIDI Programming Language for Midica"
 	<section class="grid-x grid-padding-x" id="include-file">
 		<div class="cell">
 			<h2>File Includes</h2>
+		</div>
+		<div class="cell">
+			<p>
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="sound-effects">
+		<div class="cell">
+			<h2>Sound Effects</h2>
 		</div>
 		<div class="cell">
 			<p>
