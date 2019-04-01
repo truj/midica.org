@@ -150,16 +150,16 @@
 								"url": "/tutorial-3.html#macros"
 							},
 							{
+								"title": "Include Options",
+								"url": "/tutorial-3.html#include-options"
+							},
+							{
 								"title": "Nestable Blocks",
 								"url": "/tutorial-3.html#nestable-blocks"
 							},
 							{
-								"title": "Loops",
-								"url": "/tutorial-3.html#loops"
-							},
-							{
-								"title": "Triplets & Tuplets",
-								"url": "/tutorial-3.html#tuplets"
+								"title": "Block Options",
+								"url": "/tutorial-3.html#block-options"
 							}
 						]
 					},

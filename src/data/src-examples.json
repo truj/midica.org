@@ -110,16 +110,24 @@
 		"m": "another-one-drum-bass.midicapl"
 	},
 	"another-one": {
-		"m": "another-one.midicapl",
-		"s": "another-one.svg"
+		"m":  "another-one.midicapl",
+		"m2": "another-one-expanded.midicapl",
+		"s":  "another-one.svg"
 	},
 	"another-one-2": {
 		"m": "another-one-2.midicapl"
+	},
+	"another-one-3": {
+		"m": "another-one-3.midicapl"
 	},
 	"another-one-q": {
 		"m":  "another-one-q1.midicapl",
 		"m2": "another-one-q2.midicapl",
 		"m3": "another-one.midicapl"
+	},
+	"another-one-complete": {
+		"m": "another-one-complete.midicapl",
+		"s": "another-one-complete.svg"
 	},
 	"set-time": {
 		"m": "set-time.midicapl"
