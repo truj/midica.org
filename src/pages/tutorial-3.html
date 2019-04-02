@@ -150,6 +150,11 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 			<p>
 				Include options are attached to the end of the <code>INCLUDE</code> command line, separated from the macro name by one or more whitespaces.
 			</p>
+			<p>
+				If an option requires a value, this must be appended to the option name, separated by a <code>=</code> symbol or whitespace(s).
+			</p>
+				If 2 options are used, they have to be separated by a <code>,</code> symbol.
+			</p>
 		</div>
 		<div class="cell">
 			<h3>Quantity (Include Option)</h3>
@@ -160,7 +165,7 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 				So we can rewrite our includes using the quantity option. The following versions are all equivalent:
 			</p>
 		</div>
-		<div class="cell medium-shrink">{{> src-example src-examples.another-one-q }}</div>
+		<div class="cell">{{> src-example src-examples.another-one-q }}</div>
 		<div class="cell">
 			<h3>Multiple (Include Option)</h3>
 		</div>
@@ -176,7 +181,7 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 				The next example shows how we can use this option in order to play a small variation.
 			</p>
 		</div>
-		<div class="cell medium-shrink">{{> src-example src-examples.another-one-complete }}</div>
+		<div class="cell">{{> src-example src-examples.another-one-complete }}</div>
 		<div class="cell">
 			<p>
 				The red part is the anacrusis (upbeat) without drums. The sync command (<code>*</code>) synchronizes
@@ -216,7 +221,41 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 			<p>
 				So let's try to rewrite the drums and bass of the above song using nestable blocks:
 			</p>
-			<div class="cell medium-shrink">{{> src-example src-examples.another-block }}</div>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block }}</div>
+		<div class="cell">
+			<p>
+				We formed a block for the bass part and a second one for the drums part. Both blocks are nested inside of another block.
+				The commands are played directly without the need of an include.
+			</p>
+			<p>
+				But hey... The Bass part is played only once!
+				One quick and dirty way to fix this problem is to use the <code>drums</code> macro we have defined before:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-2 }}</div>
+		<div class="cell">
+			<p>
+				So you see, an <code>INCLUDE</code> can be used from inside a block as well.
+			</p>
+			<p>
+				On the other hand you can also use blocks inside of a <code>MACRO</code>.
+				Let's rewrite the macro <code>drum-and-bass</code> using blocks:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-3 }}</div>
+		<div class="cell">
+			<p>
+				Those examples are equivalent. One version uses blocks, the other one doesn't.
+			</p>
+			<p>
+				The version with blocks doesn't need a macro for the bass part. However the drums part is needed in both versions.
+				And of cause we could have written the same thing completely without blocks. This was just a demonstration that
+				blocks can be nested inside of macros.
+			</p>
+			<p>
+				Blocks become much more useful when using block options.
+			</p>
 		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="block-options">
@@ -225,6 +264,12 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		</div>
 		<div class="cell medium-6">
 			<p>
+				Just like <code>INCLUDE</code> commands, nestable blocks can have options as well. The <em>block options</em> table shows the available options.
+				As you can see, the options <code>quantity</code> (short version: <code>q</code>) and <code>multiple</code> (short version: <code>m</code>)
+				are also available as block options. Moreover there's a new option for tuplets.
+			</p>
+			<p>
+				Options can be attached to the opening <code>(</code> or closing <code>)</code> brace, separated by whitespaces.
 			</p>
 		</div>
 		<div class="cell medium-6">
@@ -239,7 +284,6 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 						<th>Type</th>
 						<th>Min Value</th>
 						<th>Max Value</th>
-						<th>Examples</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -249,7 +293,6 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 						<td>integer</td>
 						<td>1</td>
 						<td>&infin;</td>
-						<td>1, 10, 999</td>
 					</tr>
 					<tr>
 						<td>multiple</td>
@@ -257,18 +300,48 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 						<td>none</td>
 						<td>-</td>
 						<td>-</td>
-						<td>-</td>
 					</tr>
 					<tr>
 						<td>tuplet</td>
 						<td>t</td>
-						<td>string</td>
+						<td>none or string</td>
 						<td>-</td>
 						<td>-</td>
-						<td>t, 3:2, 7:4</td>
 					</tr>
 				</tbody>
 			</table>
+		</div>
+		<div class="cell">
+			<p>
+				If you want (or must) pass a value to an option, the value must be appended to the option name, separated by a <code>=</code> symbol or whitespace(s).
+			</p>
+				If more than one option is used, they have to be separated by a <code>,</code> symbol.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Quantity (Block Option)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>quantity</code> option plays the according block as many times as its value defines.
+				Eventually we are able to rewrite the macro <code>drum-and-bass</code> correctly and without needing to define the macros <code>drums</code>
+				and <code>bassline</code>:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-4 }}</div>
+		<div class="cell">
+			<h3>Multiple (Block Option)</h3>
+		</div>
+		<div class="cell">
+			<p>
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Tuplet (Block Option)</h3>
+		</div>
+		<div class="cell">
+			<p>
+			</p>
 		</div>
 	</section>
 	<aside>

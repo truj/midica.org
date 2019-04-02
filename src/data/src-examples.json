@@ -129,6 +129,22 @@
 		"m": "another-one-complete.midicapl",
 		"s": "another-one-complete.svg"
 	},
+	"another-block": {
+		"m": "another-block.midicapl",
+		"s": "another-block.svg"
+	},
+	"another-block-2": {
+		"m": "another-block-2.midicapl",
+		"s": "another-block-2.svg"
+	},
+	"another-block-3": {
+		"m":  "another-block-3.midicapl",
+		"m2": "another-block-3b.midicapl"
+	},
+	"another-block-4": {
+		"m":  "another-block-4.midicapl",
+		"m2": "another-block-4b.midicapl"
+	},
 	"set-time": {
 		"m": "set-time.midicapl"
 	},
