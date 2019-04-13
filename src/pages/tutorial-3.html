@@ -184,8 +184,8 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		<div class="cell">{{> src-example src-examples.another-one-complete }}</div>
 		<div class="cell">
 			<p>
-				The red part is the anacrusis (upbeat) without drums. The sync command (<code>*</code>) synchronizes
-				the involved channels so that the drums start after the anacrusis.
+				The red part is the anacrusis (upbeat) without drums. The sync command (<code>* time 4/4</code>) synchronizes
+				the involved channels so that the drums start after the anacrusis. And it also switches to 4/4 beat.
 			</p>
 			<p>
 				The blue part adds two bass notes to the end of the second measure. Therefore the first <code>INCLUDE</code> command
@@ -330,10 +330,67 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		</div>
 		<div class="cell">{{> src-example src-examples.another-block-4 }}</div>
 		<div class="cell">
+			<p>
+				These two examples are equivalent. The first example uses the long form <code>quantity</code> and adds it to the <em>opening</em> block.
+				The second example uses the short form <code>q</code> for the <em>closing</em> block.
+			</p>
+			<p>
+				Another difference is that the second example omits the block around the bass part. This block is optional because without block options it
+				does not do anything special.
+			</p>
+		</div>
+		<div class="cell">
 			<h3>Multiple (Block Option)</h3>
 		</div>
 		<div class="cell">
 			<p>
+				The <code>multiple</code> option (short form <code>m</code>) can be used to implement different voices playing in the same channel
+				in the same time.
+				It plays the block content and then moves the end markers of each involved channel to the position they had before the block has been opened.
+			</p>
+			<p>
+				The following example is equivalent to our former example of a macro with the multiple option. But this time it is completely without
+				using any macro.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-m }}</div>
+		<div class="cell">
+			<p>
+				The red part is the anacrusis (upbeat) again. The blue part defines the two notes at the end of the second measure. This is the part with the
+				multiple option.
+			</p>
+			<p>
+				Because  of this option, the following black part starts at the same time like the blue block.
+				This black part is repeated three times.
+			</p>
+			<p>
+				The multiple option is especially useful for music with complex percussion patterns, like in african or latin music.
+				The following example shows a typical Mambo section with different percussion instruments playing different patterns in the same time.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.mambo }}</div>
+		<div class="cell">
+			<p>
+				The tom-tom part uses 2 different tom-tom drums.
+				This pattern is the same in both measures, so the block is repeated by the option <code>q=2</code> at the end of the block.
+				Besides, the option <code>m</code> (multiple) is used to reset the time, so that the next block begins in the same time.
+				So you see how both options can be combined.
+			</p>
+			<p>
+				The bass drum part, marked in blue, only uses the <code>multiple</code> option, here in it's long form. That's needed again because
+				other parts are following that begin in the same time and in the same channel.
+			</p>
+			<p>
+				The bell part defines a mambo bell pattern that is very common in afro-cuban music. Here we use the ride bell but it can also be used with
+				a cow bell or other percussion instruments. This block ends with a multiple option (<code>m</code>) as well because there is still another
+				drum part to follow with the same start time.
+			</p>
+			<p>
+				The last block defines the clave rhythm that's also very typical for latin music like Mambo or Salsa.
+				This block does not contain a <code>multiple</code> option because there is nothing more to follow.
+			</p>
+			<p>
+				All these blocks are nested inside another block with the option <code>q=2</code>, so that everything is repeated.
 			</p>
 		</div>
 		<div class="cell">

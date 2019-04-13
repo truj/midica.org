@@ -145,6 +145,14 @@
 		"m":  "another-block-4.midicapl",
 		"m2": "another-block-4b.midicapl"
 	},
+	"another-block-m": {
+		"m": "another-block-m.midicapl",
+		"s": "another-one-complete.svg"
+	},
+	"mambo": {
+		"m": "mambo.midicapl",
+		"s": "mambo.svg"
+	},
 	"set-time": {
 		"m": "set-time.midicapl"
 	},
