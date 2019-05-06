@@ -164,24 +164,25 @@
 						]
 					},
 					{
-						"title": "4: More",
+						"title": "4: Effects",
 						"url": "/tutorial-4.html#",
+						"menu-items": []
+					},
+					{
+						"title": "5: More",
+						"url": "/tutorial-5.html#",
 						"menu-items": [
 							{
 								"title": "Meta Information",
-								"url": "/tutorial-4.html#meta"
+								"url": "/tutorial-5.html#meta"
 							},
 							{
 								"title": "Redefinitions",
-								"url": "/tutorial-4.html#redefine"
+								"url": "/tutorial-5.html#redefine"
 							},
 							{
 								"title": "File Includes",
-								"url": "/tutorial-4.html#include-file"
-							},
-							{
-								"title": "Sound Effects",
-								"url": "/tutorial-4.html#sound-effects"
+								"url": "/tutorial-5.html#include-file"
 							}
 						]
 					}

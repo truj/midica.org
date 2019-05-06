@@ -159,6 +159,11 @@
 					padding-right: 1rem;
 				}
 			}
+			&.table {
+				table {
+					border: none;
+				}
+			}
 			.blue {
 				color: $example-color-blue;
 			}

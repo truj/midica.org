@@ -1,4 +1,4 @@
-<div class="grid-x toplevel-example-container" data-equalizer="eq-{{m}}_{{i}}_{{s}}" data-equalize-by-row="true">
+<div class="grid-x toplevel-example-container" data-equalizer="eq-{{m}}_{{i}}_{{s}}_{{t}}" data-equalize-by-row="true">
 		{{#if m}}
 		<div class="cell shrink example-container midicapl">
 			<div class="grid-x">
@@ -8,7 +8,7 @@
 			</div>
 			<div class="grid-x">
 				<div class="cell">
-<pre data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">{{> (lookup . 'm') }}</pre>
+<pre data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">{{> (lookup . 'm') }}</pre>
 				</div>
 			</div>
 		</div>
@@ -22,7 +22,7 @@
 			</div>
 			<div class="grid-x">
 				<div class="cell">
-<pre data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">{{> (lookup . 'm2') }}</pre>
+<pre data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">{{> (lookup . 'm2') }}</pre>
 				</div>
 			</div>
 		</div>
@@ -36,7 +36,7 @@
 			</div>
 			<div class="grid-x">
 				<div class="cell">
-<pre data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">{{> (lookup . 'm3') }}</pre>
+<pre data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">{{> (lookup . 'm3') }}</pre>
 				</div>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 				</div>
 			</div>
 			<div class="grid-x">
-				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
+				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">
 					{{> (lookup . 's') }}
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 				</div>
 			</div>
 			<div class="grid-x">
-				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
+				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">
 					{{> (lookup . 's2') }}
 				</div>
 			</div>
@@ -77,8 +77,24 @@
 				</div>
 			</div>
 			<div class="grid-x">
-				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}">
+				<div class="cell image-content" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">
 					<img src="assets/examples/{{i}}"{{#if alt}} alt="{{alt}}"{{/if}}>
+				</div>
+			</div>
+		</div>
+	{{/if}}
+	{{#if t}}
+		<div class="cell shrink example-container table">
+			<div class="grid-x">
+				<div class="cell headline">
+					Result <span class="rendered">(Fields)</span>
+				</div>
+			</div>
+			<div class="grid-x">
+				<div class="cell" data-equalizer-watch="eq-{{m}}_{{i}}_{{s}}_{{t}}">
+					<table>
+						{{> (lookup . 't') }}
+					</table>
 				</div>
 			</div>
 		</div>

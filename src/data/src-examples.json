@@ -153,6 +153,22 @@
 		"m": "mambo.midicapl",
 		"s": "mambo.svg"
 	},
+	"triplet-2": {
+		"m": "triplet-2.midicapl",
+		"s": "triplet.svg"
+	},
+	"tuplet-2": {
+		"m": "tuplet-2.midicapl",
+		"s": "tuplet.svg"
+	},
+	"meta": {
+		"m": "meta.midicapl",
+		"t": "meta.t"
+	},
+	"meta-2": {
+		"m": "meta-2.midicapl",
+		"t": "meta-2.t"
+	},
 	"set-time": {
 		"m": "set-time.midicapl"
 	},

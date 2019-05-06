@@ -398,10 +398,49 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		</div>
 		<div class="cell">
 			<p>
+				The <code>tuplet</code> option (short form <code>t</code>) is used to define that the block content is played as a tuplet.
+				The option can be used without any value. In this case, the tuplet is interpreted as a <em>triplet</em>.
+			</p>
+			<p>
+				the following example shows the same triplets that we saw already in chapter 2, but this time defined as blocks.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.triplet-2 }}</div>
+		<div class="cell">
+			<p>
+				The blue part is again a nested triplet.
+			</p>
+			<p>
+				Alternatively a value can be passed to the <code>tuplet</code> option. The value consists of two numbers, separated by a <code>:</code>.
+				A triplet could also be defined as <code>tuplet=3:2</code> (or <code>t=3:2</code>).
+			</p>
+			<p>
+				<code>3:2</code> means that the length of each note inside the block is multiplied with 2/3.
+			</p>
+			<p>
+				Or, more generally, X:Y means that each note length inside the block is multiplied with Y/X.
+			</p>
+			<p>
+				The next example shows the same tuplet example we have seen before, but this time using block options.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.tuplet-2 }}</div>
+		<div class="cell">
+			<p>
+			</p>
+		</div>
+		<div class="cell">
+			<p>
 			</p>
 		</div>
 	</section>
 	<aside>
-		You are now ready for <a href="tutorial-4.html">chapter 4</a> to dive more into the details.
+		{{!-
+			You are now ready for sound effects. Please go on with <a href="tutorial-4.html">chapter 4</a>.
+		}}
+		<a href="tutorial-4.html">Chapter 4</a> will explain how to use sound effects. However, this chapter does not yet exist,
+		as sound effects are not yet implemented in Midica.
+		<br>
+		So you can skip that chapter and continue directly with <a href="tutorial-5.html">chapter 5</a>.
 	</aside>
 </div>
