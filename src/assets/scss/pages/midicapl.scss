@@ -3,8 +3,8 @@
 	// variables (colors and borders)
 	$midicapl-border-radius: 0.5rem;
 	$midicapl-border-width: 0.15rem;
-	$midicapl-header-bgcolor: scale-color($success-color, $lightness: +65%);
-	$music-score-header-bgcolor: scale-color($warning-color, $lightness: +65%);
+	$midicapl-header-bgcolor:    #b0f1c8; // scale-color($success-color, $lightness: +60%);
+	$music-score-header-bgcolor: #ffdf99; // scale-color($warning-color, $lightness: +60%);
 	$example-margin: 0.4rem;         // distance between example boxes
 	$example-margin-bottom: 1rem;    // distance between example boxes and the following text
 	$inner-example-margin: 0.5rem;   // distance between example box and the example inside of it
@@ -16,6 +16,9 @@
 	$example-color-blue:  #0000ff;
 	$example-color-green: #009900;
 	$example-color-red:   #ff0000;
+
+	// table header: same gray as dark stripes
+	$table-header-color: $table-striped-background;
 	
 	// tables
 	.reference {
@@ -30,6 +33,9 @@
 		border-bottom-right-radius: $midicapl-border-radius;
 		border-collapse: separate;
 		border-spacing: 0;
+		thead {
+			background-color: $table-header-color;
+		}
 		caption {
 			background-color: $midicapl-header-bgcolor;
 			border: $midicapl-border-width solid $primary-color;
@@ -163,6 +169,7 @@
 				table {
 					border: none;
 				}
+				background-color: $table-header-color;
 			}
 			.blue {
 				color: $example-color-blue;

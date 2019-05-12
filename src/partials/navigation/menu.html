@@ -1,5 +1,5 @@
 <header data-sticky-container>
-	<div class="title-bar" data-sticky data-options="marginTop:0;">
+	<div class="title-bar" data-sticky data-options="marginTop:0; stickyOn: small;">
 		<div class="title-bar-left">
 			<nav>
 				<ul class="dropdown menu" data-dropdown-menu>
@@ -9,6 +9,17 @@
 					{{> menu-items}}
 				</ul>
 			</nav>
+		</div>
+		<div class="title-bar-right">
+			<div class="grid-x">
+				<div class="cell auto">
+				</div>
+				<div class="cell shrink logo-container-outer">
+					<div class="logo-container-inner">
+						{{> logo.svg }}
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </header>
