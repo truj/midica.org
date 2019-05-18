@@ -72,11 +72,12 @@ $global-font-size: 100%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
 $foundation-palette: (
-  primary: #1779ba,
-  secondary: #767676,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #cc4b37,
+  primary:   #4edf84, // primary: #1779ba,
+  box:       #1779ba, // former primary
+  secondary: #ffae00, // secondary: #767676
+  success:   #3adb76,
+  warning:   #ffae00,
+  alert:     #cc4b37,
 );
 $light-gray: #eeeeee; // original: #e6e6e6
 $medium-gray: #cacaca;
@@ -103,6 +104,13 @@ $global-color-pick-contrast-tolerance: 0;
 $print-transparent-backgrounds: true;
 
 @include add-foundation-colors;
+
+// colors
+$primary-color-dark:    scale-color($primary-color, $lightness:   -40%);
+$primary-color-light:   scale-color($primary-color, $lightness:   +55%);
+$secondary-color-dark:  scale-color($secondary-color, $lightness: -40%);
+$secondary-color-light: scale-color($secondary-color, $lightness: +60%);
+$box-color:             get-color(box);
 
 // 2. Breakpoints
 // --------------
@@ -170,7 +178,7 @@ $code-font-weight: $global-weight-normal;
 $code-background: $light-gray;
 $code-border: 1px solid $medium-gray;
 $code-padding: rem-calc(2 5 1);
-$anchor-color: $primary-color;
+$anchor-color: $primary-color-dark;
 $anchor-color-hover: scale-color($anchor-color, $lightness: -14%);
 $anchor-text-decoration: none;
 $anchor-text-decoration-hover: none;
@@ -399,7 +407,7 @@ $dropdownmenu-padding: $global-menu-padding;
 $dropdownmenu-nested-margin: 0;
 $dropdownmenu-submenu-padding: $dropdownmenu-padding;
 $dropdownmenu-border: 1px solid $medium-gray;
-$dropdown-menu-item-color-active: get-color(primary);
+$dropdown-menu-item-color-active: $anchor-color;
 $dropdown-menu-item-background-active: transparent;
 
 // 19. Flexbox Utilities

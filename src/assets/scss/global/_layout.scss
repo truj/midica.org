@@ -1,6 +1,4 @@
 // logo
-$logo-color-green:  #4edf84; // scale-color($success-color, $lightness: +10%);
-$logo-color-orange: #ffb61a; // scale-color($warning-color, $lightness: +10%);
 header {
 	.title-bar-left {
 		min-width: 60%;
@@ -14,15 +12,15 @@ header {
 				svg {
 					.logo-green {
 						opacity: 1;
-						fill:    $logo-color-green;
+						fill:    $primary-color;
 					}
 					.logo-orange {
 						opacity: 1;
-						fill:    $logo-color-orange;
+						fill:    $secondary-color;
 					}
 					.logo-green-transparent {
 						opacity: 0.5;
-						fill:    $logo-color-green;
+						fill:    $primary-color;
 					}
 				}
 			}
@@ -50,7 +48,7 @@ em {
 }
 
 // all links
-$link-hover-bgcolor: scale-color($anchor-color, $lightness: +65%);
+$link-hover-bgcolor: $primary-color-light;
 a {
 	font-weight: bold;
 	&:hover {

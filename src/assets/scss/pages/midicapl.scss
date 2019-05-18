@@ -23,11 +23,11 @@
 	// tables
 	.reference {
 		background-color: $midicapl-header-bgcolor;
-		border: $midicapl-border-width solid $primary-color;
+		border: $midicapl-border-width solid $box-color;
 		border-radius: $midicapl-border-radius;
 	}
 	table {
-		border: $midicapl-border-width solid $primary-color;
+		border: $midicapl-border-width solid $box-color;
 		border-top: none;
 		border-bottom-left-radius: $midicapl-border-radius;
 		border-bottom-right-radius: $midicapl-border-radius;
@@ -38,7 +38,7 @@
 		}
 		caption {
 			background-color: $midicapl-header-bgcolor;
-			border: $midicapl-border-width solid $primary-color;
+			border: $midicapl-border-width solid $box-color;
 			border-bottom: none;
 			border-top-right-radius: $midicapl-border-radius;
 			border-top-left-radius: $midicapl-border-radius;
@@ -48,7 +48,7 @@
 	// source code examples
 	.toplevel-example-container {
 		.example-container {
-			border: solid $primary-color $midicapl-border-width;
+			border: solid $box-color $midicapl-border-width;
 			border-radius:  $midicapl-border-radius;
 			margin-top: $example-margin;
 			margin-left: $example-margin;
@@ -60,7 +60,7 @@
 				border-top-left-radius: $midicapl-border-radius;
 				background-color: $music-score-header-bgcolor;
 				padding-left: 1rem;
-				color: $primary-color;
+				color: $box-color;
 				.rendered {
 					font-size: $small-font-size;
 					.tool {
@@ -185,7 +185,7 @@
 
 	// hint
 	p.hint {
-		color: $primary-color;
+		color: $box-color;
 		font-style: italic;
 		&::before {
 			content: "Hint: ";
@@ -196,7 +196,7 @@
 	// container for the "next page" link
 	aside {
 		background-color: $next-link-color;
-		border: $midicapl-border-width solid $primary-color;
+		border: $midicapl-border-width solid $box-color;
 		border-radius:  $midicapl-border-radius;
 		padding: $next-link-padding;
 		margin-bottom: $next-link-bottom-space;
