@@ -164,13 +164,8 @@
 						]
 					},
 					{
-						"title": "4: Effects",
+						"title": "4: Tweaking",
 						"url": "/tutorial-4.html#",
-						"menu-items": []
-					},
-					{
-						"title": "5: More",
-						"url": "/tutorial-5.html#",
 						"menu-items": [
 							{
 								"title": "Meta Information",
@@ -185,6 +180,11 @@
 								"url": "/tutorial-5.html#include-file"
 							}
 						]
+					},
+					{
+						"title": "5: Effects",
+						"url": "/tutorial-5.html#",
+						"menu-items": []
 					}
 				]
 			},

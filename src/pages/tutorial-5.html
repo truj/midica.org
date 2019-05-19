@@ -1,11 +1,11 @@
 ---
 layout: index
-meta-title: "MidicaPL Tutorial 5: More - MIDI Programming Language for Midica"
+meta-title: "MidicaPL Tutorial 5: Sound Effects - MIDI Programming Language for Midica"
 ---
 
 <div class="grid-container midicapl">
 	<div class="grid-x grid-padding-x">
-		<h1 class="cell">MidicaPL Tutorial, Chapter 5: More</h1>
+		<h1 class="cell">MidicaPL Tutorial, Chapter 5: Sound Effects</h1>
 	</div>
 	<section class="grid-x grid-padding-x" id="intro">
 		<div class="cell">
@@ -15,84 +15,11 @@ meta-title: "MidicaPL Tutorial 5: More - MIDI Programming Language for Midica"
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="meta">
+	<section class="grid-x grid-padding-x" id="sound-effect-intro">
 		<div class="cell">
-			<h2>Meta Information</h2>
+			<h2>Sound effects</h2>
 		</div>
 		<div class="cell medium-6">
-			<p>
-				A MIDI sequence can contain meta information that does not have any effect to the produced sound.
-				In MidicaPL a part of this meta information is implemented as global command, as you already have
-				learned in chapter <a href="tutorial-1.html">1</a>. This applies to meta information like
-				<em>key signature</em> or <em>time signature</em> that can occure more often at different time
-				spots within the sequence.
-			</p>
-			<p>
-				Other parts of meta information refer to the whole sequence. These parts are included in a
-				META block, beginning with the keyword <code>META</code> and ending with <code>END</code>.
-			</p>
-			<p>
-				Inside a META block you can use any field from the <em>meta fields</em> table. Each line must begin
-				with a field name, followed by whitespaces and a value.
-			</p>
-		</div>
-		<div class="cell medium-6">
-			<table>
-				<caption>
-					Meta Fields
-				</caption>
-				<thead>
-					<tr>
-						<th>Field</th>
-						<th>Meaning</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>copyright</td>
-						<td>Copyright or legal information</td>
-					</tr>
-					<tr>
-						<td>title</td>
-						<td>Song title</td>
-					</tr>
-					<tr>
-						<td>composer</td>
-						<td>Composer(s) of the song</td>
-					</tr>
-					<tr>
-						<td>lyrics</td>
-						<td>Name of the lyricist(s)</td>
-					</tr>
-					<tr>
-						<td>artist</td>
-						<td>Performing musician(s), band or orchestra</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-		<div class="cell">{{> src-example src-examples.meta }}</div>
-		<div class="cell">
-			<p>
-				If more than one line is needed, the same field must be defined once for each line.
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.meta-2 }}</div>
-	</section>
-	<section class="grid-x grid-padding-x" id="define">
-		<div class="cell">
-			<h2>Redefinitions</h2>
-		</div>
-		<div class="cell">
-			<p>
-			</p>
-		</div>
-	</section>
-	<section class="grid-x grid-padding-x" id="include-file">
-		<div class="cell">
-			<h2>File Includes</h2>
-		</div>
-		<div class="cell">
 			<p>
 			</p>
 		</div>
