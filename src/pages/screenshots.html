@@ -62,18 +62,18 @@ meta-title: Midica - Screenshots
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/config_6_percussion.png" />
-			</div>
-			<div class="cell medium-auto">
-				<p><b>Percussion Shortcuts</b>: Which language to use for percussion instruments</p>
-			</div>
-		</div>
-		<div class="cell grid-x grid-padding-x align-middle">
-			<div class="cell medium-shrink">
 				<img src="assets/img/config_5_syntax.png" />
 			</div>
 			<div class="cell medium-auto">
 				<p><b>Syntax</b>: Which keywords and case (lower/upper) to use for the MidicaPL syntax</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/config_6_percussion.png" />
+			</div>
+			<div class="cell medium-auto">
+				<p><b>Percussion Shortcuts</b>: Which language to use for percussion instruments</p>
 			</div>
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
@@ -249,6 +249,20 @@ meta-title: Midica - Screenshots
 				</p>
 			</div>
 		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/player_8_parse_success.png" />&nbsp;or	&nbsp;<img src="assets/img/player_9_parse_failure.png" />
+			</div>
+			<div class="cell auto">
+				<p>
+					<b>Parse success Icon</b>
+					<br />
+					Shows, if the sequence could be parsed or not. A happy, green icon indicates success. A red, unhappy icon indicates a parsing error.
+					<br />
+					The icon may change after hitting the reparse button.
+				</p>
+			</div>
+		</div>
 		<div class="cell" id="player-channel">
 			<h3>Channel Details</h3>
 		</div>
@@ -336,8 +350,7 @@ meta-title: Midica - Screenshots
 					</div>
 					<div class="cell auto">
 						<p>
-							the channel volume difference to the base volume, configured in the slider area of the player view.
-							If the value is negative, the channel volume is decremented by this value. Otherwise it's incremented.
+							The currently configured channel volume. Minumum is 0, maximum is 127, and default is 100.
 						</p>
 					</div>
 				</div>
@@ -410,8 +423,8 @@ meta-title: Midica - Screenshots
 			</div>
 			<div class="cell large-auto">
 				<p>
-					Each channel can have different instruments or drum kits. This information is also read from the soundfont.
-					Depending on the chosen channel only the supported drum kits or instruments are displayed.
+					Each channel can have different instruments or drum kits. This information is read from the soundfont.
+					Depending on the chosen channel, only the supported drum kits or instruments are displayed.
 				</p>
 			</div>
 		</div>
@@ -513,7 +526,7 @@ meta-title: Midica - Screenshots
 			The <b>About</b> tab shows information about the version, date, etc.
 		</div>
 		<div class="cell large-6">
-			<img src="assets/img/info_midica.png" id="last-element" />
+			<img src="assets/img/info_about.png" id="last-element" />
 		</div>
 	</section>
 </div>
