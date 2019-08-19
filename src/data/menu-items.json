@@ -138,6 +138,10 @@
 							{
 								"title": "Soundfonts",
 								"url": "/tutorial-2.html#soundfonts"
+							},
+							{
+								"title": "Instrument Switch",
+								"url": "/tutorial-2.html#instrument"
 							}
 						]
 					},
@@ -178,6 +182,10 @@
 							{
 								"title": "File Includes",
 								"url": "/tutorial-5.html#include-file"
+							},
+							{
+								"title": "Constants",
+								"url": "/tutorial-5.html#constants"
 							}
 						]
 					},

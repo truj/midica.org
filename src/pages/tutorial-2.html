@@ -84,6 +84,13 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 						<td>-</td>
 						<td>-</td>
 					</tr>
+					<tr>
+						<td>tremolo</td>
+						<td>tr</td>
+						<td>length</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -195,7 +202,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			<h3>Lyrics</h3>
 			<div class="cell">
 				<p>
-					Thy lyrics option can be used to add a syllable to the command. This way you can make your song ready for karaoke.
+					The lyrics option can be used to add a syllable to the command. This way you can make your song ready for karaoke.
 					The option name is <code>lyrics</code>. The short form is <code>l</code>.
 				</p>
 				<p>
@@ -216,6 +223,28 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 		<div class="cell">{{> src-example src-examples.lyrics }}</div>
 		<div class="cell">
 			<p>The last screenshot shows how the result looks inside of the player in karaoke mode.</p>
+		</div>
+		<div class="cell">
+			<h3>Tremolo</h3>
+			<div class="cell">
+				<p>
+					The tremolo option is an alternative notation for note (or chord) repetitions.
+					The option name is <code>tremolo</code>. The short form is <code>tr</code>.
+				</p>
+				<p>
+					The note length column of a tremolo'ed note defines the overall length over all repetitions.
+					The length of each repeated note is proveded as the option value.
+				</p>
+				<p>
+					The next two examples are equivalent. The first one uses the tremolo option, while the second one uses the quantity option.
+				</p>
+			</div>
+			<div class="cell">{{> src-example src-examples.tremolo }}</div>
+			<div class="cell">
+				<p>
+					As you can see in the last line, the tremolo option can also be used to express drum rolls.
+				</p>
+			</div>
 		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="length-definitions">
@@ -481,7 +510,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 				So <code>VIOLIN,5</code> is the same as <code>VIOLIN,5/0</code>.
 			</p>
 			<p>
-				And if MSB and LSB are both zero, you can omit both and only use the ID or program number. That was the case in the examples form
+				And if MSB and LSB are both zero, you can omit both and only use the ID or program number. That was the case in the examples from
 				chapter 1. So the following instrument definitions are all equal:
 			</p>
 			<ul>
@@ -512,6 +541,73 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.instruments-2 }}</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="instrument">
+		<div class="cell">
+			<h2>Instrument Switch</h2>
+		</div>
+		<div class="cell">
+			<p>
+				Sometimes you may need to switch the instrument of one or more channels.
+				Then you have to reconfigure these channels accordingly. This can be done in a block or a single line.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Instruments Block</h3>
+		</div>
+		<div class="cell">
+			<p>
+				One way to switch instruments is to use the same kind of <code>INSTRUMENTS</code>
+				block that you already know. However this block can only contain channels that you have already initialized inside
+				of the very first <code>INSTRUMENTS</code> block of your source code.
+			</p>
+			<p>
+				If your first <code>INSTRUMENTS</code> block was the one from the <em>Bank Descriptions</em> section above, you can later
+				define a second <code>INSTRUMENTS</code> block that redefines all channels except 6, 7 and 8.
+			</p>
+			<p>
+				Or you can redefine only channel 0, 5, 9 and 15. Then the channels 1-4 and 10-14 would continue using their already
+				defined instruments. This would look like the following example:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.instruments-3 }}</div>
+		<div class="cell">
+			<h3>Single Instrument Switch</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Alternatively you can reconfigure a channel in one single line. Therefore the <code>INSTRUMENT</code> command is used.
+				(Pay attention to the singular form.)
+			</p>
+			<p>
+				The <code>INSTRUMENT</code> command is followed by the channel number, the instrument definition and the channel description.
+			</p>
+			<p>
+				The rules for channel number, instrument definition and channel details are the same as the rules
+				inside of an <code>INSTRUMENTS</code> block. The only difference is that the channel description is optional.
+				If it's ommitted, Midica re-uses the old channel description.
+			</p>
+			<p>
+				The following example switches the instruments of the channels 0 and 1:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.instrument }}</div>
+		<div class="cell">
+			<p>
+				With the first command, we simulate a switch of the viola from <em>arco</em> to <em>pizzicato</em> mode.
+				Therefore we need a new MIDI instrument in channel 0 but not necessarily a new channel description.
+				So we skip that.
+			</p>
+			<p>
+				In channel 1 we switch to a completely different instrument, using a non-standard bank number.
+				The program number is the one of a steel guitar but in the current soundfont it's mapped to a mandolin.
+				So we use an appropriate channel description to avoid confusion.
+			</p>
+			<p>
+				Another reason to use the single line instrument switch is that it also works inside of a macro or block.
+				In the next chapter you will learn what that is.
+			</p>
+		</div>
 	</section>
 	<aside>
 		Now you know the most important lowlevel commands of MidicaPL. Please continue with <a href="tutorial-3.html">chapter 3</a> to learn about

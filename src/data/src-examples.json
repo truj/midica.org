@@ -12,6 +12,15 @@
 		"i": "instruments-2.png",
 		"alt": "Channels in the Player (Screenshot)"
 	},
+	"instruments-3": {
+		"m": "instruments-3.midicapl",
+		"i": "instruments-3.png",
+		"alt": "Channels in the Player (Screenshot)"
+	},
+	"instrument": {
+		"m": "instrument.midicapl",
+		"i": "instrument.png"
+	},
 	"happy-birthday": {
 		"m": "happy-birthday.midicapl",
 		"s": "happy-birthday.svg"
@@ -68,6 +77,11 @@
 		"m": "happy-birthday-3.midicapl",
 		"s": "happy-birthday-3.svg",
 		"i": "happy-birthday-3.png"
+	},
+	"tremolo": {
+		"m": "tremolo.midicapl",
+		"m2": "tremolo-2.midicapl",
+		"s": "tremolo.svg"
 	},
 	"atomic": {
 		"m": "atomic.midicapl",
