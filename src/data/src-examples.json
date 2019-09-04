@@ -193,5 +193,34 @@
 		"m": "set-key-2.midicapl",
 		"m2": "set-key-3.midicapl",
 		"m3": "set-key-4.midicapl"
+	},
+	"const": {
+		"m": "const-a.midicapl",
+		"m2": "const-b.midicapl",
+		"m3": "const-c.midicapl"
+	},
+	"const-2": {
+		"m": "const-2-a.midicapl",
+		"m2": "const-2-b.midicapl"
+	},
+	"define": {
+		"m": "define-a.midicapl",
+		"m2": "define-b.midicapl",
+		"m3": "define-c.midicapl"
+	},
+	"define-2": {
+		"m": "define-2.midicapl"
+	},
+	"define-3": {
+		"m": "define-3.midicapl"
+	},
+	"include-file": {
+		"m": "include-file-a.midicapl",
+		"m2": "include-file-b.midicapl"
+	},
+	"include-file-2": {
+		"m": "include-file-2-a.midicapl",
+		"m2": "include-file-2-b.midicapl",
+		"m3": "include-file-2-c.midicapl"
 	}
 }

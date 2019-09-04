@@ -1,0 +1,19 @@
+DEFINE MACRO       function{
+DEFINE DEFINE      def
+def    INSTRUMENTS instr{
+def    END         }
+def    REST        %
+def    INCLUDE     call
+
+instr{
+	0  VIOLIN  Fiddle
+}
+
+function{ play-c-d-e
+	0  c  /4
+	0  %  /4
+	0  d  /4
+	0  %  /4
+	0  e  /4
+}
+call  play-c-d-e  q=2

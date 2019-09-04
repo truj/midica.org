@@ -22,9 +22,9 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 		<div class="cell medium-6">
 			<p>
 				A MIDI sequence can contain meta information that does not have any effect to the produced sound.
-				In MidicaPL a part of this meta information is implemented as global command, as you already have
+				In MidicaPL a part of this meta information is implemented with global commands, as you have already
 				learned in chapter <a href="tutorial-1.html">1</a>. This applies to meta information like
-				<em>key signature</em> or <em>time signature</em> that can occure more often at different time
+				<em>key signature</em> or <em>time signature</em> that can occur more than once at different time
 				spots within the sequence.
 			</p>
 			<p>
@@ -79,14 +79,179 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 		</div>
 		<div class="cell">{{> src-example src-examples.meta-2 }}</div>
 	</section>
+	<section class="grid-x grid-padding-x" id="constant">
+		<div class="cell">
+			<h2>Constants</h2>
+		</div>
+		<div class="cell">
+			<p>
+				In chapter <a href="tutorial-3.html">3</a> you learned how to re-use an arbitrary number of commmands by using macros.
+				But sometimes you may want to re-use very small parts of code &dash; even smaller than a whole command.
+				In this case constants can get useful.
+			</p>
+			<p>
+				A constant must be defined with the <code>CONST</code> command. This command consists of the following parts:
+				<ul>
+					<li><code>CONST</code> (the constant definition command)</li>
+					<li>The constant name, beginning with a <code>$</code> symbol</li>
+					<li>An optional <code>=</code> symbol. (If ommitted, whitespaces must be used instead. Otherwise whitespaces <em>may</em> be used anyway.)</li>
+					<li>The value of the constant.</li>
+				</ul>
+			</p>
+			<p>
+				The constant name must begin with a <code>$</code> but apart from that it must only contain alphanumeric characters or underscores.
+			</p>
+			<p>
+				The value of a constant can be any part of another command, or even a whole command line.
+				In order to use it, you just write the constant name to the right place.
+				The following three examples are equivalent:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.const }}</div>
+		<div class="cell">
+			<p>
+				The first example first defines the constants and then uses them.
+			</p>
+			<p>
+				The second example shows like the same source would look like, if no constants were used.
+			</p>
+			<p>
+				The third example first uses the constants and defines them later. This is possible because the Midica parser interprets
+				constant definitions before channel or global commands.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				Constants themselves can also consist of other constants. In this case the inner constant must be defined before the outer constant.
+				The following two examples are equivalent.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.const-2 }}</div>
+		<div class="cell">
+			<p>
+				The first example first defines the simple constants <code>$forte</code> (a velocity option) and <code>$drum</code>
+				(two percussion instruments: a basedrum and an open triangle).
+			</p>
+			<p>
+				Then it defines <code>$drumroll</code> which contains the percussion instruments from <code>$drum</code>,
+				a note length and a tremolo option.
+			</p>
+			<p>
+				<code>$play_dr</code> combines the constants from above to a channel command, to be played in channel 9.
+			</p>
+			<p>
+				The last line finally executes this combined channel command.
+			</p>
+		</div>
+	</section>
 	<section class="grid-x grid-padding-x" id="define">
 		<div class="cell">
 			<h2>Redefinitions</h2>
 		</div>
 		<div class="cell">
 			<p>
+				The commands and other syntax symbols can be configured to be lower-, mixed- or upper-cased.
+				But maybe you are completely unhappy with the used keywords and symbols.
+				In this case you can redefine a syntax element with the <code>DEFINE</code> command.
+			</p>
+			<p>
+				Each syntax element has an ID which can be found in the <em>Syntax</em> table.
+				You can see the table after clicking <a href="screenshots.html#info-config">Info &amp; Configuration Details > Configuration > Syntax</a>.
+				Or in <a data-open="screenshot-syntax-ids">this Screenshot</a>.
+			</p>
+			<div class="reveal large" id="screenshot-syntax-ids" data-reveal>
+				<div>
+					<button class="close-button" data-close aria-label="Close" type="button">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<br />
+				</div>
+				<div>
+					<img src="assets/img/info_conf_syntax.png" />
+				</div>
+			</div>
+			<p>
+				The <code>DEFINE</code> command needs the ID of the syntax element to be redefined as the first parameter.
+				The new value must be provided as the second parameter.
+			</p>
+			<p>
+				The following three examples are equivalent. The first and the last one redefine the symbols for anonymous blocks
+				to be <code>{</code> and <code>}</code> instead of <code>(</code> and <code>)</code>:
 			</p>
 		</div>
+		<div class="cell">{{> src-example src-examples.define }}</div>
+		<div class="cell">
+			<p>
+				As you can see in the third example, redefinitions can be written after using them.
+				This is possible because Midica parses <code>DEFINE</code> commands before everything else.
+			</p>
+			<p>
+				The <code>DEFINE</code> command itself can also be redefined. In this case the order of redefinition commands is important,
+				as the following example demonstrates:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.define-2 }}</div>
+		<div class="cell medium-auto">
+			<p>
+				The <code>DEFINE</code> command is redefined to <code>def</code>. From this moment on, the new version <code>def</code> can be used
+				for further redefinitions.
+			</p>
+			<p>
+				In this example we redefine the commands <code>MACRO</code>, <code>INSTRUMENTS</code> and <code>END</code> to look
+				more like a language derived from C.
+			</p>
+			<p>
+				Of cause the new keyword <code>function{</code> must not contain a whitespace. The same applies for <code>instr{</code>.
+			</p>
+			<p>
+				With these changes, we also need to rewrite the <code>INSTRUMENTS</code> block. This is necessary because the old commands
+				<code>INSTRUMENTS</code> and <code>END</code> don't work any more.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Limits of Redefinitions</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Some redefinitions do not work together. For example the end of a definition block must have a different symbol than the end
+				of an anonymous block. So you cannot change <code>)</code> and <code>END</code> both to become <code>}</code> at the same time.
+				There are more syntax elements that may not have the same keyword while for others it's ok. Some elements even have the same keyword by default.
+				It's not possible to list all possibilities here. Just be careful with redefinitions and try to avoid conflicts. Or just try out if it works.
+			</p>
+			<p>
+				You also have to make sure that your redefinitions don't conflict with other elements like note names or percussion instruments.
+				For example if you redefine the comment symbol to become <code>#</code> instead of <code>//</code>, you must configure your
+				<a data-open="screenshot-halftone">Half Tone Symbol</a> accordingly.
+				The default half tone symbol can contain a <code>#</code> inside of a note name. So this combination won't work.
+				<div class="reveal large" id="screenshot-halftone" data-reveal>
+					<div>
+						<button class="close-button" data-close aria-label="Close" type="button">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<br />
+					</div>
+					<div>
+						<img src="assets/img/config_3_halftone.png" />
+					</div>
+				</div>
+			</p>
+			<p>
+				The following three syntax elements can still be used in their original form after being redefined:
+			</p>
+		</div>
+		<div class="cell medium-shrink">
+			<ul>
+				<li><code>COMMENT</code></li>
+				<li><code>DEFINE</code></li>
+				<li><code>INCLUDE_FILE</code></li>
+			</ul>
+		</div>
+		<div class="cell auto">
+			That means you cannot redefine another command to become one of these three keywords. It also means that after redefining one of these
+			three commands, you may use either the old keyword or the new one. The following example demonstrates this:
+		</div>
+		<div class="cell"></div>
+		<div class="cell">{{> src-example src-examples.define-3 }}</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="include-file">
 		<div class="cell">
@@ -94,6 +259,45 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 		</div>
 		<div class="cell">
 			<p>
+				Program languages allow to re-use code from other files - modules or libraries. The same is possible in MidicaPL.
+				In order to include a file, you need the <code>INCLUDE_FILE</code> command. The only parameter is the path to the included file.
+				The file path can be absolute or relative to the including file.
+			</p>
+			<p>
+				Imagine, you are programming music for a latino band and in their repertoire they have music like Salsa, Bachata, Merengue and so on.
+				Then you could create one include file for each type of song. The following example shows a possible include file for Salsa songs.
+				The first example is the include file, and the second file includes and uses the first file.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.include-file }}</div>
+		<div class="cell">
+			<p>
+				The first file includes a soundfile that's specialized for Latin music (or maybe even more specialized on Salsa).
+				Then follows the <code>INSTRUMENTS</code> block that can be quite large in a Salsa band.
+				The macro <code>clave</code> defines the clave rhythm that's very typical for Salsa.
+			</p>
+			<p>
+				The second file uses these definitions to create a song.
+			</p>
+			<p>
+				An included file can also be used for syntax redefinitions or to create constants you often use.
+				The following example shows two include files for Bachata songs of your latino band:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.include-file-2 }}</div>
+		<div class="cell">
+			<p>
+				The first file redefines some syntax elements and creates a view constants.
+			</p>
+			<p>
+				The second file uses these definitions to create the instruments for Bachata as well as the typical bongo rhythm
+				that's used in most Bachata songs. As you can see, Juan switches from the piano to the guitar.
+				And Alejandro is the now singing because the voice part in Bachata songs is typically a male part.
+			</p>
+			<p>
+				The third file uses the definitions from the first and second file. Note that it only includes the file
+				<code>bachata.midica</code> directly but not <code>definitions.midica</code>. However the latter one is included by
+				<code>bachata.midica</code> so it can be used in the third file as well.
 			</p>
 		</div>
 	</section>
