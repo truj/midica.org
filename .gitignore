@@ -1,0 +1,11 @@
+.DS_Store
+.babelrc
+.bowerrc
+.directory
+*.swp
+*.lock
+node_modules
+npm-debug.log
+bower_components
+dist
+etc

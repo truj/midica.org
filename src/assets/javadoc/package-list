@@ -1,0 +1,16 @@
+org.midica
+org.midica.config
+org.midica.debug
+org.midica.file
+org.midica.midi
+org.midica.ui
+org.midica.ui.info
+org.midica.ui.model
+org.midica.ui.painter
+org.midica.ui.player
+org.midica.ui.player.soundcheck
+org.midica.ui.renderer
+org.midica.ui.tablefilter
+org.midica.ui.tablesorter
+org.midica.ui.widget
+org.midica.worker
