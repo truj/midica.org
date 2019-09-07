@@ -5,7 +5,7 @@ https://github.com/truj/midica
 
 # Requirements
 
-This website is based on Foundation-CLI which requires Node.js
+This project is based on Foundation-CLI which requires Node.js
 
 So you need to install Node.js first.
 
@@ -35,9 +35,9 @@ oder with:
 
 `foundation watch`
 
-# Production
+# Productive Version
 
-To build a procuction version, type:
+To build a procuctive version, type:
 
 `foundation build`
 
