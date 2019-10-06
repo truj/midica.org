@@ -85,12 +85,16 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 		</div>
 		<div class="cell">
 			<p>
-				In chapter <a href="tutorial-3.html">3</a> you learned how to re-use an arbitrary number of commmands by using macros.
+				In chapter <a href="tutorial-3.html">3</a> you learned how to re-use an arbitrary number of commmands by using functions.
 				But sometimes you may want to re-use very small parts of code &dash; even smaller than a whole command.
 				In this case constants can get useful.
 			</p>
 			<p>
-				A constant must be defined with the <code>CONST</code> command. This command consists of the following parts:
+				A constant looks like a <a href="tutorial-2.html#variables">variable</a>. In the definition you just replace the <code>VAR</code>
+				by a <code>CONST</code>.
+			</p>
+			<p>
+				So the definition consists of the following parts:
 				<ul>
 					<li><code>CONST</code> (the constant definition command)</li>
 					<li>The constant name, beginning with a <code>$</code> symbol</li>
@@ -143,6 +147,29 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 				The last line finally executes this combined channel command.
 			</p>
 		</div>
+		<div class="cell">
+			<h3>Constants and Variables</h3>
+		</div>
+		<div class="cell">
+			<p>
+				At first glance, a constant looks pretty similar to a variable. However there are some important differences:
+			</p>
+			<ul>
+				<li>
+					The constant definition key word is <code>CONST</code> instead of <code>VAR</code>.
+				</li>
+				<li>
+					A constant can be defined only once. The same constant name cannot be redefined any more.
+				</li>
+				<li>
+					Constants can be defined after using them - just like functions that can be called before they their definition.
+				</li>
+				<li>
+					Most limitations for varibales don't apply for constants. E.g. they may contain whitespaces.
+					So they can cover several parts of a command.
+				</li>
+			</ul>
+		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="define">
 		<div class="cell">
@@ -171,8 +198,8 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 				</div>
 			</div>
 			<p>
-				The <code>DEFINE</code> command needs the ID of the syntax element to be redefined as the first parameter.
-				The new value must be provided as the second parameter.
+				The <code>DEFINE</code> command needs the ID of the syntax element to be redefined as the first argument.
+				The new value must be provided as the second argument.
 			</p>
 			<p>
 				The following three examples are equivalent. The first and the last one redefine the symbols for anonymous blocks
@@ -197,7 +224,7 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 				for further redefinitions.
 			</p>
 			<p>
-				In this example we redefine the commands <code>MACRO</code>, <code>INSTRUMENTS</code> and <code>END</code> to look
+				In this example we redefine the commands <code>FUNCTION</code>, <code>INSTRUMENTS</code> and <code>END</code> to look
 				more like a language derived from C.
 			</p>
 			<p>
@@ -243,7 +270,7 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 			<ul>
 				<li><code>COMMENT</code></li>
 				<li><code>DEFINE</code></li>
-				<li><code>INCLUDE_FILE</code></li>
+				<li><code>INCLUDE</code></li>
 			</ul>
 		</div>
 		<div class="cell auto">
@@ -253,28 +280,28 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 		<div class="cell"></div>
 		<div class="cell">{{> src-example src-examples.define-3 }}</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="include-file">
+	<section class="grid-x grid-padding-x" id="include">
 		<div class="cell">
 			<h2>File Includes</h2>
 		</div>
 		<div class="cell">
 			<p>
 				Program languages allow to re-use code from other files - modules or libraries. The same is possible in MidicaPL.
-				In order to include a file, you need the <code>INCLUDE_FILE</code> command. The only parameter is the path to the included file.
-				The file path can be absolute or relative to the including file.
+				In order to include a file, you need the <code>INCLUDE</code> command. The only argument is the path to the included file.
+				The file path can be absolute or relative to the file that contains the <code>INCLUDE</code> command.
 			</p>
 			<p>
 				Imagine, you are programming music for a latino band and in their repertoire they have music like Salsa, Bachata, Merengue and so on.
-				Then you could create one include file for each type of song. The following example shows a possible include file for Salsa songs.
+				Then you could create one include file for each category of music. The following example shows a possible include file for Salsa songs.
 				The first example is the include file, and the second file includes and uses the first file.
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.include-file }}</div>
+		<div class="cell">{{> src-example src-examples.include }}</div>
 		<div class="cell">
 			<p>
-				The first file includes a soundfile that's specialized for Latin music (or maybe even more specialized on Salsa).
+				The first file includes a soundfont that's specialized in Latin music (or maybe even more specialized in Salsa).
 				Then follows the <code>INSTRUMENTS</code> block that can be quite large in a Salsa band.
-				The macro <code>clave</code> defines the clave rhythm that's very typical for Salsa.
+				The function <code>clave</code> defines the clave rhythm that's very typical for Salsa.
 			</p>
 			<p>
 				The second file uses these definitions to create a song.
@@ -284,10 +311,10 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 				The following example shows two include files for Bachata songs of your latino band:
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.include-file-2 }}</div>
+		<div class="cell">{{> src-example src-examples.include-2 }}</div>
 		<div class="cell">
 			<p>
-				The first file redefines some syntax elements and creates a view constants.
+				The first file redefines some syntax elements and creates a few constants.
 			</p>
 			<p>
 				The second file uses these definitions to create the instruments for Bachata as well as the typical bongo rhythm

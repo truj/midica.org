@@ -142,6 +142,10 @@
 							{
 								"title": "Instrument Switch",
 								"url": "/tutorial-2.html#instrument"
+							},
+							{
+								"title": "Variables",
+								"url": "/tutorial-2.html#variables"
 							}
 						]
 					},
@@ -150,12 +154,16 @@
 						"url": "/tutorial-3.html#",
 						"menu-items": [
 							{
-								"title": "Macros",
-								"url": "/tutorial-3.html#macros"
+								"title": "Functions",
+								"url": "/tutorial-3.html#functions"
 							},
 							{
-								"title": "Include Options",
-								"url": "/tutorial-3.html#include-options"
+								"title": "Call Options",
+								"url": "/tutorial-3.html#call-options"
+							},
+							{
+								"title": "Call Parameters",
+								"url": "/tutorial-3.html#params"
 							},
 							{
 								"title": "Nestable Blocks",
@@ -185,7 +193,7 @@
 							},
 							{
 								"title": "File Includes",
-								"url": "/tutorial-4.html#include-file"
+								"url": "/tutorial-4.html#include"
 							}
 						]
 					},

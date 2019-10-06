@@ -1,0 +1,18 @@
+INSTRUMENTS
+	0  VIOLIN       Lead Violin
+	4  CELLO        Violoncello
+	6  HARPSICHORD  Harpsichord
+END
+FUNCTION measure_1-2
+	$ch  g   /16
+	$ch  g-  /16  q=11
+	$ch  f   /16
+	$ch  g-  /16  q=11
+END
+<span class="red">VAR  $ch = 0
+CALL measure_1-2</span>
+<span class="blue">VAR  $ch = 4
+CALL measure_1-2  shift=-12</span>
+VAR  $ch = 6
+CALL measure_1-2  m
+CALL measure_1-2  s=-12

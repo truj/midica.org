@@ -15,109 +15,113 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 			</p>
 			<p>
 				So far you learned a lot about lowlevel commands. In this chapter we will focus on highlevel structures that help to reuse your code,
-				like macros, blocks and loops.
+				like functions, blocks and loops.
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="macros">
+	<section class="grid-x grid-padding-x" id="functions">
 		<div class="cell">
-			<h2>Macros</h2>
+			<h2>Functions</h2>
 		</div>
 		<div class="cell">
 			<p>
 				Most programming languages have functions, methods or another kind of subroutines that can be called from different places
-				inside of your source code. In MidicaPL such functions are called <em>macro</em>.
+				inside of your source code. In MidicaPL such a structure is called <em>function</em>.
 			</p>
 			<p>
-				A macro is a bock beginning with the keyword <code>MACRO</code>, followed by one or more whitespaces and a self-given macro name.
+				A function is a bock beginning with the keyword <code>FUNCTION</code>, followed by one or more whitespaces and a self-given function name.
 				The block is closed with the keyword <code>END</code>.
-				Inside the block you can write as many channel commands or global commans as you want.
+				Inside the block you can write as many channel or global commands as you want.
 			</p>
 			<p>
-				The following example defines two macros for "Another one bites the dust" by "Queen".
+				The following example defines two functions for "Another one bites the dust" by "Queen".
 			</p>
 		</div>
 		<div class="cell medium-shrink">{{> src-example src-examples.another-one-drum-bass }}</div>
 		<div class="cell medium-auto">
 			<p>
-				First we introduce the bass instrument in channel 5 so that we can use it later. Then we define the macros.
+				First we introduce the bass instrument in channel 5 so that we can use it later. Then we define the functions.
 			</p>
 			<p>
-				The first macro is called <code>bassline</code>. It defines the main bassline and has a length of 8 quarter notes.
+				The first function is called <code>bassline</code>. It defines the main bassline and has a length of 8 quarter notes.
 			</p>
 			<p>
-				The second macro is called <code>drums</code>. It defines the drum beat with a length of 2 quarter notes.
+				The second function is called <code>drums</code>. It defines the drum beat with a length of 2 quarter notes.
 			</p>
 			<p>
-				So far no sound is produced at all. The macros have been defined but they have not yet been called.
+				So far no sound is produced at all. The functions have been defined but they have not yet been used.
 			</p>
 			<p>
-				Later we want to play the bass and the drums together. The <code>bassline</code> macro is 4 times longer
-				than the <code>drums</code> macro.
+				Later we want to play the bass and the drums together. The <code>bassline</code> function is 4 times longer
+				than the <code>drums</code> function.
 				That means we need to call <code>drums</code> 4 times more often than <code>bassline</code>.
 			</p>
 		</div>
 		<div class="cell">
 			<p>
-				A macro can be called with the <code>INCLUDE</code> command, followed by one or more whitespaces and the macro name.
+				A function can be called with the <code>CALL</code> command, followed by one or more whitespaces and the function name.
 			</p>
 			<p>
-				You can imagine that an <code>INCLUDE</code> command is internally replaced by the code inside of the macro.
+				You can imagine that a <code>CALL</code> command is internally replaced by the code inside of the function.
 			</p>
 			<p>
-				The following example plays the macros that we have defined before. The first source code version uses <code>INCLUDE</code> commands.
-				The second version shows how these INCLUDEs would look like if they were replaced by the according macro contents.
+				The following example plays the functions that we have defined before. The first source code version uses <code>CALL</code> commands.
+				The second version shows how these CALLs would look like if they were replaced by the according function contents.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.another-one }}</div>
 		<div class="cell">
 			<p>
-				Both macros play in different channels. So if we include them after each other they play simultaneously.
+				Both functions play in different channels. So if we call them after each other they play simultaneously.
 			</p>
 		</div>
 		<div class="cell">
 			<p>
-				A macro can also be called from another macro.
-				So an alternative for the last example would be the usage of a further macro:
+				A function can also be called from another function.
+				So an alternative for the last example would be the usage of a further function:
 			</p>
 		</div>
 		<div class="cell medium-shrink">{{> src-example src-examples.another-one-2 }}</div>
 		<div class="cell medium-auto">
 			<p>
-				Now we need to handle the different lengths of tha bass and drum macros only at one place: inside the macro <code>drum-and-bass</code>.
-				Later we can call this macro as often as we want.
+				Now we need to handle the different lengths of the bass and drum functions only at one place: inside the function <code>drum-and-bass</code>.
+				Later we can call this function as often as we want.
 			</p>
 		</div>
 		<div class="cell">
 			<p>
-				In the last example we defined the macro first and included it later. But the other way round is also possible.
+				In the last example we defined the function first and called it later. But the other way round is also possible.
 			</p>
 		</div>
 		<div class="cell medium-shrink">{{> src-example src-examples.another-one-3 }}</div>
 		<div class="cell medium-auto">
 			<p>
-				In this example the macro is included before it is defined.
+				In this example the function is called before it is defined.
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="include-options">
+	<section class="grid-x grid-padding-x" id="call-options">
 		<div class="cell">
-			<h2>Include Options</h2>
+			<h2>Call Options</h2>
 		</div>
 		<div class="cell medium-6">
 			<p>
 				Do you remember the <a href="tutorial-2.html#channel-options">channel command options</a> from chapter 2?
 			</p>
 			<p>
-				An <code>INCLUDE</code> command can also have options.
-				As you can see in the <em>Include Options</em> table, <code>quantity</code> (short version: <code>q</code>) and
-				<code>multiple</code> (short version: <code>m</code>) are also allowed as include options.
+				An <code>CALL</code> command can also have options.
+				As you can see in the <em>Call Options</em> table, the following options are also allowed as call options:
+				<ul>
+					<li><code>quantity</code> (short version: <code>q</code>)</li>
+					<li><code>multiple</code> (short version: <code>m</code>)</li>
+					<li><code>shift</code> (short version: <code>s</code>)</li>
+				</ul>
 			</p>
 		</div>
 		<div class="cell medium-6">
 			<table>
 				<caption>
-					Include Options
+					Call Options
 				</caption>
 				<thead>
 					<tr>
@@ -143,39 +147,46 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 						<td>-</td>
 						<td>-</td>
 					</tr>
+					<tr>
+						<td>shift</td>
+						<td>s</td>
+						<td>integer</td>
+						<td>-127</td>
+						<td>127</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="cell">
 			<p>
-				Include options are attached to the end of the <code>INCLUDE</code> command line, separated from the macro name by one or more whitespaces.
+				Call options are attached to the end of the <code>CALL</code> command line, separated from the function name by one or more whitespaces.
 			</p>
 			<p>
 				If an option requires a value, this must be appended to the option name, separated by a <code>=</code> symbol or whitespace(s).
 			</p>
-				If 2 options are used, they have to be separated by a <code>,</code> symbol.
+				If different options are used, they have to be separated by a <code>,</code> symbol.
 			</p>
 		</div>
 		<div class="cell">
-			<h3>Quantity (Include Option)</h3>
+			<h3>Quantity (Call Option)</h3>
 		</div>
 		<div class="cell">
 			<p>
-				Probably you already have guessed what the <code>quantity</code> option does: It repeats the called macro as often as the option value.
-				So we can rewrite our includes using the quantity option. The following versions are all equivalent:
+				Probably you already have guessed what the <code>quantity</code> option does: It repeats the function call as often as the option value.
+				So we can rewrite our calls using the quantity option. The following versions are all equivalent:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.another-one-q }}</div>
-		<div class="cell">
-			<h3>Multiple (Include Option)</h3>
+		<div class="cell" id="call-m">
+			<h3>Multiple (Call Option)</h3>
 		</div>
 		<div class="cell">
 			<p>
 				The <code>multiple</code> option can be used to implement different voices playing in the same channel in the same time.
-				It plays the macro and then moves the end markers of each involved channel to the position they had before calling the macro.
+				It plays the function and then moves the end markers of each involved channel to the position they had before calling the function.
 			</p>
 			<p>
-				In other words: After playing a macro with this option, the next notes in the same channels are played in the same time as the macro.
+				In other words: After playing a function with this option, the next notes in the same channels are played in the same time as the function.
 			</p>
 			<p>
 				The next example shows how we can use this option in order to play a small variation.
@@ -188,19 +199,184 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 				the involved channels so that the drums start after the anacrusis. And it also switches to 4/4 beat.
 			</p>
 			<p>
-				The blue part adds two bass notes to the end of the second measure. Therefore the first <code>INCLUDE</code> command
-				is marked as <code>multiple</code> so that the following code is added to the time where the include started.
+				The blue part adds two bass notes to the end of the second measure. Therefore the first <code>CALL</code> command
+				is marked as <code>multiple</code> so that the following code is added to the time where the call started.
 			</p>
 			<p>
 				As we want to add something to the last eighth of the measure, we need to fill up the beginning with rests in the bass channel.
 				We need a whole rest with three dots.
 			</p>
 			<p>
-				After adding the rest and the notes, our bass channel is two beats further than our drums channel. So we need to synchronize them
+				After adding the rest and the notes, our bass channel is two measures further than our percussion channel. So we need to synchronize them
 				again with another <code>*</code>.
 			</p>
 			<p>
-				Then we are ready to include <code>drum-and-bass</code> again a few times.
+				Then we are ready to call <code>drum-and-bass</code> again a few times.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Shift (Call Option)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>shift</code> option can be used to transpose a whole function up or down by an arbitrary number of half tone steps.
+				Use a positive number to shift the function up or a negative value to shift it down.
+			</p>
+			<p>
+				The following example shows how this works. It shows the first two measures of the harpsichord part of Antonio Vivaldi's
+				"Four Seasons - Summer" (3rd movement).
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.vivaldi-shift-harpsic }}</div>
+		<div class="cell">
+			<p>
+				The right and left hand play both the same notes, but in a different octave.
+			</p>
+			<p>
+				First we introduce the Harpsichord in channel 6. Then we define a function for the first two measures.
+				We call this function for the right hand of the harpsichord first. Therefore we use the <code>m</code> option because we want to
+				play the left hand in the same time.
+			</p>
+			<p>
+				The second call of <code>measure_1-2</code> is for the left hand. We use the option <code>s=-12</code> to play the same
+				notes one octave lower.
+			</p>
+			<p>
+				Alternatively we can also use variables for the channel. Then we are able to use the same function for different channels.
+				The next example demonstrates how this works:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.vivaldi-shift-variable }}</div>
+		<div class="cell medium-auto">
+			<p>
+				First we introduce our instruments in the channels 0, 4 and 6.
+			</p>
+			<p>
+				Then we define the function for the first two measures again. But this time we use the variable <code>$ch</code> instead
+				of a channel number.
+			</p>
+			<p>
+				Later we set <code>$ch</code> to 0 and call the function for the lead violin. This is the red part in the example.
+			</p>
+			<p>
+				Then we set <code>$ch</code> to 4 and call the function again. This time for the Violoncello. This is the blue part in the example.
+				We use <code>shift=-12</code> because the Violoncello plays the same notes one octave lower. Like the left hand of the Harpsichord.
+			</p>
+			<p>
+				The last (black) part switches to channel 6 and calls the function once for each hand of the Harpsichord.
+				Just like in the example before.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="params">
+		<div class="cell">
+			<h2>Call Parameters</h2>
+		</div>
+		<div class="cell">
+			<p>
+				One important feature of functions in all major programming languages is the support of parameters.
+				In MidicaPL this works as well.
+			</p>
+			<p>
+				Therefore, you need to add the symbols <code>(</code> and <code>)</code> directly after the function name (and before any options).
+				Then you add your parameters between the parantheses, separated by <code>,</code>.
+			</p>
+			<p>
+				E.g. you can call the functon <code>foo</code> with the parameters <code>a</code> and <code>b</code>
+				three times and transposed one octave higher with the following command:
+				<br />
+				<code>CALL foo(a, b) q=3, s=12</code>
+			</p>
+			<p>
+				A function call without parameters can also be made with an empty list. So the following examples are equivalent:
+				<ul>
+					<li><code>CALL foo</code></li>
+					<li><code>CALL foo()</code></li>
+				</ul>
+			</p>
+			<p>
+				There are two types of parameters: <em>indexed</em> parameters and <em>named</em> parameters.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Indexed Parameters</h3>
+		</div>
+		<div class="cell">
+			<p>
+				An indexed parameter is a parameter without a name. So the order of the parameters in the <code>CALL</code> command
+				is relevant.
+			</p>
+			<p>
+				Let's rewrite our function <code>measure_1-2</code> using indexed parameters instead of variables.
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.vivaldi-param-indexed }}</div>
+		<div class="cell medium-auto">
+			<p>
+				Instead of changing a channel variable between the function calls, we pass the channel as the first parameter.
+				And as the second parameter we pass the transposition value.
+			</p>
+			<p>
+				Inside the function, we use these parameters with a <code>$</code> symbol, followed by an index, surrounded by
+				square braces <code>[</code> and <code>]</code>.
+			</p>
+			<p>
+				A variable index starts counting from 0. That means, to use the first parameter, we must write <code>$[0]</code>
+				and for the second one <code>$[1]</code>. A third one would be <code>$[2]</code>, and so on.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Named Parameters</h3>
+		</div>
+		<div class="cell">
+			<p>
+				A named parameter is a parameter with a name. The following example is equivalent but uses named parameters instead
+				of indexed parameters.
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.vivaldi-param-named }}</div>
+		<div class="cell medium-auto">
+			<p>
+				A named parameter inside of a <code>CALL</code> command consists of a name and a value, separated by <code>=</code>.
+			</p>
+			<p>
+				The order of the parameters doesn't matter.
+			</p>
+			<p>
+				Inside the function an indexed parameter is accessed by a <code>$</code> symbol, followed by the name, surrounded by
+				<code>{</code> and <code>}</code>.
+			</p>
+			<p>
+				In our example the channel is passed as <code>ch=...</code> and accessed as <code>${ch}</code>.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Scope of Parameters</h3>
+		</div>
+		<div class="cell">
+			<p>
+				A variable in MidicaPL can be accessed globally, as soon as it is defined.
+				But a call parameter is only valid inside the called function.
+			</p>
+			<p>
+				Even if you call a second function from inside the first function, you cannot access the first function's parameters
+				from the second function. Not directly. But of cause you could pass the parameters over to the second function, like the following
+				example shows:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.vivaldi-call-chain }}</div>
+		<div class="cell medium-auto">
+			<p>
+				The function <code>measure_1-2</code> now uses mixed parameter types. The first parameter is named, while the second one
+				is indexed. The named parameter is later used as <code>${ch}</code>, the second one is used as <code>$[1]</code>.
+			</p>
+			<p>
+				<code>measure_1-2</code> does not directly implement the channel commands any more. Instead, it calls two other functions,
+				one for each measure: <code>measure_1</code> and <code>measure_2</code>.
+			</p>
+			<p>
+				Inside of <code>measure_1-2</code>, the parameters must be passed over to the <code>CALL</code> commands for
+				<code>measure_1</code> and <code>measure_2</code>, so that they can be used there as well.
 			</p>
 		</div>
 	</section>
@@ -210,7 +386,7 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		</div>
 		<div class="cell">
 			<p>
-				Macros are useful to group a number of commands and apply them later using a self-invented name.
+				Functions are useful to group a number of commands and apply them later using a self-invented name.
 				But sometimes you may want to group commands without inventing a name and execute them directly instead of calling them later.
 				That's where nestable blocks are used.
 			</p>
@@ -219,39 +395,40 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 				In MidicaPL such a block is opened by a line beginning with <code>(</code> and closed by a line beginning with <code>)</code>.
 			</p>
 			<p>
-				So let's try to rewrite the drums and bass of the above song using nestable blocks:
+				We switch back again to "Another one bites the dust" by "Queen".
+				We rewrite the drums and bass of that song using nestable blocks:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.another-block }}</div>
 		<div class="cell">
 			<p>
 				We formed a block for the bass part and a second one for the drums part. Both blocks are nested inside of another block.
-				The commands are played directly without the need of an include.
+				The commands are played directly without the need of a function call.
 			</p>
 			<p>
 				But hey... The Bass part is played only once!
-				One quick and dirty way to fix this problem is to use the <code>drums</code> macro we have defined before:
+				One quick and dirty way to fix this problem is to use the <code>drums</code> function we have defined before:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.another-block-2 }}</div>
 		<div class="cell">
 			<p>
-				So you see, an <code>INCLUDE</code> can be used from inside a block as well.
+				So you see, a function can be called from inside a block as well.
 			</p>
 			<p>
-				On the other hand you can also use blocks inside of a <code>MACRO</code>.
-				Let's rewrite the macro <code>drum-and-bass</code> using blocks:
+				On the other hand you can also use blocks inside of a <code>FUNCTION</code>.
+				Let's rewrite the function <code>drum-and-bass</code> using blocks:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.another-block-3 }}</div>
 		<div class="cell">
 			<p>
-				Those examples are equivalent. One version uses blocks, the other one doesn't.
+				These examples are equivalent. The first one uses blocks, the second one doesn't.
 			</p>
 			<p>
-				The version with blocks doesn't need a macro for the bass part. However the drums part is needed in both versions.
+				The version with blocks doesn't need a function for the bass part. However the drums part is needed in both versions.
 				And of cause we could have written the same thing completely without blocks. This was just a demonstration that
-				blocks can be nested inside of macros.
+				blocks can be nested inside of functions.
 			</p>
 			<p>
 				Blocks become much more useful when using block options.
@@ -264,9 +441,14 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		</div>
 		<div class="cell medium-6">
 			<p>
-				Just like <code>INCLUDE</code> commands, nestable blocks can have options as well. The <em>block options</em> table shows the available options.
-				As you can see, the options <code>quantity</code> (short version: <code>q</code>) and <code>multiple</code> (short version: <code>m</code>)
-				are also available as block options. Moreover there's a new option for tuplets.
+				Just like <code>CALL</code> commands, nestable blocks can have options as well. The <em>block options</em> table shows the available options.
+				As you can see, the following options are also available as block options:
+				<ul>
+					<li><code>quantity</code> (short version: <code>q</code>)</li>
+					<li><code>multiple</code> (short version: <code>m</code>)</li>
+					<li><code>shift</code> (short version: <code>s</code>)</li>
+				</ul>
+				Moreover there's a new option for tuplets: <code>tuplet</code> (short version: <code>t</code>).
 			</p>
 			<p>
 				Options can be attached to the opening <code>(</code> or closing <code>)</code> brace, separated by whitespaces.
@@ -302,6 +484,13 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 						<td>-</td>
 					</tr>
 					<tr>
+						<td>shift</td>
+						<td>s</td>
+						<td>integer</td>
+						<td>-127</td>
+						<td>127</td>
+					</tr>
+					<tr>
 						<td>tuplet</td>
 						<td>t</td>
 						<td>none or string</td>
@@ -324,7 +513,7 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 		<div class="cell">
 			<p>
 				The <code>quantity</code> option plays the according block as many times as its value defines.
-				Eventually we are able to rewrite the macro <code>drum-and-bass</code> correctly and without needing to define the macros <code>drums</code>
+				Eventually we are able to rewrite the function <code>drum-and-bass</code> correctly and without needing to define the functions <code>drums</code>
 				and <code>bassline</code>:
 			</p>
 		</div>
@@ -349,8 +538,9 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 				It plays the block content and then moves the end markers of each involved channel to the position they had before the block has been opened.
 			</p>
 			<p>
-				The following example is equivalent to our former example of a macro with the multiple option. But this time it is completely without
-				using any macro.
+				The following example is equivalent to the example we used to explain the <code>multiple</code> option in a function call
+				(<a href="#call-m">see above</a>).
+				But this time we do it completely without functions, only with blocks.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.another-block-m }}</div>
@@ -394,12 +584,40 @@ meta-title: "MidicaPL Tutorial 3: Structures - MIDI Programming Language for Mid
 			</p>
 		</div>
 		<div class="cell">
+			<h3>Shift (Block Option)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>shift</code> option (short form <code>s</code>) works exactly like the shift option for function calls.
+				It transposes the whole block up or down by an arbitrary number of half tone steps.
+				Nested blocks can have different <code>shift</code> options. In this case, the option values for all surrounding blocks are added up
+				to calculate the resulting shift value.
+			</p>
+			<p>
+				the following example demonstrates this:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.shift-block }}</div>
+		<div class="cell">
+			<p>
+				The first three notes are played 2 octaves lower because the outer block has a <code>shift</code> option of <code>-24</code>.
+			</p>
+			<p>
+				The next three notes are played only one octave lower because the <code>-24</code> of the outer block and the <code>+12</code> of
+				the inner block are added, and the result is <code>-12</code>.
+			</p>
+			<p>
+				The last note has its own shift value of <code>+12</code> which is added as well. The result for this note is <code>0</code>, so
+				the note is not shifted any more.
+			</p>
+		</div>
+		<div class="cell">
 			<h3>Tuplet (Block Option)</h3>
 		</div>
 		<div class="cell">
 			<p>
 				The <code>tuplet</code> option (short form <code>t</code>) is used to define that the block content is played as a tuplet.
-				The option can be used without any value. In this case, the tuplet is interpreted as a <em>triplet</em>.
+				The option can be used without any value. In this case the tuplet is interpreted as a <em>triplet</em>.
 			</p>
 			<p>
 				the following example shows the same triplets that we saw already in chapter 2, but this time defined as blocks.

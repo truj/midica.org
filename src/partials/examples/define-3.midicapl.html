@@ -4,23 +4,23 @@
 // But during the DEFINE commands,...
 ;  ...this is different:
 
-DEFINE CHORD   crd  // must use DEFINE and //
-DEFINE DEFINE  def  // must use DEFINE and //
-def    REST    %    // may use DEFINE or def...
-DEFINE GLOBAL  glob // ...but still must use //
-def    COMMENT ;    // must still use //
-def    INCLUDE incl ;  now we may use ; or //
-def    TEMPO   bpm  // both is ok
+DEFINE CHORD   crd    // must use DEFINE and //
+DEFINE DEFINE  def    // must use DEFINE and //
+def    REST    %      // may use DEFINE or def...
+DEFINE GLOBAL  glob   // ...but still must use //
+def    COMMENT ;      // must still use //
+def    CALL    invoke ;  now we may use ; or //
+def    TEMPO   bpm    // both is ok
 
 0 c /4  // may use ; or // for comments
 0 % /4  ;  but must use % for rests
 
 // must use the original symbol for file
 ;  inclusions
-INCLUDE_FILE  includefile1.midica
+INCLUDE  includefile1.midica
 
-DEFINE INCLUDE_FILE incl_f
+DEFINE INCLUDE incl
 
 // now we may use both versions.
-INCLUDE_FILE  includefile2.midica
-incl_f        includefile3.midica
+INCLUDE  includefile2.midica
+incl     includefile3.midica

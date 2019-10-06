@@ -91,6 +91,13 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 						<td>-</td>
 						<td>-</td>
 					</tr>
+					<tr>
+						<td>shift</td>
+						<td>s</td>
+						<td>integer</td>
+						<td>-127</td>
+						<td>127</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -245,6 +252,27 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 					As you can see in the last line, the tremolo option can also be used to express drum rolls.
 				</p>
 			</div>
+		</div>
+		<div class="cell">
+			<h3>Shift</h3>
+			<div class="cell">
+				<p class="hint">
+					This section describes a lowlevel form of transposing. Probably you will never need it.
+					You can find a more usable form for transpositions in chapter 3.
+				</p>
+				<p>
+					The shift option transposes the given note or chord an arbitrary number of half tone steps into one direction.
+					The option name is <code>shift</code>. The short form is <code>s</code>.
+				</p>
+				<p>
+					The value is the number of half tone steps for the transposition. It can be negative for a lower transposition
+					or positive for a higher transposition.
+				</p>
+				<p>
+					The next two examples are equivalent. The first one uses the shift option, while the second one just uses normal notes.
+				</p>
+			</div>
+			<div class="cell">{{> src-example src-examples.shift }}</div>
 		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="length-definitions">
@@ -470,7 +498,7 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 				MidicaPL file containing another song.
 			</p>
 			<p>
-				In this case you can use the <code>SOUNDFONT</code> command. Its only parameter is the path to a soundfont file in the
+				In this case you can use the <code>SOUNDFONT</code> command. Its only argument is the path to a soundfont file in the
 				<code>.sf2</code> format. The path can be either absolute or relative to the source file containing the command.
 			</p>
 		</div>
@@ -604,13 +632,62 @@ meta-title: "MidicaPL Tutorial 2: Improving - MIDI Programming Language for Midi
 				So we use an appropriate channel description to avoid confusion.
 			</p>
 			<p>
-				Another reason to use the single line instrument switch is that it also works inside of a macro or block.
+				Another reason to use the single line instrument switch is that it also works inside of a function or block.
 				In the next chapter you will learn what that is.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="variables">
+		<div class="cell">
+			<h2>Variables</h2>
+		</div>
+		<div class="cell">
+			<p>
+				Like in other languages you can use variables in MidicaPL. Variable names begin with a <code>$</code> symbol.
+				The rest of the variable name can consist of letters, numbers or underscores. Variable names are case-sensitive.
+			</p>
+			<p>
+				A variable is defined and initialized with the keyword <code>VAR</code>, followed by the variable name, an optional
+				<code>=</code> symbol (and/or whitespaces) and the value.
+			</p>
+			<p>
+				Later it can be used by just writing the variable's name.
+				The following examples are equivalent. The first one uses variables, the second one doesn't.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.variable }}</div>
+		<div class="cell">
+			<p>
+				As you can see, you can assign a new value to an already defined variable. This works exactly like the initial definition.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Limitations of Variables</h3>
+		</div>
+		<div class="cell">
+			<p>
+				There are some limitations for the usage of variables.
+				<ul>
+					<li>
+						A variable cannot contain any whitespaces.
+					</li>
+					<li>
+						Variables are officially supported to be used in the following locations:
+						<ul>
+							<li>As a channel number in a channel command, or a part of it</li>
+							<li>As a note, rest, chord or percussion ID in a channel command, or a part of it</li>
+							<li>As a duration description in a channel command, or a part of it</li>
+							<li>As an option value (or a part of it) in any command that supports options</li>
+						</ul>
+					</li>
+				</ul>
+				In all other locations you should not use variables. They may work or not. But even if they work, they may not
+				work in a later Midica version any more.
 			</p>
 		</div>
 	</section>
 	<aside>
 		Now you know the most important lowlevel commands of MidicaPL. Please continue with <a href="tutorial-3.html">chapter 3</a> to learn about
-		highlevel syntax like blocks and macros.
+		highlevel syntax like blocks and functions.
 	</aside>
 </div>

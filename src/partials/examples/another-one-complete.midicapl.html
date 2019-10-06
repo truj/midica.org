@@ -1,15 +1,15 @@
-MACRO drum-and-bass
-	INCLUDE bassline
-	INCLUDE drums q=4
+FUNCTION drum-and-bass
+	CALL bassline
+	CALL drums q=4
 END
 
 <span class="red">* time 1/8
 5 a-2 /16  d=30%
 5 g-2 /16
 * time 4/4</span>
-INCLUDE drum-and-bass <span class="blue">multiple</span>
+CALL drum-and-bass <span class="blue">multiple</span>
 <span class="blue">5 -   /1...
 5 a-2 /16
 5 g-2 /16
 *</span>
-INCLUDE drum-and-bass q=2
+CALL drum-and-bass q=2

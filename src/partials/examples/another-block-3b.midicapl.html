@@ -1,4 +1,4 @@
-MACRO bassline
+FUNCTION bassline
 	5 e-2 /4   q=3, d=30%
 	5 -   /8.
 	5 e-2 /16
@@ -9,7 +9,7 @@ MACRO bassline
 	5 -   /2
 END
 
-MACRO drum-and-bass
-	INCLUDE bassline
-	INCLUDE drums q=4
+FUNCTION drum-and-bass
+	CALL bassline
+	CALL drums q=4
 END

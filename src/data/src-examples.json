@@ -83,6 +83,11 @@
 		"m2": "tremolo-2.midicapl",
 		"s": "tremolo.svg"
 	},
+	"shift": {
+		"m": "shift.midicapl",
+		"m2": "shift-2.midicapl",
+		"s": "shift.svg"
+	},
 	"atomic": {
 		"m": "atomic.midicapl",
 		"s": "atomic.svg"
@@ -120,6 +125,11 @@
 	"soundfont": {
 		"m": "soundfont.midicapl"
 	},
+	"variable": {
+		"m": "variable.midicapl",
+		"m2": "variable-2.midicapl",
+		"s": "variable.svg"
+	},
 	"another-one-drum-bass": {
 		"m": "another-one-drum-bass.midicapl"
 	},
@@ -142,6 +152,22 @@
 	"another-one-complete": {
 		"m": "another-one-complete.midicapl",
 		"s": "another-one-complete.svg"
+	},
+	"vivaldi-shift-harpsic": {
+		"m": "vivaldi-shift-harpsic.midicapl",
+		"s": "vivaldi-shift-harpsic.svg"
+	},
+	"vivaldi-shift-variable": {
+		"m": "vivaldi-shift-variable.midicapl"
+	},
+	"vivaldi-param-indexed": {
+		"m": "vivaldi-param-indexed.midicapl"
+	},
+	"vivaldi-param-named": {
+		"m": "vivaldi-param-named.midicapl"
+	},
+	"vivaldi-call-chain": {
+		"m": "vivaldi-call-chain.midicapl"
 	},
 	"another-block": {
 		"m": "another-block.midicapl",
@@ -166,6 +192,10 @@
 	"mambo": {
 		"m": "mambo.midicapl",
 		"s": "mambo.svg"
+	},
+	"shift-block": {
+		"m": "shift-block.midicapl",
+		"s": "shift-block.svg"
 	},
 	"triplet-2": {
 		"m": "triplet-2.midicapl",
@@ -214,13 +244,13 @@
 	"define-3": {
 		"m": "define-3.midicapl"
 	},
-	"include-file": {
-		"m": "include-file-a.midicapl",
-		"m2": "include-file-b.midicapl"
+	"include": {
+		"m": "include-a.midicapl",
+		"m2": "include-b.midicapl"
 	},
-	"include-file-2": {
-		"m": "include-file-2-a.midicapl",
-		"m2": "include-file-2-b.midicapl",
-		"m3": "include-file-2-c.midicapl"
+	"include-2": {
+		"m": "include-2-a.midicapl",
+		"m2": "include-2-b.midicapl",
+		"m3": "include-2-c.midicapl"
 	}
 }
