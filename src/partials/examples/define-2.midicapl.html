@@ -1,19 +1,19 @@
-DEFINE FUNCTION    function{
+DEFINE FUNCTION    function[
 DEFINE DEFINE      def
-def    INSTRUMENTS instr{
-def    END         }
+def    INSTRUMENTS instr[
+def    END         ]
 def    REST        %
 def    CALL        invoke
 
-instr{
+instr[
 	0  VIOLIN  Fiddle
-}
+]
 
-function{ play-c-d-e
+function[ play-c-d-e
 	0  c  /4
 	0  %  /4
 	0  d  /4
 	0  %  /4
 	0  e  /4
-}
+]
 invoke  play-c-d-e  q=2

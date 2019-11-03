@@ -93,18 +93,27 @@
 							stroke-width: 0.40000001;
 							fill: none;
 							stroke-linejoin: bevel;
+							&.v3 {
+								stroke-width: 2;
+							}
 						}
 						&.BarLine {
 							fill: none;
 							stroke: #000000;
 							stroke-width: 0.80000001;
 							stroke-linejoin: bevel;
+							&.v3 {
+								stroke-width: 4;
+							}
 						}
 						&.BarLine25 {
 							fill: none;
 							stroke: #000000;
 							stroke-width: 2.5;
 							stroke-linejoin: bevel;
+							&.v3 {
+								stroke-width: 12.5;
+							}
 						}
 						&.LedgerLine {
 							fill: none;
@@ -112,6 +121,9 @@
 							stroke-width: 0.80000001;
 							stroke-linecap: square;
 							stroke-linejoin: bevel;
+							&.v3 {
+								stroke-width: 4;
+							}
 						}
 						&.Stem {
 							fill: none;
@@ -119,6 +131,9 @@
 							stroke-width: 0.64999998;
 							stroke-linecap: round;
 							stroke-linejoin: bevel;
+							&.v3 {
+								stroke-width: 3.25;
+							}
 						}
 						&.Tuplet {
 							fill: none;
@@ -134,6 +149,13 @@
 							fill: none;
 							stroke: #000000;
 							stroke-width: 0.75;
+							stroke-linejoin: bevel;
+						}
+						&.VoltaSegment {
+							fill: none;
+							stroke: #000000;
+							stroke-width: 2.5;
+							stroke-linecap: square;
 							stroke-linejoin: bevel;
 						}
 						&.blue {

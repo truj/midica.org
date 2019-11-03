@@ -169,6 +169,10 @@
 	"vivaldi-call-chain": {
 		"m": "vivaldi-call-chain.midicapl"
 	},
+	"volta": {
+		"m": "volta.midicapl",
+		"s": "volta.svg"
+	},
 	"another-block": {
 		"m": "another-block.midicapl",
 		"s": "another-block.svg"
@@ -204,6 +208,28 @@
 	"tuplet-2": {
 		"m": "tuplet-2.midicapl",
 		"s": "tuplet.svg"
+	},
+	"volta-2": {
+		"m": "volta-2.midicapl",
+		"s": "volta.svg"
+	},
+	"volta-elsif": {
+		"m": "volta-elsif.midicapl"
+	},
+	"volta-elsif-2": {
+		"m": "volta-elsif-2.midicapl",
+		"s": "volta-elsif-2.svg"
+	},
+	"volta-else": {
+		"m": "volta-else.midicapl"
+	},
+	"volta-defined": {
+		"m": "volta-defined.midicapl",
+		"s": "volta.svg"
+	},
+	"volta-in": {
+		"m": "volta-in.midicapl",
+		"s": "volta-elsif-2.svg"
 	},
 	"meta": {
 		"m": "meta.midicapl",

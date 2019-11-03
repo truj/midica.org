@@ -1,0 +1,22 @@
+CALL section(foo=0)
+CALL section(foo=2)
+CALL section(foo=4)
+
+FUNCTION section
+	0  c  /4
+	0  d  /4
+	0  e  /4
+	0  f  /4
+	{ if ${foo} in 0;1;5;10
+		0  g  /2
+		0  e  /2
+	}
+	{ elsif ${foo} in 2 ; 3
+		0  e  /2
+		0  d  /2
+	}
+	{ else
+		0  d  /2
+		0  e  /2
+	}
+END

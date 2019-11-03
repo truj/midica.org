@@ -203,7 +203,7 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 			</p>
 			<p>
 				The following three examples are equivalent. The first and the last one redefine the symbols for anonymous blocks
-				to be <code>{</code> and <code>}</code> instead of <code>(</code> and <code>)</code>:
+				to be <code>(</code> and <code>)</code> instead of <code>{</code> and <code>}</code>:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.define }}</div>
@@ -224,15 +224,14 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 				for further redefinitions.
 			</p>
 			<p>
-				In this example we redefine the commands <code>FUNCTION</code>, <code>INSTRUMENTS</code> and <code>END</code> to look
-				more like a language derived from C.
+				In this example we redefine the commands <code>FUNCTION</code>, <code>INSTRUMENTS</code> and <code>END</code>.
 			</p>
 			<p>
-				Of cause the new keyword <code>function{</code> must not contain a whitespace. The same applies for <code>instr{</code>.
+				Of cause the new keyword <code>function[</code> must not contain a whitespace. The same applies for <code>instr[</code>.
 			</p>
 			<p>
 				With these changes, we also need to rewrite the <code>INSTRUMENTS</code> block. This is necessary because the old commands
-				<code>INSTRUMENTS</code> and <code>END</code> don't work any more.
+				<code>INSTRUMENTS</code> and <code>END</code> don't exist any more.
 			</p>
 		</div>
 		<div class="cell">
@@ -241,7 +240,7 @@ meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midic
 		<div class="cell">
 			<p>
 				Some redefinitions do not work together. For example the end of a definition block must have a different symbol than the end
-				of an anonymous block. So you cannot change <code>)</code> and <code>END</code> both to become <code>}</code> at the same time.
+				of an anonymous block. So you cannot change <code>}</code> and <code>END</code> to the same value.
 				There are more syntax elements that may not have the same keyword while for others it's ok. Some elements even have the same keyword by default.
 				It's not possible to list all possibilities here. Just be careful with redefinitions and try to avoid conflicts. Or just try out if it works.
 			</p>
