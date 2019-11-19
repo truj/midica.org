@@ -78,6 +78,7 @@
 			{
 				"title": "MidicaPL Tutorial",
 				"url": "/tutorial.html#",
+				"is-tutorial": "true",
 				"menu-items": [
 					{
 						"title": "Preparation",
@@ -100,6 +101,7 @@
 					{
 						"title": "1: Basics",
 						"url": "/tutorial-1.html#",
+						"is-chapter": true,
 						"menu-items": [
 							{
 								"title": "Whitespaces & Comments",
@@ -126,6 +128,7 @@
 					{
 						"title": "2: Improving",
 						"url": "/tutorial-2.html#",
+						"is-chapter": true,
 						"menu-items": [
 							{
 								"title": "Channel Options",
@@ -156,6 +159,7 @@
 					{
 						"title": "3: Structures",
 						"url": "/tutorial-3.html#",
+						"is-chapter": true,
 						"menu-items": [
 							{
 								"title": "Functions",
@@ -186,6 +190,7 @@
 					{
 						"title": "4: Tweaking",
 						"url": "/tutorial-4.html#",
+						"is-chapter": true,
 						"menu-items": [
 							{
 								"title": "Meta Information",
@@ -208,6 +213,7 @@
 					{
 						"title": "5: Effects",
 						"url": "/tutorial-5.html#",
+						"is-chapter": true,
 						"menu-items": []
 					}
 				]

@@ -1,5 +1,10 @@
 .midicapl {
 
+	// quick links on the preparation page
+	ul.quick-links {
+		list-style-type: none;
+	}
+
 	// variables (colors and borders)
 	$midicapl-border-radius: 0.5rem;
 	$midicapl-border-width: 0.15rem;

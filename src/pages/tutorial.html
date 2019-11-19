@@ -9,6 +9,28 @@ meta-title: "MidicaPL Tutorial: Preparation - MIDI Programming Language for Midi
 	</div>
 	<section class="grid-x grid-padding-x" id="start-midica">
 		<div class="cell">
+			<h2>Quick Links</h2>
+		</div>
+		<div class="cell">
+			{{#each menu-items}}
+				{{#each menu-items}}
+					{{#if is-tutorial}}
+						<ul class="quick-links">
+							{{#each menu-items}}
+								{{#if is-chapter}}
+									<li>
+										<a href="{{url}}">
+											Chapter {{title}}
+										</a>
+									</li>
+								{{/if}}
+							{{/each}}
+						</ul>
+					{{/if}}
+				{{/each}}
+			{{/each}}
+		</div>
+		<div class="cell">
 			<h2>Run Midica</h2>
 		</div>
 		<div class="cell">
