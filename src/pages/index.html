@@ -26,6 +26,27 @@ meta-title: Midica - Produce, analyze and play MIDI Sequences
 			</p>
 			<p>
 				You can learn how to develop MIDI music with MidicaPL in the <a href="/tutorial.html">MidicaPL Tutorial</a>.
+				Here are the direct links to the tutorial's chapters:
+			</p>
+			<p>
+				{{#each menu-items}}
+					{{#each menu-items}}
+						{{#if is-tutorial}}
+							<ul class="quick-links">
+								{{#each menu-items}}
+									<li>
+										<a href="{{url}}">
+											{{#if is-chapter}}
+												Chapter
+											{{/if}}
+											{{title}}
+										</a>
+									</li>
+								{{/each}}
+							</ul>
+						{{/if}}
+					{{/each}}
+				{{/each}}
 			</p>
 		</div>
 		<div class="cell">
