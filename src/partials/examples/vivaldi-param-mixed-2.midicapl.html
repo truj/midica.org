@@ -1,0 +1,11 @@
+<span class="red">CALL measure_1-2( ch=0, 0   )</span>
+<span class="blue">CALL measure_1-2( ch=4, -12 )</span>
+CALL measure_1-2( ch=6, 0   ) m
+CALL measure_1-2( ch=6, -12 )
+
+FUNCTION measure_1-2
+	${ch}  g   /16  s=$[1]
+	${ch}  g-  /16  s=$[1], q=11
+	${ch}  f   /16  s=$[1]
+	${ch}  g-  /16  s=$[1], q=11
+END

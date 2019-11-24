@@ -157,7 +157,7 @@
 						]
 					},
 					{
-						"title": "3: Structures",
+						"title": "3: Functions",
 						"url": "/tutorial-3.html#",
 						"is-chapter": true,
 						"menu-items": [
@@ -172,47 +172,54 @@
 							{
 								"title": "Call Parameters",
 								"url": "/tutorial-3.html#params"
-							},
-							{
-								"title": "Nestable Blocks",
-								"url": "/tutorial-3.html#nestable-blocks"
-							},
-							{
-								"title": "Block Options",
-								"url": "/tutorial-3.html#block-options"
-							},
-							{
-								"title": "Conditions",
-								"url": "/tutorial-3.html#conditions"
 							}
 						]
 					},
 					{
-						"title": "4: Tweaking",
+						"title": "4: Blocks",
 						"url": "/tutorial-4.html#",
 						"is-chapter": true,
 						"menu-items": [
 							{
-								"title": "Meta Information",
-								"url": "/tutorial-4.html#meta"
+								"title": "Nestable Blocks",
+								"url": "/tutorial-4.html#nestable-blocks"
 							},
 							{
-								"title": "Constants",
-								"url": "/tutorial-4.html#constants"
+								"title": "Block Options",
+								"url": "/tutorial-4.html#block-options"
 							},
 							{
-								"title": "Redefinitions",
-								"url": "/tutorial-4.html#redefine"
-							},
-							{
-								"title": "File Includes",
-								"url": "/tutorial-4.html#include"
+								"title": "Conditions",
+								"url": "/tutorial-4.html#conditions"
 							}
 						]
 					},
 					{
-						"title": "5: Effects",
+						"title": "5: Tweaking",
 						"url": "/tutorial-5.html#",
+						"is-chapter": true,
+						"menu-items": [
+							{
+								"title": "Meta Information",
+								"url": "/tutorial-5.html#meta"
+							},
+							{
+								"title": "Constants",
+								"url": "/tutorial-5.html#constants"
+							},
+							{
+								"title": "Redefinitions",
+								"url": "/tutorial-5.html#redefine"
+							},
+							{
+								"title": "File Includes",
+								"url": "/tutorial-5.html#include"
+							}
+						]
+					},
+					{
+						"title": "6: Effects",
+						"url": "/tutorial-6.html#",
 						"is-chapter": true,
 						"menu-items": []
 					}

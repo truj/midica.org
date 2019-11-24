@@ -166,8 +166,16 @@
 	"vivaldi-param-named": {
 		"m": "vivaldi-param-named.midicapl"
 	},
+	"vivaldi-param-mixed": {
+		"m": "vivaldi-param-mixed-1.midicapl",
+		"m2": "vivaldi-param-mixed-2.midicapl"
+	},
 	"vivaldi-call-chain": {
 		"m": "vivaldi-call-chain.midicapl"
+	},
+	"london-bridge": {
+		"m": "london-bridge.midicapl",
+		"s": "london-bridge.svg"
 	},
 	"volta": {
 		"m": "volta.midicapl",

@@ -1,0 +1,11 @@
+<span class="red">CALL measure_1-2( 0, transp=0   )</span>
+<span class="blue">CALL measure_1-2( 4, transp=-12 )</span>
+CALL measure_1-2( 6, transp=0   ) m
+CALL measure_1-2( 6, transp=-12 )
+
+FUNCTION measure_1-2
+	$[0]  g   /16  s=${transp}
+	$[0]  g-  /16  s=${transp}, q=11
+	$[0]  f   /16  s=${transp}
+	$[0]  g-  /16  s=${transp}, q=11
+END

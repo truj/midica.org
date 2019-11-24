@@ -1,334 +1,629 @@
 ---
 layout: index
-meta-title: "MidicaPL Tutorial 4: Tweaking - MIDI Programming Language for Midica"
+meta-title: "MidicaPL Tutorial 4: Blocks - MIDI Programming Language for Midica"
 ---
 
 <div class="grid-container midicapl">
 	<div class="grid-x grid-padding-x">
-		<h1 class="cell">MidicaPL Tutorial, Chapter 4: Tweaking</h1>
+		<h1 class="cell">MidicaPL Tutorial, Chapter 4: Blocks</h1>
 	</div>
 	<section class="grid-x grid-padding-x" id="intro">
 		<div class="cell">
 			<p>
-				This is the fourth chapter of the MidicaPL tutorial. Please read chapters <a href="tutorial-1.html">1</a>,
+				This is the fourth chapter of the MidicaPL tutorial. Please read the chapters <a href="tutorial-1.html">1</a>,
 				<a href="tutorial-2.html">2</a> and <a href="tutorial-3.html">3</a> first, if you have not yet done that.
+			</p>
+			<p>
+				In this chapter we will focus on nestable blocks that can be used for different things like loops or conditional executions.
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="meta">
+	<section class="grid-x grid-padding-x" id="nestable-blocks">
 		<div class="cell">
-			<h2>Meta Information</h2>
+			<h2>Nestable Blocks</h2>
+		</div>
+		<div class="cell">
+			<p>
+				Functions are useful to group a number of commands and apply them later using a self-invented name.
+				But sometimes you may want to group commands without inventing a name and execute them directly instead of calling them later.
+				That's where nestable blocks are used.
+			</p>
+			<p>
+				Programming languages also have nestable blocks. Typically they are used for <em>if</em> or <em>else</em> blocks or loops.
+				In MidicaPL a nestable block is opened by a line beginning with <code>{</code> and closed by a line beginning with <code>}</code>.
+			</p>
+			<p>
+				We switch back again to "Another one bites the dust" by "Queen" (see <a href="tutorial-3.html">chapter 3</a>).
+				We rewrite the drums and bass of that song using nestable blocks:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block }}</div>
+		<div class="cell">
+			<p>
+				We formed a block for the bass part and a second one for the drums part. Both blocks are nested inside of another block.
+				The commands are played directly without the need of a function call.
+			</p>
+			<p>
+				But hey... The Bass part is played only once!
+				One quick and dirty way to fix this problem is to use the <code>drums</code> function from chapter 3:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-2 }}</div>
+		<div class="cell">
+			<p>
+				So you see, a function can be called from inside a block as well.
+			</p>
+			<p>
+				On the other hand you can also use blocks inside of a <code>FUNCTION</code>.
+				Let's rewrite the function <code>drum-and-bass</code> using blocks:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-3 }}</div>
+		<div class="cell">
+			<p>
+				These examples are equivalent. The first one uses blocks, the second one doesn't.
+			</p>
+			<p>
+				The version with blocks doesn't need a function for the bass part. However the drums part is needed in both versions.
+				And of cause we could have written the same thing completely without blocks. This was just a demonstration that
+				blocks can be nested inside of functions.
+			</p>
+			<p>
+				Blocks become much more useful when using block options.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="block-options">
+		<div class="cell">
+			<h2>Block Options</h2>
 		</div>
 		<div class="cell medium-6">
 			<p>
-				A MIDI sequence can contain meta information that does not have any effect to the produced sound.
-				In MidicaPL a part of this meta information is implemented with global commands, as you have already
-				learned in chapter <a href="tutorial-1.html">1</a>. This applies to meta information like
-				<em>key signature</em> or <em>time signature</em> that can occur more than once at different time
-				spots within the sequence.
+				Just like <code>CALL</code> commands, nestable blocks can have options as well. The <em>block options</em> table shows the available options.
+				As you can see, the following options are also available as block options:
+				<ul>
+					<li><code>quantity</code> (short version: <code>q</code>)</li>
+					<li><code>multiple</code> (short version: <code>m</code>)</li>
+					<li><code>shift</code> (short version: <code>s</code>)</li>
+					<li><code>if</code> (no short version available)</li>
+				</ul>
 			</p>
 			<p>
-				Other parts of meta information refer to the whole sequence. These parts are included in a
-				META block, beginning with the keyword <code>META</code> and ending with <code>END</code>.
+				Moreover there are also some new options, only available for blocks:
 			</p>
 			<p>
-				Inside a META block you can use any field from the <em>meta fields</em> table. Each line must begin
-				with a field name, followed by whitespaces and a value.
+				<ul>
+					<li><code>tuplet</code> (short version: <code>t</code>)</li>
+					<li><code>elsif</code> (no short version available)</li>
+					<li><code>else</code> (no short version available)</li>
+				</ul>
+			</p>
+			<p>
+				Options can be attached to the opening <code>{</code> or closing <code>}</code> brace, separated by whitespaces.
 			</p>
 		</div>
 		<div class="cell medium-6">
 			<table>
 				<caption>
-					Meta Fields
+					Block Options
 				</caption>
 				<thead>
 					<tr>
-						<th>Field</th>
-						<th>Meaning</th>
+						<th>Long Name</th>
+						<th>Short Name</th>
+						<th>Type</th>
+						<th>Min Value</th>
+						<th>Max Value</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>copyright</td>
-						<td>Copyright or legal information</td>
+						<td>quantity</td>
+						<td>q</td>
+						<td>integer</td>
+						<td>1</td>
+						<td>&infin;</td>
 					</tr>
 					<tr>
-						<td>title</td>
-						<td>Song title</td>
+						<td>multiple</td>
+						<td>m</td>
+						<td>none</td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 					<tr>
-						<td>composer</td>
-						<td>Composer(s) of the song</td>
+						<td>shift</td>
+						<td>s</td>
+						<td>integer</td>
+						<td>-127</td>
+						<td>127</td>
 					</tr>
 					<tr>
-						<td>lyrics</td>
-						<td>Name of the lyricist(s)</td>
+						<td>tuplet</td>
+						<td>t</td>
+						<td>none or string</td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 					<tr>
-						<td>artist</td>
-						<td>Performing musician(s), band or orchestra</td>
+						<td>if</td>
+						<td>-</td>
+						<td>condition</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>elsif</td>
+						<td>-</td>
+						<td>condition</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>else</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-		<div class="cell">{{> src-example src-examples.meta }}</div>
 		<div class="cell">
 			<p>
-				If more than one line is needed, the same field must be defined once for each line.
+				If you want (or must) pass a value to an option, the value must be appended to the option name, separated by a <code>=</code> symbol or whitespace(s).
+			</p>
+				If more than one option is used, they have to be separated by a <code>,</code> symbol.
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.meta-2 }}</div>
-	</section>
-	<section class="grid-x grid-padding-x" id="constant">
 		<div class="cell">
-			<h2>Constants</h2>
+			<h3>Quantity</h3>
 		</div>
 		<div class="cell">
 			<p>
-				In chapter <a href="tutorial-3.html">3</a> you learned how to re-use an arbitrary number of commmands by using functions.
-				But sometimes you may want to re-use very small parts of code &dash; even smaller than a whole command.
-				In this case constants can get useful.
+				The <code>quantity</code> option plays the according block as many times as its value defines.
+				Eventually we are able to rewrite the function <code>drum-and-bass</code> correctly and without needing to define the functions <code>drums</code>
+				and <code>bassline</code>:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-4 }}</div>
+		<div class="cell">
+			<p>
+				These two examples are equivalent. The first example uses the long form <code>quantity</code> and adds it to the <em>opening</em> brace.
+				The second example uses the short form <code>q</code> for the <em>closing</em> brace.
 			</p>
 			<p>
-				A constant looks like a <a href="tutorial-2.html#variables">variable</a>. In the definition you just replace the <code>VAR</code>
-				by a <code>CONST</code>.
+				Another difference is that the second example omits the block around the bass part. This block is optional because without block options it
+				does not do anything special.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Multiple</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>multiple</code> option (short form <code>m</code>) can be used to implement different voices playing in the same channel
+				in the same time.
+				It plays the block content and then moves the end markers of each involved channel to the position they had before the block has been opened.
 			</p>
 			<p>
-				So the definition consists of the following parts:
+				The following example is equivalent to the example we used to explain the <code>multiple</code> option in a function call
+				(<a href="tutorial-3.html#call-m">in chapter 3</a>).
+				But this time we do it completely without functions, only with blocks.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.another-block-m }}</div>
+		<div class="cell">
+			<p>
+				The red part is the anacrusis (upbeat) again. The blue part defines the two notes at the end of the second measure. This is the part with the
+				multiple option.
+			</p>
+			<p>
+				Because  of this option, the following black part starts at the same time like the blue block.
+				This black part is repeated three times.
+			</p>
+			<p>
+				The multiple option is especially useful for music with complex percussion patterns, like in african or latin music.
+				The following example shows a typical Mambo section with different percussion instruments playing different patterns in the same time.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.mambo }}</div>
+		<div class="cell">
+			<p>
+				The tom-tom part uses 2 different tom-tom drums.
+				This pattern is the same in both measures, so the block is repeated by the option <code>q=2</code> at the end of the block.
+				Besides, the option <code>m</code> (multiple) is used to reset the time, so that the next block begins in the same time.
+				So you see how both options can be combined.
+			</p>
+			<p>
+				The bass drum part, marked in blue, only uses the <code>multiple</code> option, here in it's long form. That's needed again because
+				other parts are following that begin in the same time and in the same channel.
+			</p>
+			<p>
+				The bell part defines a mambo bell pattern that is very common in afro-cuban music. Here we use the ride bell but it can also be used with
+				a cow bell or other percussion instruments. This block ends with a multiple option (<code>m</code>) as well because there is still another
+				drum part to follow with the same start time.
+			</p>
+			<p>
+				The last block defines the clave rhythm that's also very typical for latin music like Mambo or Salsa.
+				This block does not contain a <code>multiple</code> option because there is nothing more to follow.
+			</p>
+			<p>
+				All these blocks are nested inside another block with the option <code>q=2</code>, so that everything is repeated.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Shift</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>shift</code> option (short form <code>s</code>) works exactly like the shift option for function calls.
+				It transposes the whole block up or down by an arbitrary number of half tone steps.
+				Nested blocks can have different <code>shift</code> options. In this case, the option values for all surrounding blocks are added up
+				to calculate the resulting shift value.
+			</p>
+			<p>
+				the following example demonstrates this:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.shift-block }}</div>
+		<div class="cell">
+			<p>
+				The first three notes are played 2 octaves lower because the outer block has a <code>shift</code> option of <code>-24</code>.
+			</p>
+			<p>
+				The next three notes are played only one octave lower because the <code>-24</code> of the outer block and the <code>+12</code> of
+				the inner block are added, and the result is <code>-12</code>.
+			</p>
+			<p>
+				The last note has its own shift value of <code>+12</code> which is added as well. The result for this note is <code>0</code>, so
+				the note is not shifted any more.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Tuplet</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>tuplet</code> option (short form <code>t</code>) is used to define that the block content is played as a tuplet.
+				The option can be used without any value. In this case the tuplet is interpreted as a <em>triplet</em>.
+			</p>
+			<p>
+				the following example shows the same triplets that we saw already <a href="tutorial-2.html#triplet">in chapter 2</a>, but this time defined as blocks.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.triplet-2 }}</div>
+		<div class="cell">
+			<p>
+				The blue part is again a nested triplet.
+			</p>
+			<p>
+				Alternatively a value can be passed to the <code>tuplet</code> option. The value consists of two numbers, separated by a <code>:</code>.
+				A triplet could also be defined as <code>tuplet=3:2</code> (or <code>t=3:2</code>).
+			</p>
+			<p>
+				<code>3:2</code> means that the length of each note inside the block is multiplied with 2/3.
+			</p>
+			<p>
+				Or, more generally, X:Y means that each note length inside the block is multiplied with Y/X.
+			</p>
+			<p>
+				The next example shows the same tuplet example we have seen <a href="tutorial-2.html#tuplet">in chapter 2</a>, but this time using block options.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.tuplet-2 }}</div>
+		<div class="cell">
+			<p>
+			</p>
+		</div>
+		<div class="cell" id="block-if">
+			<h3>If</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>if</code> option can be used to execute a block only under a certain condition.
+				This transforms the block into something like an <em>if</em> block in other programming languages.
+				The following example is equivalent to the example we used for <code>if</code> <a href="tutorial-3.html#call-if">as a call option</a>.
+				But this time we don't need any further function for the volta brackets (like
+				<code>first-ending</code> or <code>second-ending</code>):
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.volta-2 }}</div>
+		<div class="cell">
+			<p>
+				Another difference is that now we use parameters instead of global variables. We could not do that while
+				explaining <code>if</code> as a CALL option because we didn't learn how to use parameters at that time.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Elsif</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <code>elsif</code> option can be used for a block <em>after</em> another block with the <code>if</code> option.
+				It has its own condition.
+				The <code>elsif</code> block is only executed, if:
 				<ul>
-					<li><code>CONST</code> (the constant definition command)</li>
-					<li>The constant name, beginning with a <code>$</code> symbol</li>
-					<li>An optional <code>=</code> symbol. (If ommitted, whitespaces must be used instead. Otherwise whitespaces <em>may</em> be used anyway.)</li>
-					<li>The value of the constant.</li>
+					<li>The preceeding block is <em>not</em> executed (because it's <code>if</code> condition if false); <em>and</em></li>
+					<li>The condition of the <code>elsif</code> option is true.</li>
 				</ul>
-			</p>
-			<p>
-				The constant name must begin with a <code>$</code> but apart from that it must only contain alphanumeric characters or underscores.
-			</p>
-			<p>
-				The value of a constant can be any part of another command, or even a whole command line.
-				In order to use it, you just write the constant name to the right place.
-				The following three examples are equivalent:
+				Here's a rewrite of the previous example with an <code>elsif</code>:
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.const }}</div>
-		<div class="cell">
-			<p>
-				The first example first defines the constants and then uses them.
-			</p>
-			<p>
-				The second example shows like the same source would look like, if no constants were used.
-			</p>
-			<p>
-				The third example first uses the constants and defines them later. This is possible because the Midica parser interprets
-				constant definitions before channel or global commands.
-			</p>
-		</div>
-		<div class="cell">
-			<p>
-				Constants themselves can also consist of other constants. In this case the inner constant must be defined before the outer constant.
-				The following two examples are equivalent.
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.const-2 }}</div>
-		<div class="cell">
-			<p>
-				The first example first defines the simple constants <code>$forte</code> (a velocity option) and <code>$drum</code>
-				(two percussion instruments: a basedrum and an open triangle).
-			</p>
-			<p>
-				Then it defines <code>$drumroll</code> which contains the percussion instruments from <code>$drum</code>,
-				a note length and a tremolo option.
-			</p>
-			<p>
-				<code>$play_dr</code> combines the constants from above to a channel command, to be played in channel 9.
-			</p>
-			<p>
-				The last line finally executes this combined channel command.
-			</p>
-		</div>
-		<div class="cell">
-			<h3>Constants and Variables</h3>
-		</div>
-		<div class="cell">
-			<p>
-				At first glance, a constant looks pretty similar to a variable. However there are some important differences:
-			</p>
-			<ul>
-				<li>
-					The constant definition key word is <code>CONST</code> instead of <code>VAR</code>.
-				</li>
-				<li>
-					A constant can be defined only once. The same constant name cannot be redefined any more.
-				</li>
-				<li>
-					Constants can be defined after using them - just like functions that can be called before they their definition.
-				</li>
-				<li>
-					Most limitations for varibales don't apply for constants. E.g. they may contain whitespaces.
-					So they can cover several parts of a command.
-				</li>
-			</ul>
-		</div>
-	</section>
-	<section class="grid-x grid-padding-x" id="define">
-		<div class="cell">
-			<h2>Redefinitions</h2>
-		</div>
-		<div class="cell">
-			<p>
-				The commands and other syntax symbols can be configured to be lower-, mixed- or upper-cased.
-				But maybe you are completely unhappy with the used keywords and symbols.
-				In this case you can redefine a syntax element with the <code>DEFINE</code> command.
-			</p>
-			<p>
-				Each syntax element has an ID which can be found in the <em>Syntax</em> table.
-				You can see the table after clicking <a href="screenshots.html#info-config">Info &amp; Configuration Details > Configuration > Syntax</a>.
-				Or in <a data-open="screenshot-syntax-ids">this Screenshot</a>.
-			</p>
-			<div class="reveal large" id="screenshot-syntax-ids" data-reveal>
-				<div>
-					<button class="close-button" data-close aria-label="Close" type="button">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<br />
-				</div>
-				<div>
-					<img src="assets/img/info_conf_syntax.png" />
-				</div>
-			</div>
-			<p>
-				The <code>DEFINE</code> command needs the ID of the syntax element to be redefined as the first argument.
-				The new value must be provided as the second argument.
-			</p>
-			<p>
-				The following three examples are equivalent. The first and the last one redefine the symbols for anonymous blocks
-				to be <code>(</code> and <code>)</code> instead of <code>{</code> and <code>}</code>:
-			</p>
-		</div>
-		<div class="cell">{{> src-example src-examples.define }}</div>
-		<div class="cell">
-			<p>
-				As you can see in the third example, redefinitions can be written after using them.
-				This is possible because Midica parses <code>DEFINE</code> commands before everything else.
-			</p>
-			<p>
-				The <code>DEFINE</code> command itself can also be redefined. In this case the order of redefinition commands is important,
-				as the following example demonstrates:
-			</p>
-		</div>
-		<div class="cell medium-shrink">{{> src-example src-examples.define-2 }}</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.volta-elsif }}</div>
 		<div class="cell medium-auto">
 			<p>
-				The <code>DEFINE</code> command is redefined to <code>def</code>. From this moment on, the new version <code>def</code> can be used
-				for further redefinitions.
+				The <code>if</code> option in the second block is now replaced by an <code>elsif</code>.
+				The condition of the <code>elsif</code> is now <code>${part} > 0</code>. That means, the condition is true, if
+				the parameter <code>part</code> is a number higher than 0.
 			</p>
 			<p>
-				In this example we redefine the commands <code>FUNCTION</code>, <code>INSTRUMENTS</code> and <code>END</code>.
+				In the first call, the <code>if</code> block is executed. The <code>elsif</code> condition is also true, but as
+				the first block is executed, the second one is skipped anyway.
 			</p>
 			<p>
-				Of cause the new keyword <code>function[</code> must not contain a whitespace. The same applies for <code>instr[</code>.
-			</p>
-			<p>
-				With these changes, we also need to rewrite the <code>INSTRUMENTS</code> block. This is necessary because the old commands
-				<code>INSTRUMENTS</code> and <code>END</code> don't exist any more.
+				In the second call, the <code>if</code> block is skipped. So the <code>elsif</code> condition is evaluated, and because it's true,
+				the second block is executed.
 			</p>
 		</div>
 		<div class="cell">
-			<h3>Limits of Redefinitions</h3>
+			<p>
+				You can also add more elsif blocks. Each block is only executed if:
+				<ul>
+					<li>None of the preceeding <code>if</code> or <code>elsif</code> blocks is executed (because their conditions are all false); <em>and</em></li>
+					<li>The condition of the block's <code>elsif</code> option is true.</li>
+				</ul>
+				Here's an example of such an if-elsif chain:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.volta-elsif-2 }}</div>
+		<div class="cell">
+			<h3>Else</h3>
 		</div>
 		<div class="cell">
 			<p>
-				Some redefinitions do not work together. For example the end of a definition block must have a different symbol than the end
-				of an anonymous block. So you cannot change <code>}</code> and <code>END</code> to the same value.
-				There are more syntax elements that may not have the same keyword while for others it's ok. Some elements even have the same keyword by default.
-				It's not possible to list all possibilities here. Just be careful with redefinitions and try to avoid conflicts. Or just try out if it works.
+				After a nestable block with an <code>if</code> or <code>elsif</code> option, you can add another
+				block with the option <code>else</code>.
+				This option does not have its own condition.
+				The <code>else</code> block is only executed if none of the preceeding <code>if</code> or <code>elsif</code> blocks
+				is executed.
 			</p>
 			<p>
-				You also have to make sure that your redefinitions don't conflict with other elements like note names or percussion instruments.
-				For example if you redefine the comment symbol to become <code>#</code> instead of <code>//</code>, you must configure your
-				<a data-open="screenshot-halftone">Half Tone Symbol</a> accordingly.
-				The default half tone symbol can contain a <code>#</code> inside of a note name. So this combination won't work.
-				<div class="reveal large" id="screenshot-halftone" data-reveal>
-					<div>
-						<button class="close-button" data-close aria-label="Close" type="button">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<br />
-					</div>
-					<div>
-						<img src="assets/img/config_3_halftone.png" />
-					</div>
-				</div>
+				This enables us to rewrite the <code>if</code> <a href="#block-if">example</a> with only one condition check:
 			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.volta-else }}</div>
+		<div class="cell medium-auto">
 			<p>
-				The following three syntax elements can still be used in their original form after being redefined:
+				The <code>if</code> block is executed in the first call, while in the second call the <code>else</code> block is executed.
 			</p>
 		</div>
-		<div class="cell medium-shrink">
-			<ul>
-				<li><code>COMMENT</code></li>
-				<li><code>DEFINE</code></li>
-				<li><code>INCLUDE</code></li>
-			</ul>
-		</div>
-		<div class="cell auto">
-			That means you cannot redefine another command to become one of these three keywords. It also means that after redefining one of these
-			three commands, you may use either the old keyword or the new one. The following example demonstrates this:
-		</div>
-		<div class="cell"></div>
-		<div class="cell">{{> src-example src-examples.define-3 }}</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="include">
+	<section class="grid-x grid-padding-x" id="conditions">
 		<div class="cell">
-			<h2>File Includes</h2>
+			<h2>Conditions</h2>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				The <code>if</code> or <code>elsif</code> options require a condition, as you learned before.
+				There are several types of conditions, like the <em>Conditions</em> table shows.
+			</p>
+			<p>
+				All conditions use an operator, apart from the <em>defined</em> condition.
+			</p>
+			<p>
+				Most of the operators expect two values, one of the left side and one of the right side of the operator.
+			</p>
+			<p>
+				Some operators expect only one value.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Conditions
+				</caption>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Operator</th>
+						<th>Left value</th>
+						<th>Right value</th>
+						<th>Type</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>equal</td>
+						<td><code>==</code></td>
+						<td>string or number</td>
+						<td>string or number</td>
+						<td>binary</td>
+					</tr>
+					<tr>
+						<td>not equal</td>
+						<td><code>!=</code></td>
+						<td>string or number</td>
+						<td>string or number</td>
+						<td>binary</td>
+					</tr>
+					<tr>
+						<td>lower</td>
+						<td><code>&lt;</code></td>
+						<td>integer</td>
+						<td>integer</td>
+						<td>binary</td>
+					</tr>
+					<tr>
+						<td>greater</td>
+						<td><code>&gt;</code></td>
+						<td>integer</td>
+						<td>integer</td>
+						<td>binary</td>
+					</tr>
+					<tr>
+						<td>lower or equal</td>
+						<td><code>&lt;=</code></td>
+						<td>integer</td>
+						<td>integer</td>
+						<td>binary</td>
+					</tr>
+					<tr>
+						<td>greater or equal</td>
+						<td><code>&gt;=</code></td>
+						<td>integer</td>
+						<td>integer</td>
+						<td>binary</td>
+					</tr>
+					<tr>
+						<td>defined</td>
+						<td>none</td>
+						<td>none</td>
+						<td>parameter</td>
+						<td>unary</td>
+					</tr>
+					<tr>
+						<td>not defined</td>
+						<td><code>!</code></td>
+						<td>none</td>
+						<td>parameter</td>
+						<td>unary</td>
+					</tr>
+					<tr>
+						<td>in</td>
+						<td><code>in</code></td>
+						<td>string or number</td>
+						<td>list</td>
+						<td>binary</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cell">
+			<h3>equal condition (==)</h3>
 		</div>
 		<div class="cell">
 			<p>
-				Program languages allow to re-use code from other files - modules or libraries. The same is possible in MidicaPL.
-				In order to include a file, you need the <code>INCLUDE</code> command. The only argument is the path to the included file.
-				The file path can be absolute or relative to the file that contains the <code>INCLUDE</code> command.
-			</p>
-			<p>
-				Imagine, you are programming music for a latino band and in their repertoire they have music like Salsa, Bachata, Merengue and so on.
-				Then you could create one include file for each category of music. The following example shows a possible include file for Salsa songs.
-				The first example is the include file, and the second file includes and uses the first file.
+				The <em>equal</em> condition uses the operator <code>==</code>. It compares the left
+				value with the the right one. If both values are equal, the condition is true. Otherwise it's false.
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.include }}</div>
+		<div class="cell">
+			<h3>not equal condition (!=)</h3>
+		</div>
 		<div class="cell">
 			<p>
-				The first file includes a soundfont that's specialized in Latin music (or maybe even more specialized in Salsa).
-				Then follows the <code>INSTRUMENTS</code> block that can be quite large in a Salsa band.
-				The function <code>clave</code> defines the clave rhythm that's very typical for Salsa.
-			</p>
-			<p>
-				The second file uses these definitions to create a song.
-			</p>
-			<p>
-				An included file can also be used for syntax redefinitions or to create constants you often use.
-				The following example shows two include files for Bachata songs of your latino band:
+				The <em>not equal</em> condition uses the operator <code>!=</code>. It compares the left
+				value with the the right one. If both values are equal, the condition is false. Otherwise it's true.
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.include-2 }}</div>
+		<div class="cell">
+			<h3>lower condition (&lt;)</h3>
+		</div>
 		<div class="cell">
 			<p>
-				The first file redefines some syntax elements and creates a few constants.
+				The <em>lower</em> condition uses the operator <code>&lt;</code>. It expects both values to be numbers.
+				If the left number is lower than the right one, the condition is true. Otherwise, it's false.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>greater condition (&gt;)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <em>greater</em> condition uses the operator <code>&gt;</code>. It expects both values to be numbers.
+				If the left number is higher than the right one, the condition is true. Otherwise, it's false.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>lower or equal condition (&lt;=)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <em>lower or equal</em> condition uses the operator <code>&lt;=</code>. It expects both values to be numbers.
+				If the left number is lower than <em>or equal to</em> the right one, the condition is true. Otherwise, it's false.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>greater or equal condition (&gt;=)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <em>greater or equal</em> condition uses the operator <code>&gt;=</code>. It expects both values to be numbers.
+				If the left number is higher than <em>or equal to</em> the right one, the condition is true. Otherwise, it's false.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>defined condition</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <em>defined</em> condition does not use any operator. It expects a call parameter as the only value.
+				If the parameter has been provided with the <code>CALL</code> command, the condition is true. Otherwise it's false.
 			</p>
 			<p>
-				The second file uses these definitions to create the instruments for Bachata as well as the typical bongo rhythm
-				that's used in most Bachata songs. As you can see, Juan switches from the piano to the guitar.
-				And Alejandro is the now singing because the voice part in Bachata songs is typically a male part.
+				Here's an example:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.volta-defined }}</div>
+		<div class="cell medium-auto">
+			<p>
+				The parameter <code>foo</code> is only provided in the first call.
+				Then the <code>if</code> block is executed. In the second call <code>${foo}</code> is undefined, and so
+				the <code>else</code> block is executed.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>not defined condition (!)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <em>not defined</em> condition uses the operator <code>!</code>. It expects a call parameter as the only value,
+				on the right side of the operator.
+				If the parameter has been provided with the <code>CALL</code> command, the condition is false. Otherwise it's true.
 			</p>
 			<p>
-				The third file uses the definitions from the first and second file. Note that it only includes the file
-				<code>bachata.midica</code> directly but not <code>definitions.midica</code>. However the latter one is included by
-				<code>bachata.midica</code> so it can be used in the third file as well.
+				Summing up, it's the opposite of the <em>defined</em> condition.
+			</p>
+			<p>
+				Example: <code>if ! ${foo}</code>
+			</p>
+			<p>
+				This would be executed if the containing function has been called <em>without</em> a parameter <code>foo=...</code>
+			</p>
+		</div>
+		<div class="cell">
+			<h3>in condition (in)</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The <em>in</em> condition uses the operator <code>in</code>. It expects a simple value or variable or parameter on the left side.
+				On the right side it expects a list of values, variables or parameters, separated by <code>;</code>. Additional whitespaces are allowed
+				but not required.
+			</p>
+			<p>
+				The operator compares the left value with all values of the right side. If the left value is equal to one of the list's elements,
+				the condition is true. Otherwise it's false.
+			</p>
+			<p>
+				Here's an example:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.volta-in }}</div>
+		<div class="cell">
+			<p>
+				The <code>if</code> block is executed in the first call, because then <code>${foo}</code> is 0, which is in the list <code>0;1;5;10</code>.
+			</p>
+			<p>
+				The <code>elsif</code> block is executed in the second call, when <code>${foo}</code> is 2, which is <em>not</em> in the first list.
+				But 2 is an element of the list <code>2 ; 3</code>, so the <code>elsif</code> condition is true.
+			</p>
+			<p>
+				In the third call, <code>${foo}</code> is 4, which is in neither of the lists. So the <code>else</code> block is executed.
 			</p>
 		</div>
 	</section>
 	<aside>
-		<a href="tutorial-5.html">Chapter 5</a> will explain how to use sound effects. However, this chapter does not yet exist,
-		as sound effects are not yet implemented in Midica.
+		In <a href="tutorial-5.html">chapter 5</a> you will learn how to use meta data, as well as file includes and how to tweak MidicaPL itself.
 	</aside>
 </div>
