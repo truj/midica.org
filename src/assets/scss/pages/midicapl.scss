@@ -36,6 +36,14 @@
 		thead {
 			background-color: $table-header-color;
 		}
+		tbody {
+			tr {
+				th {
+					padding-top: 1.5rem;
+					text-align: left;
+				}
+			}
+		}
 		caption {
 			background-color: $midicapl-header-bgcolor;
 			border: $midicapl-border-width solid $box-color;

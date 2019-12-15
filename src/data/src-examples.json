@@ -247,6 +247,16 @@
 		"m": "meta-2.midicapl",
 		"t": "meta-2.t"
 	},
+	"softkaraoke": {
+		"m": "softkaraoke.midicapl",
+		"t": "softkaraoke.t"
+	},
+	"softkaraoke-2": {
+		"m": "happy-birthday-4.midicapl",
+		"m2": "happy-birthday-3.midicapl",
+		"s": "happy-birthday-3.svg",
+		"i": "happy-birthday-3.png"
+	},
 	"set-time": {
 		"m": "set-time.midicapl"
 	},

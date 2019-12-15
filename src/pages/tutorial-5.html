@@ -84,6 +84,140 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 		</div>
 		<div class="cell">{{> src-example src-examples.meta-2 }}</div>
 	</section>
+	<section class="grid-x grid-padding-x" id="softkaraoke">
+		<div class="cell">
+			<h2>Soft Karaoke</h2>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				You already know how to create karaoke files. The method we learned so far produces MIDI Karaoke in the officially recommended format.
+				But unfortunately this format is rarely used. Most MIDI files with lyrics use a format called <em>Soft Karaoke</em>.
+			</p>
+			<p>
+				Soft Karaoke supports some more meta fields than the official standard. In the lyrics it uses some
+				special characters for special purposes.
+			</p>
+			<p>
+				You can find the Soft Karaoke fields in the table <em>Soft Karaoke</em>.
+			</p>
+			<p>
+				In order to use Soft Karaoke, you have to define a block inside of the meta block. This inner block starts with
+				<code>SOFT_KARAOKE</code> and ends with <code>END</code>. Inside this block you can define the Soft Karaoke specific meta fields.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Soft Karaoke
+				</caption>
+				<thead>
+					<tr>
+						<th>Field</th>
+						<th>Meaning</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>version</td>
+						<td>Format version (e.g. 0100)</td>
+					</tr>
+					<tr>
+						<td>language</td>
+						<td>Language of the lyrics.</td>
+					</tr>
+					<tr>
+						<td>title</td>
+						<td>Title of the song</td>
+					</tr>
+					<tr>
+						<td>author</td>
+						<td>Author of the MIDI file or song</td>
+					</tr>
+					<tr>
+						<td>copyright</td>
+						<td>Copyright or further information</td>
+					</tr>
+					<tr>
+						<td>info</td>
+						<td>Additional information (may appear multiple times)</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cell">
+			<p>
+				The following example shows a complete <code>META</code> block including a nested <code>SOFT_KARAOKE</code> block:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.softkaraoke }}</div>
+		<div class="cell">
+			<p>
+				So you can see how regular meta fields and Soft Karaoke fields can be mixed.
+				Some fields need a bit more explanation:
+			</p>
+			<ul>
+				<li>
+					<em>version</em> is available in MidicaPL only for completeness reasons. Actually using it does not make much sense.
+				</li>
+				<li>
+					For the <em>language</em> field, <em>ENGL</em> is the only specified language identifier (meaning <em>english</em>).
+					For other languages you could use your own abbreviation or write out the full language name but this is not specified.
+					However most authors write the language name or abbreviation in upper-case. E.g. <em>FREN</em> for the french language, or
+					<em>CHINESE</em>.
+				</li>
+				<li>
+					<em>title</em> and <em>copyright</em> exist in both formats (regular and Soft Karaoke). This makes them redundant.
+				</li>
+				<li>
+					<em>info</em> is the only Soft Karaoke related meta field that you can use more than once. The other fields may appear only
+					once and so each of these fields can only contain one single line. That's why in the <em>author</em> field the two authors are
+					separated with a comma instead of a new line (like in <em>composer</em>).
+				</li>
+			</ul>
+		</div>
+		<div class="cell">
+			<h3>Lyrics in Soft Karaoke</h3>
+		</div>
+		<div class="cell">
+			<p>
+				If you use Soft Karaoke, there are certain rules and special characters for the syllables:
+			</p>
+			<ul>
+				<li>The special characters for a space <code>_</code> or a comma <code>\c</code> are still valid, like in the regular karaoke format.</li>
+				<li>However the characters for a carriage return <code>\r</code> or line feed <code>\n</code> are forbidden.</li>
+				<li>A new paragraph is added using a <code>\</code> character at the beginning of the syllable.</li>
+				<li>A new line is added using a <code>/</code> character at the beginning of the syllable.</li>
+			</ul>
+			<p>
+				The meaning of <code>\</code> is clearing the screen before adding the next lines (starting with the current syllable).
+				However in the Midica Player it only has the same effect as two line breaks.
+			</p>
+			<p>
+				There are some more rules Midica doesn't care about. But if you want to produce a Soft Karaoke file and process it with a different
+				software later on, you should care about them:
+			</p>
+			<ul>
+				<li>The very first syllable in the song should begin with a <code>\</code>.</li>
+				<li>
+					One paragraph should not have more than 3 lines. That means:
+					Between two syllables beginning with <code>\</code> there should be no more than two syllables beginning with <code>/</code>.
+				</li>
+				<li>
+					Spaces (<code>_</code>) should not be placed at the end of a word's last syllable but at the beginning of the next word's first syllable.
+				</li>
+			</ul>
+			<p>
+				The following examples produce the same notes and lyrics. But the first one uses Soft Karaoke while the second one uses the standard format:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.softkaraoke-2 }}</div>
+		<div class="cell">
+			<p>
+				As you can see, the <code>SOFT_KARAOKE</code> block only needs to exist in order to use this format. But all fields are optional.
+				In this example the block is completely empty.
+			</p>
+		</div>
+	</section>
 	<section class="grid-x grid-padding-x" id="constant">
 		<div class="cell">
 			<h2>Constants</h2>
