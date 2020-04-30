@@ -296,5 +296,77 @@
 		"m": "include-2-a.midicapl",
 		"m2": "include-2-b.midicapl",
 		"m3": "include-2-c.midicapl"
+	},
+	"pattern-do-nothing": {
+		"m": "pattern-do-nothing.midicapl"
+	},
+	"pattern-do-something": {
+		"m": "pattern-do-something.midicapl",
+		"m2": "pattern-do-something-2.midicapl",
+		"s": "pattern-do-something.svg"
+	},
+	"pattern-house": {
+		"m": "pattern-house.midicapl",
+		"s": "pattern-house.svg"
+	},
+	"pattern-house-2": {
+		"m": "pattern-house-2.midicapl",
+		"s": "pattern-house-2.svg"
+	},
+	"pattern-travis": {
+		"m": "pattern-travis.midicapl",
+		"m2": "pattern-travis-2.midicapl",
+		"s": "pattern-travis.svg"
+	},
+	"pattern-dust": {
+		"m": "pattern-dust.midicapl",
+		"s": "pattern-dust.svg"
+	},
+	"pattern-rest": {
+		"m": "pattern-rest.midicapl",
+		"s": "pattern-rest.svg"
+	},
+	"pattern-block": {
+		"m": "pattern-block.midicapl",
+		"m2": "pattern-block-2.midicapl",
+		"s": "pattern-block.svg"
+	},
+	"pattern-arpeggio": {
+		"m": "pattern-arpeggio.midicapl",
+		"s": "pattern-arpeggio.svg"
+	},
+	"pattern-velo-dur": {
+		"m": "pattern-velo-dur.midicapl",
+		"s": "pattern-velo-dur.svg"
+	},
+	"pattern-inline": {
+		"m": "pattern-inline.midicapl",
+		"s": "pattern-inline.svg"
+	},
+	"pattern-downstroke": {
+		"m": "pattern-downstroke.midicapl",
+		"s": "pattern-downstroke.svg"
+	},
+	"pattern-downstroke-2": {
+		"m": "pattern-downstroke-2.midicapl",
+		"s": "pattern-downstroke.svg"
+	},
+	"pattern-nested": {
+		"m": "pattern-nested.midicapl",
+		"s": "pattern-nested.svg"
+	},
+	"pattern-params": {
+		"m": "pattern-params-index.midicapl",
+		"m2": "pattern-params-name.midicapl",
+		"s": "pattern-params.svg"
+	},
+	"pattern-params-downstroke": {
+		"m": "pattern-params-downstroke.midicapl",
+		"s": "pattern-params-downstroke.svg"
+	},
+	"pattern-house-3": {
+		"m": "pattern-house-3.midicapl",
+		"m2": "pattern-house-2.midicapl",
+		"s": "pattern-house-2.svg"
 	}
 }

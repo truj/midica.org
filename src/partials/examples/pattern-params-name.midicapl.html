@@ -1,0 +1,19 @@
+CHORD cmaj c-  e- g- c
+CHORD amin a-2 e- a- c
+
+PATTERN upstroke
+	{ m
+		0   ${len}   m
+		-   ${dist}
+		1   ${len}   m
+		-   ${dist}
+		2   ${len}   m
+		-   ${dist}
+		3   ${len}   m
+	}
+	-       ${len}
+END
+
+0 cmaj upstroke( len = /1, dist = /8 )
+0 cmaj upstroke(len=/4, dist=/32)  q=2
+0 amin upstroke(dist=/32, len=/8)  q=4

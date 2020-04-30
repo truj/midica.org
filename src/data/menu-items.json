@@ -222,8 +222,39 @@
 						]
 					},
 					{
-						"title": "6: Effects",
+						"title": "6: Patterns",
 						"url": "/tutorial-6.html#",
+						"is-chapter": true,
+						"menu-items": [
+							{
+								"title": "Patterns",
+								"url": "/tutorial-6.html#patterns"
+							},
+							{
+								"title": "Pattern Block",
+								"url": "/tutorial-6.html#pattern-block"
+							},
+							{
+								"title": "Pattern Options",
+								"url": "/tutorial-6.html#options"
+							},
+							{
+								"title": "Inline Chords",
+								"url": "/tutorial-6.html#inline-chords"
+							},
+							{
+								"title": "Nested Patterns",
+								"url": "/tutorial-6.html#nested-patterns"
+							},
+							{
+								"title": "Parameters",
+								"url": "/tutorial-6.html#pattern-parameters"
+							}
+						]
+					},
+					{
+						"title": "7: Effects",
+						"url": "/tutorial-7.html#",
 						"is-chapter": true,
 						"menu-items": []
 					}

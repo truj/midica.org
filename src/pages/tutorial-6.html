@@ -1,29 +1,441 @@
 ---
 layout: index
-meta-title: "MidicaPL Tutorial 6: Sound Effects - Music Programming Language for Midica"
-meta-desc:  "Use sound effects like Pan, Balance, Aftertouch, Modulation, Expression and so on."
+meta-title: "MidicaPL Tutorial 6: Patterns - Music Programming Language for Midica"
+meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking patterns."
 ---
 
 <div class="grid-container midicapl">
 	<div class="grid-x grid-padding-x">
-		<h1 class="cell">MidicaPL Tutorial, Chapter 5: Sound Effects</h1>
+		<h1 class="cell">MidicaPL Tutorial, Chapter 6: Patterns</h1>
 	</div>
 	<section class="grid-x grid-padding-x" id="intro">
 		<div class="cell">
 			<p>
-				This is the fifth chapter of the MidicaPL tutorial. Please read the chapters <a href="tutorial-1.html">1</a> to
-				<a href="tutorial-4.html">4</a> first, if you have not yet done that.
+				This chapter explains how to implement and use musical patterns, like finger picking and the like.
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="sound-effect-intro">
+	<section class="grid-x grid-padding-x" id="patterns">
 		<div class="cell">
-			<h2>Sound effects</h2>
+			<h2>Patterns</h2>
 		</div>
 		<div class="cell medium-6">
 			<p>
-				Unfortunately sound effects are not yet implemented. Please be patient.
+				A pattern is a way how to play a given chord, or to be more general, a certain set of notes.
+				The chord may change but the pattern stays the same.
+			</p>
+			<p>
+				An example can be a certain guitar picking pattern. The right hand of the guitar player plays the same pattern
+				while the left hand frets different chords.
+			</p>
+			<p>
+				In order to use a pattern, it must be defined somewhere. It can be defined before or after using it, just like a function.
+			</p>
+			<p>
+				A pattern definition is a block beginning with the keyword <code>PATTERN</code>, followed by whitespace(s) and a pattern name.
+				The block ends with the keyword <code>END</code>.
+			</p>
+			<p>
+				Later it's used inside of a normal channel command, instead of a note length.
+			</p>
+			<p>
+				The following example defines an empty pattern called <code>do_nothing</code>.
+				This pattern is used later with different chords.
+			</p>
+		</div>
+		<div class="cell medium-6">{{> src-example src-examples.pattern-do-nothing }}</div>
+		<div class="cell">
+			<p>
+				However this whole code does not produce any sound because the pattern is empty and does nothing with the chords.
+				We will change that in the next section.
 			</p>
 		</div>
 	</section>
+	<section class="grid-x grid-padding-x" id="pattern-block">
+		<div class="cell">
+			<h2>Pattern Block</h2>
+		</div>
+		<div class="cell">
+			<p>
+				A pattern block contains information what to do with the chord. It can consist of:
+			</p>
+			<ul>
+				<li>lines producing a note</li>
+				<li>lines producing a sub chord</li>
+				<li>lines producing a rest</li>
+				<li>nestable blocks</li>
+				<li>nested patterns</li>
+			</ul>
+		</div>
+		<div class="cell">
+			<h3>Notes in a Pattern</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The most important content of a pattern is the information what to do with a single note of the chord.
+				Therefore it's important to know that each note of the chord must be addressed by a <em>note index</em>.
+			</p>
+			<p>
+				The notes in the chord are sorted by pitch, from low to high. The lowest note has <em>note index</em> 0.
+			</p>
+			<p>
+				Let's investigate the following chord:
+			</p>
+			<p>
+				<code>CHORD amin a-2 e- a- c e</code>
+			</p>
+			<p>
+				In this case, <code>a-2</code> has note index 0, <code>e-</code> has index 1, <code>a-</code> has index 2, <code>c</code> has index 3
+				and <code>e</code> has index 4.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				A regular pattern line consists of the following elements, separated by white space(s):
+			</p>
+			<ul>
+				<li>note index</li>
+				<li>note length</li>
+				<li>options (optional)</li>
+			</ul>
+			<p>
+				With this knowledge we try to change the above 'do nothing' example to something else: The first bar of "House of the Rising Sun".
+				The following two examples are equivalent. The first one uses the pattern, the second one doesn't.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-do-something }}</div>
+		<div class="cell">
+			<p>
+				We renamed the pattern from <code>do_nothing</code> to <code>basic</code> because now it's actually doing something.
+				Then we defined what to do with the A minor chord. As we only care about the first bar here, we didn't need more chords so far.
+			</p>
+			<p>
+				The colors make clear where which part comes from.
+				The channel (marked in blue) is only defined in the channel command <code>0 amin basic</code>.
+				The pattern itself doesn't contain a channel. (It could be used from several channels.)
+				The note indices are marked in red. In the second example you see how the indices are translated into notes.
+			</p>
+			<p>
+				Now we want to add the next three bars. So we just add the missing chords again and apply the pattern on them.
+				But we leave the pattern definition unchanged:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-house }}</div>
+		<div class="cell">
+			<p>
+				It already sounds pretty well like the original song. But if you are really picky and listen carefully, you may notice that
+				only the first two bars are correct.
+				The 3rd and 4th bar need a slightly different pattern. We will implement it with the name <code>alternate</code>:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-house-2 }}</div>
+		<div class="cell">
+			<h3>Chords in a Pattern</h3>
+		</div>
+		<div class="cell">
+			<p>
+				A pattern can also contain a chord, consisting of more than one note in a line. Instead of comma-separating note names,
+				like in normal channel commands, the note indices must be comma-separated to achieve that.
+				The following examples show how that works. The first example uses a chord inside of a pattern, while the second one shows
+				how this very same thing looks with normal channel commands:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-travis }}</div>
+		<div class="cell">
+			<p>
+				This pattern is called <code>travis</code> because it implements the famous <em>Travis Pattern</em>, a finger picking pattern
+				named after Merle Travis.
+			</p>
+			<p>
+				The note indices <code>0,3</code>, marked in blue, are translated to the chord <code>c-,c</code>.
+			</p>
+			<p>
+				In order to create the first 8 bars of "Dust in the wind", we only need to add a few more chords and use this pattern with them:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-dust }}</div>
+		<div class="cell">
+			<h3>Rests in a Pattern</h3>
+		</div>
+		<div class="cell">
+			<p>
+				In order to create a rest inside a pattern, just replace the note index with a dash: <code>-</code>.
+			</p>
+			<p>
+				The next example shows a small variation of the travis pattern, containing a rest:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-rest }}</div>
+		<div class="cell">
+			<h3>Blocks in a Pattern</h3>
+		</div>
+		<div class="cell">
+			<p>
+				A pattern can contain nestable blocks. The next two examples are equivalent.
+				The first one uses nestable blocks in a pattern, while the second one shows how this would look without a pattern:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-block }}</div>
+		<div class="cell">
+			<p>
+				The inner block has a <code>multiple</code> option (<code>m</code>), so the note indices <code>0</code>, <code>1</code> and <code>2</code>
+				(notes <code>c-</code>, <code>e-</code> and <code>g-</code>) are played together with note index <code>3</code>
+				(note <code>c</code>).
+			</p>
+			<p>
+				The outer block has the quantity option <code>q=2</code>, so it's repeated twice.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="options">
+		<div class="cell">
+			<h2>Options</h2>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				As already mentioned, a normal note index line inside a pattern can have options.
+				Such a line will be transformed into a channel command, so only channel command options are allowed here.
+			</p>
+			<p>
+				But the line using the pattern, is also a channel command. So it can also contain options.
+				This makes things a bit complicated, and not all combinations are allowed.
+			</p>
+			<p>
+				The options in a line using a pattern are called <em>outer options</em>, while the options inside a pattern are called <em>inner options</em>.
+			</p>
+			<p>
+				The <span class="reference">Pattern Options</span> table shows which options are allowed as <em>inner</em> or <em>outer</em> option.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Pattern Options
+				</caption>
+				<thead>
+					<tr>
+						<th>Long Name</th>
+						<th>Short Name</th>
+						<th>Outer Option</th>
+						<th>Inner Option</th>
+						<th>Peculiarity</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>velocity</td>
+						<td>v</td>
+						<td>yes</td>
+						<td>yes</td>
+						<td>inner: lexical scoping</td>
+					</tr>
+					<tr>
+						<td>duration</td>
+						<td>d</td>
+						<td>yes</td>
+						<td>yes</td>
+						<td>inner: lexical scoping</td>
+					</tr>
+					<tr>
+						<td>quantity</td>
+						<td>q</td>
+						<td>yes</td>
+						<td>yes</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>multiple</td>
+						<td>m</td>
+						<td>yes</td>
+						<td>yes</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>lyrics</td>
+						<td>l</td>
+						<td>yes</td>
+						<td>no</td>
+						<td>syllable appears in pattern begin tick</td>
+					</tr>
+					<tr>
+						<td>tremolo</td>
+						<td>tr</td>
+						<td>no</td>
+						<td>yes</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>shift</td>
+						<td>s</td>
+						<td>yes</td>
+						<td>no</td>
+						<td>-</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cell">
+			<p>
+				The following example shows how a chord can be played like an arpeggio,
+				from the lowest to the highest pitch, with a length of a full note and a distance of a thirty-second:
+			</p>
+		</div>
+		<div class="cell medium-6">{{> src-example src-examples.pattern-arpeggio }}</div>
+		<div class="cell medium-6">
+			<p>
+				Inside of the pattern, each note index line has a <code>multiple</code> option (as an <em>inner option</em>, marked in blue)
+				because the notes shall be played "more or less" simultaneously.
+			</p>
+			<p>
+				But not completely simultaneously, so we need very small rests between the notes.
+			</p>
+			<p>
+				The whole thing shall still cover a full note's length. So we wrap everything inside a <code>multiple</code> block
+				and add a full note rest at the end.
+			</p>
+			<p>
+				The line using this pattern has the <code>quantity</code> option as an <em>outer option</em>, marked in red, to play the pattern twice.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Inner Velocity &amp; Duration</h3>
+		</div>
+		<div class="cell">
+			<p>
+				There is a perculiarity for <code>velocity</code> and <code>duration</code>, if used as an <em>inner option</em>.
+			</p>
+			<p>
+				The pattern begins with the velocity and duration values from before the pattern usage (or the one supplied as outer option, if given).
+				When it's changed inside the pattern (as an inner option), the new value is valid until the end of the pattern. After the pattern, the value
+				from before the pattern usage is restored again. (Or the one from the outer option, if given.)
+			</p>
+			<p>
+				The following example demonstrates how this works:
+			</p>
+			<div class="cell medium-6">{{> src-example src-examples.pattern-velo-dur }}</div>
+		</div>
+		<div class="cell">
+			<p>
+				Everything begins with a velocity of 50 (piano) and a duration of 90%.
+			</p>
+			<p>
+				The velocity is switched to 95 (forte) in the outer option of the pattern usage.
+			</p>
+			<p>
+				That means, the pattern begins with velocity = 95 and duration = 90%.
+			</p>
+			<p>
+				The 3rd line of the pattern switches the duration to 40% (staccato) with an inner option.
+			</p>
+			<p>
+				After the pattern ends, the duration is restored to 90%. But the velocity is not restored because it has been set with an outer option.
+				So it continues to be 95 (forte).
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="inline-chords">
+		<div class="cell">
+			<h2>Inline Chords</h2>
+		</div>
+		<div class="cell">
+			<p>
+				When we introduced <em>note indices</em>, we learned that the chord's notes are sorted by pitch before being addressed via note index.
+				But this is only true for predefined chords. When we use inline chords, the notes stay in the same order as they are written.
+				The following example demonstrate the difference between predefined and inline chords:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-inline }}</div>
+		<div class="cell">
+			<p>
+				We apply the same pattern first to three predefined chords and than to three inline chords.
+				All six chords contain the same notes. Only the order is different.
+			</p>
+			<p>
+				However the predefined chords produce the same sequence because they are sorted by pitch implicitely.
+				But the inline chords produce different sequences.
+			</p>
+			<p>
+				With this knowledge we can use our <code>upstroke</code> pattern from above to create an upstroke as well as a downstroke:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-downstroke }}</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="nested-patterns">
+		<div class="cell">
+			<h2>Nested Patterns</h2>
+		</div>
+		<div class="cell">
+			Patterns can be nested. That means that inside of a pattern you can use another pattern.
+			The following example uses this technique to create a <code>downstroke</code> pattern using the <code>upstroke</code> pattern,
+			that also works with predefined chords:
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-downstroke-2 }}</div>
+		<div class="cell">
+			<p>
+				The <code>downstroke</code> pattern just reverses the given chord and applies the <code>upstroke</code> pattern to it.
+			</p>
+			<p>
+				But more complicated nestings are also possible. The following example assumes that the previously defined patterns <code>travis</code>,
+				<code>upstroke</code> and <code>downstroke</code> are available:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-nested }}</div>
+		<div class="cell">
+			<p>
+				The pattern <code>main</code> uses the nested patterns <code>travis</code>, <code>upstroke</code> and <code>downstroke</code>.
+			</p>
+			<p>
+				The nested pattern <code>downstroke</code> uses <code>upstroke</code> as a nested pattern. So we have two levels of nesting here.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="pattern-parameters">
+		<div class="cell">
+			<h2>Pattern Parameters</h2>
+		</div>
+		<div class="cell">
+			<p>
+				Patterns can have parameters, just like functions. Pattern parameters are added in round braces after the pattern name,
+				when using the pattern. They work exactly like function parameters. That means, there are <em>indexed</em> and <em>named</em> parameters.
+			</p>
+			<p>
+				The following two examples are equivalent. They both rewrite the <code>upstroke</code> pattern so that the note length and note distance
+				are provided as parameters. The first example uses indexed parameters, while the second one uses named parameters:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-params }}</div>
+		<div class="cell">
+			<p>
+				Then we can implement a parametrized <code>downstroke</code> pattern that uses <code>upstroke</code> as nested pattern. So we need to pass the
+				parameters over to the nested pattern:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-params-downstroke }}</div>
+		<div class="cell">
+			<p>
+				Remeber our "House of the Rising Sun" example above.
+				The two patterns <code>basic</code> and <code>alternate</code> are pretty similar.
+				They only differ in the last three notes. So we can use only one, parametrized pattern.
+			</p>
+			<p>
+				The following two examples are equivalent. The first one uses this new approach, while the second one is the one from above, just for comparison:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-house-3 }}</div>
+		<div class="cell">
+			<p>
+				As you can see, the parantheses in the pattern usage are optional, if no parameters are used.
+			</p>
+			<p>
+				So <code>0 amin basic</code> and <code>0 amin basic()</code> are equivalent.
+			</p>
+			<p>
+				This is just the same behaviour as in a function call.
+			</p>
+		</div>
+	</section>
+	<aside>
+		<a href="tutorial-7.html">Chapter 7</a> will explain how to use sound effects. However, this chapter does not yet exist,
+		as sound effects are not yet implemented in Midica.
+	</aside>
 </div>
