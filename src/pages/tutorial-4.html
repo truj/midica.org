@@ -82,23 +82,21 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 			<p>
 				Just like <code>CALL</code> commands, nestable blocks can have options as well. The <span class="reference">block options</span> table shows the available options.
 				As you can see, the following options are also available as block options:
-				<ul>
-					<li><code>quantity</code> (short version: <code>q</code>)</li>
-					<li><code>multiple</code> (short version: <code>m</code>)</li>
-					<li><code>shift</code> (short version: <code>s</code>)</li>
-					<li><code>if</code> (no short version available)</li>
-				</ul>
 			</p>
+			<ul>
+				<li><code>quantity</code> (short version: <code>q</code>)</li>
+				<li><code>multiple</code> (short version: <code>m</code>)</li>
+				<li><code>shift</code> (short version: <code>s</code>)</li>
+				<li><code>if</code> (no short version available)</li>
+			</ul>
 			<p>
 				Moreover there are also some new options, only available for blocks:
 			</p>
-			<p>
-				<ul>
-					<li><code>tuplet</code> (short version: <code>t</code>)</li>
-					<li><code>elsif</code> (no short version available)</li>
-					<li><code>else</code> (no short version available)</li>
-				</ul>
-			</p>
+			<ul>
+				<li><code>tuplet</code> (short version: <code>t</code>)</li>
+				<li><code>elsif</code> (no short version available)</li>
+				<li><code>else</code> (no short version available)</li>
+			</ul>
 			<p>
 				Options can be attached to the opening <code>{</code> or closing <code>}</code> brace, separated by whitespaces.
 			</p>
@@ -174,6 +172,7 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 			<p>
 				If you want (or must) pass a value to an option, the value must be appended to the option name, separated by a <code>=</code> symbol or whitespace(s).
 			</p>
+			<p>
 				If more than one option is used, they have to be separated by a <code>,</code> symbol.
 			</p>
 		</div>
@@ -344,10 +343,12 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 				The <code>elsif</code> option can be used for a block <em>after</em> another block with the <code>if</code> option.
 				It has its own condition.
 				The <code>elsif</code> block is only executed, if:
-				<ul>
-					<li>The preceeding block is <em>not</em> executed (because it's <code>if</code> condition if false); <em>and</em></li>
-					<li>The condition of the <code>elsif</code> option is true.</li>
-				</ul>
+			</p>
+			<ul>
+				<li>The preceeding block is <em>not</em> executed (because it's <code>if</code> condition if false); <em>and</em></li>
+				<li>The condition of the <code>elsif</code> option is true.</li>
+			</ul>
+			<p>
 				Here's a rewrite of the previous example with an <code>elsif</code>:
 			</p>
 		</div>
@@ -370,10 +371,12 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 		<div class="cell">
 			<p>
 				You can also add more elsif blocks. Each block is only executed if:
-				<ul>
-					<li>None of the preceeding <code>if</code> or <code>elsif</code> blocks is executed (because their conditions are all false); <em>and</em></li>
-					<li>The condition of the block's <code>elsif</code> option is true.</li>
-				</ul>
+			</p>
+			<ul>
+				<li>None of the preceeding <code>if</code> or <code>elsif</code> blocks is executed (because their conditions are all false); <em>and</em></li>
+				<li>The condition of the block's <code>elsif</code> option is true.</li>
+			</ul>
+			<p>
 				Here's an example of such an if-elsif chain:
 			</p>
 		</div>

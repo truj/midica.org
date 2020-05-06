@@ -200,7 +200,7 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 				The first example adds all notes to channel 0 before adding all notes to channel 1.
 			</p>
 			<p>
-				The second example executes the commands for channel 1 first, and then for channel 0.
+				The second example begins with channel 1 and then handles channel 0.
 			</p>
 			<p>
 				The third example works more or less in the order of appearance of the notes in time.
@@ -243,7 +243,8 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 		</div>
 		<div class="cell">
 			<p>
-				A predefined chord must be defined before it can be used. A chord definition consists of 3 or more columns, separated by whitespaces.
+				In order to use a predefined chord, the chord must be defined somewhere.
+				Usually a chord definition consists of 3 or more columns, separated by whitespaces.
 			</p>
 			<p>
 				The first column is the keyword <code>CHORD</code>.
@@ -252,7 +253,18 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 				The notes can be separated either by <code>,</code> symbols or whitespaces or both.
 			</p>
 			<p>
-				Later the chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
+				Between the chord name and the notes, you may optionally add a <code>=</code> instead of (or as well as) whitespaces.
+				The following examples are all similar chord definitions:
+			</p>
+			<ul>
+				<li><code>CHORD c-maj c e g</code></li>
+				<li><code>CHORD c-maj c,e,g</code></li>
+				<li><code>CHORD c-maj=c,e,g</code></li>
+				<li><code>CHORD c-maj = c, e, g</code></li>
+				<li><code>CHORD c-maj = c , e , g</code></li>
+			</ul>
+			<p>
+				Predefined chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.
 			</p>
 			<p>
 				The following example shows the same notes again but this time with predefined chords instead of inline chords.
@@ -260,6 +272,10 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 		</div>
 		<div class="cell">{{> src-example src-examples.chords-2 }}</div>
 		<div class="cell">
+			<p>
+				As you can see in this example, the chord doesn't need to be defined <em>before</em> using it. It can also be defined <em>later</em>, like
+				the <code>f-maj</code> chord here.
+			</p>
 			<p>
 				Imagine you use the same chord (e.g. C-major) many times in a song. And then you want to modify the chord (e.g. transform it into C-maj-7).
 				With predefined chords you only need to change the chord definition while with inline chords you need to change every appearance.

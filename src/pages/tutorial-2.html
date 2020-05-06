@@ -217,14 +217,12 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 				<p>
 					If you need whitespaces inside of the syllabe, you must use the following symbols:
 				</p>
-				<p>
-					<ul>
-						<li><code>_</code> for a space</li>
-						<li><code>\r</code> for a new line</li>
-						<li><code>\n</code> for a new paragraph</li>
-						<li><code>\c</code> for a comma <code>,</code></li>
-					</ul>
-				</p>
+				<ul>
+					<li><code>_</code> for a space</li>
+					<li><code>\r</code> for a new line</li>
+					<li><code>\n</code> for a new paragraph</li>
+					<li><code>\c</code> for a comma <code>,</code></li>
+				</ul>
 				<p>
 					The following example shows how to create a karaoke version of "Happy Birthday".
 				</p>
@@ -289,9 +287,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 				<code>.</code>. Most of the time you don't need anything more. But in some cases you may need more complicated definitions. In those
 				cases you can combine more than one length definition and build a sum of them.
 			</p>
-			<p>
-				<h3>Atomic Lengths</h3>
-			</p>
+			<h3>Atomic Lengths</h3>
 			<p>
 				The following atomic lengths are defined:
 			</p>
@@ -323,12 +319,8 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 		</div>
 		<div class="cell">{{> src-example src-examples.atomic }}</div>
 		<div class="cell">
-			<p>
-				<h3>Modified Lengths</h3>
-			</p>
-			<p>
-				<h4>Dot Modifiers</h4>
-			</p>
+			<h3>Modified Lengths</h3>
+			<h4>Dot Modifiers</h4>
 			<p>
 				An atomic length can be modified. You already know the modifier <code>.</code>. It makes the atomic length one half longer, so that it's 3/2
 				of the atomic length.
@@ -343,9 +335,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 		</div>
 		<div class="cell" id="triplet">
-			<p>
-				<h4>Triplet Modifiers</h4>
-			</p>
+			<h4>Triplet Modifiers</h4>
 			<p class="hint">
 				This section describes a lowlevel form of defining triplets. An easier to write (highlevel) form will follow in chapter 4.
 			</p>
@@ -377,9 +367,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 		</div>
 		<div class="cell" id="tuplet">
-			<p>
-				<h4>Tuplet Modifiers</h4>
-			</p>
+			<h4>Tuplet Modifiers</h4>
 			<p class="hint">
 				This section describes a lowlevel form of defining tuplets. An easier to write (highlevel) form will follow in chapter 4.
 			</p>
@@ -411,9 +399,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 		</div>
 		<div class="cell">
-			<p>
-				<h3>Sums of Lengths</h3>
-			</p>
+			<h3>Sums of Lengths</h3>
 			<p>
 				Sometimes a note length cannot be described easily with an atomic or modified length. But it can easily be described as a sum of two lengths.
 				In sheet music such notes are typically printed as 2 notes with a <em>tie</em> between them.
@@ -556,7 +542,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 				Alternatively a bank description can also be a full bank number. This can be calculated the following way:
 			</p>
 			<p>
-				<pre>bank number = MSB * 128 + LSB</pre>
+				<em>Bank Number = MSB * 128 + LSB</em>
 			</p>
 			<p>
 				That means that the following instrument definitions are equal:
@@ -670,20 +656,22 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 		<div class="cell">
 			<p>
 				There are some limitations for the usage of variables.
-				<ul>
-					<li>
-						A variable cannot contain any whitespaces.
-					</li>
-					<li>
-						Variables are officially supported to be used in the following locations:
-						<ul>
-							<li>As a channel number in a channel command, or a part of it</li>
-							<li>As a note, rest, chord or percussion ID in a channel command, or a part of it</li>
-							<li>As a duration description in a channel command, or a part of it</li>
-							<li>As an option value (or a part of it) in any command that supports options</li>
-						</ul>
-					</li>
-				</ul>
+			</p>
+			<ul>
+				<li>
+					A variable cannot contain any whitespaces.
+				</li>
+				<li>
+					Variables are officially supported to be used in the following locations:
+					<ul>
+						<li>As a channel number in a channel command, or a part of it</li>
+						<li>As a note, rest, chord or percussion ID in a channel command, or a part of it</li>
+						<li>As a duration description in a channel command, or a part of it</li>
+						<li>As an option value (or a part of it) in any command that supports options</li>
+					</ul>
+				</li>
+			</ul>
+			<p>
 				In all other locations you should not use variables. They may work or not. But even if they work, they may not
 				work in a later Midica version any more.
 			</p>
