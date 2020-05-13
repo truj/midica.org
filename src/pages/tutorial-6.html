@@ -137,7 +137,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				A pattern can also contain a chord, consisting of more than one note in a line. Instead of comma-separating note names,
 				like in normal channel commands, the note indices must be comma-separated to achieve that.
 				The following examples show how that works. The first example uses a chord inside of a pattern, while the second one shows
-				how this very same thing looks with normal channel commands:
+				how this very same thing would look with normal channel commands:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-travis }}</div>
@@ -197,7 +197,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				Such a line will be transformed into a channel command, so only channel command options are allowed here.
 			</p>
 			<p>
-				But the line using the pattern, is also a channel command. So it can also contain options.
+				But the line using the pattern is also a channel command. So it can also contain options.
 				This makes things a bit complicated, and not all combinations are allowed.
 			</p>
 			<p>
@@ -290,7 +290,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				But not completely simultaneously, so we need very small rests between the notes.
 			</p>
 			<p>
-				The whole thing shall still cover a full note's length. So we wrap everything inside a <code>multiple</code> block
+				The whole thing shall still cover exactly a full note's length. So we wrap everything inside a <code>multiple</code> block
 				and add a full note rest at the end.
 			</p>
 			<p>

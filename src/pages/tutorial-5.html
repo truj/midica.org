@@ -301,10 +301,10 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 					A constant can be defined only once. The same constant name cannot be redefined any more.
 				</li>
 				<li>
-					Constants can be defined after using them - just like functions that can be called before they their definition.
+					Constants can be defined after using them - just like functions that can be called before their definition.
 				</li>
 				<li>
-					Most limitations for varibales don't apply for constants. E.g. they may contain whitespaces.
+					Most limitations for varibales don't apply for constants. E.g. their values may contain whitespaces.
 					So they can cover several parts of a command.
 				</li>
 			</ul>
@@ -341,7 +341,7 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 				The new value must be provided as the second argument.
 			</p>
 			<p>
-				The following three examples are equivalent. The first and the last one redefine the symbols for anonymous blocks
+				The following three examples are equivalent. The first and the last one redefine the symbols for nestable blocks
 				to be <code>(</code> and <code>)</code> instead of <code>{</code> and <code>}</code>:
 			</p>
 		</div>
@@ -363,7 +363,8 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 				for further redefinitions.
 			</p>
 			<p>
-				In this example we redefine the commands <code>FUNCTION</code>, <code>INSTRUMENTS</code> and <code>END</code>.
+				In this example we redefine the commands <code>FUNCTION</code>, <code>DEFINE</code>, <code>INSTRUMENTS</code>, <code>END</code>,
+				<code>-</code> (for a rest) and <code>CALL</code>.
 			</p>
 			<p>
 				Of cause the new keyword <code>function[</code> must not contain a whitespace. The same applies for <code>instr[</code>.

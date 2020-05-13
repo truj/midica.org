@@ -163,7 +163,8 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 			<h3>Note Names</h3>
 			<p>
 				Which note names are valid, depends on the configured <em>note system</em>, <em>half tone symbol</em> and <em>octave naming</em>.
-				In the standard configuration, lower-cased international note names are used, and the half tone symbol is a sharp: <code>#</code>.
+				In the standard configuration, lower-cased international note names are used, and the half tone symbols are <code>#</code> for a
+				sharp and <code>b</code> for a flat.
 				Then follows an octave modifier.
 			</p>
 			<p>
@@ -180,6 +181,19 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.through-the-never }}</div>
+		<div class="cell">
+			<p>
+				Double sharps (<code>##</code>) or double flats (<code>bb</code>) are also possible, like these:
+			</p>
+			<ul>
+				<li><code>f##</code> (same as <code>g</code>)</li>
+				<li><code>f##+</code> (same as <code>g+</code>)</li>
+				<li><code>f##+2</code> (same as <code>g+2</code>)</li>
+				<li><code>dbb</code> (same as <code>c</code>)</li>
+				<li><code>dbb+3</code> (same as <code>c+3</code>)</li>
+				<li><code>cbb+3</code> (same as <code>bb+2</code> or <code>a#+2</code>)</li>
+			</ul>
+		</div>
 		<div class="cell">
 			<h3>Using multiple channels</h3>
 		</div>
@@ -430,20 +444,12 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 			</p>
 			<p>
 				Internally the key signature is translated into a number of <i>sharps</i> or <i>flats</i> and a flag for major or minor.
-				MIDI allows a maximum of 7 sharps or flats. So in some cases the key signature is converted automatically to something corresponding.
+				Midica tries to be as close as possible to the intended key signature. But MIDI has a limitation that allows a
+				maximum of 7 sharps or flats. So in some cases the key signature is converted automatically to something corresponding.
 			</p>
 			<p>
 				For example a <em>D# major</em> would have 9 sharps which is more than the allowed 7. So it's converted to the corresponding
 				<em>Eb major</em> with 3 flats instead.
-			</p>
-			<p>
-				Other key signatures can be expressed either with an allowed number of sharps or an(other) allowed number of flats.
-				For example <em>F# major</em> with 6 sharps corresponds to <em>Gb major</em> with 6 flats.
-				Or <em>G# minor</em> with 5 sharps corresponds to <em>Ab minor</em> with 7 flats.
-				In these cases the configured half tone symbol is used to determine which key signature is used. The one with sharps or the one
-				with flats.
-				This ensures that the key signature in the MIDI sequence is as close as possible to the source code, and it's only converted
-				if there is no other legal way.
 			</p>
 		</div>
 	</section>
