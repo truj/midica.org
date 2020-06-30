@@ -8,31 +8,41 @@ meta-desc:  "Get ready for Music programming with Midica."
 	<div class="grid-x grid-padding-x">
 		<h1 class="cell">MidicaPL Tutorial: Preparation</h1>
 	</div>
-	<section class="grid-x grid-padding-x" id="start-midica">
-		<div class="cell">
-			<p>
-				If you have already gone through the preparation process, use the following links to the tutorial's chapters:
-			</p>
+	<div class="cell">
+		<p>
+			Most parts of this preparation page are valid for all supported music programming languages.
+			The other chapters of this tutorial are only for MidicaPL, the built-in "Midica Programming Language".
+		</p>
+		<p>
+			If you want to code in MidicaPL and have already gone through the preparation process, use the following links to the tutorial's chapters:
+		</p>
+		{{#each menu-items}}
 			{{#each menu-items}}
-				{{#each menu-items}}
-					{{#if is-tutorial}}
-						<ul>
-							{{#each menu-items}}
-								{{#if is-chapter}}
-									<li>
-										<a href="{{url}}">
-											Chapter {{title}}
-										</a>
-									</li>
-								{{/if}}
-							{{/each}}
-						</ul>
-					{{/if}}
-				{{/each}}
+				{{#if is-tutorial}}
+					<ul>
+						{{#each menu-items}}
+							{{#if is-chapter}}
+								<li>
+									<a href="{{url}}">
+										Chapter {{title}}
+									</a>
+								</li>
+							{{/if}}
+						{{/each}}
+					</ul>
+				{{/if}}
 			{{/each}}
-		</div>
+		{{/each}}
+	</div>
+	<section class="grid-x grid-padding-x" id="run-midica">
 		<div class="cell">
 			<h2>Run Midica</h2>
+		</div>
+		<div class="cell">
+			<p>
+				If you already followed the instructions in the <a href="/#quick-start">Quick Start</a> section, you can skip this section and
+				continue with the <a href="#sound">Sound</a>.
+			</p>
 		</div>
 		<div class="cell">
 			<h3>Install Java</h3>
@@ -43,7 +53,7 @@ meta-desc:  "Get ready for Music programming with Midica."
 			</p>
 			<p>
 				You can use any JRE of version 1.7 or later. Probably you already have Java installed. If not, you can download it from somewhere
-				in the internet, e.g. from <a href="https://www.java.com/download/">java.com</a>.
+				on the internet, e.g. from <a href="https://www.java.com/download/">java.com</a>.
 			</p>
 		</div>
 		<div class="cell">
@@ -86,11 +96,11 @@ meta-desc:  "Get ready for Music programming with Midica."
 			</p>
 			<p>
 				If you have this or any other soundfont file on your computer, start Midica like described above.
-				The main window of Midica opens. In the import area under "Soundfont" click the button "select file".
+				The main window of Midica opens. In the import area under <code>Soundfont</code> click the button <code>select file</code>.
 				Then choose the soundfont file with the extension <code>.sf2</code>.
 			</p>
 			<p>
-				Check the "Remember" checkbox next to the Button. Then Midica remembers the soundfont file path. If you close Midica
+				Check the <code>Remember</code> checkbox next to the Button. Then Midica remembers the soundfont file path. If you close Midica
 				and then start it again, the soundfont will be loaded automatically.
 			</p>
 		</div>
@@ -101,19 +111,24 @@ meta-desc:  "Get ready for Music programming with Midica."
 		</div>
 		<div class="cell medium-6">
 			<p>
-				In order to develop a MIDI sequence in MidicaPL you must write the source code into a plain text file with the
-				file extension <code>.midica</code>. It doesn't matter which editor you use. Just use your favorite text editor.
+				In order to develop a MIDI sequence with a Music Programming Language using Midica, you must write the source code into a plain text file
+				with the file extension <code>.midica</code>, <code>.mpl</code>, <code>.alda</code> or <code>.abc</code>, depending on the language you want to use.
+				It doesn't matter which editor you use. Just use your favorite text editor.
 			</p>
 			<p>
-				MidicaPL stands for "Midica Programming Language". The actual MidicaPL syntax and note naming depends on
+				If you choose MidicaPL for programming, than the actual language syntax and note naming depends on
 				the chosen configuration. In this tutorial the configuration settings shown in the
 				<span class="reference">Configuration</span> table are assumed.
-				This is the default configuration.
+				This is the default configuration. But it can be changed in the <code>Configuration</code> area in the main window (upper left corner).
 			</p>
 			<p>
-				During the process you will switch from your editor to the Midica player very often.
-				You will change the file and save it in the editor, then switch to the player and hit the "Reparse" button or press F5.
-				Then the file will be parsed again. When hitting the "Play" button or pressing "p", the resulting MIDI sequence will be played.
+				For ALDA or ABC, the configuration doesn't matter.
+			</p>
+			<p>
+				During the development process you will switch from your editor to the Midica player very often.
+				You will change the file and save it in the editor, then switch to the player and hit the <code>Reparse</code> button or press <code>F5</code>.
+				Then the file will be parsed again. When hitting the <code>Play</code> button or pressing <code>p</code> or the space bar,
+				the resulting MIDI sequence will be played.
 			</p>
 		</div>
 		<div class="cell medium-6">
@@ -163,17 +178,20 @@ meta-desc:  "Get ready for Music programming with Midica."
 			<p>
 				First of all you have to create the file. Just create an empty file and call it <code>tutorial.midica</code>
 				or something else with the file extension <code>.midica</code> or <code>.mpl</code>.
-				Then start Midica, if not yet done. In the main window, press the upper right button. It's the "select file"
-				button in the import area. Switch to the "MidicaPL" tab, if not yet done. Then choose the empty file that you have just created.
+				(Or <code>test.alda</code> or <code>something.abc</code> if you prefer to write in ALDA or ABC.)
+				Then start Midica, if not yet done. In the main window, press the upper right button. It's the <code>select file</code>
+				button in the import area. Switch to the right tab, if not yet done (e.g. <code>MidicaPL</code> if you use MidicaPL).
+				Then choose the empty file that you have just created.
 			</p>
 			<p>
-				Now you can open the player with the button "Start Player".
+				Now you can open the player with the button <code>Start Player</code>.
 				You cannot play anything yet because the file is still empty and so the MIDI sequence is empty as well.
 				But now you can start your development cycle.
 			</p>
 			<p>
-				Begin with <a href="tutorial-1.html">chapter 1</a> of the tutorial. Follow the instructions and change the source file
-				according to the examples. Then switch to the player and press "Reparse" or F5, then play the sequence.
+				Begin with <a href="tutorial-1.html">chapter 1</a> of the MidicaPL tutorial. (Or a different tutorial for ALDA or ABC.)
+				Follow the instructions and change the source file
+				according to the examples. Then switch to the player and press <code>Reparse</code> or <code>F5</code>, then play the sequence.
 				Then change the file again. Try out your own variations of the examples and so on...
 			</p>
 			<p>
@@ -183,6 +201,7 @@ meta-desc:  "Get ready for Music programming with Midica."
 		</div>
 	</section>
 	<aside>
-		Now you are prepared for the MidicaPL tutorial. Please start with <a href="tutorial-1.html">chapter 1</a>.
+		Now you are prepared for the MidicaPL tutorial. Please start with <a href="tutorial-1.html">chapter 1</a>.<br/>
+		For ALDA or ABC, please use an appropriate tutorial from a different website instead.
 	</aside>
 </div>

@@ -14,88 +14,231 @@ meta-desc:  "Music Programming Language for MIDI. MIDI Player, Karaoke Player, M
 				Midica is an interpreter for a Music Programming Language. It translates source code to MIDI.
 			</p>
 			<p>
-				But it can also be used as a MIDI Player, a MIDI Karaoke Player or a MIDI file analyzer.
+				But it can also be used as a MIDI player, MIDI compiler or decompiler, Karaoke player, MIDI file analyzer
+				or a player for several more file formats.
 			</p>
 			<p>
-				Midica is an open source project written in Java.
-				The sourcode and the tool itself can be found on GitHub: <a href="https://github.com/truj/midica">https://github.com/truj/midica</a>
+				Midica is an open source project written in Java and hosted on GitHub: <a href="https://github.com/truj/midica">https://github.com/truj/midica</a>
 			</p>
+			<p>
+				The main purpose of the application is to develop music with a music programming language.
+				But various other formats can also be loaded and played directly or converted to MIDI.
+			</p>
+			<p>
+				All supported music programming languages focus on music instead of sound generation.
+				So the programmer is dealing with:
+			</p>
+			<ul>
+				<li>Notes and Octaves instead of frequencies</li>
+				<li>Note values or Rest values instead of milliseconds</li>
+				<li>Instrument names instead of mathematical sound synthesis functions</li>
+			</ul>
 		</div>
-		<div class="cell">
-			<h2>MidicaPL</h2>
-			<p>
-				MidicaPL is the programming language for music used in Midica.
-			</p>
-			<p>
-				You can learn how to develop MIDI music with MidicaPL in the <a href="/tutorial.html">MidicaPL Tutorial</a>.
-				Here are the direct links to the tutorial's chapters:
-			</p>
-			<p>
+		<section id="quick-start">
+			<div class="cell">
+				<h2>Quick Start</h2>
+				<ol>
+					<li>
+						Verify that the Java Runtime (JRE 1.7 or later) is installed. If not, download and install it from somewhere
+						on the internet, e.g. from <a href="https://www.java.com/download/">java.com</a>.
+					</li>
+					<li>
+						Download the file <code>midica.jar</code> from the <a href="https://github.com/truj/midica/releases/latest">latest Midica release</a>.
+					</li>
+					<li>
+						On the command line, start Midica with the following command:<br/>
+						<code>java -jar midica.jar</code><br/>
+						Depending on your operating system, there is a chance that you can run Midica just by double-clicking <code>midica.jar</code>.
+					</li>
+					<li>
+						In the import section of the main window (upper right corner), click the <code>select file</code> button. This opens a file chooser window.
+					</li>
+					<li>
+						In the file chooser window, select a tab according to the programming language or file format you want to use.
+					</li>
+					<li>
+						Choose the file and maybe also a charset and/or the command or full path to a different program (needed for some formats).
+						Then hit the <code>open</code> button.
+					</li>
+					<li>
+						If the file can be loaded correctly, hit the button <code>start player</code> in the bottom left corner of the main window.
+					</li>
+					<li>
+						You can change the file in the editor/program of your choice, while playing. Then press <code>F5</code> or click the <code>Reparse</code>
+						button to reload the changed file.
+					</li>
+				</ol>
+			</div>
+		</section>
+		<section id="formats">
+			<div class="cell">
+				<h2>Supported formats</h2>
+				<p>
+					Midica supports the following languages or file formats for input (import):
+				</p>
+				<ul>
+					<li>
+						<b>Music Programming Languages:</b>
+						<ul>
+							<li>
+								<b>MidicaPL</b>: This language is built directly into Midica.
+								It supports functions, variables, musical patterns, control structures, constants and so on.
+							</li>
+							<li>
+								<b>ALDA</b>: A very compact language, more focused on musicians but less on programmers.<br/>
+								(<a href="https://github.com/alda-lang/alda#installation" target="_blank">ALDA</a> must be installed separately, if this language is used.)
+							</li>
+							<li>
+								<b>ABC notation</b>: A widely-used text-based music notation format.<br/>
+								(<a href="https://ifdo.ca/~seymour/runabc/top.html" target="_blank">abcMIDI</a> must be installed separately, if this language is used.)
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b>Other Formats:</b>
+						<ul>
+							<li>
+								<b>MIDI</b>: Support for MIDI and Soft Karaoke (.mid, .midi, .kar) is supported directly by Midica.
+							</li>
+							<li>
+								<b>LilyPond</b>: A LaTeX-like language, mainly used for Music Engraving.<br/>
+								(<a href="https://lilypond.org/" target="_blank">LilyPond</a> must be installed separately, if this language is used.)
+							</li>
+							<li>
+								MuseScore, GuitarPro, MusicXML, Capella, and several more formats.<br/>
+								(<a href="https://musescore.org/download/" target="_blank">MuseScore</a> must be installed separately, if one of these formats is used.)
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<p>
+					The following formats are supported for output (export):
+				</p>
+				<ul>
+					<li>
+						<b>Music Programming Languages:</b>
+						<ul>
+							<li>
+								<b>MidicaPL</b> (directly supported for export)
+							</li>
+							<li>
+								<b>ALDA</b> (directly supported for export)
+							</li>
+							<li>
+								<b>ABC</b> (<a href="https://ifdo.ca/~seymour/runabc/top.html" target="_blank">abcMIDI</a> must be installed separately)
+							</li>
+						</ul>
+					</li>
+					<li>
+						<b>Other Formats:</b>
+						<ul>
+							<li>
+								<b>MIDI</b> (directly supported for export)
+							</li>
+							{{!--
+							<li>
+								<b>LilyPond</b> (<a href="https://lilypond.org/" target="_blank">LilyPond</a> must be installed separately)
+							</li>
+							<li>
+								WAV, OGG, MP3, MuseScore, MusicXML, PDF, SVG and other formats.<br/>
+								(<a href="https://musescore.org/download/" target="_blank">MuseScore</a> must be installed separately, if one of these formats is needed for export.)
+							</li>
+							--}}
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section id="programming">
+			<div class="cell">
+				<h2>Programming</h2>
+				<p>
+					You can choose between one of the supported Music Programming Languages.
+				</p>
+				<p>
+					The <a href="/tutorial.html">Preparation Page</a> of the MidicaPL Tutorial introduces you to the general development process,
+					no matter which language you choose.
+				</p>
+				<h3>MidicaPL</h3>
+				<p>
+					The further chapters of the tutorial are only for the built-in language MidicaPL:
+				</p>
 				{{#each menu-items}}
 					{{#each menu-items}}
 						{{#if is-tutorial}}
 							<ul class="quick-links">
 								{{#each menu-items}}
-									<li>
-										<a href="{{url}}">
-											{{#if is-chapter}}
-												Chapter
-											{{/if}}
-											{{title}}
-										</a>
-									</li>
+									{{#if is-chapter}}
+										<li>
+											<a href="{{url}}">
+												Chapter {{title}}
+											</a>
+										</li>
+									{{/if}}
 								{{/each}}
 							</ul>
 						{{/if}}
 					{{/each}}
 				{{/each}}
-			</p>
-		</div>
-		<div class="cell">
-			<h2>Screenshots</h2>
-			<p>
-				In the Screenshots page you can see screenshots of Midica, how it is used for different tasks.
-			</p>
-		</div>
-		<div class="cell">
-			<p>
-				The following tasks can be executed with Midica:
-			</p>
-			<ul>
-				<li>
-					Produce MIDI files using a programming language (MidicaPL)
-				</li>
-				<li>
-					<a href="/screenshots.html#import-midica">Import MIDI sequences from MidicaPL files</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#import-midi">Import MIDI sequences from MIDI files</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#export-midi">Export MIDI files from a sequence</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#player">Play MIDI sequences using a feature-rich player</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#player-karaoke">Use it as a Karaoke player</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#import-soundfont">Load soundfonts and use it for MIDI playback</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#soundcheck">Test soundfonts using a soundcheck module.</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#info-soundfont">Analyze soundfont contents</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#info-sequence">Analyze MIDI sequences</a>
-				</li>
-				<li>
-					<a href="/screenshots.html#export-midica">Export MidicaPL files from a MIDI sequence</a> (MIDI Decompilation - experimental feature)
-				</li>
-			</ul>
-		</div>
+				<h3>ALDA</h3>
+				<p>
+					If you prefer to use ALDA, please consult the
+					<a href="https://github.com/alda-lang/alda/blob/master/doc/index.md" target="_blank">ALDA documentation</a>.
+				</p>
+				<h3>ABC</h3>
+				<p>
+					In order to code in ABC please choose one of the
+					<a href="https://abcnotation.com/learn#tutorials" target="_blank">ABC tutorials</a>.
+				</p>
+			</div>
+		</section>
+		<section id="screenshots">
+			<div class="cell" id="">
+				<h2>Screenshots</h2>
+				<p>
+					In the <a href="/screenshots.html">Screenshots page</a> you can see screenshots of Midica, how it is used for different tasks.
+				</p>
+			</div>
+			<div class="cell">
+				<p>
+					The following tasks can be executed with Midica:
+				</p>
+				<ul>
+					<li>
+						Produce MIDI files using a programming language (MidicaPL, ALDA, ABC)
+					</li>
+					<li>
+						<a href="/screenshots.html#import-midica">Import MIDI sequences from MidicaPL files</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#import-midi">Import MIDI sequences from MIDI files</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#export-midi">Export MIDI files from a sequence</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#player">Play MIDI sequences using a feature-rich player</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#player-karaoke">Use it as a Karaoke player</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#import-soundfont">Load soundfonts and use it for MIDI playback</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#soundcheck">Test soundfonts using a soundcheck module.</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#info-soundfont">Analyze soundfont contents</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#info-sequence">Analyze MIDI sequences</a>
+					</li>
+					<li>
+						<a href="/screenshots.html#export-midica">Export MidicaPL files from a MIDI sequence</a> (MIDI Decompilation - experimental feature)
+					</li>
+				</ul>
+			</div>
+		</section>
 	</div>
 </div>

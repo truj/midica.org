@@ -20,6 +20,10 @@
 								"url": "/screenshots.html#import-section"
 							},
 							{
+								"title": "Soundfont Section",
+								"url": "/screenshots.html#soundfont-section"
+							},
+							{
 								"title": "Export Section",
 								"url": "/screenshots.html#export-section"
 							}
@@ -34,7 +38,7 @@
 								"url": "/screenshots.html#player-widgets"
 							},
 							{
-								"title": "Channel Details",
+								"title": "Channel Mode",
 								"url": "/screenshots.html#player-channel"
 							},
 							{
@@ -86,7 +90,7 @@
 						"menu-items": [
 							{
 								"title": "Run Midica",
-								"url": "/tutorial.html#start-midica"
+								"url": "/tutorial.html#run-midica"
 							},
 							{
 								"title": "Prepare Sound",

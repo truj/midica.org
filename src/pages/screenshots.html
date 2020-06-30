@@ -15,7 +15,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		</div>
 		<div class="cell">
 			<p>
-				The main window consists of different sections.
+				The main window consists of different sections: <em>Configuration</em>, <em>Player</em>, <em>Import</em>, <em>Soundfont</em> and <em>Export</em>.
 			</p>
 		</div>
 		<div class="cell">
@@ -50,12 +50,20 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 				<img src="assets/img/config_3_halftone.png" />
 			</div>
 			<div class="cell medium-auto">
-				<p><b>Half Tone Symbol</b>: Which symbol to use for half tones</p>
+				<p><b>Half Tone Symbols</b>: Which symbols to use for half tones</p>
 			</div>
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/config_4_octave.png" />
+				<img src="assets/img/config_4_ht_default.png" />
+			</div>
+			<div class="cell medium-auto">
+				<p><b>Default Half Tone</b>: If an ambiguous half tone should be displayed as sharp or flat in the GUI</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/config_5_octave.png" />
 			</div>
 			<div class="cell medium-auto">
 				<p><b>Octave Naming</b>: How to name notes in different octaves</p>
@@ -63,7 +71,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/config_5_syntax.png" />
+				<img src="assets/img/config_6_syntax.png" />
 			</div>
 			<div class="cell medium-auto">
 				<p><b>Syntax</b>: Which keywords and case (lower/upper) to use for the MidicaPL syntax</p>
@@ -71,84 +79,201 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/config_6_percussion.png" />
+				<img src="assets/img/config_7_percussion.png" />
 			</div>
 			<div class="cell medium-auto">
-				<p><b>Percussion Shortcuts</b>: Which language to use for percussion instruments</p>
+				<p><b>Percussion IDs</b>: Which language to use for percussion instruments</p>
 			</div>
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/config_7_instrument.png" />
+				<img src="assets/img/config_8_instrument.png" />
 			</div>
 			<div class="cell medium-auto">
-				<p><b>Instrument Shortcuts</b>: Which language to use for chromatic instruments</p>
+				<p><b>Instrument IDs</b>: Which language to use for chromatic instruments</p>
 			</div>
 		</div>
 		<div class="cell" id="import-section">
 			<h3>Import Section</h3>
 		</div>
-		<div class="cell grid-x grid-padding-x align-middle" id="import-midica">
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell shrink">
+				<img src="assets/img/import_0.png" />
+			</div>
+			<div class="cell auto">
+				<p>The fields <b>Imported File</b> and <b>File Type</b> describe the currently imported file.</p>
+				<p>If the <em>Remember</em> checkbox is checked, the same file will be imported automatically when Midica is started next time.</p>
+				<p>The <em>select file</em> button opens the import file chooser.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell auto">
+				<p>The import file chooser window contains several tabs, depending on the format of the file to be imported.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
 				<img src="assets/img/import_1_midica.png" />
 			</div>
 			<div class="cell auto">
-				<p><b>Import MidicaPL file</b>: Choose the source code file</p>
-				<p>The encoding can also be chosen. This is mainly relevant for text messages like lyrics etc.</p>
+				<p><b>MidicaPL</b> Tab: Choose the source code file to be imported</p>
+				<p>The encoding (charset) can also be chosen. The chosen encoding must be compatible to the source file to be imported.</p>
 			</div>
 		</div>
-		<div class="cell grid-x grid-padding-x align-middle" id="import-midi">
+		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
 				<img src="assets/img/import_2_midi.png" />
 			</div>
 			<div class="cell auto">
-				<p><b>Import MIDI file</b>: Choose the MIDI file</p>
+				<p><b>MIDI</b> Tab: Choose the MIDI file to be imported</p>
 				<p>
-					The default encoding can also be chosen.
+					The default encoding (charset) can also be chosen.
 					This is only used if the encoding cannot be found in the file itself.
 					It is only relevant for text messages like lyrics etc.
 				</p>
 			</div>
 		</div>
-		<div class="cell grid-x grid-padding-x align-middle" id="import-soundfont">
+		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/import_3_soundfont.png" />
+				<img src="assets/img/import_3_alda.png" />
 			</div>
 			<div class="cell auto">
-				<p><b>Load Soundfont</b>: Choose the SF2 file</p>
+				<p><b>ALDA</b> Tab: Choose the ALDA file to be imported</p>
+				<p>ALDA must be installed. The command or full path to the ALDA executable must be correctly set for importing ALDA files.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/import_4_abc.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>ABC</b> Tab: Choose the ABC file to be imported</p>
+				<p><em>abcMIDI</em> must be installed. The command or full path to the abc2midi executable must be correctly set for importing ABC files.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/import_5_ly.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>LilyPond</b> Tab: Choose the LilyPond file to be imported</p>
+				<p><em>LilyPond</em> must be installed. The command or full path to the lilypond executable must be correctly set for importing LilyPond files.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/import_6_mscore.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>MuseScore</b> Tab: Choose a MuseScore compatible file to be imported</p>
+				<p><em>MuseScore</em> must be installed. The command or full path to the musescore executable must be correctly set for importing MuseScore compatible files.</p>
+				<p>The following formats can be imported here:</p>
+				<ul>
+					<li>MusicXML (compressed and uncompressed)</li>
+					<li>MuseScore</li>
+					<li>Guitar Pro</li>
+					<li>Capella</li>
+					<li>Bagpipe Music Writer</li>
+					<li>Sonicscores Overture</li>
+					<li>Sonicscores Score Writer</li>
+					<li>PowerTab</li>
+				</ul>
+			</div>
+		</div>
+		<div class="cell" id="soundfont-section">
+			<h3>Soundfont Section</h3>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell shrink">
+				<img src="assets/img/soundfont_0.png" />
+			</div>
+			<div class="cell auto">
+				<p>The <b>Current Soundfont</b> field describes the currently loaded soundfont.</p>
+				<p>If the <em>Remember</em> checkbox is checked, the same soundfont will be loaded automatically when Midica is started next time.</p>
+				<p>The <em>select file</em> button opens the soundfont file chooser.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/soundfont_1.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>Load Soundfont</b>: Choose the soundfont file in SF2 format.</p>
 			</div>
 		</div>
 		<div class="cell" id="export-section">
 			<h3>Export Section</h3>
 		</div>
-		<div class="cell grid-x grid-padding-x align-middle" id="export-midi">
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell shrink">
+				<img src="assets/img/export_0.png" />
+			</div>
+			<div class="cell auto">
+				<p>
+					The <b>Transpose Level</b> shows if the music will be exported to a higher or lower pitch than the imported sequence.
+					The default is <code>0</code> (equal pitch). Positive values transpose to a higher pitch, negative values to a lower pitch.
+					The transpose level can be changed in the player.
+				</p>
+				<p>The <em>select file</em> button opens the export file chooser.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell auto">
+				<p>The export file chooser window contains several tabs, depending on the format of the file to be exported.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
 				<img src="assets/img/export_1_midi.png" />
 			</div>
 			<div class="cell auto">
-				<p><b>Export MIDI file</b>: Choose the file name</p>
-				<p>The encoding can also be chosen. This is only relevant for text messages like lyrics etc.</p>
-				<p>It doesn't need to be the same encoding as in the imported sequence.</p>
+				<p><b>MIDI</b> Tab: Choose the MIDI file to be exported.</p>
+				<p>
+					The encoding can also be chosen. This is only relevant for text messages like lyrics etc.<br/>
+					It doesn't need to be the same encoding as in the imported sequence.<br/>
+					However if you want to stick to the official MIDI standard, it should be either <code>ISO-8859-1</code> or <code>Shift_JIS</code>.<br/>
+					If you don't care about the standard, choose whatever encoding you like.
+				</p>
 			</div>
 		</div>
-		<div class="cell grid-x grid-padding-x align-middle" id="export-midica">
+		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
 				<img src="assets/img/export_2_midica.png" />
 			</div>
 			<div class="cell auto">
-				<p><b>Export MidicaPL source code</b>: Choose the file name</p>
+				<p><b>MidicaPL</b> Tab: Choose the MidicaPL file to be exported.</p>
 				<p>The chosen encoding is used for the complete file.</p>
 				<p>It doesn't need to be the same encoding as in the imported sequence.</p>
 				<p><b>This feature is still experimental!</b></p>
+				<p>If the <em>Directly Import...</em> checkbox is checked, the exported file will be directly re-imported after the export.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/export_3_alda.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>ALDA</b> Tab: Choose the ALDA file to be exported.</p>
+				<p><b>This feature is still experimental!</b></p>
+				<p>If the <em>Directly Import...</em> checkbox is checked, the exported file will be directly re-imported after the export.</p>
 			</div>
 		</div>
 	</section>
+	<div class="cell" id="player-section">
+		<h3>Player Section</h3>
+	</div>
+	<div class="cell grid-x grid-padding-x align-middle">
+		<div class="cell shrink">
+			<img src="assets/img/player_0.png" />
+		</div>
+		<div class="cell auto">
+			<p>The player section only contains the button to open the player window.</p>
+			<p>A file must have been imported before the player can be started.</p>
+		</div>
+	</div>
 	<section class="grid-x grid-padding-x align-middle" id="player">
 		<div class="cell">
 			<h2>Player</h2>
-		</div>
-		<div class="cell">
-			<p>The player can be opened from the main window by clicking <b>Start Player</b>. A sequence must have been loaded before.</p>
 		</div>
 		<div class="cell">
 			<img src="assets/img/player_1.png" />
@@ -230,11 +355,11 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 				<p>
 					<b>Sliders</b>
 					<br />
-					<b>Vol</b> changes the basic volume for all channels.
+					<b>Vol</b> changes the master volume. This affects all channels.
 					<br />
 					<b>Tempo</b> changes the tempo of the sequence. Normal tempo is <b>1.0</b>, more is faster, less is slower.
 					<br />
-					<b>Transpose</b> increments or decrements the key of the sequence.
+					<b>Transpose</b> increments or decrements the key of the sequence. Positive values transpose to a higher pitch, negative values to a lower pitch.
 				</p>
 			</div>
 		</div>
@@ -246,7 +371,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 				<p>
 					<b>Reparse</b>
 					<br />
-					Parses the loaded MidicaPL or MIDI file again and rebuilds the sequence. This is useful when editing the source file.
+					Parses the imported file again and rebuilds the sequence. This is useful after editing the imported source file.
 				</p>
 			</div>
 		</div>
@@ -265,7 +390,12 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 			</div>
 		</div>
 		<div class="cell" id="player-channel">
-			<h3>Channel Details</h3>
+			<h3>Channel Mode</h3>
+		</div>
+		<div class="cell auto">
+			<p>
+				The channel mode is the default mode. It's visible as long as the <em>Show Lyrics</em> checkbox is not checked.
+			</p>
 		</div>
 		<div class="cell">
 			<h4>Overview</h4>
@@ -400,11 +530,11 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 			<img src="assets/img/karaoke.png" />
 		</div>
 		<div class="cell large-auto">
-			<p>By checking <b>Show Lyrics</b> the karaoke mode is shown instead of the channel details.</p>
+			<p>By checking <b>Show Lyrics</b> the lyrics are shown instead of the channel details.</p>
 			<ul>
-				<li>By default the lyrics are shown in <b>black</b></li>
+				<li>Future syllables are shown in <b>black</b></li>
 				<li>A quarter note before appearing, a syllable is turned to <b><i>italic and black</i></b></li>
-				<li>When a syllable appears, it is shown in <b>red</b></li>
+				<li>As soon as a syllable appears, it is turned into <b>red</b></li>
 			</ul>
 		</div>
 	</section>
@@ -507,7 +637,8 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		</div>
 		<div class="cell">
 			<p>
-				The <b>Sequence</b> tab can be used to analyze the currently loaded MIDI sequence, no matter if it has been loaded from a MIDI file or a MidicaPL file.
+				The <b>Sequence</b> tab can be used to analyze the currently loaded MIDI sequence, no matter if it has been loaded
+				from a MIDI file, a MidicaPL file or any other format.
 			</p>
 		</div>
 		<div class="cell large-6">
