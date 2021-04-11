@@ -52,6 +52,24 @@
 						"url": "/screenshots.html#soundcheck"
 					},
 					{
+						"title": "Decompiler",
+						"url": "/screenshots.html#decompiler",
+						"menu-items": [
+							{
+								"title": "Decompile Config",
+								"url": "/screenshots.html#decompile-config"
+							},
+							{
+								"title": "Decompile Result",
+								"url": "/screenshots.html#decompile-result"
+							}
+						]
+					},
+					{
+						"title": "Table Filter",
+						"url": "/screenshots.html#table-filter"
+					},
+					{
 						"title": "Info Window",
 						"url": "/screenshots.html#info-window",
 						"menu-items": [
