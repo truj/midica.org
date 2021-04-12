@@ -31,13 +31,13 @@ Then you can run the project either with:
 
 `npm start`
 
-oder with:
+or with:
 
 `foundation watch`
 
 # Productive Version
 
-To build a procuctive version, type:
+To build a productive version, type:
 
 `foundation build`
 
