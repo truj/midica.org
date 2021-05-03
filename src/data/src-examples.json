@@ -368,5 +368,11 @@
 		"m": "pattern-house-3.midicapl",
 		"m2": "pattern-house-2.midicapl",
 		"s": "pattern-house-2.svg"
+	},
+	"zero-length": {
+		"m": "zero-length.midicapl",
+		"m2": "zero-length-2.midicapl",
+		"m3": "zero-length-3.midicapl",
+		"s": "zero-length.svg"
 	}
 }

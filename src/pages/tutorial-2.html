@@ -419,6 +419,31 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.length-plus }}</div>
+		<div class="cell">
+			<h3>Zero-Length</h3>
+			<p>
+				There is one special length symbol: <code>-</code>. It means "no length at all".
+				Of cause this does not make sense for any normal note, chord or rest. However it is useful to change
+				a channel option without playing a note or chord.
+			</p>
+			<p>
+				The zero-length is only allowed in combination with a rest but not with a note or chord.
+				So the second and third column both have the symbol <code>-</code>.
+			</p>
+			<p>
+				The following examples are equivalent:
+			</p>
+			<div class="cell">{{> src-example src-examples.zero-length }}</div>
+			<p>
+				The first example uses zero-length rests to change the velocity and duration of the following notes.
+			</p>
+			<p>
+				The second example uses real rests, but with <code>m</code> as additional option. This is an alternative for zero-length rests.
+			</p>
+			<p>
+				The third example doesn't use rests at all but applies the channel parameters directly to a note.
+			</p>
+		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="percussion">
 		<div class="cell">
