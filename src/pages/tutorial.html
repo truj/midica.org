@@ -86,8 +86,10 @@ meta-desc:  "Get ready for Music programming with Midica."
 		</div>
 		<div class="cell">
 			<p>
-				Before you start playing Music, you should load a soundfont. Otherwise Midica uses the Java default soundfont which is very bad.
-				It calls itself "Emergency GM sound set" and this name makes sense. It produces the worst sound in the world.
+				Before you start playing Music, you should load a soundbank. Otherwise Midica uses a default soundbank which may be very bad, depending on
+				the operating system.
+				If the operating system does not provide any other soundbank, Midica uses Java's default soundfont which calls itself
+				"Emergency GM sound set". This name makes sense. It produces the worst sound in the world.
 			</p>
 			<p>
 				For the beginning I suggest to use the FluidR3_GM Soundfont.
@@ -95,13 +97,16 @@ meta-desc:  "Get ready for Music programming with Midica."
 				Download the <code>.tar.gz</code> file and unpack it. Then you find the file <code>FluidR3_GM.sf2</code>. This is the file you need.
 			</p>
 			<p>
-				If you have this or any other soundfont file on your computer, start Midica like described above.
-				The main window of Midica opens. In the import area under <code>Soundfont</code> click the button <code>select file</code>.
-				Then choose the soundfont file with the extension <code>.sf2</code>.
+				Supported soundbank formats are <b>Soundfont</b> (*.sf2) and <b>Downloadable Sounds</b> (*.dls).
 			</p>
 			<p>
-				Check the <code>Remember</code> checkbox next to the Button. Then Midica remembers the soundfont file path. If you close Midica
-				and then start it again, the soundfont will be loaded automatically.
+				If you have the Fluid soundfont or any other soundbank file on your computer, start Midica like described above.
+				The main window of Midica opens. In the import area under <code>Soundbank</code> choose the <code>File</code> tab and click the button <code>select file</code>.
+				Then choose the soundbank file with the extension <code>.sf2</code> or <code>.dls</code>.
+			</p>
+			<p>
+				Check the <code>Remember</code> checkbox next to the Button. Then Midica remembers the soundbank file path. If you close Midica
+				and then start it again, the soundbank will be loaded automatically.
 			</p>
 		</div>
 	</section>

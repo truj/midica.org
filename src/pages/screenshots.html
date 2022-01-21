@@ -1,7 +1,7 @@
 ---
 layout: index
 meta-title: "Midica - Screenshots"
-meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI compiler and decompiler. Music Programming Language for MIDI."
+meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundbank Viewer, MIDI compiler and decompiler. Music Programming Language for MIDI."
 ---
 <div class="grid-container screenshots">
 	<div class="grid-x grid-padding-x">
@@ -15,7 +15,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		</div>
 		<div class="cell">
 			<p>
-				The main window consists of different sections: <em>Configuration</em>, <em>Player</em>, <em>Import</em>, <em>Soundfont</em> and <em>Export</em>.
+				The main window consists of different sections: <em>Configuration</em>, <em>Player</em>, <em>Import</em>, <em>Soundbank</em> and <em>Export</em>.
 			</p>
 		</div>
 		<div class="cell">
@@ -180,25 +180,25 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 				</ul>
 			</div>
 		</div>
-		<div class="cell" id="soundfont-section">
-			<h3>Soundfont Section</h3>
+		<div class="cell" id="soundbank-section">
+			<h3>Soundbank Section</h3>
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/soundfont_0.png" />
+				<img src="assets/img/soundbank_0.png" />
 			</div>
 			<div class="cell medium-auto">
-				<p>The <b>Current Soundfont</b> field describes the currently loaded soundfont.</p>
-				<p>If the <em>Remember</em> checkbox is checked, the same soundfont will be loaded automatically when Midica is started next time.</p>
-				<p>The <em>select file</em> button opens the soundfont file chooser.</p>
+				<p>The <b>Current Soundbank</b> field describes the currently loaded soundbank.</p>
+				<p>If the <em>Remember</em> checkbox is checked, the same soundbank will be loaded automatically when Midica is started next time.</p>
+				<p>The <em>select file</em> button opens the soundbank file chooser.</p>
 			</div>
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
 			<div class="cell medium-shrink">
-				<img src="assets/img/soundfont_1.png" />
+				<img src="assets/img/soundbank_1.png" />
 			</div>
 			<div class="cell auto">
-				<p><b>Load Soundfont</b>: Choose the soundfont file in SF2 format.</p>
+				<p><b>Load Soundbank</b>: Choose the soundbank file in SF2 format.</p>
 			</div>
 		</div>
 		<div class="cell" id="export-section">
@@ -453,7 +453,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 				<div class="cell grid-x grid-padding-x">
 					<div class="cell small-3 medium-2"><b>Instrument</b></div>
 					<div class="cell auto">
-						<p>Instrument name like it's named in the currently loaded soundfont</p>
+						<p>Instrument name like it's named in the currently loaded soundbank</p>
 					</div>
 				</div>
 				<div class="cell grid-x grid-padding-x">
@@ -545,7 +545,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		<div class="cell">
 			<p>
 				A click on the <b>Soundcheck</b> button in the player window opens the soundcheck window.
-				This can be used to check the sound of the instruments in the currently loaded soundfont.
+				This can be used to check the sound of the instruments in the currently loaded soundbank.
 			</p>
 		</div>
 		<div class="cell grid-x grid-padding-x align-middle">
@@ -554,7 +554,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 			</div>
 			<div class="cell large-auto">
 				<p>
-					Each channel can have different instruments or drum kits. This information is read from the soundfont.
+					Each channel can have different instruments or drum kits. This information is read from the soundbank.
 					Depending on the chosen channel, only the supported drum kits or instruments are displayed.
 				</p>
 			</div>
@@ -566,7 +566,7 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 			<img src="assets/img/soundcheck_2_drum.png" />
 		</div>
 		<div class="cell">
-			<p>Other channels usually only contain chromatic instruments. But in some soundfonts they can also contain multi channel drum kits.</p>
+			<p>Other channels usually only contain chromatic instruments. But in some soundbanks they can also contain multi channel drum kits.</p>
 			<p>The chromatic instruments are grouped in categories like defined in the <b>General MIDI</b> standard.</p>
 		</div>
 		<div class="cell">
@@ -754,25 +754,25 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundfont Viewer, MIDI 
 		<div class="cell large-6">
 			<img src="assets/img/info_conf_drumkit.png" />
 		</div>
-		<div class="cell" id="info-soundfont">
-			<h3>Soundfont Tab</h3>
+		<div class="cell" id="info-soundbank">
+			<h3>Soundbank Tab</h3>
 		</div>
 		<div class="cell">
 			<p>
-				The <b>Soundfont</b> tab can be used to analyze the currently loaded soundfont.
+				The <b>Soundbank</b> tab can be used to analyze the currently loaded soundbank.
 			</p>
 		</div>
 		<div class="cell large-6">
-			<img src="assets/img/info_soundfont_general.png" />
+			<img src="assets/img/info_soundbank_general.png" />
 		</div>
 		<div class="cell large-6">
-			<img src="assets/img/info_soundfont_instr.png" />
+			<img src="assets/img/info_soundbank_instr.png" />
 		</div>
 		<div class="cell large-6">
-			<img src="assets/img/info_soundfont_sample.png" />
+			<img src="assets/img/info_soundbank_sample.png" />
 		</div>
 		<div class="cell large-6">
-			<img src="assets/img/info_soundfont_layer.png" />
+			<img src="assets/img/info_soundbank_layer.png" />
 		</div>
 		<div class="cell" id="info-sequence">
 			<h3>Sequence Tab</h3>

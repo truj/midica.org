@@ -1,7 +1,7 @@
 ---
 layout: index
 meta-title: "MidicaPL Tutorial 2: Improving - Music Programming Language for Midica"
-meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and percussion instruments. Produce Karaoke songs."
+meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and percussion instruments. Produce Karaoke songs."
 ---
 
 <div class="grid-container midicapl">
@@ -17,7 +17,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			<p>
 				In this chapter you will learn all the details about channel options and how to create karaoke songs.
 				Moreover you will learn everything about complex note lengths, how to use percussion instruments, and how to use
-				soundfonts.
+				soundbanks.
 			</p>
 		</div>
 	</section>
@@ -494,34 +494,40 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="soundfonts">
+	<section class="grid-x grid-padding-x" id="soundbanks">
 		<div class="cell">
-			<h2>Using Soundfonts</h2>
+			<h2>Using Soundbanks</h2>
 		</div>
 		<div class="cell">
-			<h3>Include Soundfont File</h3>
+			<h3>Include Soundbank File</h3>
 		</div>
 		<div class="cell">
 			<p>
-				In the preparation section you learned how to <a href="/tutorial.html#sound">load a Soundfont</a> manually in the main window of
+				In the preparation section you learned how to <a href="/tutorial.html#sound">load a Soundbank</a> manually in the main window of
 				the Midica application.
 			</p>
 			<p>
-				But there are a lot of different soundfonts out there, specialized for different kinds of music. So maybe you want to use different
-				soundfonts for different songs. And maybe you don't want to choose the soundfont file manually each time you switch to another
+				But there are a lot of different soundbanks out there, specialized for different kinds of music. So maybe you want to use different
+				soundbanks for different songs. And maybe you don't want to choose the soundbank file manually each time you switch to another
 				MidicaPL file containing another song.
 			</p>
 			<p>
-				In this case you can use the <code>SOUNDFONT</code> command. Its only argument is the path to a soundfont file in the
-				<code>.sf2</code> format. The path can be either absolute or relative to the source file containing the command.
+				In this case you can use the <code>SOUNDBANK</code> command. Its only argument is the path or URL to a soundbank file in the
+				<code>.sf2</code> or <code>.dls</code> format. The path can be either absolute or relative to the source file containing the command.
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.soundfont }}</div>
+		<div class="cell">{{> src-example src-examples.soundbank-path }}</div>
 		<div class="cell">
 			<p>
-				Of cause this does not work on someone else's computer because he will probably not have the same
-				soundfont in the same file path inside of his fils system.
-				And it will also not work in an exported MIDI file because soundfont information cannot be stored in a MIDI sequence.
+				Of cause a local file path does not work on someone else's computer because he will probably not have the same
+				soundbank in the same directory inside of his fils system. Therefore you can reference the file by URL.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.soundbank-url }}</div>
+		<div class="cell">
+			<p>
+				This works on other computers as well.
+				However it will still not work in an exported MIDI file because soundbank information cannot be stored in a MIDI sequence.
 			</p>
 		</div>
 		<div class="cell">
@@ -535,7 +541,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 			<p>
 				Each ID is mapped to a program number internally. And program numbers can only have values from 0 to 127.
-				But comprehensive soundfonts can contain much more than 128 different instruments. In this case the instruments
+				But comprehensive soundbanks can contain much more than 128 different instruments. In this case the instruments
 				are selected by a combination of a <em>program number</em> and a <em>bank description</em>.
 			</p>
 			<p>
@@ -548,7 +554,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 				E.g. <code>VIOLIN,5/3</code> would use a violin (program number 40) with a bank MSB of 5 and an LSB of 3.
 			</p>
 			<p>
-				For most soundfonts you only need the MSB, like in the first example. In this case the LSB is 0.
+				For most soundbanks you only need the MSB, like in the first example. In this case the LSB is 0.
 				So <code>VIOLIN,5</code> is the same as <code>VIOLIN,5/0</code>.
 			</p>
 			<p>
@@ -577,9 +583,9 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 				<li><code>VIOLIN,643</code> (5 * 128 + 3 = 643)</li>
 			</ul>
 			<p>
-				Some soundfonts support multi-channel drumkits. That is a drumkit that can also be used in channels other than 9.
+				Some soundbanks support multi-channel drumkits. That is a drumkit that can also be used in channels other than 9.
 				Often such drumkits are located on bank 15360 (MSB 120, LSB 0).
-				The following example assumes that you use such a soundfont.
+				The following example assumes that you use such a soundbank.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.instruments-2 }}</div>
@@ -642,7 +648,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundfonts and p
 			</p>
 			<p>
 				In channel 1 we switch to a completely different instrument, using a non-standard bank number.
-				The program number is the one of a steel guitar but in the current soundfont it's mapped to a mandolin.
+				The program number is the one of a steel guitar but in the current soundbank it's mapped to a mandolin.
 				So we use an appropriate channel description to avoid confusion.
 			</p>
 			<p>

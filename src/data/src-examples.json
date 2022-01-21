@@ -122,8 +122,13 @@
 		"s": "billie-jean.svg",
 		"s2": "billie-jean-2.svg"
 	},
-	"soundfont": {
-		"m": "soundfont.midicapl"
+	"soundbank-path": {
+		"m": "soundbank-path-sf2.midicapl",
+		"m2": "soundbank-path-dls.midicapl"
+	},
+	"soundbank-url": {
+		"m": "soundbank-url-sf2.midicapl",
+		"m2": "soundbank-url-dls.midicapl"
 	},
 	"variable": {
 		"m": "variable.midicapl",
