@@ -522,11 +522,15 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				Of cause a local file path does not work on someone else's computer because he will probably not have the same
 				soundbank in the same directory inside of his fils system. Therefore you can reference the file by URL.
 			</p>
+			<p>
+				But URLs contain a double slash <code>//</code>, that is also the comment symbol in MidicaPL.
+				For this reason the two slashes in the URL must be separated by a space.
+			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.soundbank-url }}</div>
 		<div class="cell">
 			<p>
-				This works on other computers as well.
+				Referencing a soundbank by URL like this works on other computers as well.
 				However it will still not work in an exported MIDI file because soundbank information cannot be stored in a MIDI sequence.
 			</p>
 		</div>
