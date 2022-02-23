@@ -207,6 +207,15 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundbank Viewer, MIDI 
 			</div>
 			<div class="cell auto">
 				<p><b>URL</b> Tab: Choose a URL to a soundbank in SF2 or DLS format.</p>
+				<p>Already downloaded soundbanks are automatically cached. This saves time if the same URL is used a second time.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/soundbank_3.png" />
+			</div>
+			<div class="cell auto">
+				<p>The soundbank cache can be cleared. That may be useful if an updated soundbank version is available on an already cached URL.</p>
 			</div>
 		</div>
 		<div class="cell" id="export-section">
@@ -264,6 +273,62 @@ meta-desc:  "MIDI Player, Karaoke Player, MIDI Analyzer, Soundbank Viewer, MIDI 
 				<p><b>ALDA</b> Tab: Choose the ALDA file to be exported.</p>
 				<p><b>This feature is still experimental!</b></p>
 				<p>If the <em>Directly Import...</em> checkbox is checked, the exported file will be directly re-imported after the export.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/export_4_audio.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>Audio</b> Tab: Choose the Audio file to be exported.</p>
+				<p>Supported formats for the Audio export are: WAV, AU, SND, AIFF and AIFC</p>
+				<p>By clicking the <em>Options</em> icon you can open a window to fine-tune the audio export.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/export_4_audio_options.png" />
+			</div>
+			<div class="cell auto">
+				<p>The <b>Audio Export Settings</b> window to fine-tune the audio export.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/export_5_abc.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>ABC</b> Tab: Choose the ABC file to be exported.</p>
+				<p><em>abcMIDI</em> must be installed. The command or full path to the midi2abc executable must be correctly set for exporting ABC files.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/export_6_ly.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>LilyPond</b> Tab: Choose the LilyPond file to be exported.</p>
+				<p><em>LilyPond</em> must be installed. The command or full path to the midi2ly executable must be correctly set for exporting LilyPond files.</p>
+			</div>
+		</div>
+		<div class="cell grid-x grid-padding-x align-middle">
+			<div class="cell medium-shrink">
+				<img src="assets/img/export_7_mscore.png" />
+			</div>
+			<div class="cell auto">
+				<p><b>MuseScore</b> Tab: Choose a MuseScore compatible file to be exported.</p>
+				<p><em>MuseScore</em> must be installed. The command or full path to the musescore executable must be correctly set for exporting MuseScore compatible files.</p>
+				<p>The following formats can be exported here:</p>
+				<ul>
+					<li>MusicXML (compressed and uncompressed)</li>
+					<li>MuseScore</li>
+					<li>MP3</li>
+					<li>Ogg Vorbis</li>
+					<li>FLAC</li>
+					<li>PDF</li>
+					<li>PNG</li>
+					<li>SVG</li>
+				</ul>
 			</div>
 		</div>
 	</section>
