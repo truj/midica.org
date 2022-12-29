@@ -25,7 +25,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				The chord may change but the pattern stays the same.
 			</p>
 			<p>
-				An example can be a certain guitar picking pattern. The right hand of the guitar player plays the same pattern
+				An example can be a certain guitar picking pattern. The right hand picks the same pattern
 				while the left hand frets different chords.
 			</p>
 			<p>
@@ -36,11 +36,15 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				The block ends with the keyword <code>END</code>.
 			</p>
 			<p>
-				Later it's used inside of a normal channel command, instead of a note length.
+				Later the pattern is used inside of a normal compact or lowlevel command, by using the pattern's name instead of a note length.
 			</p>
 			<p>
-				The following example defines an empty pattern called <code>do_nothing</code>.
+				The following two examples are equivalent.
+				They define an empty pattern called <code>do_nothing</code>.
 				This pattern is used later with different chords.
+			</p>
+			<p>
+				The first example uses the pattern inside of compact commands, the second one inside of lowlevel commands.
 			</p>
 		</div>
 		<div class="cell medium-6">{{> src-example src-examples.pattern-do-nothing }}</div>
@@ -60,20 +64,20 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				A pattern block contains information what to do with the chord. It can consist of:
 			</p>
 			<ul>
-				<li>lines producing a note</li>
-				<li>lines producing a sub chord</li>
-				<li>lines producing a rest</li>
+				<li>lines producing a compact command (using any combination of the provided notes or rests)</li>
+				<li>lines producing a lowlevel command (with a rest, note or sub chord of the provided chord)</li>
 				<li>nestable blocks</li>
 				<li>nested patterns</li>
 			</ul>
 		</div>
 		<div class="cell">
-			<h3>Notes in a Pattern</h3>
+			<h3>Compact commands in a Pattern</h3>
 		</div>
 		<div class="cell">
 			<p>
-				The most important content of a pattern is the information what to do with a single note of the chord.
-				Therefore it's important to know that each note of the chord must be addressed by a <em>note index</em>.
+				Pattern lines that produce a compact command begin with a single <code>:</code> without a channel number.
+				The rest of the line describes notes, chords or rests. But instead of using note names, each single note is addressed by a
+				<em>note index</em>.
 			</p>
 			<p>
 				The notes in the chord are sorted by pitch, from low to high. The lowest note has <em>note index</em> 0.
@@ -88,22 +92,12 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				In this case, <code>a-2</code> has note index 0, <code>e-</code> has index 1, <code>a-</code> has index 2, <code>c</code> has index 3
 				and <code>e</code> has index 4.
 			</p>
-		</div>
-		<div class="cell">
 			<p>
-				A regular pattern line consists of the following elements, separated by white space(s):
-			</p>
-			<ul>
-				<li>note index</li>
-				<li>note length</li>
-				<li>options (optional)</li>
-			</ul>
-			<p>
-				With this knowledge we try to change the above 'do nothing' example to something else: The first bar of "House of the Rising Sun".
+				With this knowledge we change the above 'do nothing' example to something else: The first bar of "House of the Rising Sun".
 				The following two examples are equivalent. The first one uses the pattern, the second one doesn't.
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.pattern-do-something }}</div>
+		<div class="cell">{{> src-example src-examples.pattern-do-something-compact }}</div>
 		<div class="cell">
 			<p>
 				We renamed the pattern from <code>do_nothing</code> to <code>basic</code> because now it's actually doing something.
@@ -111,21 +105,50 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 			</p>
 			<p>
 				The colors make clear where which part comes from.
-				The channel (marked in blue) is only defined in the channel command <code>0 amin basic</code>.
+				The channel (marked in blue) is only defined in the channel command <code>0: amin:basic</code>.
 				The pattern itself doesn't contain a channel. (It could be used from several channels.)
 				The note indices are marked in red. In the second example you see how the indices are translated into notes.
 			</p>
+		</div>
+
+		<div class="cell">
+			<h3>Lowlevel commands in a Pattern</h3>
+		</div>
+		<div class="cell">
+			<p>
+				A pattern line producing a lowlevel command consists of the following elements, separated by white space(s):
+			</p>
+			<ul>
+				<li>note index</li>
+				<li>note length</li>
+				<li>options (optional)</li>
+			</ul>
+			<p>
+				The following example shows the same pattern as before, but with lowlevel pattern lines.
+				Again the first example shows how to use the pattern, while the second one shows the equivalent lowlevel commands without pattern.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-do-something-lowlevel }}</div>
+		<div class="cell">
+			<p>
+				Again, the colors make clear where which part comes from.
+			</p>
 			<p>
 				Now we want to add the next three bars. So we just add the missing chords again and apply the pattern on them.
-				But we leave the pattern definition unchanged:
+				But we leave the pattern definition unchanged.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-house }}</div>
 		<div class="cell">
 			<p>
-				It already sounds pretty well like the original song. But if you are really picky and listen carefully, you may notice that
+				We applied the pattern to amin and cmaj from a lowlevel command. But for the next two chords we used a compact command.
+				So you see, this is completely exchangeable.
+			</p>
+			<p>
+				Our song sounds already pretty well like the original. But if you are really picky and listen carefully, you may notice that
 				only the first two bars are correct.
-				The 3rd and 4th bar need a slightly different pattern. We will implement it with the name <code>alternate</code>:
+				The 3rd and 4th bar need a slightly different pattern. We will implement it with the name <code>alternate</code> - but this time we
+				only use compact commands inside the patterns:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-house-2 }}</div>
@@ -140,7 +163,13 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				how this very same thing would look with normal channel commands:
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.pattern-travis }}</div>
+		<div class="cell">{{> src-example src-examples.pattern-travis-lowlevel }}</div>
+		<div class="cell">
+			<p>
+				The following example is the same thing with compact commands - first with the pattern and then the equivalent code without pattern:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-travis-compact }}</div>
 		<div class="cell">
 			<p>
 				This pattern is called <code>travis</code> because it implements the famous <em>Travis Pattern</em>, a finger picking pattern
@@ -162,7 +191,8 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				In order to create a rest inside a pattern, just replace the note index with a dash: <code>-</code>.
 			</p>
 			<p>
-				The next example shows a small variation of the travis pattern, containing a rest:
+				The next example shows a small variation of the travis pattern, containing a rest. The first example shows
+				the pattern with lowlevel commands, the second one with compact commands:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-rest }}</div>
@@ -193,11 +223,12 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		</div>
 		<div class="cell medium-6">
 			<p>
-				As already mentioned, a normal note index line inside a pattern can have options.
-				Such a line will be transformed into a channel command, so only channel command options are allowed here.
+				As already mentioned, a pattern line producing a channel command can have options.
+				Such a line will be transformed into a (lowlevel or compact) channel command, so only such options are allowed here
+				that are allowed for the command type to be produced.
 			</p>
 			<p>
-				But the line using the pattern is also a channel command. So it can also contain options.
+				But the line using the pattern is also a channel command. So it can also contain options (at least if it's called in lowlevel syntax).
 				This makes things a bit complicated, and not all combinations are allowed.
 			</p>
 			<p>
@@ -310,7 +341,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				from before the pattern usage is restored again. (Or the one from the outer option, if given.)
 			</p>
 			<p>
-				The following example demonstrates how this works:
+				The following example demonstrates how this works. Lowlevel first, then the same with compact syntax:
 			</p>
 			<div class="cell medium-6">{{> src-example src-examples.pattern-velo-dur }}</div>
 		</div>
@@ -319,16 +350,19 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				Everything begins with a velocity of 50 (piano) and a duration of 90%.
 			</p>
 			<p>
-				The velocity is switched to 95 (forte) in the outer option of the pattern usage.
+				The velocity is switched to 95 (forte) in the outer option of the pattern usage (lowlevel example).
+				Or directly <em>before</em> the pattern usage (compact example).
 			</p>
 			<p>
 				That means, the pattern begins with velocity = 95 and duration = 90%.
 			</p>
 			<p>
-				The 3rd line of the pattern switches the duration to 40% (staccato) with an inner option.
+				The pattern switches the duration to 40% (staccato) with an inner option.
+				(3rd pattern line of the lowlevel example, <code>(d=40%)</code> in the compact example)
 			</p>
 			<p>
-				After the pattern ends, the duration is restored to 90%. But the velocity is not restored because it has been set with an outer option.
+				After the pattern ends, the duration is restored to 90%. But the velocity is not restored because it has been set with
+				an outer option (lowlevel) or completely outside the pattern (compact).
 				So it continues to be 95 (forte).
 			</p>
 		</div>
@@ -341,7 +375,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 			<p>
 				When we introduced <em>note indices</em>, we learned that the chord's notes are sorted by pitch before being addressed via note index.
 				But this is only true for predefined chords. When we use inline chords, the notes stay in the same order as they are written.
-				The following example demonstrate the difference between predefined and inline chords:
+				The following example demonstrates the difference between predefined and inline chords. Lowlevel first, then the same with compact syntax:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-inline }}</div>
@@ -376,7 +410,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 			</p>
 			<p>
 				But more complicated nestings are also possible. The following example assumes that the previously defined patterns <code>travis</code>,
-				<code>upstroke</code> and <code>downstroke</code> are available:
+				<code>upstroke</code> and <code>downstroke</code> are available. Lowlevel first, then the same with compact syntax:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-nested }}</div>
@@ -406,12 +440,25 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell">{{> src-example src-examples.pattern-params }}</div>
 		<div class="cell">
 			<p>
-				Then we can implement a parametrized <code>downstroke</code> pattern that uses <code>upstroke</code> as nested pattern. So we need to pass the
-				parameters over to the nested pattern:
+				The pattern contains only lowlevel commands but for using it we use both types.
+				For the first pattern call we use lowlevel syntax. In this case, there are no whitespaces allowed in the whole command
+				- <code>cmaj:upstroke(/1,/8)</code> or <code>cmaj:upstroke(len=/1,dist=/8)</code>.
+			</p>
+			<p>
+				If the pattern is used in lowlevel syntax then whitespaces are optional, as the last line of the first example shows.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				Now we can implement a parametrized <code>downstroke</code> pattern that uses <code>upstroke</code> as a nested pattern.
+				So we need to pass the parameters over to the nested pattern:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-params-downstroke }}</div>
 		<div class="cell">
+			<p>
+				This time we use lowlevel syntax for the nested pattern call. And mixed syntax for the outer pattern calls again.
+			</p>
 			<p>
 				Remeber our "House of the Rising Sun" example above.
 				The two patterns <code>basic</code> and <code>alternate</code> are pretty similar.
@@ -427,7 +474,8 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				As you can see, the parantheses in the pattern usage are optional, if no parameters are used.
 			</p>
 			<p>
-				So <code>0 amin basic</code> and <code>0 amin basic()</code> are equivalent.
+				So <code>0 amin basic</code> and <code>0 amin basic()</code> are equivalent. Or in compact syntax,
+				<code>0: amin:basic</code> would be the same as <code>0: amin:basic()</code>.
 			</p>
 			<p>
 				This is just the same behaviour as in a function call.

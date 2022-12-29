@@ -15,9 +15,77 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				if you have not yet done that already.
 			</p>
 			<p>
-				In this chapter you will learn all the details about channel options and how to create karaoke songs.
+				In this chapter you will learn about lowlevel commands, all the details about channel options and how to create karaoke songs.
 				Moreover you will learn everything about complex note lengths, how to use percussion instruments, and how to use
 				soundbanks.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x" id="lowlevel-channel-commands">
+		<div class="cell">
+			<h2>Lowlevel Channel Commands</h2>
+		</div>
+		<div class="cell">
+			<p>
+				The channel commands from the last chapter are <em>compact</em> channel commands.
+				Compact means, you can play several notes, chords or rests in a single line.
+				That's very convenient for most things but some complex things cannot be expressed with a compact command alone.
+				In some cases you need either <em>patterns</em> (cf. chapter 6) or <em>lowlevel</em> channel commands.
+			</p>
+			<p>
+				With a <em>lowlevel channel command</em> you can only play one note, chord or rest at a time.
+				They consist of at least 3 columns, separated by whitespaces:
+			</p>
+			<ol>
+				<li>Channel column</li>
+				<li>Note column</li>
+				<li>Length column</li>
+				<li>
+					(Optional) After the 3rd column one or more options may follow. Details will be described later in this chapter.
+				</li>
+			</ol>
+			<p>
+				The following example shows "Happy birthday to you" on channel <em>0</em> again, but this time written with lowlevel commands.
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.happy-birthday-lowlevel }}</div>
+		<div class="cell large-4">
+			<h3>Channel column</h3>
+			<p>
+				This column contains the chanel number but (unlike compact commands) without a trailing <code>:</code>.
+				Valid values are the numbers <code>0</code> - <code>15</code> and the symbol <code>p</code>.
+				Again, <code>p</code> is an alias for <code>9</code> (percussion channel).
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>Note column</h3>
+			<p>
+				This column can contain a <em>note name</em>, a <em>percussion ID</em>, a <em>chord</em> (inline or predefined)
+				or a rest (<code>-</code>). Additionally you can also use the <em>MIDI note number</em>.
+			</p>
+		</div>
+		<div class="cell large-4">
+			<h3>Length column</h3>
+			<p>
+				This column contians a length definition. E.g. a <em>full</em>, a <em>half</em>, a <em>quarter</em> or <em>eighth</em> note and so on
+				can be defined like <code>1</code>, <code>2</code>, <code>4</code>, <code>8</code> and so on.
+				More details about length definitions will follow later in this chapter.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Mixing Compact and lowlevel commands</h3>
+			<p>
+				Both channel command types can be mixed, like the following example demonstrates:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.happy-birthday-mixed }}</div>
+		<div class="cell">
+			<p>
+				The note length definition of a <em>lowlevel</em> command does NOT change the default note length of a <em>compact</em> command!
+			</p>
+			<p>
+				So in the last line the default is still a 16th note, and we have to switch to a 4th explicitly. Even if there have been other
+				4th notes in the lowlevel commands in line 2 and 3.
 			</p>
 		</div>
 	</section>
@@ -27,12 +95,21 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		</div>
 		<div class="cell medium-6">
 			<p>
-				As mentioned before, a channel command can have options. Everything after the length column is regarded as options.
-				An option has a name and (most of the time) also a value, separated by <code>=</code> and/or whitespaces. If a channel command has
-				more than one option, the options are separated by <code>,</code>. Additional whitespaces are allowed, but not needed.
+				Channel commands can have options. This applies for <em>compact</em> commands as well as for <em>lowlevel</em> commands.
+				However the syntax is different, and also the available options.
 			</p>
 			<p>
-				Each option has a long name and an abbreviation, which can be used instead of the long name. But enough theory,
+				In a <em>compact</em> command an option is embedded between parenthesis <code>(</code> and <code>)</code>.
+			</p>
+			<p>
+				In a <em>lowlevel</em> command, they are written into the 4th column. Everything after the length column is regarded as options.
+			</p>
+			<p>
+				Each option has a name, and most options also have a value. Name and value are separated with <code>=</code>.
+				If a channel command has more than one option, the options are separated by <code>,</code>.
+			</p>
+			<p>
+				Most options have a long name and an abbreviation, which can be used instead of the long name. But enough theory,
 				the <span class="reference">Channel Options</span> table shows the options:
 			</p>
 		</div>
@@ -48,6 +125,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<th>Type</th>
 						<th>Min Value</th>
 						<th>Max Value</th>
+						<th>Command type</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -57,6 +135,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>integer</td>
 						<td>1</td>
 						<td>127</td>
+						<td>both</td>
 					</tr>
 					<tr>
 						<td>duration</td>
@@ -64,6 +143,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>float</td>
 						<td>>0.0 (>0%)</td>
 						<td>&infin;</td>
+						<td>both</td>
 					</tr>
 					<tr>
 						<td>quantity</td>
@@ -71,6 +151,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>integer</td>
 						<td>1</td>
 						<td>&infin;</td>
+						<td>lowlevel</td>
 					</tr>
 					<tr>
 						<td>multiple</td>
@@ -78,6 +159,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>none</td>
 						<td>-</td>
 						<td>-</td>
+						<td>lowlevel</td>
 					</tr>
 					<tr>
 						<td>lyrics</td>
@@ -85,6 +167,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>text</td>
 						<td>-</td>
 						<td>-</td>
+						<td>both</td>
 					</tr>
 					<tr>
 						<td>tremolo</td>
@@ -92,6 +175,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>length</td>
 						<td>-</td>
 						<td>-</td>
+						<td>lowlevel</td>
 					</tr>
 					<tr>
 						<td>shift</td>
@@ -99,6 +183,15 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>integer</td>
 						<td>-127</td>
 						<td>127</td>
+						<td>lowlevel</td>
+					</tr>
+					<tr>
+						<td>length</td>
+						<td>-</td>
+						<td>length</td>
+						<td>-</td>
+						<td>-</td>
+						<td>compact</td>
 					</tr>
 				</tbody>
 			</table>
@@ -113,13 +206,20 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			</p>
 			<p>
 				The value can be between 1 and 127. The default is 100. If the velocity option is used in a channel command, the following commands in the same
-				channel will also use this velocity value. As long as the option is used in the same channel again, with a different value.
+				channel will also use this velocity value. Until the option is used in the same channel again, with a different value.
+			</p>
+			<p>
+				The following example shows how to use velocity, first with <em>compact</em> and then with <em>lowlevel</em> commands.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.velocity }}</div>
 		<div class="cell">
 			<p>
 				The example shows different ways to use the long or short form of the option.
+			</p>
+			<p>
+				It also shows that whitespaces and the <code>=</code> is optional in lowlevel commands. But compact commands are stricter.
+				Here you cannot use any whitespaces between the parenthesis, and the <code>=</code> is mandatory.
 			</p>
 		</div>
 		<div class="cell">
@@ -135,21 +235,24 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<p>
 				If two notes are played after each other, and the duration value is 1.0 (or 100%) then the first note is released in the same
 				moment when the second one is pressed. A value of 0.9 (or 90%) means that the first note is released after 90% of its
-				official duration. So the note is 10% shorter than its theoretical length.
+				official length. So the note is 10% shorter than its theoretical length.
 			</p>
 			<p>
 				The default value is 0.95 (or 95%), meaning that the key is released 5% before its theoretical end.
-				Values greater than 1.0 are also allowed. Then the notes overlap: The former note is released after the following one begins.
+				Values higher than 1.0 are also allowed. Then the notes overlap: The former note is released after the following one begins.
 			</p>
 			<p>
 				If the duration option is used in a channel command, the following commands in the same channel will use the same duration value.
+			</p>
+			<p>
+				The following example shows a compact and a lowlevel version of the same sequence with duration changes:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.duration-ratio }}</div>
 		<div class="cell">
 			<p>
-				This example shows different ways how to use the long or short form of the duration option, with a floating point or percentage value.
-				The last two lines show how different options can be combined. In this case duration and velocity.
+				The last two notes have a change of duration as well as a change of velocity. Two options can be changed together.
+				But in the compact version no whitespaces are allowed.
 			</p>
 		</div>
 		<div class="cell">
@@ -157,19 +260,19 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		</div>
 		<div class="cell">
 			<p>
-				With the quantity option you can repeat the same channel command any number of times. The option name is <code>quantity</code>.
+				The quantity option is only available for lowlevel commands.
+				It repeats the command any number of times. The option name is <code>quantity</code>.
 				The short form is <code>q</code>.
 			</p>
 			<p>
 				The following example shows the beginning of "The Four Seasons: Summer", 3rd movement, by "Antonio Vivaldi".
+				It uses a violin in channel 0 and a harpsichord in channel 6. (Please update your <code>INSTRUMENTS</code> block accordingly.)
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.quantity }}</div>
 		<div class="cell">
 			<p>
-				As you can see, this option can reduce the source code lines. In channel 1 it is used for 8th notes, together with a duration value
-				of 50%.
-				This is an alternative to combining 16th notes with 16th rests.
+				As you can see, this option can reduce the necessary number of source code lines in lowlevel commands.
 			</p>
 		</div>
 		<div class="cell">
@@ -177,14 +280,17 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		</div>
 		<div class="cell">
 			<p>
-				The multiple option is used to play different voices in the same channel.
+				The multiple option is only available for lowlevel commands.
+				It is used to play different voices in the same channel.
 				It allows to play different notes with different lengths and/or different velocity or duration options in
 				the same time and channel.
+			</p>
+			<p>
 				The option name is <code>multiple</code>. The short form is <code>m</code>. It does not have any value.
 			</p>
 			<p>
 				As we already know, each channel command appends a note (or a chord or a rest) to the end of a channel. To be more precise,
-				it adds the note to a <em>marker</em> that is usually at the end of the channel.
+				it adds the note to a <em>marker</em> that is <em>usually</em> at the end of the channel.
 				After adding the note, this marker is moved from the old end of the channel to the new end of the channel.
 			</p>
 			<p>
@@ -215,7 +321,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 					The option name is <code>lyrics</code>. The short form is <code>l</code>.
 				</p>
 				<p>
-					If you need whitespaces inside of the syllabe, you must use the following symbols:
+					If you need whitespaces or commas inside of the syllabe, you must use the following symbols:
 				</p>
 				<ul>
 					<li><code>_</code> for a space</li>
@@ -224,7 +330,8 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 					<li><code>\c</code> for a comma <code>,</code></li>
 				</ul>
 				<p>
-					The following example shows how to create a karaoke version of "Happy Birthday".
+					The following example shows how to create a karaoke version of "Happy Birthday" - first with <em>lowlevel</em> commands,
+					and then the same sequence with <em>compact</em> commands.
 				</p>
 			</div>
 		</div>
@@ -236,7 +343,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<h3>Tremolo</h3>
 			<div class="cell">
 				<p>
-					The tremolo option is an alternative notation for note (or chord) repetitions.
+					The tremolo option is only available for lowlevel commands. It is an alternative notation for note (or chord) repetitions.
 					The option name is <code>tremolo</code>. The short form is <code>tr</code>.
 				</p>
 				<p>
@@ -252,6 +359,9 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				<p>
 					As you can see in the last line, the tremolo option can also be used to express drum rolls.
 				</p>
+				<p>
+					(A detailed explanation about <a href="#percussion">percussion</a> will follow later in this chapter.)
+				</p>
 			</div>
 		</div>
 		<div class="cell">
@@ -262,7 +372,8 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 					You can find a more usable form for transpositions in the chapters 3 and 4.
 				</p>
 				<p>
-					The shift option transposes the given note or chord an arbitrary number of half tone steps into one direction.
+					The shift option is only available for lowlevel commands. It transposes the given note or chord an
+					arbitrary number of half tone steps into one direction.
 					The option name is <code>shift</code>. The short form is <code>s</code>.
 				</p>
 				<p>
@@ -275,6 +386,19 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			</div>
 			<div class="cell">{{> src-example src-examples.shift }}</div>
 		</div>
+		<div class="cell">
+			<h3>Length</h3>
+			<div class="cell">
+				<p>
+					The length option is only available for compact commands. It can be used to switch the current note length without playing a note or rest.
+				</p>
+				<p>
+					The following two examples of "Happy Birthday" are equivalent. The first one uses the length option while the second one
+					switches note lengths the normal way.
+				</p>
+				<div class="cell">{{> src-example src-examples.length }}</div>
+			</div>
+		</div>
 	</section>
 	<section class="grid-x grid-padding-x" id="length-definitions">
 		<div class="cell">
@@ -282,14 +406,28 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		</div>
 		<div class="cell">
 			<p>
-				As you learned in chapter 1, the third column of a channel command defines the length of the note (or chord or rest).
-				The easyest form of such a length definition is an atomic length like <code>/4</code>. This can be modified by special symbols like
-				<code>.</code>. Most of the time you don't need anything more. But in some cases you may need more complicated definitions. In those
-				cases you can combine more than one length definition and build a sum of them.
+				So far we learned <em>where</em> we can define note lengths:
+			</p>
+			<ul>
+				<li>In <em>compact</em> commands: after the note name, separated by a colon (<code>:</code>)</li>
+				<li>In <em>compact</em> commands: with the <em>length</em> option</li>
+				<li>In a <em>lowlevel</em> command: in the 3rd column</li>
+				<li>In a <em>lowlevel</em> command: as the value of a <code>tremolo</code> option</li>
+			</ul>
+			<p>
+				And we know how to define the most frequently used note lengths. Now let's see how to compose all possibilities of lengths.
+			</p>
+			<p>
+				The easiest length is an <em>atomic</em> length. It can be modified by one or more modifiers to create a <em>modified length</em>.
+				And last but not least you can combine two or more atomic or modified lengths to form a <em>sum of lengths</em>.
 			</p>
 			<h3>Atomic Lengths</h3>
 			<p>
-				The following atomic lengths are defined:
+				You can just use an integer number as a note length. The resulting length corresponds
+				to a full note's length divided by that number. This is one kind of atomic length.
+			</p>
+			<p>
+				Apart from this, there are also the following <em>predefined</em> atomic lengths:
 			</p>
 			<p>
 				<code>/1</code> (full),
@@ -308,16 +446,27 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				<code>*32</code> (thirty-two wholes)
 			</p>
 			<p>
-				You can also use just numbers without <code>/</code> or <code>*</code>. In this case, the number is interpreted as Xth note.
-				This way you can also have more notes than the ones described above. E.g. <code>64</code> is interpreted as a sixty-fourth note (1/64).
-				Or <code>5</code> will be a fifth note (1/5).
+				This makes atomic note lengths available that are longer than a full note - those beginning with <code>*</code>.
 			</p>
 			<p>
-				The reason, this tutorial uses <code>/4</code> instead of <code>4</code> most of the time is that it's just more readable.
-				But the result is the same.
+				The shorter notes (beginning with <code>/</code>) are not really needed as they can be replaced by just the number
+				without the prefixed <code>/</code>. However they can make lowlevel commands a bit more readable.
+				But in compact commands they look quite cumbersome, so you probably don't want to use them there.
+			</p>
+			<p>
+				From now on we will use predefined notes in lowlevel commands and (if possible) just numbers in compact commands.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.atomic }}</div>
+		<div class="cell">
+			<p>
+				The first example uses compact commands and only numbers, if possible. In channel 0 only a predefined length is possible.
+			</p>
+			<p>
+				The second example uses lowlevel commands and only predefined lengths, if possible. For the last two notes only numbers are possible
+				because a 64th note is so rare that it has no predefined version.
+			</p>
+		</div>
 		<div class="cell">
 			<h3>Modified Lengths</h3>
 			<h4>Dot Modifiers</h4>
@@ -327,7 +476,10 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				You can add as many dots as you want. Two dots (<code>..</code>) make it longer by three quarters, resulting in 7/4 of it's atomic length.
 				Three dots result in 15/8 of the atomic length. And so on.
 			</p>
-		</div>
+			<p>
+					Here is a compact and a lowlevel example showing how dots can be used:
+				</p>
+			</div>
 		<div class="cell">{{> src-example src-examples.dot }}</div>
 		<div class="cell">
 			<p>
@@ -344,6 +496,9 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				The triplet modifier is a <code>t</code>.
 				Just like a dot, a triplet can be applied as often as you want, resulting in nested triplets.
 				Two triplet modifiers result in a length of 4/9 (2/3 * 2/3). Three such symbols result in 8/27 (2/3 * 2/3 * 2/3). And so on.
+			</p>
+			<p>
+				Here is a compact and a lowlevel example showing how triplets can be used:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.triplet }}</div>
@@ -381,6 +536,9 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				Mathematically you can say: tX:Y means that the length is multiplied with Y/X. So a note inside of a quadruplet would be modified with
 				<code>t4:3</code>. And something inside a quintuplet with <code>t5:4</code>.
 			</p>
+			<p>
+				Here is a compact and a lowlevel example showing how tuplets can be used:
+			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.tuplet }}</div>
 		<div class="cell">
@@ -406,16 +564,16 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				In MidicaPL such a note length can be described as two atomic or modified lenghts, separated by a <code>+</code> symbol.
 			</p>
 			<p>
-				The following example shows the first few notes of "Hey Jude" by the "Beatles".
+				The following example shows the first few notes of "Hey Jude" by the "Beatles" with <em>compact</em> commands.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.hey-jude }}</div>
 		<div class="cell">
 			<p>
-				A half and an eighth note are tied together. This is described as <code>/2+/4</code>.
+				A half and an eighth note are tied together. This is described as <code>2+4</code>.
 			</p>
 			<p>
-				More complicated expressions are also possible like <code>/2.+/1+/2t</code>:
+				More complicated expressions are also possible like <code>/2.+/1+/2t</code>. Here is a lowlevel example:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.length-plus }}</div>
@@ -423,8 +581,11 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<h3>Zero-Length</h3>
 			<p>
 				There is one special length symbol: <code>-</code>. It means "no length at all".
-				Of cause this does not make sense for any normal note, chord or rest. However it is useful to change
-				a channel option without playing a note or chord.
+				Of cause this does not make sense for any normal note, chord or rest. However it can be is useful to change
+				a channel option in a lowlevel command without playing a note or chord.
+			</p>
+			<p>
+				In compact commands it does not make any sense at all, however.
 			</p>
 			<p>
 				The zero-length is only allowed in combination with a rest but not with a note or chord.
@@ -472,7 +633,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		<div class="cell">{{> src-example src-examples.we-will-rock-you }}</div>
 		<div class="cell">
 			<p>
-				The only difference is that the first example uses long percussion IDs and the second one uses short IDs.
+				The first example uses <em>lowlevel</em> commands and long percussion IDs. The second one uses <em>compact</em> commands and short IDs.
 			</p>
 			<p>
 				Like a chord of notes, you can also play two percussion sounds in the same time. Just separate the IDs with a <code>,</code>.
@@ -694,7 +855,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			</p>
 			<ul>
 				<li>
-					A variable cannot contain any whitespaces.
+					A variable's value cannot contain any whitespaces.
 				</li>
 				<li>
 					Variables are officially supported to be used in the following locations:
@@ -707,7 +868,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				</li>
 			</ul>
 			<p>
-				In all other locations you should not use variables. They may work or not. But even if they work, they may not
+				In all other locations you should not use variables. They may work or not. But even if they work, they might not
 				work in a later Midica version any more.
 			</p>
 		</div>

@@ -21,8 +21,28 @@
 		"m": "instrument.midicapl",
 		"i": "instrument.png"
 	},
-	"happy-birthday": {
-		"m": "happy-birthday.midicapl",
+	"cmaj": {
+		"m": "cmaj.midicapl",
+		"s": "cmaj.svg"
+	},
+	"happy-birthday-compact": {
+		"m": "happy-birthday-compact.midicapl",
+		"s": "happy-birthday-without-dot.svg"
+	},
+	"happy-birthday-compact-2": {
+		"m": "happy-birthday-compact-2.midicapl",
+		"s": "happy-birthday-without-dot.svg"
+	},
+	"happy-birthday-compact-3": {
+		"m": "happy-birthday-compact-3.midicapl",
+		"s": "happy-birthday.svg"
+	},
+	"happy-birthday-lowlevel": {
+		"m": "happy-birthday-lowlevel.midicapl",
+		"s": "happy-birthday.svg"
+	},
+	"happy-birthday-mixed": {
+		"m": "happy-birthday-mixed.midicapl",
 		"s": "happy-birthday.svg"
 	},
 	"jingle-bells": {
@@ -30,10 +50,6 @@
 		"m2": "jingle-bells-2.midicapl",
 		"m3": "jingle-bells-3.midicapl",
 		"s": "jingle-bells.svg"
-	},
-	"happy-birthday-2": {
-		"m": "happy-birthday-2.midicapl",
-		"s": "happy-birthday-2.svg"
 	},
 	"through-the-never": {
 		"m": "through-the-never.midicapl",
@@ -58,25 +74,28 @@
 		"m": "set-tempo.midicapl"
 	},
 	"velocity": {
-		"m": "velocity.midicapl",
+		"m": "velocity-compact.midicapl",
+		"m2": "velocity-lowlevel.midicapl",
 		"s": "velocity.svg"
 	},
 	"duration-ratio": {
-		"m": "duration-ratio.midicapl",
+		"m": "duration-ratio-compact.midicapl",
+		"m2": "duration-ratio-lowlevel.midicapl",
 		"s": "duration-ratio.svg"
 	},
 	"quantity": {
 		"m": "quantity.midicapl",
-		"s": "quantity.svg"
+		"s": "vivaldi-shift-harpsic.svg"
 	},
 	"multiple": {
 		"m": "multiple.midicapl",
 		"s": "multiple.svg"
 	},
 	"lyrics": {
-		"m": "happy-birthday-3.midicapl",
-		"s": "happy-birthday-3.svg",
-		"i": "happy-birthday-3.png"
+		"m": "happy-birthday-lyrics-lowlevel.midicapl",
+		"m2": "happy-birthday-lyrics-compact.midicapl",
+		"s": "happy-birthday-lyrics.svg",
+		"i": "happy-birthday-lyrics.png"
 	},
 	"tremolo": {
 		"m": "tremolo.midicapl",
@@ -88,24 +107,33 @@
 		"m2": "shift-2.midicapl",
 		"s": "shift.svg"
 	},
+	"length": {
+		"m": "happy-birthday-length.midicapl",
+		"m2": "happy-birthday-length-2.midicapl",
+		"s": "happy-birthday.svg"
+	},
 	"atomic": {
-		"m": "atomic.midicapl",
+		"m": "atomic-compact.midicapl",
+		"m2": "atomic-lowlevel.midicapl",
 		"s": "atomic.svg"
 	},
 	"dot": {
-		"m": "dot.midicapl",
+		"m": "dot-compact.midicapl",
+		"m2": "dot-lowlevel.midicapl",
 		"s": "dot.svg"
 	},
 	"triplet": {
-		"m": "triplet.midicapl",
+		"m": "triplet-compact.midicapl",
+		"m2": "triplet-lowlevel.midicapl",
 		"s": "triplet.svg"
 	},
 	"tuplet": {
-		"m": "tuplet.midicapl",
+		"m": "tuplet-compact.midicapl",
+		"m2": "tuplet-lowlevel.midicapl",
 		"s": "tuplet.svg"
 	},
 	"hey-jude": {
-		"m": "hey-jude.midicapl",
+		"m": "hey-jude-compact.midicapl",
 		"s": "hey-jude.svg"
 	},
 	"length-plus": {
@@ -118,7 +146,7 @@
 		"s": "we-will-rock-you.svg"
 	},
 	"billie-jean": {
-		"m": "billie-jean.midicapl",
+		"m": "billie-jean-compact.midicapl",
 		"s": "billie-jean.svg",
 		"s2": "billie-jean-2.svg"
 	},
@@ -257,10 +285,10 @@
 		"t": "softkaraoke.t"
 	},
 	"softkaraoke-2": {
-		"m": "happy-birthday-4.midicapl",
-		"m2": "happy-birthday-3.midicapl",
-		"s": "happy-birthday-3.svg",
-		"i": "happy-birthday-3.png"
+		"m": "happy-birthday-softkaraoke.midicapl",
+		"m2": "happy-birthday-lyrics-compact-diff.midicapl",
+		"s": "happy-birthday-lyrics.svg",
+		"i": "happy-birthday-lyrics.png"
 	},
 	"set-time": {
 		"m": "set-time.midicapl"
@@ -303,11 +331,22 @@
 		"m3": "include-2-c.midicapl"
 	},
 	"pattern-do-nothing": {
-		"m": "pattern-do-nothing.midicapl"
+		"m": "pattern-do-nothing-compact.midicapl",
+		"m2": "pattern-do-nothing-lowlevel.midicapl"
+	},
+	"pattern-do-something-compact": {
+		"m": "pattern-do-something-compact.midicapl",
+		"m2": "pattern-do-something-compact-2.midicapl",
+		"s": "pattern-do-something.svg"
+	},
+	"pattern-do-something-lowlevel": {
+		"m": "pattern-do-something-lowlevel.midicapl",
+		"m2": "pattern-do-something-lowlevel-2.midicapl",
+		"s": "pattern-do-something.svg"
 	},
 	"pattern-do-something": {
-		"m": "pattern-do-something.midicapl",
-		"m2": "pattern-do-something-2.midicapl",
+		"m": "pattern-do-something-lowlevel.midicapl",
+		"m2": "pattern-do-something-lowlevel-2.midicapl",
 		"s": "pattern-do-something.svg"
 	},
 	"pattern-house": {
@@ -318,9 +357,14 @@
 		"m": "pattern-house-2.midicapl",
 		"s": "pattern-house-2.svg"
 	},
-	"pattern-travis": {
-		"m": "pattern-travis.midicapl",
-		"m2": "pattern-travis-2.midicapl",
+	"pattern-travis-lowlevel": {
+		"m": "pattern-travis-lowlevel.midicapl",
+		"m2": "pattern-travis-lowlevel-2.midicapl",
+		"s": "pattern-travis.svg"
+	},
+	"pattern-travis-compact": {
+		"m": "pattern-travis-compact.midicapl",
+		"m2": "pattern-travis-compact-2.midicapl",
 		"s": "pattern-travis.svg"
 	},
 	"pattern-dust": {
@@ -328,7 +372,8 @@
 		"s": "pattern-dust.svg"
 	},
 	"pattern-rest": {
-		"m": "pattern-rest.midicapl",
+		"m": "pattern-rest-lowlevel.midicapl",
+		"m2": "pattern-rest-compact.midicapl",
 		"s": "pattern-rest.svg"
 	},
 	"pattern-block": {
@@ -341,11 +386,13 @@
 		"s": "pattern-arpeggio.svg"
 	},
 	"pattern-velo-dur": {
-		"m": "pattern-velo-dur.midicapl",
+		"m": "pattern-velo-dur-lowlevel.midicapl",
+		"m2": "pattern-velo-dur-compact.midicapl",
 		"s": "pattern-velo-dur.svg"
 	},
 	"pattern-inline": {
-		"m": "pattern-inline.midicapl",
+		"m": "pattern-inline-lowlevel.midicapl",
+		"m2": "pattern-inline-compact.midicapl",
 		"s": "pattern-inline.svg"
 	},
 	"pattern-downstroke": {
@@ -357,7 +404,8 @@
 		"s": "pattern-downstroke.svg"
 	},
 	"pattern-nested": {
-		"m": "pattern-nested.midicapl",
+		"m": "pattern-nested-lowlevel.midicapl",
+		"m2": "pattern-nested-compact.midicapl",
 		"s": "pattern-nested.svg"
 	},
 	"pattern-params": {

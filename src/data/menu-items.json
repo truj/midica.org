@@ -153,6 +153,10 @@
 						"is-chapter": true,
 						"menu-items": [
 							{
+								"title": "Lowlevel Channel Commands",
+								"url": "/tutorial-2.html#lowlevel-channel-commands"
+							},
+							{
 								"title": "Channel Options",
 								"url": "/tutorial-2.html#channel-options"
 							},

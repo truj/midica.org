@@ -90,6 +90,11 @@
 					tab-size: 4;
 					margin-left: $inner-example-margin;
 					margin-right: $inner-example-margin;
+					.diff {
+						color: $example-color-blue;
+						background-color: $white;
+						font-weight: bold;
+					}
 				}
 			}
 			&.svg {
