@@ -417,6 +417,26 @@
 		"m": "pattern-params-downstroke.midicapl",
 		"s": "pattern-params-downstroke.svg"
 	},
+	"pattern-magic-all": {
+		"m": "pattern-magic-all.midicapl",
+		"s": "pattern-magic-all.svg"
+	},
+	"pattern-magic-all-nested": {
+		"m": "pattern-magic-all-nested.midicapl",
+		"s": "pattern-magic-all-nested.svg"
+	},
+	"pattern-magic-upstroke": {
+		"m": "pattern-magic-upstroke.midicapl",
+		"m2": "pattern-magic-upstroke-2.midicapl"
+	},
+	"pattern-magic-upstroke-chords": {
+		"m": "pattern-magic-upstroke-chords.midicapl",
+		"s": "pattern-magic-upstroke-chords.svg"
+	},
+	"pattern-magic-downstroke": {
+		"m": "pattern-magic-downstroke.midicapl",
+		"s": "pattern-magic-downstroke.svg"
+	},
 	"pattern-house-3": {
 		"m": "pattern-house-3.midicapl",
 		"m2": "pattern-house-2.midicapl",

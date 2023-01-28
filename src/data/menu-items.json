@@ -275,6 +275,10 @@
 							{
 								"title": "Parameters",
 								"url": "/tutorial-6.html#pattern-parameters"
+							},
+							{
+								"title": "Magic Variables",
+								"url": "/tutorial-6.html#magic-variables"
 							}
 						]
 					},

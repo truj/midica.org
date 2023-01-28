@@ -482,6 +482,144 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 			</p>
 		</div>
 	</section>
+	<section class="grid-x grid-padding-x" id="magic-variables">
+		<div class="cell">
+			<h2>Magic Variables</h2>
+		</div>
+		<div class="cell medium-6">
+			<p>
+				Inside a pattern there are some variables that indicate how the pattern is called.
+				These variables don't need to be defined explicitly but they can be used like any other variables. They are called <em>magic variables</em>.
+			</p>
+			<p>
+				The main purpose of magic variables is to make a pattern usable with chords consisting of different numbers of notes.
+			</p>
+			<p>
+				The <span class="reference">Magic Variables</span> table shows which variables exist and what they contain.
+				The example column contains their value if the pattern is called with a chord containing 5 notes.
+			</p>
+		</div>
+		<div class="cell medium-6">
+			<table>
+				<caption>
+					Magic Variables
+				</caption>
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Example Value</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>$ALL</td>
+						<td>0,1,2,3,4</td>
+						<td>Comma-Separated list of <em>all</em> note indices in ascending order</td>
+					</tr>
+					<tr>
+						<td>$NC</td>
+						<td>5</td>
+						<td><em>Note Count</em> (Number of notes)</td>
+					</tr>
+					<tr>
+							<td>$REV</td>
+							<td>4,3,2,1,0</td>
+							<td>Comma-Separated list of all note indices in <em>reverse</em> order</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+		<div class="cell">
+			<h3>$ALL</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Sometimes a pattern only contains a rhythm, and all notes of the chord are playing this rhythm simultaneously.
+				But the very same rhythm can be played with different chords from different channels and a different number of notes or even drum instruments.
+			</p>
+			<p>
+				In this case you can use <code>$ALL</code> instead of the note indices, like the following example demonstrates.
+				It is taken from "Guillaume Tell", an opera from "Gioachino Rossini".
+				Here we show a very minimal version with only 3 channels in measure 261:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-magic-all }}</div>
+		<div class="cell">
+			<p>
+				The pattern <code>8r8r</code> defines a combination that's used from several channels.
+				In channel 5 it's called with a single note. In channel 4 the same pattern is played with 2-note chords.
+				And the percussion channel plays it with a "chord" consisting of three percussion instruments.
+			</p>
+			<p>
+				<code>$ALL</code> is also useful for nested patterns. Here's an example from the same composition:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.pattern-magic-all-nested }}</div>
+		<div class="cell">
+			<p>
+				The pattern <code>8ss8ss</code> uses the pattern <code>8ss</code> which uses the pattern <code>ss</code>.
+			</p>
+			<p>
+				All these patterns can be used with an arbitrary number of notes because they all use <code>$ALL</code>
+				for playing the chord as well as for playing the nested pattern.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>$NC</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Let's rewrite our <code>upstroke</code> pattern so that it can be used with different guitar chords.
+				A guitar has 6 strings, so a guitar chord can have up to 6 notes. But it can also have less.
+			</p>
+			<p>
+				The first of the following examples is the re-written example for a variable number of notes. The second example
+				is the one we already know, but now supporting exactly 6 notes, just for a better comparison.
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.pattern-magic-upstroke }}</div>
+		<div class="cell medium-auto">
+			<p>
+				In both versions we keep the flexibility to specify note length and distance with parameters.
+			</p>
+			<p>
+				The second version is shorter but it doesn't work with smaller chords.
+			</p>
+			<p>
+				The first version uses the magic variable <code>$NC</code> for conditional blocks.
+			</p>
+			<p>
+				The first note (index <code>0</code>) exist always. So we don't need a conditional block for this one.
+			</p>
+			<p>
+				The second note (index <code>1</code>) exists only for chords with 2 or more notes. So we wrap it into a block with the condition <code>$NC > 1</code>.
+			</p>
+			<p>
+				The other notes (index <code>2</code> until <code>5</code>) work accordingly. So they are wrapped into blocks with the conditions
+				<code>$NC > 2</code> until <code>$NC > 5</code>.
+			</p>
+		</div>
+		<div class="cell">
+			<p>
+				The following example uses our new <code>upstroke</code> pattern with different chords with a number of different notes:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.pattern-magic-upstroke-chords }}</div>
+		<div class="cell">
+			<h3>$REV</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Now we also want to have a more flexible <code>downstroke</code> pattern. Let's rewrite it, using our new <code>upstroke</code>.
+			</p>
+			<p>
+				We use <code>upstroke</code> as a nested pattern and provide all given note indices in reverse order with <code>$REV</code>.
+				Then we play some upstroke and downstroke chords:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.pattern-magic-downstroke }}</div>
+	</section>
 	<aside>
 		<a href="tutorial-7.html">Chapter 7</a> will explain how to use sound effects. However, this chapter does not yet exist,
 		as sound effects are not yet implemented in Midica.
