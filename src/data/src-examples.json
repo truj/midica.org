@@ -163,6 +163,26 @@
 		"m2": "variable-2.midicapl",
 		"s": "variable.svg"
 	},
+	"happy-birthday-barlines": {
+		"m": "happy-birthday-barlines.midicapl",
+		"s": "happy-birthday.svg"
+	},
+	"barlines-nested-triplets": {
+		"m": "barlines-nested-triplets.midicapl",
+		"s": "barlines-nested-triplets.svg"
+	},
+	"barlines-nested-triplets-2": {
+		"m": "barlines-nested-triplets-2.midicapl",
+		"s": "barlines-nested-triplets-2.svg"
+	},
+	"barlines-74": {
+		"m": "barlines-74.midicapl",
+		"s": "barlines-74.svg"
+	},
+	"barlines-74-2": {
+		"m": "barlines-74-2.midicapl",
+		"s": "barlines-74-2.svg"
+	},
 	"another-one-drum-bass": {
 		"m": "another-one-drum-bass.midicapl"
 	},
@@ -370,6 +390,9 @@
 	"pattern-dust": {
 		"m": "pattern-dust.midicapl",
 		"s": "pattern-dust.svg"
+	},
+	"pattern-dust-barlines": {
+		"m": "pattern-dust-barlines.midicapl"
 	},
 	"pattern-rest": {
 		"m": "pattern-rest-lowlevel.midicapl",

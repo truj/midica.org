@@ -873,8 +873,131 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			</p>
 		</div>
 	</section>
+	<section class="grid-x grid-padding-x" id="barlines">
+		<div class="cell">
+			<h2>Bar Lines</h2>
+		</div>
+		<div class="cell">
+			<p>
+				In compact syntax you can simulate a bar line using the pipe symbol: <code>|</code>.
+			</p>
+			<p>
+				Using bar lines is optional. But if they are used, they must be in the correct place. Whenever you use a bar line,
+				Midica will check if the channel's current position is at the border of a measure. Otherwise it will show an error message.
+			</p>
+			<p>
+				The check works like this:
+			</p>
+			<ul>
+				<li>
+					It searches the last global command with a <em>time signature</em> and calculates how long each following measure must be.
+					If no such command has ever been used, it pretends that a time signature of <em>4/4</em> has been set at the very beginning of the sequence.
+					(Like with the command <code>* time 4/4</code>)
+				</li>
+				<li>
+					It measures the length from the position of the last <em>time signature</em> (or the very beginning, if none is found) until the current position.
+				</li>
+				<li>
+					It checks if the result can be divided by a measure length.
+				</li>
+			</ul>
+			<p>
+				This is a convenient way to check if everything is correct. The following example shows Happy Birthday with time signatures and bar lines:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.happy-birthday-barlines }}</div>
+		<div class="cell">
+			<p>
+				This time we used the time signature twice: once for the upbeat and then again when the regular measure starts.
+				If we would omit the first two bar lines, then we could also omit the time signature for the upbeat in line 1.
+				But it's still important to set the <code>3/4</code> time signature directly after the upbeat - and not at the beginning.
+				Otherwise the bar lines in the last line would fail.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Bar Line Tolerances</h3>
+		</div>
+		<div class="cell">
+			<p>
+				Most of the time you will not need anything more to know about bar lines. But there are special cases, mostly when you
+				use complicated tuplets. Then a note length may be not really exact, due to rounding errors. And this results in bar lines
+				that are set correctly but fail anyway. The following example shows a score with a nested triplet and the intended result:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.barlines-nested-triplets }}</div>
+		<div class="cell">
+			<p>
+				However the second bar line (marked in red) fails with an error message. Why?
+			</p>
+			<p>
+				A MIDI timeline consists of very small atomic units called <em>ticks</em>. Midica uses a resolution of 480 ticks per quarter note.
+				A quarter note in a nested triplet would have <span class="nobr">480 * 2/3 * 2/3</span> ticks. That's <span class="nobr">213 + 1/3</span>.
+				But broken ticks are not possible. So this is rounded to 213.
+				The three nested quarter notes together have a length of <span class="nobr">213 * 3 = 639</span> instead of their theoretically correct value of 640.
+			</p>
+			<p>
+				To circumvent this problem you can set a tolerance value for a barline. This is a number that you just attach to the barline directly, without any
+				whitespace. To set a tolerance of 3 ticks, you would use: <code>|3</code>.
+			</p>
+			<p>
+				For our example, a tolerance of 1 tick is sufficient, as the following, now working example shows:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.barlines-nested-triplets-2 }}</div>
+		<div class="cell">
+			<p>
+				The first bar line has the default tolerance, which is 0. In the second bar line (marked in blue) we set the tolerance to 1.
+			</p>
+			<p>
+				The third bar line succeeds as well - even if we would probably expect it to fail.
+			</p>
+			<p>
+				The reason is that <code>|1</code> sets the tolerance not only for the second bar line but also for <em>all</em> following bar lines in the same channel.
+			</p>
+			<p>
+				That's a very convenient way to reduce the need to set tolerances. Mostly we can just write <code>|</code>.
+			</p>
+		</div>
+		<div class="cell">
+			<h3>Global Change of Bar Line Tolerances</h3>
+		</div>
+		<div class="cell">
+			<p>
+				If we use several channels, we want to synchronize them with <code>*</code> from time to time.
+				In this case we may need to apply a tolerance to <em>all</em> channels.
+			</p>
+			<p>
+				The following example shows a score with a septuplet and the intended result.
+				The second bar line in channel 0 needs a tolerance of 2, marked in blue.
+				In line 3, we syncronize (<code>*</code>) the channels to avoid the need to write an explicit rest in channel 1.
+				However in channel 1 the barline marked in red fails:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.barlines-74 }}</div>
+		<div class="cell">
+			<p>
+				The reason is that after the sync <code>*</code> in line 3, the bar lines in channel 1 also need a tolerance.
+				One possible solution is to change the bar line marked in red from <code>|</code> to <code>|2</code>.
+				But that's unconvenient and ugly, especially if we have more channels than 2.
+			</p>
+			<p>
+				A better solution is to modify the sync command to set a tolerance globally.
+				Therefore we add two columns to the sync command, each one separated by whitespace(s).
+				The first one ist the bar line symbol <code>|</code>, the second one is the new global tolerance value.
+			</p>
+			<p>
+				In this case, we want to set a tolerance of 2 for all channels, so we write <code>* | 2</code>, as the following example demonstrates:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.barlines-74-2 }}</div>
+		<div class="cell">
+			<p>
+				This time we don't get an error message any more.
+			</p>
+		</div>
+	</section>
 	<aside>
-		Now you know the most important lowlevel commands of MidicaPL. The next chapters will focus on highlevel structures.
+		Now you know the most important compact and lowlevel commands of MidicaPL. The next chapters will focus on highlevel structures.
 		Please continue with <a href="tutorial-3.html">chapter 3</a> in order to learn about functions.
 	</aside>
 </div>

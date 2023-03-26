@@ -3,14 +3,14 @@ CALL section(part=2)
 CALL section(part=3)
 
 FUNCTION section
-	0:  c:4 d e f
+	0: | c:4 d e f |
 	{ if=${part} == 1
-		0:  g:2 e
+		0: | g:2 e |
 	}
 	{ elsif ${part} == 2
-		0:  e:2 d
+		0: | e:2 d |
 	}
 	{ elsif ${part} == 3
-		0:  d:2 e
+		0: | d:2 e |
 	}
 END

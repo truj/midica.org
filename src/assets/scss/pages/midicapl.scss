@@ -20,6 +20,11 @@
 	// table header: same gray as dark stripes
 	$table-header-color: $table-striped-background;
 	
+	// avoid line breaks in inline <code></code>
+	code {
+		white-space: nowrap;
+	}
+
 	// tables
 	.reference {
 		background-color: $midicapl-header-bgcolor;
@@ -154,6 +159,9 @@
 							stroke-width: 0.5;
 							stroke-linecap: square;
 							stroke-linejoin: bevel;
+							&.v3 {
+								stroke-width: 2.50;
+							}
 						}
 						&.Beam {
 							fill-rule: evenodd;

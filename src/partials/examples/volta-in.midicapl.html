@@ -3,14 +3,14 @@ CALL section(foo=2)
 CALL section(foo=4)
 
 FUNCTION section
-	0:  c:4 d e f
+	0: | c:4 d e f |
 	{ if ${foo} in 0;1;5;10
-		0:  g:2 e
+		0: | g:2 e |
 	}
 	{ elsif ${foo} in 2 ; 3
-		0:  e:2 d
+		0: | e:2 d |
 	}
 	{ else
-		0:  d:2 e
+		0: | d:2 e |
 	}
 END
