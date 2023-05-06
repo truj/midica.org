@@ -231,7 +231,7 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 		<div class="cell">
 			<p>
 				The tom-tom part uses 2 different tom-tom drums.
-				This pattern is the same in both measures, so the block is repeated by the option <code>q=2</code> at the end of the block.
+				This pattern is the same in both measures, so the block is repeated by the block option <code>q=2</code> at the end of the block.
 				Besides, the option <code>m</code> (multiple) is used to reset the time, so that the next block begins in the same time.
 				So you see how both options can be combined.
 			</p>
@@ -263,7 +263,7 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 				to calculate the resulting shift value.
 			</p>
 			<p>
-				the following example demonstrates this:
+				the following example demonstrates this, first with a lowlevel version and then with a compact version of the same sequence:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.shift-block }}</div>
@@ -276,8 +276,11 @@ meta-desc:  "Use nestable code blocks. Create loops and conditional blocks. Use 
 				the inner block are added, and the result is <code>-12</code>.
 			</p>
 			<p>
-				The last note has its own shift value of <code>+12</code> which is added as well. The result for this note is <code>0</code>, so
+				In the lowlevel version the last note has its own shift value of <code>+12</code> which is added as well. The result for this note is <code>0</code>, so
 				the note is not shifted any more.
+			</p>
+			<p>
+				As the shift option doesn't exist for compact syntax, we use <code>c+</code> here instead of a shifted <code>c</code> in order to get the same sequence.
 			</p>
 		</div>
 		<div class="cell">

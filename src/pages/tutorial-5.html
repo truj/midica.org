@@ -218,7 +218,7 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 			</p>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="constant">
+	<section class="grid-x grid-padding-x" id="constants">
 		<div class="cell">
 			<h2>Constants</h2>
 		</div>
@@ -247,7 +247,7 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 			<p>
 				The value of a constant can be any part of another command, or even a whole command line.
 				In order to use it, you just write the constant name to the right place.
-				The following three examples are equivalent:
+				The following three examples (in lowlevel syntax) are equivalent:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.const }}</div>
@@ -266,24 +266,23 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 		<div class="cell">
 			<p>
 				Constants themselves can also consist of other constants. In this case the inner constant must be defined before the outer constant.
-				The following two examples are equivalent.
+				The following two examples are equivalent (this time in compact syntax):
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.const-2 }}</div>
 		<div class="cell">
 			<p>
-				The first example first defines the simple constants <code>$forte</code> (a velocity option) and <code>$drum</code>
-				(two percussion instruments: a basedrum and an open triangle).
+				The first example first defines the simple constants <code>$forte</code> (a velocity option), <code>$roll</code> (a tremolo option)
+				and <code>$drum</code> (two percussion instruments: a basedrum and an open triangle).
 			</p>
 			<p>
-				Then it defines <code>$drumroll</code> which contains the percussion instruments from <code>$drum</code>,
-				a note length and a tremolo option.
+				Then it defines <code>$drumroll</code> which combines the above constants to create a drum roll with a note length of a full note.
 			</p>
 			<p>
-				<code>$play_dr</code> combines the constants from above to a channel command, to be played in channel 9.
+				<code>$play_dr</code> defines a compact channel command playing this drum roll in channel 9 (the percussion channel).
 			</p>
 			<p>
-				The last line finally executes this combined channel command.
+				The last line finally executes this combined command.
 			</p>
 		</div>
 		<div class="cell">
@@ -310,7 +309,7 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 			</ul>
 		</div>
 	</section>
-	<section class="grid-x grid-padding-x" id="define">
+	<section class="grid-x grid-padding-x" id="redefine">
 		<div class="cell">
 			<h2>Redefinitions</h2>
 		</div>
@@ -425,7 +424,7 @@ meta-desc:  "Learn about Meta Information. Redefine keywords of the programming 
 		</div>
 		<div class="cell">
 			<p>
-				Program languages allow to re-use code from other files - modules or libraries. The same is possible in MidicaPL.
+				Programming languages allow to re-use code from other files - modules or libraries. The same is possible in MidicaPL.
 				In order to include a file, you need the <code>INCLUDE</code> command. The only argument is the path to the included file.
 				The file path can be absolute or relative to the file that contains the <code>INCLUDE</code> command.
 			</p>

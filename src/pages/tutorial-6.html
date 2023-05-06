@@ -163,13 +163,13 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				how this very same thing would look with normal channel commands:
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.pattern-travis-lowlevel }}</div>
+		<div class="cell">{{> src-example src-examples.pattern-travis-compact }}</div>
 		<div class="cell">
 			<p>
-				The following example is the same thing with compact commands - first with the pattern and then the equivalent code without pattern:
+				The following example is the same thing with lowlevel commands - first with the pattern and then the equivalent code without pattern:
 			</p>
 		</div>
-		<div class="cell">{{> src-example src-examples.pattern-travis-compact }}</div>
+		<div class="cell">{{> src-example src-examples.pattern-travis-lowlevel }}</div>
 		<div class="cell">
 			<p>
 				This pattern is called <code>travis</code> because it implements the famous <em>Travis Pattern</em>, a finger picking pattern
@@ -179,7 +179,8 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				The note indices <code>0,3</code>, marked in blue, are translated to the chord <code>c-,c</code>.
 			</p>
 			<p>
-				In order to create the first 8 bars of "Dust in the wind", we only need to add a few more chords and use this pattern with them:
+				In order to create the first 8 bars of "Dust in the wind", we only need to add a few more chords and use this pattern with them.
+				We do that in compact syntax:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.pattern-dust }}</div>
@@ -248,7 +249,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				that are allowed for the command type to be produced.
 			</p>
 			<p>
-				But the line using the pattern is also a channel command. So it can also contain options (at least if it's called in lowlevel syntax).
+				But the line using the pattern is also a channel command. So it can also contain options.
 				This makes things a bit complicated, and not all combinations are allowed.
 			</p>
 			<p>
@@ -320,19 +321,20 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 						<td>s</td>
 						<td>yes</td>
 						<td>no</td>
-						<td>-</td>
+						<td>The pattern must be used in a lowlevel command</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 		<div class="cell">
 			<p>
-				The following example shows how a chord can be played like an arpeggio,
-				from the lowest to the highest pitch, with a length of a full note and a distance of a thirty-second:
+				The following two examples show how a chord can be played like an arpeggio,
+				from the lowest to the highest pitch, with a length of a full note and a distance of a thirty-second.
+				The first example uses compact syntax, the second one uses lowlevel syntax:
 			</p>
 		</div>
-		<div class="cell medium-6">{{> src-example src-examples.pattern-arpeggio }}</div>
-		<div class="cell medium-6">
+		<div class="cell">{{> src-example src-examples.pattern-arpeggio }}</div>
+		<div class="cell">
 			<p>
 				Inside of the pattern, each note index line has a <code>multiple</code> option (as an <em>inner option</em>, marked in blue)
 				because the notes shall be played "more or less" simultaneously.
@@ -405,7 +407,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				All six chords contain the same notes. Only the order is different.
 			</p>
 			<p>
-				However the predefined chords produce the same sequence because they are sorted by pitch implicitely.
+				However the predefined chords produce the same sequence because they are sorted by pitch implicitly.
 				But the inline chords produce different sequences.
 			</p>
 			<p>
@@ -460,12 +462,12 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell">{{> src-example src-examples.pattern-params }}</div>
 		<div class="cell">
 			<p>
-				The pattern contains only lowlevel commands but for using it we use both types.
-				For the first pattern call we use lowlevel syntax. In this case, there are no whitespaces allowed in the whole command
-				- <code>cmaj:upstroke(/1,/8)</code> or <code>cmaj:upstroke(len=/1,dist=/8)</code>.
+				The pattern contains only compact commands but for using it we use both types.
+				For the first two pattern calls we use compact syntax. In this case, there are no whitespaces allowed in the whole pattern usage
+				like <code>cmaj:upstroke(/1,/8)</code> or <code>cmaj:upstroke(len=/1,dist=/8)</code>.
 			</p>
 			<p>
-				If the pattern is used in lowlevel syntax then whitespaces are optional, as the last line of the first example shows.
+				If the pattern is used in lowlevel syntax then whitespaces are optional, as the last line of both examples shows.
 			</p>
 		</div>
 		<div class="cell">
@@ -477,7 +479,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell">{{> src-example src-examples.pattern-params-downstroke }}</div>
 		<div class="cell">
 			<p>
-				This time we use lowlevel syntax for the nested pattern call. And mixed syntax for the outer pattern calls again.
+				Again we use compact syntax for the nested pattern call and mixed syntax for the outer pattern calls.
 			</p>
 			<p>
 				Remeber our "House of the Rising Sun" example above.
@@ -622,7 +624,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		</div>
 		<div class="cell">
 			<p>
-				The following example uses our new <code>upstroke</code> pattern with different chords with a number of different notes:
+				The following example uses our new <code>upstroke</code> pattern with different chords with a different number of notes:
 			</p>
 		</div>
 		<div class="cell medium-shrink">{{> src-example src-examples.pattern-magic-upstroke-chords }}</div>

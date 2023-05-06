@@ -1,15 +1,10 @@
 PATTERN upstroke
 	{ m
-		0    /1  m
-		-    /32
-		1    /1  m
-		-    /32
-		2    /1  m
-		-    /32
-		3    /1  m
+		: (m) 0:1 -:32 (m) 1:1 -:32
+		: (m) 2:1 -:32 (m) 3:1
 	}
-	-        /1
+	: -:1
 END
 
-0  c-,e-,g-,c  upstroke
-0  c,g-,e-,c-  upstroke
+0: c-,e-,g-,c:upstroke
+0: c,g-,e-,c-:upstroke

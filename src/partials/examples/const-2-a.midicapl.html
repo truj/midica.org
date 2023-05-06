@@ -1,6 +1,7 @@
 CONST $forte    = v=120
+CONST $roll     = tr=/32
 CONST $drum     = bd1,to
-CONST $drumroll = $drum /1 tr=/32
-CONST $play_dr  = p $drumroll, $forte
+CONST $drumroll = ($forte,$roll) $drum:1
+CONST $play_dr  = p: $drumroll
 
 $play_dr

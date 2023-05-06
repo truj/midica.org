@@ -378,6 +378,10 @@ meta-desc:  "Use Functions to re-use code. Learn about function call options. Ca
 				A variable index starts counting from 0. That means, to use the first parameter, we must write <code>$[0]</code>
 				and for the second one <code>$[1]</code>. A third one would be <code>$[2]</code>, and so on.
 			</p>
+			<p>
+				This time we use lowlevel syntax because in compact syntax the <code>shift</code> option is not supported.
+				(This is only for demonstrating how to use more than one parameter.)
+			</p>
 		</div>
 		<div class="cell">
 			<h3>Named Parameters</h3>
@@ -416,7 +420,7 @@ meta-desc:  "Use Functions to re-use code. Learn about function call options. Ca
 		<div class="cell">{{> src-example src-examples.vivaldi-param-mixed }}</div>
 		<div class="cell">
 			<p>
-				The first example uses an indexd parameter for the channel and a named parameter for the transposition.
+				The first example uses an indexed parameter for the channel and a named parameter for the transposition.
 				The second example uses the opposite approach.
 			</p>
 		</div>

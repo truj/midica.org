@@ -84,11 +84,16 @@
 		"s": "duration-ratio.svg"
 	},
 	"quantity": {
-		"m": "quantity.midicapl",
+		"m": "quantity-compact.midicapl",
+		"m2": "quantity-lowlevel.midicapl",
 		"s": "vivaldi-shift-harpsic.svg"
 	},
+	"quantity-2": {
+		"m": "quantity-compact-2.midicapl"
+	},
 	"multiple": {
-		"m": "multiple.midicapl",
+		"m": "multiple-compact.midicapl",
+		"m2": "multiple-lowlevel.midicapl",
 		"s": "multiple.svg"
 	},
 	"lyrics": {
@@ -98,8 +103,9 @@
 		"i": "happy-birthday-lyrics.png"
 	},
 	"tremolo": {
-		"m": "tremolo.midicapl",
-		"m2": "tremolo-2.midicapl",
+		"m": "tremolo-compact.midicapl",
+		"m2": "tremolo-lowlevel.midicapl",
+		"m3": "tremolo-3.midicapl",
 		"s": "tremolo.svg"
 	},
 	"shift": {
@@ -259,7 +265,8 @@
 		"s": "mambo.svg"
 	},
 	"shift-block": {
-		"m": "shift-block.midicapl",
+		"m": "shift-block-lowlevel.midicapl",
+		"m2": "shift-block-compact.midicapl",
 		"s": "shift-block.svg"
 	},
 	"triplet-2": {
@@ -405,7 +412,8 @@
 		"s": "pattern-block.svg"
 	},
 	"pattern-arpeggio": {
-		"m": "pattern-arpeggio.midicapl",
+		"m": "pattern-arpeggio-compact.midicapl",
+		"m2": "pattern-arpeggio-lowlevel.midicapl",
 		"s": "pattern-arpeggio.svg"
 	},
 	"pattern-velo-dur": {

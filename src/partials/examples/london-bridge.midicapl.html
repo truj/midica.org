@@ -16,24 +16,18 @@ FUNCTION vocals
 	CALL refrain()                          // My fair lady.
 END
 FUNCTION measure_1
-	4  a  /4.  l=$[0]    // Lon-
-	4  b  /8   l=$[1]    // don
-	4  a  /4   l=$[2]    // bridge
-	4  g  /4   l=$[3]    // is
+	//    Lon-          don          bridge       is
+	4: (l=$[0]) a:4. (l=$[1]) b:8 (l=$[2]) a:4 (l=$[3]) g
 END
 FUNCTION measure_2
-	4  f#  /4   l=$[0]    // fal-
-	4  g   /4   l=$[1]    // ling
-	4  a   /2   l=$[2]    // down
+	//    fal-          ling       down
+	4: (l=$[0]) f#:4 (l=$[1]) g (l=$[2]) a:2
 END
 FUNCTION measure_3
-	4  e   /4   l=$[0]    // fal-
-	4  f#  /4   l=$[1]    // ling
-	4  g   /2   l=$[2]    // down
+	//    fal-         ling        down
+	4: (l=$[0]) e:4 (l=$[1]) f# (l=$[2]) g:2
 END
 FUNCTION refrain
-	4  e   /2   l=My_
-	4  a   /2   l=fair_
-	4  f#  /4   l=La
-	4  d   /2.  l=dy.\n
+	//    My          fair        La-         dy
+	4: (l=My_) e:2 (l=fair_) a (l=La) f#:4 (l=dy.\n) d:2.
 END

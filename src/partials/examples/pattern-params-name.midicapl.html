@@ -3,17 +3,12 @@ CHORD amin a-2 e- a- c
 
 PATTERN upstroke
 	{ m
-		0   ${len}   m
-		-   ${dist}
-		1   ${len}   m
-		-   ${dist}
-		2   ${len}   m
-		-   ${dist}
-		3   ${len}   m
+		: (m) 0:${len} -:${dist} (m) 1:${len} -:${dist}
+		: (m) 2:${len} -:${dist} (m) 3:${len}
 	}
-	-       ${len}
+	: -:${len}
 END
 
-0: cmaj:upstroke(len=/1,dist=/8)
-0 cmaj upstroke(len=/4, dist=/32)  q=2
-0 amin upstroke(dist=/32, len=/8)  q=4
+0:       cmaj:upstroke(len=/1,dist=/8)
+0: (q=2) cmaj:upstroke(len=/4,dist=/32)
+0  amin  upstroke( dist = /32, len = /8)   q=4

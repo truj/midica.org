@@ -26,15 +26,26 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<h2>Lowlevel Channel Commands</h2>
 		</div>
 		<div class="cell">
+			<p class="hint">
+				In newer Midica versions, lowlevel commands are not needed any more.
+				If you are not interested how to use them, you can <a href="#channel-options">skip this section</a>.
+			</p>
 			<p>
 				The channel commands from the last chapter are <em>compact</em> channel commands.
 				Compact means, you can play several notes, chords or rests in a single line.
-				That's very convenient for most things but some complex things cannot be expressed with a compact command alone.
-				In some cases you need either <em>patterns</em> (cf. chapter 6) or <em>lowlevel</em> channel commands.
+				There is also another kind of command called <em>lowlevel</em> channel command, allowing only one note or chord or rest per line.
 			</p>
 			<p>
-				With a <em>lowlevel channel command</em> you can only play one note, chord or rest at a time.
-				They consist of at least 3 columns, separated by whitespaces:
+				In earlier Midica versions there were some things you could not express with <em>compact</em> commands.
+				But since version 1.5.4 the <em>compact</em> commands support everything that <em>lowlevel</em> commands support.
+			</p>
+			<p>
+				Still it is useful to know that <em>lowlevel</em> commands exist, and how they look - at least for one reason:
+				If you forget the <code>:</code> after the channel number of a compact command, Midica may think that you tried to use an illegal
+				<em>lowlevel</em> command. And then the resulting error message could be confusing.
+			</p>
+			<p>
+				A <em>lowlevel channel command</em> consists of at least 3 columns, separated by whitespaces:
 			</p>
 			<ol>
 				<li>Channel column</li>
@@ -61,7 +72,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<h3>Note column</h3>
 			<p>
 				This column can contain a <em>note name</em>, a <em>percussion ID</em>, a <em>chord</em> (inline or predefined)
-				or a rest (<code>-</code>). Additionally you can also use the <em>MIDI note number</em>.
+				or a rest (<code>-</code>). Alternatively you can also use the <em>MIDI note number(s)</em>.
 			</p>
 		</div>
 		<div class="cell large-4">
@@ -122,10 +133,10 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 					<tr>
 						<th>Long Name</th>
 						<th>Short Name</th>
-						<th>Type</th>
-						<th>Min Value</th>
-						<th>Max Value</th>
-						<th>Command type</th>
+						<th>Value Type</th>
+						<th>Value Range</th>
+						<th>Cmd type</th>
+						<th>Impact</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -133,65 +144,65 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 						<td>velocity</td>
 						<td>v</td>
 						<td>integer</td>
-						<td>1</td>
-						<td>127</td>
+						<td>1 - 127</td>
 						<td>both</td>
+						<td>permanent</td>
 					</tr>
 					<tr>
 						<td>duration</td>
 						<td>d</td>
-						<td>float</td>
-						<td>>0.0 (>0%)</td>
-						<td>&infin;</td>
+						<td>float or %</td>
+						<td>>0.0 - &infin; (>0% - &infin;%)</td>
 						<td>both</td>
+						<td>permanent</td>
 					</tr>
 					<tr>
 						<td>quantity</td>
 						<td>q</td>
 						<td>integer</td>
-						<td>1</td>
-						<td>&infin;</td>
-						<td>lowlevel</td>
+						<td>1 - &infin;</td>
+						<td>both</td>
+						<td>once</td>
 					</tr>
 					<tr>
 						<td>multiple</td>
 						<td>m</td>
-						<td>none</td>
 						<td>-</td>
 						<td>-</td>
-						<td>lowlevel</td>
+						<td>both</td>
+						<td>once</td>
 					</tr>
 					<tr>
 						<td>lyrics</td>
 						<td>l</td>
 						<td>text</td>
 						<td>-</td>
-						<td>-</td>
 						<td>both</td>
+						<td>once</td>
 					</tr>
 					<tr>
 						<td>tremolo</td>
 						<td>tr</td>
 						<td>length</td>
 						<td>-</td>
-						<td>-</td>
-						<td>lowlevel</td>
+						<td>both</td>
+						<td>once</td>
 					</tr>
 					<tr>
 						<td>shift</td>
 						<td>s</td>
 						<td>integer</td>
-						<td>-127</td>
-						<td>127</td>
+						<td>-127 - 127</td>
 						<td>lowlevel</td>
+						<td>once</td>
 					</tr>
 					<tr>
 						<td>length</td>
 						<td>-</td>
 						<td>length</td>
 						<td>-</td>
-						<td>-</td>
 						<td>compact</td>
+						<td>permanent</td>
 					</tr>
 				</tbody>
 			</table>
@@ -260,19 +271,30 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		</div>
 		<div class="cell">
 			<p>
-				The quantity option is only available for lowlevel commands.
-				It repeats the command any number of times. The option name is <code>quantity</code>.
+				The quantity option repeats a command any number of times. The option name is <code>quantity</code>.
 				The short form is <code>q</code>.
+			</p>
+			<p>
+				In <em>compact</em> syntax, the command affects the <em>next</em> compact note or chord or rest after the option in the same channel.
 			</p>
 			<p>
 				The following example shows the beginning of "The Four Seasons: Summer", 3rd movement, by "Antonio Vivaldi".
 				It uses a violin in channel 0 and a harpsichord in channel 6. (Please update your <code>INSTRUMENTS</code> block accordingly.)
+				The first example is a <em>compact</em> version, the second one is a <em>lowlevel</em> version of the sequence.
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.quantity }}</div>
 		<div class="cell">
 			<p>
-				As you can see, this option can reduce the necessary number of source code lines in lowlevel commands.
+				Here is another example of the same sequence in <em>compact</em> syntax:
+			</p>
+		</div>
+		<div class="cell medium-shrink">{{> src-example src-examples.quantity-2 }}</div>
+		<div class="cell medium-auto">
+			<p>
+				The <code>(q=11)</code> in the first line is not yet consumed by any note in the same line.
+				In the second line it's not consumed as well because this is for another channel.
+				In the third line, this option is still open, so it's consumed by the note <code>g-</code>.
 			</p>
 		</div>
 		<div class="cell">
@@ -280,8 +302,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		</div>
 		<div class="cell">
 			<p>
-				The multiple option is only available for lowlevel commands.
-				It is used to play different voices in the same channel.
+				The multiple option is used to play different voices in the same channel.
 				It allows to play different notes with different lengths and/or different velocity or duration options in
 				the same time and channel.
 			</p>
@@ -289,20 +310,26 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 				The option name is <code>multiple</code>. The short form is <code>m</code>. It does not have any value.
 			</p>
 			<p>
-				As we already know, each channel command appends a note (or a chord or a rest) to the end of a channel. To be more precise,
-				it adds the note to a <em>marker</em> that is <em>usually</em> at the end of the channel.
+				In <em>compact</em> syntax, the command affects the <em>next</em> compact note or chord or rest after the option in the same channel.
+			</p>
+			<p>
+				As we already know, each note (or chord or rest) is added to the end of a channel. To be more precise,
+				it's added to a <em>marker</em> that is <em>usually</em> at the end of the channel.
 				After adding the note, this marker is moved from the old end of the channel to the new end of the channel.
 			</p>
 			<p>
-				But if the channel command has the multiple option, the marker is not moved.
-				So the next note that is added to the channel, begins at the same time like the note with the multiple option.
+				But if we use the multiple option, the marker is not moved.
+				So the next note that is added to the channel, begins at the same time as the note with the multiple option.
+			</p>
+			<p>
+				The following example demonstrates this, first with compact and then with lowlevel syntax, producing the same sequence:
 			</p>
 		</div>
 		<div class="cell">{{> src-example src-examples.multiple }}</div>
 		<div class="cell">
 			<p>
 				This example shows some possibilities to use the multiple option. The first bar uses 2 voices, shown as blue and black.
-				The full note and the first quarter note (g) begin in the same time because of the multiple option.
+				The full note (<code>c</code>) and the first quarter note (<code>g</code>) begin in the same time because of the multiple option.
 			</p>
 			<p>
 				In the second example we have 2 voices again (blue and black). But they don't begin in the same time, so we need to add
@@ -317,7 +344,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<h3>Lyrics</h3>
 			<div class="cell">
 				<p>
-					The lyrics option can be used to add a syllable to the command. This way you can make your song ready for karaoke.
+					The lyrics option can be used to add a syllable. This way you can make your song ready for karaoke.
 					The option name is <code>lyrics</code>. The short form is <code>l</code>.
 				</p>
 				<p>
@@ -343,15 +370,19 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			<h3>Tremolo</h3>
 			<div class="cell">
 				<p>
-					The tremolo option is only available for lowlevel commands. It is an alternative notation for note (or chord) repetitions.
+					The tremolo option is an alternative notation for note (or chord) repetitions.
 					The option name is <code>tremolo</code>. The short form is <code>tr</code>.
 				</p>
 				<p>
-					The note length column of a tremolo'ed note defines the overall length over all repetitions.
+					In <em>compact</em> syntax, the command affects the <em>next</em> compact note or chord after the option in the same channel.
+				</p>
+				<p>
+					The note length of a tremolo'ed note defines the overall length over all repetitions.
 					The length of each repeated note is provided as the option value.
 				</p>
 				<p>
-					The next two examples are equivalent. The first one uses the tremolo option, while the second one uses the quantity option.
+					The next three examples are equivalent. The first two use the tremolo option (compact first, lowlevel second),
+					while the third one uses the quantity option.
 				</p>
 			</div>
 			<div class="cell">{{> src-example src-examples.tremolo }}</div>
@@ -410,9 +441,9 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 			</p>
 			<ul>
 				<li>In <em>compact</em> commands: after the note name, separated by a colon (<code>:</code>)</li>
-				<li>In <em>compact</em> commands: with the <em>length</em> option</li>
 				<li>In a <em>lowlevel</em> command: in the 3rd column</li>
-				<li>In a <em>lowlevel</em> command: as the value of a <code>tremolo</code> option</li>
+				<li>In <em>compact</em> commands: as the value of a <code>length</code> option</li>
+				<li>In any command: as the value of a <code>tremolo</code> option</li>
 			</ul>
 			<p>
 				And we know how to define the most frequently used note lengths. Now let's see how to compose all possibilities of lengths.
@@ -570,7 +601,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		<div class="cell">{{> src-example src-examples.hey-jude }}</div>
 		<div class="cell">
 			<p>
-				A half and an eighth note are tied together. This is described as <code>2+4</code>.
+				A half and an eighth note are tied together. This is described as <code>2+8</code>.
 			</p>
 			<p>
 				More complicated expressions are also possible like <code>/2.+/1+/2t</code>. Here is a lowlevel example:
@@ -681,7 +712,7 @@ meta-desc:  "Use channel commands and complex note lengths. Use soundbanks and p
 		<div class="cell">
 			<p>
 				Of cause a local file path does not work on someone else's computer because he will probably not have the same
-				soundbank in the same directory inside of his fils system. Therefore you can reference the file by URL.
+				soundbank in the same directory inside of his file system. Therefore you can reference the file by URL.
 			</p>
 			<p>
 				But URLs contain a double slash <code>//</code>, that is also the comment symbol in MidicaPL.
