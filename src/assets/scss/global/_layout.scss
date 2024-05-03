@@ -52,7 +52,7 @@ $link-hover-bgcolor: $primary-color-light;
 a {
 	font-weight: bold;
 	&:hover {
-		background-color: $link-hover-bgcolor;
+		background-color: $link-hover-bgcolor !important;
 		text-decoration: underline;
 		text-decoration-color: $black;
 	}

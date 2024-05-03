@@ -5,13 +5,16 @@ https://github.com/truj/midica
 
 # Requirements
 
-This project is based on Foundation-CLI which requires Node.js
+This project is based on Foundation for Sites 6.8.1 which requires:
 
-So you need to install Node.js first.
+- Node.js in Version 12 or 14
+- Yarn or npm
 
-Then install Foundation-CLI:
+So you need to install Node.js first in an appropriate version. (Tested with v14.21.3).
 
-`sudo npm install --global foundation-cli`
+Then you need yarn, if you don't have it already:
+
+`sudo npm install -g yarn`
 
 # Download and run
 
@@ -25,20 +28,20 @@ Then switch to the new directory:
 
 And install the dependencies:
 
-`npm install`
+`yarn`
 
-Then you can run the project either with:
+(`npm install` could work as well.)
 
-`npm start`
+Then you can run the project with:
 
-or with:
+`yarn start`
 
-`foundation watch`
+(`npm start` could work as well.)
 
 # Productive Version
 
 To build a productive version, type:
 
-`foundation build`
+`yarn build`
 
 Then you find the resulting files in the dist directory.
