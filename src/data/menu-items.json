@@ -291,6 +291,12 @@
 						"url": "/tutorial-7.html#",
 						"is-chapter": true,
 						"menu-items": []
+					},
+					{
+						"title": "Breaking Changes",
+						"url": "/breaking-changes.html",
+						"is-chapter": false,
+						"menu-items": []
 					}
 				]
 			},

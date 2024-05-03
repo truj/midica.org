@@ -142,7 +142,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell">
 			<p>
 				We applied the pattern to amin and cmaj from a lowlevel command. But for the next two chords we used a compact command.
-				So you see, this is completely exchangeable.
+				So you see, this is completely interchangeable.
 			</p>
 			<p>
 				Our song sounds already pretty well like the original. But if you are really picky and listen carefully, you may notice that
@@ -157,8 +157,13 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		</div>
 		<div class="cell">
 			<p>
-				A pattern can also contain a chord, consisting of more than one note in a line. Instead of comma-separating note names,
-				like in normal channel commands, the note indices must be comma-separated to achieve that.
+				A pattern can also contain a chord, consisting of more than one note in a line. Instead of slash-separating note names,
+				like in normal channel commands, the note <em>indices</em> must be slash-separated to achieve that.
+			</p>
+			<p class="hint">
+				Midica Versions before 1.6.0 used <code>,</code> as index pattern separator. See <a href="breaking-changes.html#chord-separator">breaking changes</a>.
+			</p>
+			<p>
 				The following examples show how that works. The first example uses a chord inside of a pattern, while the second one shows
 				how this very same thing would look with normal channel commands:
 			</p>
@@ -172,11 +177,11 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell">{{> src-example src-examples.pattern-travis-lowlevel }}</div>
 		<div class="cell">
 			<p>
-				This pattern is called <code>travis</code> because it implements the famous <em>Travis Pattern</em>, a finger picking pattern
+				This pattern is called <code>travis</code> because it implements the famous <em>Travis Pattern</em>, a finger picking pattern for guitar players
 				named after Merle Travis.
 			</p>
 			<p>
-				The note indices <code>0,3</code>, marked in blue, are translated to the chord <code>c-,c</code>.
+				The note indices <code>0/3</code>, marked in blue, are translated to the chord <code>c-/c</code>.
 			</p>
 			<p>
 				In order to create the first 8 bars of "Dust in the wind", we only need to add a few more chords and use this pattern with them.
@@ -230,11 +235,11 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell">
 			<p>
 				The inner block has a <code>multiple</code> option (<code>m</code>), so the note indices <code>0</code>, <code>1</code> and <code>2</code>
-				(notes <code>c-</code>, <code>e-</code> and <code>g-</code>) are played together with note index <code>3</code>
-				(note <code>c</code>).
+				(notes <code>c-</code>, <code>e-</code> and <code>g-</code>) are played in one voice. The second voice plays note index <code>3</code>
+				(note <code>c</code>) in the same time.
 			</p>
 			<p>
-				The outer block has the quantity option <code>q=2</code>, so it's repeated twice.
+				The outer block has the quantity option <code>q=2</code>, so its content is repeated twice.
 			</p>
 		</div>
 	</section>
@@ -536,8 +541,8 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 				<tbody>
 					<tr>
 						<td>$ALL</td>
-						<td>0,1,2,3,4</td>
-						<td>Comma-Separated list of <em>all</em> note indices in ascending order</td>
+						<td>0/1/2/3/4</td>
+						<td>Slash-Separated list of <em>all</em> note indices in ascending order</td>
 					</tr>
 					<tr>
 						<td>$NC</td>
@@ -546,8 +551,8 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 					</tr>
 					<tr>
 							<td>$REV</td>
-							<td>4,3,2,1,0</td>
-							<td>Comma-Separated list of all note indices in <em>reverse</em> order</td>
+							<td>4/3/2/1/0</td>
+							<td>Slash-Separated list of all note indices in <em>reverse</em> order</td>
 						</tr>
 					</tbody>
 			</table>
@@ -643,7 +648,7 @@ meta-desc:  "Learn how to use musical patterns, e.g. like Guitar picking pattern
 		<div class="cell medium-shrink">{{> src-example src-examples.pattern-magic-downstroke }}</div>
 	</section>
 	<aside>
-		<a href="tutorial-7.html">Chapter 7</a> will explain how to use sound effects. However, this chapter does not yet exist,
-		as sound effects are not yet implemented in Midica.
+		<a href="tutorial-7.html">Chapter 7</a> will explain how to use sound effects. This is a brand-new feature in Midica 1.6.0,
+		so this chapter does not yet exist. But it will be written soon.
 	</aside>
 </div>

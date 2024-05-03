@@ -237,7 +237,10 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 		</div>
 		<div class="cell">
 			<p>
-				An inline chord is a number of notes, separated by a <code>,</code>. There are no whitespaces allowed between the notes.
+				An inline chord is a number of notes, separated by a <code>/</code>. There are no whitespaces allowed between the notes.
+			</p>
+			<p class="hint">
+				Midica Versions before 1.6.0 used <code>,</code> as chord separator. See <a href="breaking-changes.html#chord-separator">breaking changes</a>.
 			</p>
 			<p>
 				The following example shows the beginning of Bob Marley's song "No Woman No Cry".
@@ -262,7 +265,10 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 				The first column is the keyword <code>CHORD</code>.
 				The second column is a self-given chord name.
 				The other column(s) contain the notes belonging to that chord, one note by column.
-				The notes can be separated either by <code>,</code> symbols or whitespaces or both.
+				The notes can be separated either by <code>/</code> symbols or whitespaces or both.
+			</p>
+			<p class="hint">
+				Midica Versions before 1.6.0 used <code>,</code> as chord separator. See <a href="breaking-changes.html#chord-separator">breaking changes</a>.
 			</p>
 			<p>
 				Between the chord name and the notes, you may optionally add a <code>=</code> instead of (or as well as) whitespaces.
@@ -270,10 +276,10 @@ meta-desc:  "Learn the basics of the music programming language. Create melodies
 			</p>
 			<ul>
 				<li><code>CHORD c-maj c e g</code></li>
-				<li><code>CHORD c-maj c,e,g</code></li>
-				<li><code>CHORD c-maj=c,e,g</code></li>
-				<li><code>CHORD c-maj = c, e, g</code></li>
-				<li><code>CHORD c-maj = c , e , g</code></li>
+				<li><code>CHORD c-maj c/e/g</code></li>
+				<li><code>CHORD c-maj=c/e/g</code></li>
+				<li><code>CHORD c-maj = c/ e/ g</code></li>
+				<li><code>CHORD c-maj = c / e / g</code></li>
 			</ul>
 			<p>
 				Predefined chords can be used like normal notes inside of a channel command. But instead of the note name, the self-given chord name is used.

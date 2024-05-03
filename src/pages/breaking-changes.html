@@ -1,0 +1,49 @@
+---
+layout: index
+meta-title: "MidicaPL Breaking Changes in MidicaPL - Music Programming Language for Midica"
+meta-desc:  "This page tracks breaking changes between Midica versions."
+---
+
+<div class="grid-container midicapl">
+	<div class="grid-x grid-padding-x">
+		<h1 class="cell">Breaking Changes between Midica Versions</h1>
+	</div>
+	<section class="grid-x grid-padding-x" id="intro">
+		<div class="cell">
+			<p>
+				This page tracks breaking changes between Midica versions.
+			</p>
+		</div>
+	</section>
+	<section class="grid-x grid-padding-x">
+		<div class="cell">
+			<h2>Midica 1.6.0</h2>
+		</div>
+		<div class="cell" id="chord-separator">
+			<h3>Chord Separator and Pattern Index Separator</h3>
+		</div>
+		<div class="cell">
+			<p>
+				The default symbol for a chord separator and a pattern index separator was <code>,</code> in Versions older than 1.6.0.
+			</p>
+			<p>
+				With 1.6.0 these 2 symbols have changed to <code>/</code>.
+			</p>
+			<p>
+				This change enables us to pass a chord to a function or pattern as a parameter.
+			</p>
+			<p>
+				If you want to keep the old behaviour, just add the following definition to your MidicaPL source code:
+			</p>
+		</div>
+		<div class="cell">{{> src-example src-examples.breaking-change-1-6 }}</div>
+		<div class="cell">
+			<p>
+				A redefinition of <code>PATTERN_INDEX_SEP</code> is not possible any more and not needed either.
+			</p>
+			<p>
+				<code>CHORD_SEPARATOR</code> and <code>PATTERN_INDEX_SEP</code> are now united in the same symbol.
+			</p>
+		</div>
+	</section>
+</div>

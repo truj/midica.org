@@ -478,5 +478,9 @@
 		"m2": "zero-length-2.midicapl",
 		"m3": "zero-length-3.midicapl",
 		"s": "zero-length.svg"
+	},
+
+	"breaking-change-1-6": {
+		"m": "breaking-change-1-6.midicapl"
 	}
 }
